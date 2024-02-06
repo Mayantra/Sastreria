@@ -25,7 +25,7 @@ namespace LoginSasteria
             {
                 con.ConnectionString = conexion;
                 con.Open();
-                MessageBox.Show("Data Base Conection Already");
+                //MessageBox.Show("Data Base Conection Already");
             }
             catch (MySqlException e){
                 MessageBox.Show("Error al conectarse a la base de datos"+e.ToString());
