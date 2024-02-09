@@ -61,12 +61,30 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <DataGrid ItemsSource="{Binding}" x:Name="DataConsulta" HorizontalAlignment="Left" Height="245" Margin="55,70,0,0" VerticalAlignment="Top" Width="570">
+        <DataGrid ItemsSource="{Binding}" ColumnWidth="*" CanUserAddRows="False" CanUserDeleteRows="False"
+                  CanUserResizeColumns="False" CanUserResizeRows="False"
+                  x:Name="DataConsulta" HorizontalAlignment="Left" Height="245" Margin="55,70,0,0" VerticalAlignment="Top" Width="720" FontSize="14" BorderBrush="#ffffffff" Background="#FF150000" AreRowDetailsFrozen="True" RowBackground="#FF150000" AlternatingRowBackground="Black" Foreground="White">
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Background" Value="#000000"/>
+                    <Setter Property="BorderBrush" Value="#ffffff"/>
+                    <Setter Property="Foreground" Value="#ffffff"/>
+                    <Setter Property="Margin" Value="5 ,0,0,5"/>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="BorderBrush" Value="#ffffff"/>
+                </Style>
+            </DataGrid.CellStyle>
 
         </DataGrid>
-        <Button x:Name="btnConsulta" Content="Consulta" HorizontalAlignment="Left" Margin="670,405,0,0" VerticalAlignment="Top" Height="45" Width="105" Click="ConsultaGeneral"/>
-        <ComboBox x:Name="cbTipo" HorizontalAlignment="Left" Height="30" Margin="645,70,0,0" VerticalAlignment="Top" Width="130"/>
-        <Button x:Name="btGet" Content="Button" HorizontalAlignment="Left" Height="50" Margin="670,470,0,0" VerticalAlignment="Top" Width="105" Click="Obtener"/>
+        <Button x:Name="btnConsulta" Content="Actualizar" HorizontalAlignment="Left" Margin="610,415,0,0" VerticalAlignment="Top" Height="45" Width="165" Click="ConsultaGeneral"/>
+        <ComboBox x:Name="cbTipo" HorizontalAlignment="Left" Height="30" Margin="60,359,0,0" VerticalAlignment="Top" Width="130" FontSize="18"/>
+        <Button x:Name="btGet" Content="Buscar" HorizontalAlignment="Left" Height="50" Margin="610,350,0,0" VerticalAlignment="Top" Width="165" Click="Obtener"/>
+        <ComboBox x:Name="cbTalla" HorizontalAlignment="Left" Height="30" Margin="240,359,0,0" VerticalAlignment="Top" Width="130" FontSize="18"/>
+        <ComboBox x:Name="cbColor" HorizontalAlignment="Left" Height="30" Margin="415,359,0,0" VerticalAlignment="Top" Width="130" FontSize="18"/>
+        <Label x:Name="lbFecha"  Content="Fecha" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="105" Margin="125,530,0,0" VerticalAlignment="Top" Width="180" FontSize="20" Foreground="White" />
 
 
 
