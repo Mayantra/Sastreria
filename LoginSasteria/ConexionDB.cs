@@ -32,6 +32,11 @@ namespace LoginSasteria
             }
             return con;
         }
+        public MySqlConnection cerrarCN()
+        {
+            con.Close();
+            return con;
+        }
 
     }
 }
