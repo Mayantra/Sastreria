@@ -31,6 +31,24 @@
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
+
+        <ControlTemplate x:Key="PasswordBoxTemplate" TargetType="{x:Type PasswordBox}">
+            <Border Background="{TemplateBinding Background}" x:Name="Bd" BorderBrush="Black" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="20">
+            <ScrollViewer x:Name="PART_ContentHost"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" TargetName="Bd"/>
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="Width" Value="Auto">
+                    <Setter Property="MinWidth" Value="100"/>
+                </Trigger>
+                <Trigger Property="Height" Value="Auto">
+                    <Setter Property="MinHeight" Value="20"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
         
     </Window.Resources>
 
@@ -42,23 +60,21 @@
 
         
         <TextBox x:Name="txUser" Template="{StaticResource TextBoxBaseControlTemplate}"  HorizontalAlignment="Left" Height="50" Margin="875,310,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Padding="10"  Width="300" FontFamily="MingLiU_HKSCS-ExtB" FontSize="20" SelectionOpacity="0.9" RenderTransformOrigin="0.5,0.5" FontWeight="Light" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="txPass"  Template="{StaticResource TextBoxBaseControlTemplate}"  HorizontalAlignment="Left" Height="50" Margin="875,382,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Padding="10" Width="300" FontFamily="MingLiU_HKSCS-ExtB" FontSize="20" SelectionOpacity="0.9" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2" TextChanged="leerdatos">
-
-        </TextBox>
+        <PasswordBox x:Name="PassBox" Template="{StaticResource PasswordBoxTemplate}" HorizontalAlignment="Left" Height="50" Margin="875,388,0,0" VerticalAlignment="Top" Width="300" PasswordChanged="cambioPass" Padding="10" FontSize="16"/>
         <Rectangle HorizontalAlignment="Left" Height="700" Margin="10,0,0,0" VerticalAlignment="Center" Width="15" Fill="#FFEDE4A4"/>
         <Rectangle HorizontalAlignment="Left" Height="98" Margin="918,162,0,0" Stroke="Black" VerticalAlignment="Top" Width="214" Grid.ColumnSpan="2">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="/Imagen_de_WhatsApp_2024-01-17_a_las_20.09.20_1e6cb21b-removebg-preview.png" Stretch="Uniform"/>
             </Rectangle.Fill>
         </Rectangle>
-        <Button x:Name="btnExit" HorizontalAlignment="Left" Height="50" Margin="1190,10,0,0" VerticalAlignment="Top" Width="50" Background="#FFE50000" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="btnSalir" AutomationProperties.Name="btnSalir" RenderTransformOrigin="-13363.5,4.2">
+        <Button x:Name="btnExit" HorizontalAlignment="Left" Height="30" Margin="1190,10,0,0" VerticalAlignment="Top" Width="30" Background="#FFE50000" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="btnSalir" AutomationProperties.Name="btnSalir" RenderTransformOrigin="-13363.5,4.2">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="100"/>
                 </Style>
             </Button.Resources>
         </Button>
-        <Button x:Name="btnMin" HorizontalAlignment="Left" Height="50" Margin="1125,10,0,0" VerticalAlignment="Top" Width="50" Background="#FF336653" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="Minimizar">
+        <Button x:Name="btnMin" HorizontalAlignment="Left" Height="30" Margin="1145,10,0,0" VerticalAlignment="Top" Width="30" Background="#FF336653" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="Minimizar">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="100"/>

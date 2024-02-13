@@ -1,0 +1,73 @@
+﻿<Window x:Class="LoginSasteria.ventanaInicio"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LoginSasteria"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="" Height="700" Width="1250"  Foreground="{x:Null}"
+        WindowStyle="None"
+        Background="Transparent"
+        AllowsTransparency="True"
+        Icon="/tshirt_120689.ico">
+    <Window.Resources>
+        <ControlTemplate x:Key="NoMouseOverButtonTemplate"   
+                 TargetType="Button">
+            <Border Background="{TemplateBinding Background}"  
+          BorderBrush="{TemplateBinding BorderBrush}"  
+          BorderThickness="{TemplateBinding BorderThickness}">
+                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"  
+                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+            </Border>
+
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled"  
+             Value="False">
+                    <Setter Property="Background"  
+              Value="{x:Static SystemColors.ControlLightBrush}" />
+                    <Setter Property="Foreground"  
+              Value="{x:Static SystemColors.GrayTextBrush}" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>
+    <Grid Background="#FF150000">
+        <Button x:Name="btnExit" HorizontalAlignment="Left" Height="30" Margin="1190,10,0,0" VerticalAlignment="Top" Width="30" Background="#FFE50000" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="btnSalir" AutomationProperties.Name="btnSalir" RenderTransformOrigin="-13363.5,4.2">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="100"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="btnMin" HorizontalAlignment="Left" Height="30" Margin="1145,10,0,0" VerticalAlignment="Top" Width="30" Background="#FF336653" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="Minimizar">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="100"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button  Template="{StaticResource NoMouseOverButtonTemplate}" x:Name="btnInventario" HorizontalAlignment="Left" Height="400" Margin="140,300,0,0" VerticalAlignment="Top" Width="300" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="abrirInventario">
+            <Button.Background>
+                <ImageBrush ImageSource="/Grupo 11.png" Stretch="Uniform"/>
+            </Button.Background>
+        </Button>
+        <Button  Template="{StaticResource NoMouseOverButtonTemplate}" x:Name="btnMedidas" HorizontalAlignment="Left" Height="400" Margin="480,300,0,0" VerticalAlignment="Top" Width="300" BorderBrush="{x:Null}" Foreground="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Grupo 12.png" Stretch="Uniform"/>
+            </Button.Background>
+        </Button>
+        <Button Template="{StaticResource NoMouseOverButtonTemplate}" x:Name="btnDistribucion" HorizontalAlignment="Left" Height="400" Margin="820,300,0,0" VerticalAlignment="Top" Width="300" BorderBrush="{x:Null}" Foreground="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Grupo 13.png" Stretch="Uniform"/>
+            </Button.Background>
+        </Button>
+        <Rectangle HorizontalAlignment="Left" Height="200" Margin="380,25,0,0" Stroke="Black" VerticalAlignment="Top" Width="500" Opacity="0.5">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="/Imagen_de_WhatsApp_2024-01-17_a_las_20.09.20_1e6cb21b-removebg-preview.png" Stretch="Uniform"/>
+            </Rectangle.Fill>
+        </Rectangle>
+
+
+    </Grid>
+</Window>

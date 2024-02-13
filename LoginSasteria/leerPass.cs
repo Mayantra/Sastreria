@@ -13,7 +13,6 @@ namespace LoginSasteria
     internal class leerPass
     {
         public static string usuario;
-        public static string contra;
         
         public int setPass(string user, string pass)
         {
@@ -31,8 +30,7 @@ namespace LoginSasteria
             {
                 estado = 1;
                 usuario = user;
-                contra = pass;
-                MessageBox.Show("Contraseña Correcta");
+                //MessageBox.Show("Contraseña Correcta");
 
             }
             else
@@ -40,16 +38,23 @@ namespace LoginSasteria
                 estado=0;
                 MessageBox.Show("Contraseña Incorrecta");
             }
-
+            cn.cerrarCN();
             return estado;
         }
-        string getUser()
+        public string getUser()
         {
-            return usuario;
-        }
-        string getPass()
-        {
-            return contra;
+            string nombreUser ="";
+            string query = "SELECT Nombre FROM dbleonv2.empleado where Usuario ='" + usuario + "';";
+            ConexionDB cn = new ConexionDB();
+            MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
+            MySqlDataReader dr = comando.ExecuteReader();
+            
+            while (dr.Read())
+            {
+                nombreUser = dr.GetString("Nombre");
+            }
+            cn.cerrarCN();
+            return nombreUser;
         }
         
     }

@@ -20,3 +20,7 @@ C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\System.Numeric
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\System.Buffers.dll
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\MySql.Data.xml
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\LoginSasteria.csproj.CopyComplete
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\ventanaInicio.g.cs
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\ventanaInicio.baml
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\mainInventario.g.cs
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\mainInventario.baml

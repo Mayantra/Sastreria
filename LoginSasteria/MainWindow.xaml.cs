@@ -143,7 +143,7 @@ namespace LoginSasteria
 
         private void btnSalir(object sender, RoutedEventArgs e)
         {
-            Environment.Exit(0);
+            this.Close();
         }
 
         private void Minimizar(object sender, RoutedEventArgs e)
@@ -264,22 +264,31 @@ namespace LoginSasteria
             Console.WriteLine(idTipo);
         }
 
-        private void leerdatos(object sender, TextChangedEventArgs e)
+        
+
+        private void cambioPass(object sender, RoutedEventArgs e)
         {
             leerPass read = new leerPass();
-            
-            for(int i = 0; i <= txPass.Text.Length; i++) {
-
+            for (int i = 0; i <= PassBox.Password.Length; i++)
+            {
                 if (i == 5)
                 {
                     string user = txUser.Text;
-                    string pass = txPass.Text;
-                    read.setPass(user, pass);
-                    txPass.Text = "";
+                    string pass = PassBox.Password;
+                    if(read.setPass(user, pass) != 0)
+                    {
+                        ventanaInicio abrirVentana = new ventanaInicio();
+                        
+                        abrirVentana.Show();
+                        this.Close();
+
+                    }
+                    
                     txUser.Text = "";
+                    PassBox.Password = "";          
                 }
+
             }
         }
-
     }
 }
