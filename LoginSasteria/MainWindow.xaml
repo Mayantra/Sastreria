@@ -31,6 +31,7 @@
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
+        
     </Window.Resources>
 
     <Grid Background="#FF150000" Height="700">
@@ -39,8 +40,11 @@
         </Grid.ColumnDefinitions>
         <Rectangle HorizontalAlignment="Left" Height="700" Stroke="Black" VerticalAlignment="Center" Width="450" Fill="Black" Margin="800,0,0,0" Grid.ColumnSpan="2"/>
 
-        <TextBox Template="{StaticResource TextBoxBaseControlTemplate}"  HorizontalAlignment="Left" Height="50" Margin="875,310,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Padding="10"  Width="300" FontFamily="MingLiU_HKSCS-ExtB" FontSize="20" SelectionOpacity="0.9" RenderTransformOrigin="0.5,0.5" FontWeight="Light" Grid.ColumnSpan="2"/>
-        <TextBox Template="{StaticResource TextBoxBaseControlTemplate}"  HorizontalAlignment="Left" Height="50" Margin="875,382,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Padding="10" Width="300" FontFamily="MingLiU_HKSCS-ExtB" FontSize="20" SelectionOpacity="0.9" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2"/>
+        
+        <TextBox x:Name="txUser" Template="{StaticResource TextBoxBaseControlTemplate}"  HorizontalAlignment="Left" Height="50" Margin="875,310,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Padding="10"  Width="300" FontFamily="MingLiU_HKSCS-ExtB" FontSize="20" SelectionOpacity="0.9" RenderTransformOrigin="0.5,0.5" FontWeight="Light" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="txPass"  Template="{StaticResource TextBoxBaseControlTemplate}"  HorizontalAlignment="Left" Height="50" Margin="875,382,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Padding="10" Width="300" FontFamily="MingLiU_HKSCS-ExtB" FontSize="20" SelectionOpacity="0.9" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2" TextChanged="leerdatos">
+
+        </TextBox>
         <Rectangle HorizontalAlignment="Left" Height="700" Margin="10,0,0,0" VerticalAlignment="Center" Width="15" Fill="#FFEDE4A4"/>
         <Rectangle HorizontalAlignment="Left" Height="98" Margin="918,162,0,0" Stroke="Black" VerticalAlignment="Top" Width="214" Grid.ColumnSpan="2">
             <Rectangle.Fill>

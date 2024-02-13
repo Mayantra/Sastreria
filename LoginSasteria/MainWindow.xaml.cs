@@ -17,6 +17,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
 using System.Globalization;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 
 namespace LoginSasteria
 {
@@ -36,6 +37,7 @@ namespace LoginSasteria
             primeraCon();
             tipoCon();
             getFecha();
+            
 
         }
         void primeraCon()
@@ -261,5 +263,23 @@ namespace LoginSasteria
             
             Console.WriteLine(idTipo);
         }
+
+        private void leerdatos(object sender, TextChangedEventArgs e)
+        {
+            leerPass read = new leerPass();
+            
+            for(int i = 0; i <= txPass.Text.Length; i++) {
+
+                if (i == 5)
+                {
+                    string user = txUser.Text;
+                    string pass = txPass.Text;
+                    read.setPass(user, pass);
+                    txPass.Text = "";
+                    txUser.Text = "";
+                }
+            }
+        }
+
     }
 }
