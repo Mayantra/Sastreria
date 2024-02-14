@@ -135,5 +135,14 @@
   <ItemGroup>
     <Resource Include="Grupo 13.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Grupo 14.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="weeklycalendarcircularbutton_104710.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Grupo 15.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

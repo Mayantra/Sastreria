@@ -11,6 +11,8 @@
         Background="Transparent"
         AllowsTransparency="True"
         Icon="/tshirt_120689.ico">
+
+    
     <Grid Background="#FF150000">
         <Button x:Name="btnExit" HorizontalAlignment="Left" Height="30" Margin="1190,10,0,0" VerticalAlignment="Top" Width="30" Background="#FFE50000" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="btnSalir" AutomationProperties.Name="btnSalir" RenderTransformOrigin="-13363.5,4.2">
             <Button.Resources>
@@ -27,13 +29,19 @@
             </Button.Resources>
         </Button>
         <Rectangle HorizontalAlignment="Left" Height="300" Margin="405,325,0,0" VerticalAlignment="Top" Width="300" Fill="#FF09594D"/>
-        <Label x:Name="lbUser" Content="Label" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="85" Margin="460,475,0,0" VerticalAlignment="Top" Width="185" FontSize="20" FontFamily="MingLiU_HKSCS-ExtB" FontWeight="Bold" Foreground="White">
-            <Label.Resources>
-                <Style TargetType="AccessText">
-                    <Setter Property="TextWrapping" Value="Wrap" />
-                </Style>
-            </Label.Resources>
+        <Label x:Name="lbUser" Content="Label" Height="85" Margin="462,475,602,0" VerticalAlignment="Top" Width="185" FontSize="20" FontFamily="MingLiU_HKSCS-ExtB" FontWeight="Bold" Foreground="White">
+            
         </Label>
+        <Rectangle HorizontalAlignment="Left" Height="700" VerticalAlignment="Center" Width="125" Fill="#FF580000" >
+        </Rectangle>
+
+        <Rectangle HorizontalAlignment="Left" Height="700" VerticalAlignment="Center" Width="10" Fill="#FFEDE4A4"/>
+        <Button HorizontalAlignment="Left" Height="40" Margin="1,360,0,0" VerticalAlignment="Top" Width="124" BorderBrush="{x:Null}" Foreground="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Grupo 15.png" Stretch="Uniform"/>
+            </Button.Background>
+        </Button>
+
 
     </Grid>
 </Window>
