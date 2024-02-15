@@ -24,3 +24,4 @@ C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\ventanaInicio.
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\ventanaInicio.baml
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\mainInventario.g.cs
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\mainInventario.baml
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\LoginSasteria_Content.g.cs

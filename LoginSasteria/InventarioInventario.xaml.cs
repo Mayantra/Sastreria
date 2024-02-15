@@ -16,20 +16,17 @@ using System.Windows.Threading;
 namespace LoginSasteria
 {
     /// <summary>
-    /// Lógica de interacción para mainInventario.xaml
+    /// Lógica de interacción para InventarioInventario.xaml
     /// </summary>
-    public partial class mainInventario : Window
+    public partial class InventarioInventario : Window
     {
-        public mainInventario()
+        public InventarioInventario()
         {
             InitializeComponent();
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += timer_Tick;
             timer.Start();
-            cargarUser();
-            getFecha();
-
         }
         void timer_Tick(object sender, EventArgs e)
         {
@@ -47,25 +44,6 @@ namespace LoginSasteria
             }
         }
 
-
-        void cargarUser()
-        {
-            leerPass user = new leerPass();
-
-            string usuario = user.getUser();
-            txblockname.Text = usuario;
-
-        }
-        string getFecha()
-        {
-            DateTime fechaActual = DateTime.Now;
-            string mes = fechaActual.ToString("MMMM");
-            string dia = fechaActual.ToString("dd");
-            txblockfecha.Text = dia +"\n"+ mes;
-            
-
-            return dia;
-        }
         private void btnSalir(object sender, RoutedEventArgs e)
         {
             this.Close();

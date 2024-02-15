@@ -1,34 +1,34 @@
-﻿<Window x:Class="LoginSasteria.mainInventario"
+﻿<Window x:Class="LoginSasteria.ventaInventario"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LoginSasteria"
         mc:Ignorable="d"
-        WindowStartupLocation="CenterScreen"
-        Title="" Height="700" Width="1300"  Foreground="{x:Null}"
-        WindowStyle="None"
-        Background="Transparent"
-        AllowsTransparency="True"
-        Icon="/tshirt_120689.ico">
+            WindowStartupLocation="CenterScreen"
+    Title="" Height="700" Width="1300"  Foreground="{x:Null}"
+    WindowStyle="None"
+    Background="Transparent"
+    AllowsTransparency="True"
+    Icon="/tshirt_120689.ico">
 
     <Window.Resources>
         <ControlTemplate x:Key="NoMouseOverButtonTemplate"   
-             TargetType="Button">
+         TargetType="Button">
             <Border Background="{TemplateBinding Background}"  
-      BorderBrush="{TemplateBinding BorderBrush}"  
-      BorderThickness="{TemplateBinding BorderThickness}">
+  BorderBrush="{TemplateBinding BorderBrush}"  
+  BorderThickness="{TemplateBinding BorderThickness}">
                 <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"  
-                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+              VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
             </Border>
 
             <ControlTemplate.Triggers>
                 <Trigger Property="IsEnabled"  
-         Value="False">
+     Value="False">
                     <Setter Property="Background"  
-          Value="{x:Static SystemColors.ControlLightBrush}" />
+      Value="{x:Static SystemColors.ControlLightBrush}" />
                     <Setter Property="Foreground"  
-          Value="{x:Static SystemColors.GrayTextBrush}" />
+      Value="{x:Static SystemColors.GrayTextBrush}" />
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
@@ -54,7 +54,7 @@
         </Rectangle>
 
         <Rectangle HorizontalAlignment="Left" Height="700" VerticalAlignment="Center" Width="15" Fill="#FFEDE4A4"/>
-        <Rectangle HorizontalAlignment="Left" Height="60" Margin="0,353,0,0" VerticalAlignment="Top" Width="185" Fill="#FFEDE4A4"/>
+        <Rectangle HorizontalAlignment="Left" Height="60" Margin="0,413,0,0" VerticalAlignment="Top" Width="185" Fill="#FFEDE4A4"/>
         <Button Template="{StaticResource NoMouseOverButtonTemplate}" Content="Inventario" HorizontalAlignment="Left" Height="60" Margin="15,535,0,0" VerticalAlignment="Top" Width="110" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEDE4A4" FontSize="18" FontFamily="MingLiU_HKSCS-ExtB">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
@@ -72,7 +72,7 @@
                 <StaticResource ResourceKey="NoMouseOverButtonTemplate"/>
             </Button.Template>
         </Button>
-        <Button Content="Venta" HorizontalAlignment="Left" Height="60" Margin="15,413,0,0" VerticalAlignment="Top" Width="110" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB">
+        <Button Content="Venta" HorizontalAlignment="Left" Height="60" Margin="15,413,0,0" VerticalAlignment="Top" Width="110" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FF101010" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="Width" Value="100"/>
@@ -92,7 +92,7 @@
                 <StaticResource ResourceKey="NoMouseOverButtonTemplate"/>
             </Button.Template>
         </Button>
-        <Button Content="Inicio" HorizontalAlignment="Left" Height="60" Margin="15,353,0,0" VerticalAlignment="Top" Width="110" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB">
+        <Button Content="Inicio" HorizontalAlignment="Left" Height="60" Margin="15,353,0,0" VerticalAlignment="Top" Width="110" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="Width" Value="100"/>
@@ -109,7 +109,7 @@
                 </Style>
             </Button.Resources>
             <Button.Background>
-                <ImageBrush ImageSource="/house_icon-icons.com_70104.png" Stretch="Uniform"/>
+                <ImageBrush ImageSource="/CasaA.png" Stretch="Uniform"/>
             </Button.Background>
             <Button.Template>
                 <StaticResource ResourceKey="NoMouseOverButtonTemplate"/>
@@ -122,7 +122,7 @@
                 </Style>
             </Button.Resources>
             <Button.Background>
-                <ImageBrush ImageSource="/1.png" Stretch="Uniform"/>
+                <ImageBrush ImageSource="/CarritoB.png" Stretch="Uniform"/>
             </Button.Background>
             <Button.Template>
                 <StaticResource ResourceKey="NoMouseOverButtonTemplate"/>
@@ -167,39 +167,6 @@
                 <StaticResource ResourceKey="NoMouseOverButtonTemplate"/>
             </Button.Template>
         </Button>
-        <Rectangle HorizontalAlignment="Left" Height="320" Margin="800,320,0,0" VerticalAlignment="Top" Width="320" Fill="#FF255909"/>
-        <Rectangle HorizontalAlignment="Left" Height="320" Margin="388,320,0,0" VerticalAlignment="Top" Width="320" Fill="#FF09594D"/>
-        <Label x:Name="lbUser" Height="85" Margin="420,515,625,0" VerticalAlignment="Top" FontSize="20" FontFamily="MingLiU_HKSCS-ExtB" FontWeight="Bold" Foreground="White">
-            <Label.Resources>
-                <Style TargetType="{x:Type AccessText}">
-                    <Setter Property="TextWrapping" Value="Wrap"/>
-                </Style>
-            </Label.Resources>
-            <TextBlock x:Name="txblockname" TextAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" Text="lorem" VerticalAlignment="Top" Height="77" Width="245" FontWeight="Normal" FontSize="25"/>
-        </Label>
-        <Rectangle HorizontalAlignment="Left" Height="200" Margin="495,35,0,0" VerticalAlignment="Top" Width="500" Opacity="0.5">
-            <Rectangle.Fill>
-                <ImageBrush ImageSource="/Imagen_de_WhatsApp_2024-01-17_a_las_20.09.20_1e6cb21b-removebg-preview.png" Stretch="Uniform"/>
-            </Rectangle.Fill>
-        </Rectangle>
-        <Rectangle HorizontalAlignment="Left" Height="127" Margin="478,353,0,0" VerticalAlignment="Top" Width="140">
-            <Rectangle.Fill>
-                <ImageBrush ImageSource="/about.png" Stretch="Uniform" TileMode="None"/>
-            </Rectangle.Fill>
-        </Rectangle>
-        <Label x:Name="lbf" Height="85" Margin="868,515,248,0" VerticalAlignment="Top" Width="185" FontSize="20" FontFamily="MingLiU_HKSCS-ExtB" FontWeight="Bold" Foreground="White">
-            <Label.Resources>
-                <Style TargetType="{x:Type AccessText}">
-                    <Setter Property="TextWrapping" Value="Wrap"/>
-                </Style>
-            </Label.Resources>
-            <TextBlock x:Name="txblockfecha" TextAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" Text="lorem" VerticalAlignment="Top" Height="77" Width="175" FontWeight="Normal" FontSize="25"/>
-        </Label>
-        <Rectangle HorizontalAlignment="Left" Height="127" Margin="890,353,0,0" VerticalAlignment="Top" Width="140">
-            <Rectangle.Fill>
-                <ImageBrush ImageSource="/weeklycalendarcircularbutton_104710.png" Stretch="Uniform"/>
-            </Rectangle.Fill>
-        </Rectangle>
         <Label x:Name="lbH" Height="85" Margin="40,10,1145,0" VerticalAlignment="Top" FontSize="20" FontFamily="MingLiU_HKSCS-ExtB" FontWeight="Bold" Foreground="White">
             <Label.Resources>
                 <Style TargetType="{x:Type AccessText}">

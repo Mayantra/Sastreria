@@ -59,12 +59,29 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="consultaInventario.xaml.cs">
+      <DependentUpon>consultaInventario.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InventarioInventario.xaml.cs">
+      <DependentUpon>InventarioInventario.xaml</DependentUpon>
+    </Compile>
     <Compile Include="mainInventario.xaml.cs">
       <DependentUpon>mainInventario.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ventaInventario.xaml.cs">
+      <DependentUpon>ventaInventario.xaml</DependentUpon>
     </Compile>
     <Compile Include="ventanaInicio.xaml.cs">
       <DependentUpon>ventanaInicio.xaml</DependentUpon>
     </Compile>
+    <Page Include="consultaInventario.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InventarioInventario.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="mainInventario.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -83,6 +100,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ventaInventario.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ventanaInicio.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -143,6 +164,46 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Grupo 15.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Grupo 16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Grupo 17.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Grupo 18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Grupo 19.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Grupo 20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="house_icon-icons.com_70104.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Grupo 4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="hanger_114789.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="barcode_icon-icons.com_73665.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="about.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="about.svg" />
+    <Resource Include="invB.png" />
+    <Resource Include="consB.png" />
+    <Resource Include="CarritoB.png" />
+    <Resource Include="CasaA.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

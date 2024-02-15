@@ -62,7 +62,7 @@
                 <ImageBrush ImageSource="/Grupo 13.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Rectangle HorizontalAlignment="Left" Height="200" Margin="380,25,0,0" Stroke="Black" VerticalAlignment="Top" Width="500" Opacity="0.5">
+        <Rectangle HorizontalAlignment="Center" Height="200" Margin="0,25,0,0" VerticalAlignment="Top" Width="500" Opacity="0.5">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="/Imagen_de_WhatsApp_2024-01-17_a_las_20.09.20_1e6cb21b-removebg-preview.png" Stretch="Uniform"/>
             </Rectangle.Fill>
