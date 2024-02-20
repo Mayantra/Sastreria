@@ -163,24 +163,6 @@
     <Resource Include="weeklycalendarcircularbutton_104710.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Grupo 15.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Grupo 16.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Grupo 17.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Grupo 18.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Grupo 19.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Grupo 20.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="house_icon-icons.com_70104.png" />
   </ItemGroup>
   <ItemGroup>
@@ -200,6 +182,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="about.svg" />
+    <Resource Include="ConsultaA.png" />
+    <Resource Include="Qblack.png" />
+    <Resource Include="RegaloBlack.png" />
+    <Resource Include="trajewhite.png" />
+    <Resource Include="pencilblack.png" />
     <Resource Include="invB.png" />
     <Resource Include="consB.png" />
     <Resource Include="CarritoB.png" />

@@ -25,3 +25,9 @@ C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\ventanaInicio.
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\mainInventario.g.cs
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\mainInventario.baml
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\LoginSasteria_Content.g.cs
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\consultaInventario.g.cs
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\InventarioInventario.g.cs
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\ventaInventario.g.cs
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\consultaInventario.baml
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\InventarioInventario.baml
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\ventaInventario.baml

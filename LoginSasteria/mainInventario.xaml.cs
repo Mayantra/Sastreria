@@ -75,5 +75,12 @@ namespace LoginSasteria
         {
             this.WindowState = WindowState.Minimized;
         }
+
+        private void abrirCons(object sender, RoutedEventArgs e)
+        {
+            consultaInventario abrir = new consultaInventario();
+            abrir.Show();
+            this.Close();
+        }
     }
 }

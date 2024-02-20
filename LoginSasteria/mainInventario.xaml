@@ -52,121 +52,74 @@
         </Button>
         <Rectangle HorizontalAlignment="Left" Height="700" VerticalAlignment="Center" Width="185" Fill="#FF580000" >
         </Rectangle>
-
         <Rectangle HorizontalAlignment="Left" Height="700" VerticalAlignment="Center" Width="15" Fill="#FFEDE4A4"/>
-        <Rectangle HorizontalAlignment="Left" Height="60" Margin="0,353,0,0" VerticalAlignment="Top" Width="185" Fill="#FFEDE4A4"/>
-        <Button Template="{StaticResource NoMouseOverButtonTemplate}" Content="Inventario" HorizontalAlignment="Left" Height="60" Margin="15,535,0,0" VerticalAlignment="Top" Width="110" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEDE4A4" FontSize="18" FontFamily="MingLiU_HKSCS-ExtB">
-            <Button.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="Width" Value="100"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-        <Button Content="Consulta" HorizontalAlignment="Left" Height="60" Margin="15,475,0,0" VerticalAlignment="Top" Width="110" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEDE4A4" FontSize="20" FontFamily="MingLiU_HKSCS-ExtB">
-            <Button.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="Width" Value="100"/>
-                </Style>
-            </Button.Resources>
+
+
+        <Button HorizontalAlignment="Left" Height="60" Margin="0,353,0,0" VerticalAlignment="Top" Width="185" BorderBrush="{x:Null}" Background="#FFEDE4A4" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB">
+            <Grid Height="60" Width="170">
+                <Label Content="Inicio" Foreground="Black" Margin="14,14,81,10"></Label>
+                <Rectangle Margin="119,14,10,10">
+                    <Rectangle.Fill>
+                        <ImageBrush Stretch="Uniform" ImageSource="/house_icon-icons.com_70104.png"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Grid>
+
             <Button.Template>
                 <StaticResource ResourceKey="NoMouseOverButtonTemplate"/>
             </Button.Template>
         </Button>
-        <Button Content="Venta" HorizontalAlignment="Left" Height="60" Margin="15,413,0,0" VerticalAlignment="Top" Width="110" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB">
-            <Button.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="Width" Value="100"/>
-                </Style>
-            </Button.Resources>
+        <Button HorizontalAlignment="Left" Height="60" Margin="15,413,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB">
+            <Grid Height="60" Width="170">
+                <Label Content="Venta" Foreground="#FFEDE4A4" Margin="10,14,70,10"></Label>
+                <Rectangle Margin="119,14,10,10">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="/1.png" Stretch="Uniform"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Grid>
+
             <Button.Template>
                 <StaticResource ResourceKey="NoMouseOverButtonTemplate"/>
             </Button.Template>
         </Button>
-        <Button Content="Barras" HorizontalAlignment="Left" Height="60" Margin="15,595,0,0" VerticalAlignment="Top" Width="110" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB">
-            <Button.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="Width" Value="100"/>
-                </Style>
-            </Button.Resources>
-            <Button.Template>
-                <StaticResource ResourceKey="NoMouseOverButtonTemplate"/>
-            </Button.Template>
+        <Button x:Name="btnConsulta" HorizontalAlignment="Left" Height="60" Margin="15,473,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="{x:Null}" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB" Template="{StaticResource NoMouseOverButtonTemplate}" Click="abrirCons">
+            <Grid Height="60" Width="170">
+                <Label Content="Consulta" Foreground="#FFEDE4A4" Margin="10,14,70,10" FontSize="20"/>
+                <Rectangle Margin="119,14,10,10">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="/Grupo 4.png" Stretch="Uniform"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Grid>
+
         </Button>
-        <Button Content="Inicio" HorizontalAlignment="Left" Height="60" Margin="15,353,0,0" VerticalAlignment="Top" Width="110" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB">
-            <Button.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="Width" Value="100"/>
-                </Style>
-            </Button.Resources>
-            <Button.Template>
-                <StaticResource ResourceKey="NoMouseOverButtonTemplate"/>
-            </Button.Template>
+        <Button HorizontalAlignment="Left" Height="60" Margin="15,533,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB" Template="{StaticResource NoMouseOverButtonTemplate}">
+            <Grid Height="60" Width="170">
+                <Label Content="Inventario" Foreground="#FFEDE4A4" Margin="5,14,56,10" FontSize="20"/>
+                <Rectangle Margin="119,14,10,10">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="/hanger_114789.png" Stretch="Uniform"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Grid>
+
         </Button>
-        <Button HorizontalAlignment="Left" Height="60" Margin="125,353,0,0" VerticalAlignment="Top" Width="60" BorderBrush="{x:Null}" Foreground="{x:Null}" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB">
-            <Button.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="Width" Value="40"/>
-                </Style>
-            </Button.Resources>
-            <Button.Background>
-                <ImageBrush ImageSource="/house_icon-icons.com_70104.png" Stretch="Uniform"/>
-            </Button.Background>
-            <Button.Template>
-                <StaticResource ResourceKey="NoMouseOverButtonTemplate"/>
-            </Button.Template>
+        <Button HorizontalAlignment="Left" Height="60" Margin="15,593,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB" Template="{StaticResource NoMouseOverButtonTemplate}">
+            <Grid Height="60" Width="170">
+                <Label Content="Barras" Foreground="#FFEDE4A4" Margin="10,14,70,10"/>
+                <Rectangle Margin="119,14,10,10">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="/barcode_icon-icons.com_73665.png" Stretch="Uniform"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Grid>
+
         </Button>
-        <Button HorizontalAlignment="Left" Height="60" Margin="125,413,0,0" VerticalAlignment="Top" Width="60" BorderBrush="{x:Null}" Foreground="{x:Null}" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB">
-            <Button.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="Width" Value="40"/>
-                </Style>
-            </Button.Resources>
-            <Button.Background>
-                <ImageBrush ImageSource="/1.png" Stretch="Uniform"/>
-            </Button.Background>
-            <Button.Template>
-                <StaticResource ResourceKey="NoMouseOverButtonTemplate"/>
-            </Button.Template>
-        </Button>
-        <Button HorizontalAlignment="Left" Height="60" Margin="125,475,0,0" VerticalAlignment="Top" Width="60" BorderBrush="{x:Null}" Foreground="{x:Null}" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB" RenderTransformOrigin="0.5,0.833">
-            <Button.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="Width" Value="30"/>
-                </Style>
-            </Button.Resources>
-            <Button.Background>
-                <ImageBrush ImageSource="/Grupo 4.png" Stretch="Uniform"/>
-            </Button.Background>
-            <Button.Template>
-                <StaticResource ResourceKey="NoMouseOverButtonTemplate"/>
-            </Button.Template>
-        </Button>
-        <Button HorizontalAlignment="Left" Height="60" Margin="125,535,0,0" VerticalAlignment="Top" Width="60" BorderBrush="{x:Null}" Foreground="{x:Null}" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB">
-            <Button.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="Width" Value="50"/>
-                </Style>
-            </Button.Resources>
-            <Button.Background>
-                <ImageBrush ImageSource="/hanger_114789.png" Stretch="Uniform"/>
-            </Button.Background>
-            <Button.Template>
-                <StaticResource ResourceKey="NoMouseOverButtonTemplate"/>
-            </Button.Template>
-        </Button>
-        <Button HorizontalAlignment="Left" Height="60" Margin="125,595,0,0" VerticalAlignment="Top" Width="60" BorderBrush="{x:Null}" Foreground="{x:Null}" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB">
-            <Button.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="Width" Value="40"/>
-                </Style>
-            </Button.Resources>
-            <Button.Background>
-                <ImageBrush ImageSource="/barcode_icon-icons.com_73665.png" Stretch="Uniform"/>
-            </Button.Background>
-            <Button.Template>
-                <StaticResource ResourceKey="NoMouseOverButtonTemplate"/>
-            </Button.Template>
-        </Button>
+
+
+
+
         <Rectangle HorizontalAlignment="Left" Height="320" Margin="800,320,0,0" VerticalAlignment="Top" Width="320" Fill="#FF255909"/>
         <Rectangle HorizontalAlignment="Left" Height="320" Margin="388,320,0,0" VerticalAlignment="Top" Width="320" Fill="#FF09594D"/>
         <Label x:Name="lbUser" Height="85" Margin="420,515,625,0" VerticalAlignment="Top" FontSize="20" FontFamily="MingLiU_HKSCS-ExtB" FontWeight="Bold" Foreground="White">
