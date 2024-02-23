@@ -182,6 +182,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="about.svg" />
+    <Resource Include="converteWhite.png" />
+    <Resource Include="plusWhite.png" />
+    <Resource Include="deleteWhite.png" />
+    <Resource Include="regaloWhite.png" />
     <Resource Include="ConsultaA.png" />
     <Resource Include="Qblack.png" />
     <Resource Include="RegaloBlack.png" />

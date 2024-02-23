@@ -55,7 +55,7 @@ BorderThickness="{TemplateBinding BorderThickness}">
 
         <Rectangle HorizontalAlignment="Left" Height="700" VerticalAlignment="Center" Width="15" Fill="#FFEDE4A4"/>
 
-        <Button HorizontalAlignment="Left" Height="60" Margin="15,353,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB">
+        <Button x:Name="btnInicio" HorizontalAlignment="Left" Height="60" Margin="15,353,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB" Click="abrirInicio">
             <Grid Height="60" Width="170">
                 <Label Content="Inicio" Foreground="#FFEDE4A4" Margin="14,14,81,10"></Label>
                 <Rectangle Margin="119,14,10,10">
