@@ -149,10 +149,10 @@
             </Label.Resources>
             <TextBlock x:Name="txblockHora" TextAlignment="Left" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Height="77" Width="105" FontWeight="Normal" FontSize="22"/>
         </Label>
-        <DataGrid ItemsSource="{Binding}" ColumnWidth="Auto" IsReadOnly="True" GridLinesVisibility="None" CanUserAddRows="False" 
+        <DataGrid ItemsSource="{Binding}" ColumnWidth="Auto" IsReadOnly="True" GridLinesVisibility="None" 
                   CanUserDeleteRows="False" Padding="10"
                   CanUserResizeColumns="False" CanUserResizeRows="False"
-                  x:Name="DataDatos" HorizontalAlignment="Left" Height="560" Margin="235,80,0,0" VerticalAlignment="Top" Width="720" FontSize="15" BorderBrush="{x:Null}" Background="White" AreRowDetailsFrozen="True" RowBackground="#FFF1F1F1" AlternatingRowBackground="White" Foreground="Black" FontFamily="Arial">
+                  x:Name="DataDatos" HorizontalAlignment="Left" Height="320" Margin="235,80,0,0" VerticalAlignment="Top" Width="720" FontSize="15" BorderBrush="{x:Null}" Background="White" AreRowDetailsFrozen="True" RowBackground="#FFF1F1F1" AlternatingRowBackground="White" Foreground="Black" FontFamily="Arial">
             <DataGrid.ColumnHeaderStyle>
                 <Style TargetType="DataGridColumnHeader">
                     <Setter Property="Background" Value="#580000"/>
@@ -182,7 +182,7 @@
             </DataGrid.Resources>
         </DataGrid>
 
-        <Button HorizontalAlignment="Left" Height="60" Margin="1021,510,0,0" VerticalAlignment="Top" Width="244" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FF09594D">
+        <Button HorizontalAlignment="Left" Height="60" Margin="1021,531,0,0" VerticalAlignment="Top" Width="244" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FF09594D">
             <Grid Height="60" Width="200">
                 <Label Content="Regalo" Margin="100,10,10,12" FontSize="22" Foreground="White" FontFamily="MingLiU_HKSCS-ExtB" >
 
@@ -201,7 +201,7 @@
             </Button.Resources>
         </Button>
 
-        <Button HorizontalAlignment="Left" Height="60" Margin="1020,245,0,0" VerticalAlignment="Top" Width="245" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FF255909">
+        <Button x:Name="btAgregar" HorizontalAlignment="Left" Height="60" Margin="1019,190,0,0" VerticalAlignment="Top" Width="246" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FF255909" Click="AgregarCodigo">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -218,7 +218,7 @@
             </Grid>
         </Button>
 
-        <Button HorizontalAlignment="Left" Height="60" Margin="1020,0,0,0" VerticalAlignment="Center" Width="245" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FF580000">
+        <Button HorizontalAlignment="Left" Height="60" Margin="1019,265,0,0" VerticalAlignment="Top" Width="246" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FF580000">
             <Grid Height="60" Width="200">
                 <Label Content="Eliminar" Margin="100,10,10,10" FontSize="20" Foreground="White" FontFamily="MingLiU_HKSCS-ExtB" >
 
@@ -236,7 +236,7 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <Button HorizontalAlignment="Left" Height="60" Margin="1019,580,0,0" 
+        <Button HorizontalAlignment="Left" Height="60" Margin="1019,601,0,0" 
                 VerticalAlignment="Top" Width="246" BorderBrush="{x:Null}" 
                 Foreground="{x:Null}" Background="#213E61">
             <Button.Resources>
@@ -254,13 +254,54 @@
                 </Rectangle>
             </Grid>
         </Button>
-        <TextBox Template="{StaticResource  TextBoxBaseControlTemplate}" HorizontalAlignment="Left" 
-                 Padding="15" Text="9498SDFAE" 
+        <TextBox x:Name="txCodigo" Template="{StaticResource  TextBoxBaseControlTemplate}" HorizontalAlignment="Left" 
+                 Padding="15" 
                  Height="60" Margin="1021,80,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="245" 
                  SelectionBrush="{x:Null}" BorderBrush="{x:Null}" Background="White" FontSize="18"/>
 
+        <Button HorizontalAlignment="Left" Height="60" Margin="1019,340,0,0" VerticalAlignment="Top" Width="246" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FF684BA8">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+            <Grid Height="60" Width="200">
+                <Label Content="Venta" Margin="100,8,10,12" FontSize="25" Foreground="White" FontFamily="MingLiU_HKSCS-ExtB" />
+                <Rectangle Margin="10,8,130,12">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="/checkWithe.png" Stretch="Uniform"/>
+                    </Rectangle.Fill>
 
+                </Rectangle>
+            </Grid>
+        </Button>
+        <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" HorizontalAlignment="Left" 
+     Padding="10" Text="2654895K" 
+     Height="50" Margin="240,483,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="200" 
+     SelectionBrush="{x:Null}" BorderBrush="{x:Null}" Background="White" FontSize="18"/>
+        <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" HorizontalAlignment="Left" 
+            Padding="10" Text="53545660" 
+            Height="50" Margin="475,483,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="200" 
+            SelectionBrush="{x:Null}" BorderBrush="{x:Null}" Background="White" FontSize="18"/>
+        <Button HorizontalAlignment="Left" Height="50" Margin="714,483,0,0" VerticalAlignment="Top" Width="246" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FF541515">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+            <Grid Height="50" Width="200">
+                <Label Content="Buscar" Margin="110,6,0,10" FontSize="20" Foreground="White" FontFamily="MingLiU_HKSCS-ExtB" />
+                <Rectangle Margin="10,8,130,12">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="/LupaWhite.png" Stretch="Uniform"/>
+                    </Rectangle.Fill>
 
+                </Rectangle>
+            </Grid>
+        </Button>
+        <TextBlock HorizontalAlignment="Left" Height="70" Margin="240,591,0,0" 
+                   Foreground="White" TextWrapping="Wrap" Text="Nombre del Cliente:" 
+                   VerticalAlignment="Top" Width="720" FontSize="20"/>
 
 
 

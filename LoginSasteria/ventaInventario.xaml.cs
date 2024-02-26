@@ -1,5 +1,7 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
+
 namespace LoginSasteria
 {
     /// <summary>
@@ -20,6 +23,7 @@ namespace LoginSasteria
     /// </summary>
     public partial class ventaInventario : Window
     {
+        ConexionDB objConection = new ConexionDB();
         public ventaInventario()
         {
             InitializeComponent();
@@ -59,6 +63,45 @@ namespace LoginSasteria
             mainInventario abrir = new mainInventario();
             abrir.Show();
             this.Close();
+        }
+
+        private void AgregarCodigo(object sender, RoutedEventArgs e)
+        {
+            string code = txCodigo.Text;
+            if (code == null | code=="")
+            {
+                MessageBox.Show("Ingrese un codigo de producto");
+            }
+            else
+            {
+                string query = "SELECT idproducto AS 'Código', \r\nnombreproducto.Nombre AS Producto,\r\ncolor.nombre As Color,\r\nproducto.precio AS Precio, \r\ntipoproducto.nombreTipo AS 'Tipo Producto', \r\ntalla.nombreTalla As Talla\r\nFROM dbleonv2.inventario \r\nINNER JOIN dbleonv2.producto \r\nON inventario.producto_idproducto = producto.idproducto\r\nINNER JOIN dbleonv2.nombreproducto \r\nON producto.nombreProducto_idnombreProducto = nombreproducto.idnombreProducto \r\nINNER JOIN dbleonv2.color\r\nON producto.color_idcolor = color.idcolor\r\nINNER JOIN dbleonv2.tipotall\r\nON producto.talla_idtalla = tipotall.idtalla\r\nINNER JOIN dbleonv2.tipoproducto\r\nON tipotall.tipoProducto_idtipoProducto = tipoproducto.idtipoProducto\r\nINNER JOIN  dbleonv2.talla\r\nON tipotall.talla_idtalla = talla.idtalla\r\n" +
+                "where idproducto='" + code + "'\r\n;";
+                try
+                {
+                    MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN());
+                    MySqlDataAdapter data = new MySqlDataAdapter(comando);
+                    DataTable tabla = new DataTable();
+
+                    DataRow fila;
+                    fila = tabla.NewRow();
+                    
+
+                    if (DataDatos.Items.Count ==0)
+                    {
+                        data.Fill(tabla);
+                        DataDatos.DataContext = tabla;
+                    }
+                    else
+                    {
+                        DataDatos.Items.Add(fila);
+                    }
+                    objConection.cerrarCN();
+                }
+                catch (MySqlException x)
+                {
+                    MessageBox.Show("Error: " + x);
+                }
+            }
         }
     }
 }

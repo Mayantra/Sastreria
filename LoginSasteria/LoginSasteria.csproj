@@ -59,6 +59,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AgregarVenta.cs" />
     <Compile Include="consultaInventario.xaml.cs">
       <DependentUpon>consultaInventario.xaml</DependentUpon>
     </Compile>
@@ -182,6 +183,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="about.svg" />
+    <Resource Include="LupaWhite.png" />
+    <Resource Include="checkWithe.png" />
     <Resource Include="converteWhite.png" />
     <Resource Include="plusWhite.png" />
     <Resource Include="deleteWhite.png" />
