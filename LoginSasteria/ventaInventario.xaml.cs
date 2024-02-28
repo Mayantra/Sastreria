@@ -37,7 +37,7 @@ namespace LoginSasteria
             timer.Tick += timer_Tick;
             timer.Start();
 
-            
+
         }
         void timer_Tick(object sender, EventArgs e)
         {
@@ -72,11 +72,13 @@ namespace LoginSasteria
             this.Close();
         }
 
-        
+
 
         private void AgregarCodigo(object sender, RoutedEventArgs e)
         {
             string code = txCodigo.Text;
+            
+
             if (code == null | code == "")
             {
                 MessageBox.Show("Ingrese un codigo de producto");
@@ -89,70 +91,75 @@ namespace LoginSasteria
                 {
                     MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN());
                     MySqlDataAdapter data = new MySqlDataAdapter(comando);
-                    
 
-
+                    //la fumanda mas grande del codigo creo XD
 
                     data.Fill(tabla);
-                    if (DataDatos.Items.Count == 0)
+                    if (tabla.Rows.Count < 1)
                     {
-                        
-                        DataDatos.DataContext = tabla;
+                        MessageBox.Show("Ingrese un código de producto correcto");
+
                     }
                     else
                     {
-                        
-                        
-                         
-                        List<string> fila = new List<string>();
-                        fila.Clear();
-                        List<string> nombrecolumna = new List<string>();
-                        if (tabla.Columns.Count > 0)
+                        if (DataDatos.Items.Count == 0)
                         {
-                            foreach (DataColumn columna in tabla.Columns)
+
+                            DataDatos.DataContext = tabla;
+                        }
+                        else
+                        {
+
+
+
+                            List<string> fila = new List<string>();
+                            fila.Clear();
+                            List<string> nombrecolumna = new List<string>();
+                            if (tabla.Columns.Count > 0)
                             {
-                                nombrecolumna.Add(columna.ColumnName);
+                                foreach (DataColumn columna in tabla.Columns)
+                                {
+                                    nombrecolumna.Add(columna.ColumnName);
+                                }
+                            }
+
+
+                            objConection.cerrarCN();
+                            MySqlCommand comando2 = new MySqlCommand(query, objConection.establecerCN());
+
+                            MySqlDataReader reader = comando2.ExecuteReader();
+
+                            if (reader.HasRows)//leer si query es correcto
+                            {
+                                
+                                while (reader.Read())
+                                {
+                                    int i = 0;
+                                    foreach (string dato in nombrecolumna)
+                                    {
+                                        fila.Add(reader.GetValue(i).ToString());
+                                        i++;
+                                    }
+                                }
+
+
+                                DataRow firstRow;
+                                firstRow = tabla.NewRow();//crear una nueva fila
+
+                                int j = 0;
+                                foreach (string dato in nombrecolumna)//Asignar las celdas en cada columna
+                                {
+                                    firstRow[dato] = fila[j];
+                                    j++;
+                                }
+
+                                DataDatos.DataContext = tabla;
+                            }
+                            else
+                            {
+                                MessageBox.Show("Ingrese un código de producto correcto");
                             }
                         }
-
-                        foreach (string dato in nombrecolumna)
-                        {
-                            Console.WriteLine(dato);
-                        }
-                        objConection.cerrarCN();
-                        MySqlCommand comando2 = new MySqlCommand(query, objConection.establecerCN());
-
-                        MySqlDataReader reader = comando2.ExecuteReader();
-
-                        while (reader.Read())
-                        {
-                            int i = 0;
-                            foreach (string dato in nombrecolumna)
-                            {                               
-                                fila.Add(reader.GetValue(i).ToString());
-                                i++;
-                            }
-                        }
-                       
- 
-                        foreach (object dato in fila)
-                        {
-                            Console.WriteLine(dato.ToString());
-                        }
-                        DataRow firstRow;
-                        firstRow = tabla.NewRow();
-
-                        int j=0;
-                        foreach (string dato in nombrecolumna)
-                        {
-                            firstRow[dato] = fila[j];
-                            j++;
-                        }
-                        foreach(DataColumn dc in tabla.Columns)
-                        {
-                            Console.WriteLine(dc.ColumnName);
-                        }
-                        DataDatos.DataContext=tabla;
 
                     }
                     objConection.cerrarCN();
@@ -162,6 +169,20 @@ namespace LoginSasteria
                     MessageBox.Show("Error: " + x);
                 }
             }
+
+        }
+
+        private void EliminarFila(object sender, RoutedEventArgs e)
+        {
+            int indice = -1;
+            indice = DataDatos.SelectedIndex;
+
+            if (indice > -1)
+            {
+                tabla.Rows.RemoveAt(indice);
+                DataDatos.DataContext = tabla;
+            }
+
         }
     }
 }

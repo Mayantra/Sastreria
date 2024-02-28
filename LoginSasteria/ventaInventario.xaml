@@ -218,7 +218,7 @@
             </Grid>
         </Button>
 
-        <Button HorizontalAlignment="Left" Height="60" Margin="1019,265,0,0" VerticalAlignment="Top" Width="246" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FF580000">
+        <Button x:Name="btEliminar" HorizontalAlignment="Left" Height="60" Margin="1019,265,0,0" VerticalAlignment="Top" Width="246" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FF580000" Click="EliminarFila">
             <Grid Height="60" Width="200">
                 <Label Content="Eliminar" Margin="100,10,10,10" FontSize="20" Foreground="White" FontFamily="MingLiU_HKSCS-ExtB" >
 
