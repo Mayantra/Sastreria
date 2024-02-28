@@ -1,8 +1,12 @@
 ﻿using MySql.Data.MySqlClient;
+using Mysqlx.Crud;
+using MySqlX.XDevAPI.Relational;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -24,6 +28,7 @@ namespace LoginSasteria
     public partial class ventaInventario : Window
     {
         ConexionDB objConection = new ConexionDB();
+        DataTable tabla = new DataTable();
         public ventaInventario()
         {
             InitializeComponent();
@@ -31,6 +36,8 @@ namespace LoginSasteria
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += timer_Tick;
             timer.Start();
+
+            
         }
         void timer_Tick(object sender, EventArgs e)
         {
@@ -65,10 +72,12 @@ namespace LoginSasteria
             this.Close();
         }
 
+        
+
         private void AgregarCodigo(object sender, RoutedEventArgs e)
         {
             string code = txCodigo.Text;
-            if (code == null | code=="")
+            if (code == null | code == "")
             {
                 MessageBox.Show("Ingrese un codigo de producto");
             }
@@ -80,20 +89,71 @@ namespace LoginSasteria
                 {
                     MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN());
                     MySqlDataAdapter data = new MySqlDataAdapter(comando);
-                    DataTable tabla = new DataTable();
-
-                    DataRow fila;
-                    fila = tabla.NewRow();
                     
 
-                    if (DataDatos.Items.Count ==0)
+
+
+                    data.Fill(tabla);
+                    if (DataDatos.Items.Count == 0)
                     {
-                        data.Fill(tabla);
+                        
                         DataDatos.DataContext = tabla;
                     }
                     else
                     {
-                        DataDatos.Items.Add(fila);
+                        
+                        
+                         
+                        List<string> fila = new List<string>();
+                        fila.Clear();
+                        List<string> nombrecolumna = new List<string>();
+                        if (tabla.Columns.Count > 0)
+                        {
+                            foreach (DataColumn columna in tabla.Columns)
+                            {
+                                nombrecolumna.Add(columna.ColumnName);
+                            }
+                        }
+
+                        foreach (string dato in nombrecolumna)
+                        {
+                            Console.WriteLine(dato);
+                        }
+                        objConection.cerrarCN();
+                        MySqlCommand comando2 = new MySqlCommand(query, objConection.establecerCN());
+
+                        MySqlDataReader reader = comando2.ExecuteReader();
+
+                        while (reader.Read())
+                        {
+                            int i = 0;
+                            foreach (string dato in nombrecolumna)
+                            {                               
+                                fila.Add(reader.GetValue(i).ToString());
+                                i++;
+                            }
+                        }
+                       
+ 
+                        foreach (object dato in fila)
+                        {
+                            Console.WriteLine(dato.ToString());
+                        }
+                        DataRow firstRow;
+                        firstRow = tabla.NewRow();
+
+                        int j=0;
+                        foreach (string dato in nombrecolumna)
+                        {
+                            firstRow[dato] = fila[j];
+                            j++;
+                        }
+                        foreach(DataColumn dc in tabla.Columns)
+                        {
+                            Console.WriteLine(dc.ColumnName);
+                        }
+                        DataDatos.DataContext=tabla;
+
                     }
                     objConection.cerrarCN();
                 }
