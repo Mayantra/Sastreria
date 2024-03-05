@@ -259,7 +259,7 @@
                  Height="60" Margin="1021,80,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="245" 
                  SelectionBrush="{x:Null}" BorderBrush="{x:Null}" Background="White" FontSize="18"/>
 
-        <Button HorizontalAlignment="Left" Height="60" Margin="1019,340,0,0" VerticalAlignment="Top" Width="246" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FF684BA8">
+        <Button x:Name="btnVenta" HorizontalAlignment="Left" Height="60" Margin="1019,340,0,0" VerticalAlignment="Top" Width="246" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FF684BA8" Click="RealizarVenta">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -275,15 +275,15 @@
                 </Rectangle>
             </Grid>
         </Button>
-        <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" HorizontalAlignment="Left" 
-     Padding="10" Text="2654895K" 
+        <TextBox x:Name="txNit" Template="{StaticResource TextBoxBaseControlTemplate}" HorizontalAlignment="Left" 
+     Padding="10" 
      Height="50" Margin="240,483,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="200" 
      SelectionBrush="{x:Null}" BorderBrush="{x:Null}" Background="White" FontSize="18"/>
-        <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" HorizontalAlignment="Left" 
-            Padding="10" Text="53545660" 
+        <TextBox x:Name="txTelefono" Template="{StaticResource TextBoxBaseControlTemplate}" HorizontalAlignment="Left" 
+            Padding="10" 
             Height="50" Margin="475,483,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="200" 
             SelectionBrush="{x:Null}" BorderBrush="{x:Null}" Background="White" FontSize="18"/>
-        <Button HorizontalAlignment="Left" Height="50" Margin="714,483,0,0" VerticalAlignment="Top" Width="246" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FF541515">
+        <Button x:Name="btnBuscar" HorizontalAlignment="Left" Height="50" Margin="714,483,0,0" VerticalAlignment="Top" Width="246" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FF541515" Click="buscarCliente">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -299,9 +299,11 @@
                 </Rectangle>
             </Grid>
         </Button>
-        <TextBlock HorizontalAlignment="Left" Height="70" Margin="240,591,0,0" 
+        <TextBlock x:Name="txNombreCliente" HorizontalAlignment="Left" Height="70" Margin="240,591,0,0" 
                    Foreground="White" TextWrapping="Wrap" Text="Nombre del Cliente:" 
                    VerticalAlignment="Top" Width="720" FontSize="20"/>
+        <Label Content="NIT" HorizontalAlignment="Left" Height="35" Margin="240,443,0,0" VerticalAlignment="Top" Width="140" Foreground="White" FontSize="18"/>
+        <Label Content="No. Teléfono" HorizontalAlignment="Left" Height="35" Margin="475,443,0,0" VerticalAlignment="Top" Width="140" Foreground="White" FontSize="18"/>
 
 
 

@@ -1,11 +1,14 @@
 ﻿using MySql.Data.MySqlClient;
 using Mysqlx.Crud;
+using MySqlX.XDevAPI;
 using MySqlX.XDevAPI.Relational;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
+using System.Runtime.Remoting.Messaging;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,6 +32,9 @@ namespace LoginSasteria
     {
         ConexionDB objConection = new ConexionDB();
         DataTable tabla = new DataTable();
+        public static List<string> listacodigos = new List<string>();
+        public static Boolean existeCliente = false;
+
         public ventaInventario()
         {
             InitializeComponent();
@@ -72,12 +78,15 @@ namespace LoginSasteria
             this.Close();
         }
 
-
+        public void addlist(string codigosList)
+        {
+            listacodigos.Add(codigosList);
+        }
 
         private void AgregarCodigo(object sender, RoutedEventArgs e)
         {
             string code = txCodigo.Text;
-            
+
 
             if (code == null | code == "")
             {
@@ -85,88 +94,105 @@ namespace LoginSasteria
             }
             else
             {
-                string query = "SELECT idproducto AS 'Código', \r\nnombreproducto.Nombre AS Producto,\r\ncolor.nombre As Color,\r\nproducto.precio AS Precio, \r\ntipoproducto.nombreTipo AS 'Tipo Producto', \r\ntalla.nombreTalla As Talla\r\nFROM dbleonv2.inventario \r\nINNER JOIN dbleonv2.producto \r\nON inventario.producto_idproducto = producto.idproducto\r\nINNER JOIN dbleonv2.nombreproducto \r\nON producto.nombreProducto_idnombreProducto = nombreproducto.idnombreProducto \r\nINNER JOIN dbleonv2.color\r\nON producto.color_idcolor = color.idcolor\r\nINNER JOIN dbleonv2.tipotall\r\nON producto.talla_idtalla = tipotall.idtalla\r\nINNER JOIN dbleonv2.tipoproducto\r\nON tipotall.tipoProducto_idtipoProducto = tipoproducto.idtipoProducto\r\nINNER JOIN  dbleonv2.talla\r\nON tipotall.talla_idtalla = talla.idtalla\r\n" +
-                "where idproducto='" + code + "'\r\n;";
-                try
+                Boolean existe = false;
+                for (int z =0; z < listacodigos.Count; z++)
                 {
-                    MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN());
-                    MySqlDataAdapter data = new MySqlDataAdapter(comando);
-
-                    //la fumanda mas grande del codigo creo XD
-
-                    data.Fill(tabla);
-                    if (tabla.Rows.Count < 1)
+                    if (listacodigos[z].Contains(code))
                     {
-                        MessageBox.Show("Ingrese un código de producto correcto");
-
+                        existe = true;
                     }
-                    else
+                }
+                if (existe == false)
+                {
+                    string query = "SELECT idproducto AS 'Código', \r\nnombreproducto.Nombre AS Producto,\r\ncolor.nombre As Color,\r\nproducto.precio AS Precio, \r\ntipoproducto.nombreTipo AS 'Tipo Producto', \r\ntalla.nombreTalla As Talla\r\nFROM dbleonv2.inventario \r\nINNER JOIN dbleonv2.producto \r\nON inventario.producto_idproducto = producto.idproducto\r\nINNER JOIN dbleonv2.nombreproducto \r\nON producto.nombreProducto_idnombreProducto = nombreproducto.idnombreProducto \r\nINNER JOIN dbleonv2.color\r\nON producto.color_idcolor = color.idcolor\r\nINNER JOIN dbleonv2.tipotall\r\nON producto.talla_idtalla = tipotall.idtalla\r\nINNER JOIN dbleonv2.tipoproducto\r\nON tipotall.tipoProducto_idtipoProducto = tipoproducto.idtipoProducto\r\nINNER JOIN  dbleonv2.talla\r\nON tipotall.talla_idtalla = talla.idtalla\r\n" +
+                "where idproducto='" + code + "'\r\n;";
+                    try
                     {
-                        if (DataDatos.Items.Count == 0)
-                        {
+                        MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN());
+                        MySqlDataAdapter data = new MySqlDataAdapter(comando);
 
-                            DataDatos.DataContext = tabla;
+                        //la fumanda mas grande del codigo creo XD
+
+                        data.Fill(tabla);
+                        if (tabla.Rows.Count < 1)//si el codigo es incorrecto
+                        {
+                            MessageBox.Show("Ingrese un código de producto correcto");
+
                         }
                         else
                         {
-
-
-
-                            List<string> fila = new List<string>();
-                            fila.Clear();
-                            List<string> nombrecolumna = new List<string>();
-                            if (tabla.Columns.Count > 0)
+                            if (DataDatos.Items.Count == 0)//verificar si el datagrid tiene algo
                             {
-                                foreach (DataColumn columna in tabla.Columns)
-                                {
-                                    nombrecolumna.Add(columna.ColumnName);
-                                }
+
+                                DataDatos.DataContext = tabla;
+                                addlist(code);
                             }
-
-
-                            objConection.cerrarCN();
-                            MySqlCommand comando2 = new MySqlCommand(query, objConection.establecerCN());
-
-                            MySqlDataReader reader = comando2.ExecuteReader();
-
-                            if (reader.HasRows)//leer si query es correcto
+                            else
                             {
-                                
-                                while (reader.Read())
+
+                                //obtener datos de filas y columnas de datagrid y datatable
+
+                                List<string> fila = new List<string>();
+                                fila.Clear();
+                                List<string> nombrecolumna = new List<string>();
+                                if (tabla.Columns.Count > 0)
                                 {
-                                    int i = 0;
-                                    foreach (string dato in nombrecolumna)
+                                    foreach (DataColumn columna in tabla.Columns)
                                     {
-                                        fila.Add(reader.GetValue(i).ToString());
-                                        i++;
+                                        nombrecolumna.Add(columna.ColumnName);
                                     }
                                 }
 
 
-                                DataRow firstRow;
-                                firstRow = tabla.NewRow();//crear una nueva fila
+                                objConection.cerrarCN();
+                                MySqlCommand comando2 = new MySqlCommand(query, objConection.establecerCN());
 
-                                int j = 0;
-                                foreach (string dato in nombrecolumna)//Asignar las celdas en cada columna
+                                MySqlDataReader reader = comando2.ExecuteReader();
+
+                                if (reader.HasRows)//leer si query es correcto
                                 {
-                                    firstRow[dato] = fila[j];
-                                    j++;
+
+                                    while (reader.Read())
+                                    {
+                                        int i = 0;
+                                        foreach (string dato in nombrecolumna)
+                                        {
+                                            fila.Add(reader.GetValue(i).ToString());
+                                            i++;
+                                        }
+                                    }
+
+
+                                    DataRow firstRow;
+                                    firstRow = tabla.NewRow();//crear una nueva fila
+
+                                    int j = 0;
+                                    foreach (string dato in nombrecolumna)//Asignar las celdas en cada columna
+                                    {
+                                        firstRow[dato] = fila[j];
+                                        j++;
+                                    }
+
+                                    DataDatos.DataContext = tabla;
+                                    addlist(code);
                                 }
+                                else
+                                {
+                                    MessageBox.Show("Ingrese un código de producto correcto");
+                                }
+                            }
 
-                                DataDatos.DataContext = tabla;
-                            }
-                            else
-                            {
-                                MessageBox.Show("Ingrese un código de producto correcto");
-                            }
                         }
-
+                        objConection.cerrarCN();
                     }
-                    objConection.cerrarCN();
+                    catch (MySqlException x)
+                    {
+                        MessageBox.Show("Error: " + x);
+                    }
                 }
-                catch (MySqlException x)
+                else
                 {
-                    MessageBox.Show("Error: " + x);
+                    MessageBox.Show("Este articulo ya se encuenta dentro de la venta");
                 }
             }
 
@@ -181,7 +207,81 @@ namespace LoginSasteria
             {
                 tabla.Rows.RemoveAt(indice);
                 DataDatos.DataContext = tabla;
+                listacodigos.RemoveAt(indice);
             }
+
+        }
+
+        private void RealizarVenta(object sender, RoutedEventArgs e)
+        {
+            if (DataDatos.Items.Count ==0)
+            {
+                MessageBox.Show("Debe de agregar productos para realizar una venta");
+            }
+            else
+            {
+                foreach (string codes in listacodigos)
+                {
+                    Console.WriteLine(codes);
+                }
+            }
+            
+        }
+        public void buscarCliente(string query)
+        {
+            MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN());
+            MySqlDataReader reader = comando.ExecuteReader();
+
+            string lectura = "";
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    for (int i = 0; i < reader.FieldCount; i++)
+                    {
+                        lectura += reader.GetValue(i).ToString() + "\t\t";
+                    }
+                }
+                txNombreCliente.Text = "Nombre del Cliente \n" + lectura;
+                existeCliente = true;
+
+                txNit.Clear();
+                txTelefono.Clear();
+                
+
+            }
+            else
+            {
+                MessageBox.Show("No se encontro un cliente con la información proporcionada");
+                txNit.Clear();
+                txTelefono.Clear();
+            }
+            reader.Close();
+            objConection.cerrarCN();
+
+        }
+        private void buscarCliente(object sender, RoutedEventArgs e)
+        {
+            if (txNit.Text.Length > 0)
+            {
+                string NIT = txNit.Text;
+                string query = "SELECT Nombres, Apellidos, puntos FROM dbleonv2.cliente where NIT ='" + NIT + "';";
+                buscarCliente(query);
+                
+
+            }
+            else if (txTelefono.Text.Length>0)
+            {
+                string cel = txTelefono.Text;
+                string query = "SELECT Nombres, Apellidos, puntos FROM dbleonv2.cliente where telefono ='" + cel + "';";
+                buscarCliente(query);
+
+            }
+            else
+            {
+                MessageBox.Show("Ingrese un Número de Teléfono o un Número de NIT para bucar el cliente");
+            }
+            objConection.cerrarCN();
 
         }
     }
