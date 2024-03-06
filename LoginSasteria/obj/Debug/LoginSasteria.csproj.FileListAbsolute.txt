@@ -31,3 +31,5 @@ C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\ventaInventari
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\consultaInventario.baml
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\InventarioInventario.baml
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\ventaInventario.baml
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\ProcesoVenta.g.cs
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\ProcesoVenta.baml

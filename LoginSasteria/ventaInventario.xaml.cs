@@ -34,6 +34,7 @@ namespace LoginSasteria
         DataTable tabla = new DataTable();
         public static List<string> listacodigos = new List<string>();
         public static Boolean existeCliente = false;
+        public static int IDCliente=0;
 
         public ventaInventario()
         {
@@ -214,16 +215,17 @@ namespace LoginSasteria
 
         private void RealizarVenta(object sender, RoutedEventArgs e)
         {
+            ClientesVentas agregar = new ClientesVentas();
+            ProcesoVenta abrir = new ProcesoVenta();
             if (DataDatos.Items.Count ==0)
             {
                 MessageBox.Show("Debe de agregar productos para realizar una venta");
             }
             else
             {
-                foreach (string codes in listacodigos)
-                {
-                    Console.WriteLine(codes);
-                }
+                agregar.agregarDatos(tabla, listacodigos, IDCliente);
+                abrir.Show();
+
             }
             
         }
@@ -260,13 +262,41 @@ namespace LoginSasteria
             objConection.cerrarCN();
 
         }
+
+        void idcliente(string dato, Boolean busqueda)
+        {
+            string query="";
+            if(busqueda == true)
+            {
+                query = "SELECT idCliente FROM dbleonv2.cliente where NIT = '"+dato+"';";
+            }
+            else {
+                query = "SELECT idCliente FROM dbleonv2.cliente where telefono = '" + dato + "';";
+            }
+            MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN());
+            MySqlDataReader reader = comando.ExecuteReader();
+                        
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    IDCliente = reader.GetInt32(0);
+                }                
+            }
+            Console.WriteLine(IDCliente);
+        }
         private void buscarCliente(object sender, RoutedEventArgs e)
         {
+            Boolean busqueda=false;
             if (txNit.Text.Length > 0)
             {
                 string NIT = txNit.Text;
                 string query = "SELECT Nombres, Apellidos, puntos FROM dbleonv2.cliente where NIT ='" + NIT + "';";
                 buscarCliente(query);
+                if (existeCliente == true)
+                {
+                    idcliente(NIT, busqueda=true);
+                }
                 
 
             }
@@ -275,7 +305,10 @@ namespace LoginSasteria
                 string cel = txTelefono.Text;
                 string query = "SELECT Nombres, Apellidos, puntos FROM dbleonv2.cliente where telefono ='" + cel + "';";
                 buscarCliente(query);
-
+                if (existeCliente == true)
+                {
+                    idcliente(cel, busqueda = false);
+                }
             }
             else
             {
