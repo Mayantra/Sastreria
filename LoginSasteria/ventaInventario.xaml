@@ -257,7 +257,7 @@
         <TextBox x:Name="txCodigo" Template="{StaticResource  TextBoxBaseControlTemplate}" HorizontalAlignment="Left" 
                  Padding="15" 
                  Height="60" Margin="1021,80,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="245" 
-                 SelectionBrush="{x:Null}" BorderBrush="{x:Null}" Background="White" FontSize="18"/>
+                 SelectionBrush="#FF74EFFF" BorderBrush="{x:Null}" Background="White" FontSize="18"/>
 
         <Button x:Name="btnVenta" HorizontalAlignment="Left" Height="60" Margin="1019,340,0,0" VerticalAlignment="Top" Width="246" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FF684BA8" Click="RealizarVenta">
             <Button.Resources>
@@ -278,11 +278,11 @@
         <TextBox x:Name="txNit" Template="{StaticResource TextBoxBaseControlTemplate}" HorizontalAlignment="Left" 
      Padding="10" 
      Height="50" Margin="240,483,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="200" 
-     SelectionBrush="{x:Null}" BorderBrush="{x:Null}" Background="White" FontSize="18"/>
+     SelectionBrush="#FF74EFFF" BorderBrush="{x:Null}" Background="White" FontSize="18"/>
         <TextBox x:Name="txTelefono" Template="{StaticResource TextBoxBaseControlTemplate}" HorizontalAlignment="Left" 
             Padding="10" 
             Height="50" Margin="475,483,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="200" 
-            SelectionBrush="{x:Null}" BorderBrush="{x:Null}" Background="White" FontSize="18"/>
+            SelectionBrush="#FF74EFFF" BorderBrush="{x:Null}" Background="White" FontSize="18"/>
         <Button x:Name="btnBuscar" HorizontalAlignment="Left" Height="50" Margin="714,483,0,0" VerticalAlignment="Top" Width="246" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FF541515" Click="buscarCliente">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">

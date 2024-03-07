@@ -9,19 +9,33 @@ namespace LoginSasteria
 {
     internal class ClientesVentas
     {
-        public DataTable tabla = new DataTable();
-        public List<string> listacodigos = new List<string>();
-        public int IDCliente = 0;
+        public static DataTable tabla = new DataTable();
+        public static List<string> listacodigos;
+        public static int IDCliente;
+        public static int IDUsuario;
 
-        public void agregarDatos(DataTable table, List<string> listCodes, int IDsclient)
+        public void setDatos(DataTable table, List<string> listCodes, int IDsclient)
         {
             tabla = table;
+            foreach (DataRow dataRow in tabla.Rows)
+            {
+                foreach (var item in dataRow.ItemArray)
+                {
+                    Console.WriteLine(item);
+                }
+            }
             listacodigos = listCodes;
             IDCliente = IDsclient;
+            ProcesoVenta abrir = new ProcesoVenta();
+            abrir.Show();
         }
+
+        
         public DataTable getTabla()
         {
-            return tabla;
+            DataTable aux = new DataTable();
+            aux = tabla;
+            return aux;
         }
         public List<string> getLista()
         {

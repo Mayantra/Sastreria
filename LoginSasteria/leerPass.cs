@@ -56,6 +56,21 @@ namespace LoginSasteria
             cn.cerrarCN();
             return nombreUser;
         }
+        public int getIDuser()
+        {
+            int IDUser = 0;
+            string query = "SELECT idEmpleado FROM dbleonv2.empleado where Usuario ='" + usuario + "';";
+            ConexionDB cn = new ConexionDB();
+            MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
+            MySqlDataReader dr = comando.ExecuteReader();
+
+            while (dr.Read())
+            {
+                IDUser = dr.GetInt32("idEmpleado");
+            }
+            cn.cerrarCN();
+            return IDUser;
+        }
         
     }
 }

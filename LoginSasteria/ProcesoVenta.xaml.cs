@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -20,14 +21,17 @@ namespace LoginSasteria
     /// </summary>
     public partial class ProcesoVenta : Window
     {
-        DataTable tabla = new DataTable();
-        public static List<string> listacodigos = new List<string>();
-        public static int IDCliente = 0;
+        DataTable tabla =new DataTable();
+        public static List<string> listacodigos;
+        public static int IDCliente;
+
+        ClientesVentas data = new ClientesVentas();
         public ProcesoVenta()
         {
             InitializeComponent();
             getData();
             printTable();
+            getDatosCliente();
         }
 
         private void btnSalir(object sender, RoutedEventArgs e)
@@ -42,9 +46,8 @@ namespace LoginSasteria
 
         public void getData()
         {
-            ClientesVentas data = new ClientesVentas();
-
             tabla = data.getTabla();
+            
             listacodigos = data.getLista();
             IDCliente = data.getIDCliente();
         }
@@ -52,6 +55,44 @@ namespace LoginSasteria
         {
             DataDatos.DataContext = tabla;
         }
+
+        public void getDatosCliente()
+        {
+            if (IDCliente>0)
+            {
+                ConexionDB cn = new ConexionDB();
+                try
+                {
+                    
+                    string query = "SELECT * FROM dbleonv2.cliente where idCliente='" + IDCliente + "';";
+                    
+                    MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
+                    MySqlDataReader dr = comando.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        txNombres.Text = dr.GetValue(1).ToString();
+                        txApellidos.Text = dr.GetValue(2).ToString();
+                        txTelefono.Text = dr.GetValue(3).ToString();
+                        txNit.Text = dr.GetValue(5).ToString();
+                        
+                    }
+                }
+                catch (MySqlException e)
+                {
+                    MessageBox.Show(e.ToString());
+                }
+                
+                cn.cerrarCN();
+                
+            }
+            else
+            {
+                MessageBox.Show("Recomendamos llenar los datos del cliente");
+            }
+        }
+
+
         
     }
 }

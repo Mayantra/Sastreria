@@ -32,6 +32,26 @@ BorderThickness="{TemplateBinding BorderThickness}">
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
+
+        <ControlTemplate x:Key="TextBoxBaseControlTemplate" TargetType="{x:Type TextBoxBase}">
+            <Border Background="{TemplateBinding Background}" 
+x:Name="Bd" BorderBrush="Black"
+BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
+                <ScrollViewer x:Name="PART_ContentHost"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" TargetName="Bd"/>
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="Width" Value="Auto">
+                    <Setter Property="MinWidth" Value="100"/>
+                </Trigger>
+                <Trigger Property="Height" Value="Auto">
+                    <Setter Property="MinHeight" Value="20"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
     </Window.Resources>
 
 
@@ -51,7 +71,7 @@ BorderThickness="{TemplateBinding BorderThickness}">
             </Button.Resources>
         </Button>
 
-        <Rectangle HorizontalAlignment="Left" Height="700" VerticalAlignment="Center" Width="80" Fill="#FFEDE4A4"/>
+        <Rectangle HorizontalAlignment="Left" Height="716" VerticalAlignment="Center" Width="40" Fill="#FFEDE4A4"/>
 
 
 
@@ -67,7 +87,7 @@ BorderThickness="{TemplateBinding BorderThickness}">
         <DataGrid ItemsSource="{Binding}" ColumnWidth="Auto" IsReadOnly="True" GridLinesVisibility="None" 
             CanUserDeleteRows="False" Padding="10"
             CanUserResizeColumns="False" CanUserResizeRows="False"
-            x:Name="DataDatos" HorizontalAlignment="Left" Height="275" Margin="135,80,0,0" VerticalAlignment="Top" Width="770" FontSize="15" BorderBrush="{x:Null}" Background="White" AreRowDetailsFrozen="True" RowBackground="#FFF1F1F1" AlternatingRowBackground="White" Foreground="Black" FontFamily="Arial">
+            x:Name="DataDatos" HorizontalAlignment="Left" Height="240" Margin="135,80,0,0" VerticalAlignment="Top" Width="745" FontSize="15" BorderBrush="{x:Null}" Background="White" AreRowDetailsFrozen="True" RowBackground="#FFF1F1F1" AlternatingRowBackground="White" Foreground="Black" FontFamily="Arial">
             <DataGrid.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -96,6 +116,85 @@ BorderThickness="{TemplateBinding BorderThickness}">
                 </Style>
             </DataGrid.CellStyle>
         </DataGrid>
+        <TextBox x:Name="txNombres" HorizontalAlignment="Left" Height="40" Margin="135,385,0,0" 
+                 Template="{StaticResource TextBoxBaseControlTemplate}"
+                 TextWrapping="Wrap"  VerticalAlignment="Top" Width="345" BorderBrush="{x:Null}" SelectionBrush="#FF74EFFF"
+                 Padding="6" FontSize="16"/>
+        <TextBox x:Name="txApellidos" HorizontalAlignment="Left" Height="40" Margin="535,385,0,0" 
+            Template="{StaticResource TextBoxBaseControlTemplate}"
+            TextWrapping="Wrap"  VerticalAlignment="Top" Width="345" BorderBrush="{x:Null}" SelectionBrush="#FF74EFFF"
+                 Padding="6" FontSize="16"/>
+        <TextBox x:Name="txNit" HorizontalAlignment="Left" Height="40" Margin="295,460,0,0" 
+            Template="{StaticResource TextBoxBaseControlTemplate}"
+            TextWrapping="Wrap"  VerticalAlignment="Top" Width="185" BorderBrush="{x:Null}" SelectionBrush="#FF74EFFF"
+                 Padding="6" FontSize="16"/>
+        <TextBox x:Name="txTelefono" HorizontalAlignment="Left" Height="40" Margin="695,460,0,0" 
+            Template="{StaticResource TextBoxBaseControlTemplate}"
+            TextWrapping="Wrap"  VerticalAlignment="Top" Width="185" BorderBrush="{x:Null}" SelectionBrush="#FF74EFFF"
+                 Padding="6" FontSize="16"/>
+        <Label Content="Nombres" HorizontalAlignment="Left" Height="40" 
+               Margin="160,340,0,0" VerticalAlignment="Top" Width="148"
+               Foreground="White" FontSize="20"/>
+        <Label Content="Apellidos" HorizontalAlignment="Left" Height="40" 
+            Margin="560,340,0,0" VerticalAlignment="Top" Width="148"
+            Foreground="White" FontSize="20"/>
+        <Label Content="NIT" HorizontalAlignment="Left" Height="40" 
+            Margin="199,460,0,0" VerticalAlignment="Top" Width="41"
+            Foreground="White" FontSize="20" />
+        <Label Content="Télefono" HorizontalAlignment="Left" Height="40" 
+            Margin="555,460,0,0" VerticalAlignment="Top" Width="85"
+            Foreground="White" FontSize="20"/>
+        <Button HorizontalAlignment="Left" Height="100" Margin="694,540,0,0" VerticalAlignment="Top" Width="186" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FF255909">
+            <Grid Height="93" Width="160">
+                <Label Content="Vender" RenderTransformOrigin="-0.006,0.404" Margin="73,25,0,20"
+                       FontSize="24" Foreground="White"/>
+                <Rectangle Margin="0,16,108,17" RenderTransformOrigin="0.904,0.51">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="/CarritoWhite.png" Stretch="Uniform"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Grid>
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10,10,0,0"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button HorizontalAlignment="Left" Height="100" Margin="480,540,0,0" VerticalAlignment="Top" Width="186" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FF580000">
+            <Grid Height="93" Width="160">
+                <Label Content="Cancelar" RenderTransformOrigin="-0.006,0.404" Margin="63,26,0,19"
+               FontSize="22" Foreground="White"/>
+                <Rectangle Margin="0,16,108,17" RenderTransformOrigin="0.904,0.51">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="/cancelWhite.png" Stretch="Uniform"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Grid>
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10,10,0,0"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button HorizontalAlignment="Left" Height="100" Margin="80,540,0,0" VerticalAlignment="Top" Width="186" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FF213E61">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10,10,0,0"/>
+                </Style>
+            </Button.Resources>
+            <Grid Height="93" Width="160">
+                <Label Content="Modificar" RenderTransformOrigin="-0.006,0.404" Margin="63,28,0,17"
+                    FontSize="20" Foreground="White"/>
+                <Rectangle Margin="0,16,108,17" RenderTransformOrigin="0.904,0.51">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="/about.png" Stretch="Uniform"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Grid>
+        </Button>
+
+
+
 
 
     </Grid>

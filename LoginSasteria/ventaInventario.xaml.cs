@@ -216,19 +216,19 @@ namespace LoginSasteria
         private void RealizarVenta(object sender, RoutedEventArgs e)
         {
             ClientesVentas agregar = new ClientesVentas();
-            ProcesoVenta abrir = new ProcesoVenta();
+            
             if (DataDatos.Items.Count ==0)
             {
                 MessageBox.Show("Debe de agregar productos para realizar una venta");
             }
             else
             {
-                agregar.agregarDatos(tabla, listacodigos, IDCliente);
-                abrir.Show();
-
+                agregar.setDatos(tabla, listacodigos, IDCliente);
+                
             }
             
         }
+        
         public void buscarCliente(string query)
         {
             MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN());

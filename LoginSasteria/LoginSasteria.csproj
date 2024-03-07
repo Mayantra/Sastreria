@@ -191,6 +191,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="about.svg" />
+    <Resource Include="cancelWhite.png" />
+    <Resource Include="CarritoWhite.png" />
     <Resource Include="LupaWhite.png" />
     <Resource Include="checkWithe.png" />
     <Resource Include="converteWhite.png" />
