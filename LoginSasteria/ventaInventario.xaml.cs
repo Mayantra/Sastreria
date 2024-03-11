@@ -35,6 +35,7 @@ namespace LoginSasteria
         public static List<string> listacodigos = new List<string>();
         public static Boolean existeCliente = false;
         public static int IDCliente=0;
+        public static int regalo;
 
         public ventaInventario()
         {
@@ -216,14 +217,14 @@ namespace LoginSasteria
         private void RealizarVenta(object sender, RoutedEventArgs e)
         {
             ClientesVentas agregar = new ClientesVentas();
-            
+            regalo = 0;
             if (DataDatos.Items.Count ==0)
             {
                 MessageBox.Show("Debe de agregar productos para realizar una venta");
             }
             else
             {
-                agregar.setDatos(tabla, listacodigos, IDCliente);
+                agregar.setDatos(tabla, listacodigos, IDCliente, regalo, existeCliente);
                 
             }
             

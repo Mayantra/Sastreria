@@ -144,11 +144,11 @@ BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
         <Label Content="Télefono" HorizontalAlignment="Left" Height="40" 
             Margin="555,460,0,0" VerticalAlignment="Top" Width="85"
             Foreground="White" FontSize="20"/>
-        <Button HorizontalAlignment="Left" Height="100" Margin="694,540,0,0" VerticalAlignment="Top" Width="186" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FF255909">
-            <Grid Height="93" Width="160">
-                <Label Content="Vender" RenderTransformOrigin="-0.006,0.404" Margin="73,25,0,20"
-                       FontSize="24" Foreground="White"/>
-                <Rectangle Margin="0,16,108,17" RenderTransformOrigin="0.904,0.51">
+        <Button x:Name="btnVender" HorizontalAlignment="Left" Height="100" Margin="735,540,0,0" VerticalAlignment="Top" Width="145" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FF255909" Click="crearVenta">
+            <Grid Height="93" Width="135">
+                <Label Content="Vender" RenderTransformOrigin="-0.006,0.404" Margin="50,28,5,27"
+                       FontSize="22" Foreground="White"/>
+                <Rectangle Margin="5,23,95,22" RenderTransformOrigin="0.904,0.51">
                     <Rectangle.Fill>
                         <ImageBrush ImageSource="/CarritoWhite.png" Stretch="Uniform"/>
                     </Rectangle.Fill>
@@ -160,11 +160,11 @@ BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
                 </Style>
             </Button.Resources>
         </Button>
-        <Button HorizontalAlignment="Left" Height="100" Margin="480,540,0,0" VerticalAlignment="Top" Width="186" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FF580000">
-            <Grid Height="93" Width="160">
-                <Label Content="Cancelar" RenderTransformOrigin="-0.006,0.404" Margin="63,26,0,19"
+        <Button HorizontalAlignment="Left" Height="100" Margin="575,540,0,0" VerticalAlignment="Top" Width="145" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FF580000">
+            <Grid Height="93" Width="139">
+                <Label Content="Cancelar" RenderTransformOrigin="-0.006,0.404" Margin="45,26,0,27"
                FontSize="22" Foreground="White"/>
-                <Rectangle Margin="0,16,108,17" RenderTransformOrigin="0.904,0.51">
+                <Rectangle Margin="5,24,94,23" RenderTransformOrigin="0.904,0.51">
                     <Rectangle.Fill>
                         <ImageBrush ImageSource="/cancelWhite.png" Stretch="Uniform"/>
                     </Rectangle.Fill>
@@ -176,22 +176,26 @@ BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
                 </Style>
             </Button.Resources>
         </Button>
-        <Button HorizontalAlignment="Left" Height="100" Margin="80,540,0,0" VerticalAlignment="Top" Width="186" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FF213E61">
+        <Button HorizontalAlignment="Left" Height="100" Margin="80,540,0,0" VerticalAlignment="Top" Width="145" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FF213E61">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10,10,0,0"/>
                 </Style>
             </Button.Resources>
-            <Grid Height="93" Width="160">
-                <Label Content="Modificar" RenderTransformOrigin="-0.006,0.404" Margin="63,28,0,17"
+            <Grid Height="93" Width="140">
+                <Label Content="Modificar" RenderTransformOrigin="-0.006,0.404" Margin="42,28,0,17"
                     FontSize="20" Foreground="White"/>
-                <Rectangle Margin="0,16,108,17" RenderTransformOrigin="0.904,0.51">
+                <Rectangle Margin="10,16,100,17" RenderTransformOrigin="0.904,0.51">
                     <Rectangle.Fill>
                         <ImageBrush ImageSource="/about.png" Stretch="Uniform"/>
                     </Rectangle.Fill>
                 </Rectangle>
             </Grid>
         </Button>
+        <TextBlock HorizontalAlignment="Left" Height="65" Margin="320,558,0,0" 
+                   TextWrapping="Wrap" Text="Q 0.00" VerticalAlignment="Top" Width="240"
+                   Foreground="White" FontSize="30"
+                   TextAlignment="Right" Padding="10"/>
 
 
 

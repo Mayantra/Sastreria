@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Documents;
 
 namespace LoginSasteria
 {
@@ -13,8 +14,10 @@ namespace LoginSasteria
         public static List<string> listacodigos;
         public static int IDCliente;
         public static int IDUsuario;
+        public static int regalo;
+        public static Boolean existeCliente;
 
-        public void setDatos(DataTable table, List<string> listCodes, int IDsclient)
+        public void setDatos(DataTable table, List<string> listCodes, int IDsclient, int regalo, Boolean Cliente)
         {
             tabla = table;
             foreach (DataRow dataRow in tabla.Rows)
@@ -26,6 +29,7 @@ namespace LoginSasteria
             }
             listacodigos = listCodes;
             IDCliente = IDsclient;
+            existeCliente = Cliente;
             ProcesoVenta abrir = new ProcesoVenta();
             abrir.Show();
         }
@@ -45,6 +49,13 @@ namespace LoginSasteria
         {
             return IDCliente;
         }
-
+        public int getRegalo()
+        {
+            return regalo;
+        }
+        public Boolean getExistenciaCliente()
+        {
+            return existeCliente;
+        }
     }
 }

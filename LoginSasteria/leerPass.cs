@@ -71,6 +71,48 @@ namespace LoginSasteria
             cn.cerrarCN();
             return IDUser;
         }
+
+        public Boolean getAcceso(string user, string pass)
+        {
+            Boolean estado= false;
+            string contrasena = "";
+            string query = "SELECT pin FROM dbleonv2.empleado where Usuario ='" + user + "';";
+            ConexionDB cn = new ConexionDB();
+            MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
+            MySqlDataReader dr = comando.ExecuteReader();
+            while (dr.Read())
+            {
+                contrasena = dr.GetString("pin");
+            }
+
+            if (pass == contrasena)
+            {
+                estado = true;                
+
+            }
+            else
+            {
+                estado = false;
+                MessageBox.Show("Contraseña Incorrecta");
+            }
+            cn.cerrarCN();
+            return estado;
+        }
+        public int getIdLogUser(string users)
+        {
+            int IDUser = 0;
+            string query = "SELECT idEmpleado FROM dbleonv2.empleado where Usuario ='" + users + "';";
+            ConexionDB cn = new ConexionDB();
+            MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
+            MySqlDataReader dr = comando.ExecuteReader();
+
+            while (dr.Read())
+            {
+                IDUser = dr.GetInt32("idEmpleado");
+            }
+            cn.cerrarCN();
+            return IDUser;
+        }
         
     }
 }

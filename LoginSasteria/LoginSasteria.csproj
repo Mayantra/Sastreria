@@ -67,6 +67,9 @@
     <Compile Include="InventarioInventario.xaml.cs">
       <DependentUpon>InventarioInventario.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Logeo.xaml.cs">
+      <DependentUpon>Logeo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="mainInventario.xaml.cs">
       <DependentUpon>mainInventario.xaml</DependentUpon>
     </Compile>
@@ -84,6 +87,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="InventarioInventario.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Logeo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
