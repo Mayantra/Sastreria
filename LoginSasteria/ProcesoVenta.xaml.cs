@@ -60,6 +60,7 @@ namespace LoginSasteria
             Regalo = data.getRegalo();
             IDCliente = data.getIDCliente();
             existeCliente = data.getExistenciaCliente();
+            sumaTotal(listacodigos);
             
         }
         public void printTable()
@@ -69,6 +70,37 @@ namespace LoginSasteria
         public void setExistencia(Boolean existe)
         {
             existeCliente = existe;
+        }
+        public void sumaTotal(List<string> codigos)
+        {
+            double total = 0.00;
+            try
+            {
+                
+                
+                for (int i = 0; i < codigos.Count; i++)
+                {
+                    cn.cerrarCN();
+                    string query = "SELECT precio FROM dbleonv2.producto where idproducto='" + codigos[i] + "';";
+
+                    MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
+                    MySqlDataReader dr = comando.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        total += dr.GetDouble(0);
+                    }
+                    dr.Close();
+
+                }
+                cn.cerrarCN();
+                
+            }
+            catch(MySqlException e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+            txTotal.Text = "Q "+total.ToString();
+            
         }
         
 
@@ -374,6 +406,16 @@ namespace LoginSasteria
         public void setVendedor(int id)
         {
             IDVendedor = id;
+        }
+
+        private void CancelarOp(object sender, RoutedEventArgs e)
+        {
+            ventaInventario abrir = new ventaInventario();
+            abrir.Show();
+            this.Close();
+            
+            
+            
         }
     }
 }

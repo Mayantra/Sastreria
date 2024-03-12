@@ -227,6 +227,7 @@ namespace LoginSasteria
                 agregar.setDatos(tabla, listacodigos, IDCliente, regalo, existeCliente);
                 
             }
+            this.Close();
             
         }
         
