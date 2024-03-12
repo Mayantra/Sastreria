@@ -34,6 +34,14 @@ namespace LoginSasteria
             abrir.Show();
         }
 
+        public void setExistencia(Boolean existe)
+        {
+            existeCliente = existe;
+        }
+        public void setIdcliente(int id)
+        {
+            IDCliente = id;
+        }
         
         public DataTable getTabla()
         {
@@ -57,5 +65,6 @@ namespace LoginSasteria
         {
             return existeCliente;
         }
+
     }
 }
