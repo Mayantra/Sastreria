@@ -18,6 +18,7 @@ using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
 using System.Globalization;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
+using System.Text.RegularExpressions;
 
 namespace LoginSasteria
 {
@@ -289,6 +290,16 @@ namespace LoginSasteria
                 }
 
             }
+        }
+
+        private void LeerSinNumeros(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !OnlyLetras(e.Text);
+        }
+        private static readonly Regex _regex = new Regex(@"[^a-zA-Z]+$");
+        private static bool OnlyLetras(string text)
+        {
+            return !_regex.IsMatch(text);
         }
     }
 }

@@ -128,7 +128,7 @@ BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
             Template="{StaticResource TextBoxBaseControlTemplate}"
             TextWrapping="Wrap"  VerticalAlignment="Top" Width="185" BorderBrush="{x:Null}" SelectionBrush="#FF74EFFF"
                  Padding="6" FontSize="16"/>
-        <TextBox x:Name="txTelefono" HorizontalAlignment="Left" Height="40" Margin="695,460,0,0" 
+        <TextBox x:Name="txTelefono" HorizontalAlignment="Left" Height="40" Margin="695,460,0,0" MaxLength="8"
             Template="{StaticResource TextBoxBaseControlTemplate}"
             TextWrapping="Wrap"  VerticalAlignment="Top" Width="185" BorderBrush="{x:Null}" SelectionBrush="#FF74EFFF"
                  Padding="6" FontSize="16"/>

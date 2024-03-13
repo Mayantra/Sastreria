@@ -352,8 +352,9 @@ namespace LoginSasteria
                 }
             }
             cn.cerrarCN();
-            DeletFromInventario(listacodigos);
 
+            DeletFromInventario(listacodigos);
+            //creacion de funcion suma puntos
             MessageBox.Show("Venta Realizada");
             
             

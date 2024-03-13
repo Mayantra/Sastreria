@@ -280,7 +280,7 @@
      Height="50" Margin="240,483,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="200" 
      SelectionBrush="#FF74EFFF" BorderBrush="{x:Null}" Background="White" FontSize="18"/>
         <TextBox x:Name="txTelefono" Template="{StaticResource TextBoxBaseControlTemplate}" HorizontalAlignment="Left" 
-            Padding="10" 
+            Padding="10" MaxLength="8"
             Height="50" Margin="475,483,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="200" 
             SelectionBrush="#FF74EFFF" BorderBrush="{x:Null}" Background="White" FontSize="18"/>
         <Button x:Name="btnBuscar" HorizontalAlignment="Left" Height="50" Margin="714,483,0,0" VerticalAlignment="Top" Width="246" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FF541515" Click="buscarCliente">

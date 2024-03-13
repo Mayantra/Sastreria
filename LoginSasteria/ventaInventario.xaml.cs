@@ -206,6 +206,7 @@ namespace LoginSasteria
                     MessageBox.Show("Este articulo ya se encuenta dentro de la venta");
                 }
             }
+            txCodigo.Clear();
 
         }
 
