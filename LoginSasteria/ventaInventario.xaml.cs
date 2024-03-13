@@ -37,6 +37,7 @@ namespace LoginSasteria
         public static int IDCliente=0;
         public static int regalo;
 
+
         public ventaInventario()
         {
             InitializeComponent();
@@ -45,6 +46,14 @@ namespace LoginSasteria
             timer.Tick += timer_Tick;
             timer.Start();
 
+
+        }
+        public void cleanValues()
+        {
+            listacodigos.Clear();
+            tabla.Clear();
+            existeCliente = false;
+            IDCliente = 0;
 
         }
         void timer_Tick(object sender, EventArgs e)
@@ -65,7 +74,7 @@ namespace LoginSasteria
 
         private void btnSalir(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            System.Windows.Application.Current.Shutdown();
         }
 
         private void Minimizar(object sender, RoutedEventArgs e)
@@ -214,22 +223,7 @@ namespace LoginSasteria
 
         }
 
-        private void RealizarVenta(object sender, RoutedEventArgs e)
-        {
-            ClientesVentas agregar = new ClientesVentas();
-            regalo = 0;
-            if (DataDatos.Items.Count ==0)
-            {
-                MessageBox.Show("Debe de agregar productos para realizar una venta");
-            }
-            else
-            {
-                agregar.setDatos(tabla, listacodigos, IDCliente, regalo, existeCliente);
-                
-            }
-            this.Close();
-            
-        }
+        
         
         public void buscarCliente(string query)
         {
@@ -289,7 +283,7 @@ namespace LoginSasteria
         }
         private void buscarCliente(object sender, RoutedEventArgs e)
         {
-            Boolean busqueda=false;
+            
             if (txNit.Text.Length > 0)
             {
                 string NIT = txNit.Text;
@@ -297,7 +291,7 @@ namespace LoginSasteria
                 buscarCliente(query);
                 if (existeCliente == true)
                 {
-                    idcliente(NIT, busqueda=true);
+                    idcliente(NIT, true);
                 }
                 
 
@@ -309,7 +303,7 @@ namespace LoginSasteria
                 buscarCliente(query);
                 if (existeCliente == true)
                 {
-                    idcliente(cel, busqueda = false);
+                    idcliente(cel, false);
                 }
             }
             else
@@ -319,6 +313,49 @@ namespace LoginSasteria
             objConection.cerrarCN();
 
         }
+        private void RealizarVenta(object sender, RoutedEventArgs e)
+        {
+            
+            regalo = 0;
+            if (DataDatos.Items.Count == 0)
+            {
+                MessageBox.Show("Debe de agregar productos para realizar una venta");
+            }
+            else
+            {
+
+                ClientesVentas agregar = new ClientesVentas();
+                agregar.setDatos(tabla, listacodigos, IDCliente, regalo, existeCliente);
+                agregar.abrir();
+
+            }
+            this.Close();
+
+        }
+
+        private void ProcesoRegaloVenta(object sender, RoutedEventArgs e)
+        {
+            
+            regalo = 1;
+            if (DataDatos.Items.Count == 0)
+            {
+                MessageBox.Show("Debe de agregar productos para realizar una venta");
+            }
+            else
+            {
+
+                ClientesVentas agregar = new ClientesVentas();
+                agregar.setDatos(tabla, listacodigos, IDCliente, regalo, existeCliente);
+                agregar.abrir();
+
+            }
+            
+            this.Close();
+            
+
+        }
+        
+        
     }
 }
 

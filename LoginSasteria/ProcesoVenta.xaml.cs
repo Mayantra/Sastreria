@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -32,9 +33,9 @@ namespace LoginSasteria
         public static Boolean Log = false;
 
         ClientesVentas data = new ClientesVentas();
+        ventaInventario winVenta = new ventaInventario();
         public ProcesoVenta()
-        {
-            
+        {            
             InitializeComponent();
             getData();
             printTable();
@@ -42,7 +43,7 @@ namespace LoginSasteria
             getVendedor();
         }
 
-        private void btnSalir(object sender, RoutedEventArgs e)
+        public void btnSalir(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
@@ -151,7 +152,10 @@ namespace LoginSasteria
             Log = acceso;
             venta();
         }
-
+        public void setVendedor(int id)
+        {
+            IDVendedor = id;
+        }
         void venta()
         {
 
@@ -349,8 +353,19 @@ namespace LoginSasteria
             }
             cn.cerrarCN();
             DeletFromInventario(listacodigos);
-            MessageBox.Show("LOS PRODUCTOS HAN SIDO VENDIDOS");
-            btnSalir(null,null);
+
+            MessageBox.Show("Venta Realizada");
+            
+            
+            
+            
+            winVenta.cleanValues();
+            winVenta.Show();
+            this.Close();
+
+
+
+
         }
         public void DeletFromInventario(List<string> productos)
         {
@@ -395,26 +410,22 @@ namespace LoginSasteria
                 Logeo abrir = new Logeo();
                 cn.cerrarCN();
                 abrir.Show();
+                this.Close();
 
             }
 
             
             
             
-        }
-
-        public void setVendedor(int id)
-        {
-            IDVendedor = id;
-        }
+        }        
 
         private void CancelarOp(object sender, RoutedEventArgs e)
         {
             ventaInventario abrir = new ventaInventario();
+            abrir.cleanValues();
             abrir.Show();
             this.Close();
-            
-            
+                        
             
         }
     }

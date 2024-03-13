@@ -182,7 +182,7 @@
             </DataGrid.Resources>
         </DataGrid>
 
-        <Button HorizontalAlignment="Left" Height="60" Margin="1021,531,0,0" VerticalAlignment="Top" Width="244" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FF09594D">
+        <Button x:Name="btnRegalo" HorizontalAlignment="Left" Height="60" Margin="1021,531,0,0" VerticalAlignment="Top" Width="244" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FF09594D" Click="ProcesoRegaloVenta">
             <Grid Height="60" Width="200">
                 <Label Content="Regalo" Margin="100,10,10,12" FontSize="22" Foreground="White" FontFamily="MingLiU_HKSCS-ExtB" >
 

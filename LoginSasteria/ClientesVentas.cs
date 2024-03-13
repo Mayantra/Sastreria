@@ -16,8 +16,9 @@ namespace LoginSasteria
         public static int IDUsuario;
         public static int regalo;
         public static Boolean existeCliente;
+        
 
-        public void setDatos(DataTable table, List<string> listCodes, int IDsclient, int regalo, Boolean Cliente)
+        public void setDatos(DataTable table, List<string> listCodes, int IDsclient, int gift, Boolean Cliente)
         {
             tabla = table;
             foreach (DataRow dataRow in tabla.Rows)
@@ -30,9 +31,15 @@ namespace LoginSasteria
             listacodigos = listCodes;
             IDCliente = IDsclient;
             existeCliente = Cliente;
-            ProcesoVenta abrir = new ProcesoVenta();
-            abrir.Show();
+            regalo = gift;            
+            
         }
+        public void abrir()
+        {
+            ProcesoVenta venta = new ProcesoVenta();
+            venta.Show();
+        }
+        
 
         public void setExistencia(Boolean existe)
         {

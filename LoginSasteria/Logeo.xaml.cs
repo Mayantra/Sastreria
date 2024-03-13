@@ -19,15 +19,15 @@ namespace LoginSasteria
     /// </summary>
     public partial class Logeo : Window
     {
+        ProcesoVenta venta = new ProcesoVenta();
+        leerPass read = new leerPass();
         public Logeo()
         {
             InitializeComponent();
         }
         
         void acceso()
-        {
-            leerPass read = new leerPass();
-            ProcesoVenta venta = new ProcesoVenta();
+        {                     
             for (int i = 0; i <= PassBox.Password.Length; i++)
             {
                 if (i == 5)
@@ -41,7 +41,6 @@ namespace LoginSasteria
                         venta.setVendedor(aux);
                         venta.setLog(true);
                         this.Close();
-
                     }
 
                     txUser.Text = "";
@@ -59,6 +58,7 @@ namespace LoginSasteria
         private void CanelarLog(object sender, RoutedEventArgs e)
         {
             this.Close();
+            venta.Show();
         }
     }
 }
