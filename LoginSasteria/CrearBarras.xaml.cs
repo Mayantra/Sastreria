@@ -59,11 +59,11 @@ namespace LoginSasteria
 
         public void Limpiar()
         {
-            cbTalla.Items.Clear();
-            cbColor.Items.Clear();
-            cbNombre.Items.Clear();
-            cbTela.Items.Clear();
-            cbTipoProducto.Items.Clear();
+            cbTalla.SelectedValue = null;
+            cbColor.SelectedValue = null;
+            cbNombre.SelectedValue = null;
+            cbTela.SelectedValue = null;
+            cbTipoProducto.SelectedValue = null;
             txtCodigo.Clear();
             txtOtroNombre.Clear();
             txtPrecio.Clear();
@@ -250,8 +250,7 @@ namespace LoginSasteria
 
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
         {
-            Limpiar();
-            CargarDatos();
+            //No sirve jajaja
         }
 
         public class ComboItem
@@ -438,6 +437,12 @@ namespace LoginSasteria
             {
 
             }
+        }
+
+        private void btnCancelar_Click_1(object sender, RoutedEventArgs e)
+        {
+            Limpiar();
+            CargarDatos();
         }
     }
 }

@@ -279,7 +279,7 @@
                 </Grid>
             </Button>
 
-            <Button x:Name="btnCancelar" HorizontalAlignment="Left" Height="60" Margin="538,442,0,0" VerticalAlignment="Top" Width="245" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FF580000">
+            <Button x:Name="btnCancelar" HorizontalAlignment="Left" Height="60" Margin="538,442,0,0" VerticalAlignment="Top" Width="245" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FF580000" Click="btnCancelar_Click_1">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="10"/>
