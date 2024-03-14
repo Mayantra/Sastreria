@@ -64,6 +64,9 @@
     <Compile Include="consultaInventario.xaml.cs">
       <DependentUpon>consultaInventario.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CrearBarras.xaml.cs">
+      <DependentUpon>CrearBarras.xaml</DependentUpon>
+    </Compile>
     <Compile Include="InventarioInventario.xaml.cs">
       <DependentUpon>InventarioInventario.xaml</DependentUpon>
     </Compile>
@@ -83,6 +86,10 @@
       <DependentUpon>ventanaInicio.xaml</DependentUpon>
     </Compile>
     <Page Include="consultaInventario.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CrearBarras.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -198,6 +205,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="about.svg" />
+    <Resource Include="BarcodeB.png" />
     <Resource Include="cancelWhite.png" />
     <Resource Include="CarritoWhite.png" />
     <Resource Include="LupaWhite.png" />

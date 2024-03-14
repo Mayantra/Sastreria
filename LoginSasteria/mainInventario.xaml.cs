@@ -89,5 +89,12 @@ namespace LoginSasteria
             abrir.Show();
             this.Close();
         }
+
+        private void abrirBarras(object sender, RoutedEventArgs e)
+        {
+            CrearBarras abrir = new CrearBarras();
+            abrir.Show();
+            this.Close();
+        }
     }
 }
