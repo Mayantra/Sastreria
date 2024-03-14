@@ -59,6 +59,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AccesoNoAutorizado.xaml.cs">
+      <DependentUpon>AccesoNoAutorizado.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AgregarVenta.cs" />
     <Compile Include="ClientesVentas.cs" />
     <Compile Include="consultaInventario.xaml.cs">
@@ -85,6 +88,10 @@
     <Compile Include="ventanaInicio.xaml.cs">
       <DependentUpon>ventanaInicio.xaml</DependentUpon>
     </Compile>
+    <Page Include="AccesoNoAutorizado.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="consultaInventario.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

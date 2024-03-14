@@ -73,6 +73,14 @@ namespace LoginSasteria {
         #line hidden
         
         
+        #line 97 "..\..\mainInventario.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.Button btnInventario;
+        
+        #line default
+        #line hidden
+        
+        
         #line 108 "..\..\mainInventario.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button btnBarras;
@@ -195,6 +203,15 @@ namespace LoginSasteria {
             #line hidden
             return;
             case 5:
+            this.btnInventario = ((System.Windows.Controls.Button)(target));
+            
+            #line 97 "..\..\mainInventario.xaml"
+            this.btnInventario.Click += new System.Windows.RoutedEventHandler(this.abrirInventario);
+            
+            #line default
+            #line hidden
+            return;
+            case 6:
             this.btnBarras = ((System.Windows.Controls.Button)(target));
             
             #line 108 "..\..\mainInventario.xaml"
@@ -203,22 +220,22 @@ namespace LoginSasteria {
             #line default
             #line hidden
             return;
-            case 6:
+            case 7:
             this.lbUser = ((System.Windows.Controls.Label)(target));
             return;
-            case 7:
+            case 8:
             this.txblockname = ((System.Windows.Controls.TextBlock)(target));
             return;
-            case 8:
+            case 9:
             this.lbf = ((System.Windows.Controls.Label)(target));
             return;
-            case 9:
+            case 10:
             this.txblockfecha = ((System.Windows.Controls.TextBlock)(target));
             return;
-            case 10:
+            case 11:
             this.lbH = ((System.Windows.Controls.Label)(target));
             return;
-            case 11:
+            case 12:
             this.txblockHora = ((System.Windows.Controls.TextBlock)(target));
             return;
             }
