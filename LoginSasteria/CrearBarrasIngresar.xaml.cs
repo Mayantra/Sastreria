@@ -23,17 +23,16 @@ using Mysqlx.Crud;
 namespace LoginSasteria
 {
     /// <summary>
-    /// Lógica de interacción para CrearBarras.xaml
+    /// Lógica de interacción para CrearBarrasIngresar.xaml
     /// </summary>
-    public partial class CrearBarras : Window
+    public partial class CrearBarrasIngresar : Window
     {
         ConexionDB objConection = new ConexionDB();
 
         public static int IdnombreProducto = 0;
 
-        public CrearBarras()
+        public CrearBarrasIngresar()
         {
-            InitializeComponent();
             CargarDatos();
         }
 
@@ -442,9 +441,7 @@ namespace LoginSasteria
         private void btnCancelar_Click_1(object sender, RoutedEventArgs e)
         {
             Limpiar();
-            crearBarrasMenu abrirMenu = new crearBarrasMenu();
-            abrirMenu.Show();
-            this.Close();
+            CargarDatos();
         }
     }
 }

@@ -15,23 +15,13 @@ using System.Windows.Shapes;
 namespace LoginSasteria
 {
     /// <summary>
-    /// Lógica de interacción para AccesoNoAutorizado.xaml
+    /// Lógica de interacción para CrearBarrasImprimir.xaml
     /// </summary>
-    public partial class AccesoNoAutorizado : Window
+    public partial class CrearBarrasImprimir : Window
     {
-        public AccesoNoAutorizado()
+        public CrearBarrasImprimir()
         {
             InitializeComponent();
-        }
-
-        private void btnSalir(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
-        private void Minimizar(object sender, RoutedEventArgs e)
-        {
-            this.WindowState = WindowState.Minimized;
         }
     }
 }
