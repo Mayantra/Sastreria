@@ -1,6 +1,8 @@
-﻿using MySql.Data.MySqlClient;
+﻿using BarcodeStandard;
+using MySql.Data.MySqlClient;
 using Mysqlx.Cursor;
 using MySqlX.XDevAPI.Relational;
+using SkiaSharp;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -15,6 +17,13 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+
+using BarcodeLib;
+using iText.Layout;
+using iText.Kernel.Pdf;
+using iText.Kernel.Geom;
+using iText.IO.Image;
+using System.CodeDom.Compiler;
 
 namespace LoginSasteria
 {
@@ -80,7 +89,36 @@ namespace LoginSasteria
 
         private void btnImprimir_Click(object sender, RoutedEventArgs e)
         {
+            /*string contenido = cbHoraFin.Text;
 
+            PdfWriter pdfEscribir = new PdfWriter(@"C:\Codigos\codigos.pdf");
+            PdfDocument pdf = new PdfDocument(pdfEscribir);
+            Document documento = new Document(pdf, PageSize.LETTER);
+            documento.SetMargins(2,2,2,2);
+
+            Barcode codigo = new Barcode();
+            codigo.IncludeLabel = true;
+            codigo.Alignment = AlignmentPositions.Center;
+
+            string query = "SELECT idproducto, np.Nombre AS Producto FROM dbleonv2.producto AS p JOIN dbleonv2.nombreproducto AS np ON p.nombreProducto_idnombreProducto = np.idnombreProducto WHERE fechaCodigo BETWEEN BETWEEN @FechaInicio AND @FechaFin";
+            MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN());
+            MySqlDataReader leer = comando.ExecuteReader();
+
+            while (leer.Read())
+            {
+                string idproducto = leer["Producto"].ToString();
+                string Producto = leer["Producto"].ToString();
+                string nombreImg = @"C:\Codigos\" + idproducto + ".jpg";
+
+                Image img = codigo.Encode(BarcodeStandard.Type.Code128, idproducto, 200, 100);
+                codigo.SaveImage(nombreImg, SaveTypes.Jpg);
+
+                var imagen = new iText.Layout.Element.Image(ImageDataFactory.Create(nombreImg));
+                var parrafo = new Paragraph().Add(imagen);
+                documento.Add(parrafo);
+            }
+
+            documento.Close();*/
         }
 
         private void btnCancelar_Click_1(object sender, RoutedEventArgs e)
