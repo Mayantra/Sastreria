@@ -149,3 +149,14 @@ E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSaster
 E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\bin\Debug\System.Text.Json.xml
 E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\bin\Debug\System.Threading.Tasks.Extensions.xml
 E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\bin\Debug\System.ValueTuple.xml
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\bin\Debug\BouncyCastle.Cryptography.dll
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\bin\Debug\itext.bouncy-castle-adapter.dll
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\bin\Debug\BouncyCastle.Cryptography.xml
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\bin\Debug\itext.bouncy-castle-adapter.xml
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\bin\Debug\BouncyCastle.Crypto.dll
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\bin\Debug\itextsharp.dll
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\bin\Debug\itextsharp.xml
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\bin\Debug\zxing.dll
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\bin\Debug\zxing.presentation.dll
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\bin\Debug\zxing.xml
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\bin\Debug\zxing.presentation.xml

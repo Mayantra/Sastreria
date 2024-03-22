@@ -1,5 +1,4 @@
-﻿using BarcodeStandard;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using Mysqlx.Cursor;
 using MySqlX.XDevAPI.Relational;
 using SkiaSharp;
@@ -17,13 +16,16 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
-using BarcodeLib;
+using System.IO;
 using iText.Layout;
 using iText.Kernel.Pdf;
 using iText.Kernel.Geom;
 using iText.IO.Image;
+using iText.Layout.Element;
+using BarcodeStandard;
 using System.CodeDom.Compiler;
+using ZXing;
+using ZXing.Common;
 
 namespace LoginSasteria
 {
@@ -85,40 +87,59 @@ namespace LoginSasteria
                 // Asigna el DataTable como la fuente de datos del DataGrid
                 dgFechas.ItemsSource = dataTable.DefaultView;
             }
+            objConection.cerrarCN();
         }
 
         private void btnImprimir_Click(object sender, RoutedEventArgs e)
         {
-            /*string contenido = cbHoraFin.Text;
+            DateTime now = DateTime.Now;
+            string fecha = now.ToString("dd-MM-yyyy");
 
-            PdfWriter pdfEscribir = new PdfWriter(@"C:\Codigos\codigos.pdf");
+            //Vamos a crear un DateTimePicker con los DatePicker y los ComboBox
+            int horaPrimeraFecha = int.Parse(cbHoraInicio.Text);
+            int minutosPrimeraFecha = int.Parse(cbMinutosInicio.Text);
+
+            DateTime fechaHoraInicio = dpPrimeraFecha.SelectedDate.Value;
+            fechaHoraInicio = fechaHoraInicio.AddHours(horaPrimeraFecha);
+            fechaHoraInicio = fechaHoraInicio.AddMinutes(minutosPrimeraFecha);
+
+            // Repite para la segunda fecha
+            int horaSegundaFecha = int.Parse(cbHoraFin.Text);
+            int minutosSegundaFecha = int.Parse(cbMinutosFin.Text);
+
+            DateTime fechaHoraFin = dpSegundaFecha.SelectedDate.Value;
+            fechaHoraFin = fechaHoraFin.AddHours(horaSegundaFecha);
+            fechaHoraFin = fechaHoraFin.AddMinutes(minutosSegundaFecha);
+
+            //Creamos el documento PDF
+            PdfWriter pdfEscribir = new PdfWriter(@"C:\Codigos\codigos"+ fecha +".pdf");
             PdfDocument pdf = new PdfDocument(pdfEscribir);
             Document documento = new Document(pdf, PageSize.LETTER);
-            documento.SetMargins(2,2,2,2);
+            documento.SetMargins(2, 2, 2, 2);
 
-            Barcode codigo = new Barcode();
+            //Iniciamos a crear el codigo de barras
+            var codigo = new Barcode();
             codigo.IncludeLabel = true;
             codigo.Alignment = AlignmentPositions.Center;
 
-            string query = "SELECT idproducto, np.Nombre AS Producto FROM dbleonv2.producto AS p JOIN dbleonv2.nombreproducto AS np ON p.nombreProducto_idnombreProducto = np.idnombreProducto WHERE fechaCodigo BETWEEN BETWEEN @FechaInicio AND @FechaFin";
+            string query = "SELECT idproducto FROM dbleonv2.producto WHERE fechaCodigo BETWEEN '"+ fechaHoraInicio + "' AND '"+ fechaHoraFin + "'";
             MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN());
             MySqlDataReader leer = comando.ExecuteReader();
 
             while (leer.Read())
             {
-                string idproducto = leer["Producto"].ToString();
-                string Producto = leer["Producto"].ToString();
-                string nombreImg = @"C:\Codigos\" + idproducto + ".jpg";
+                string idproducto = leer["idproducto"].ToString();
+                string nombreImg = @"C:\Codigos\img" + idproducto + ".jpg";
 
-                Image img = codigo.Encode(BarcodeStandard.Type.Code128, idproducto, 200, 100);
+                codigo.Encode(BarcodeStandard.Type.Code128, idproducto, SKColors.Black, SKColors.White, 200, 100);
                 codigo.SaveImage(nombreImg, SaveTypes.Jpg);
 
-                var imagen = new iText.Layout.Element.Image(ImageDataFactory.Create(nombreImg));
-                var parrafo = new Paragraph().Add(imagen);
+                iText.Layout.Element.Image imagen = new iText.Layout.Element.Image(ImageDataFactory.Create(nombreImg));
+                iText.Layout.Element.Paragraph parrafo = new iText.Layout.Element.Paragraph().Add(imagen);
                 documento.Add(parrafo);
             }
-
-            documento.Close();*/
+            documento.Close();
+            objConection.cerrarCN();
         }
 
         private void btnCancelar_Click_1(object sender, RoutedEventArgs e)
