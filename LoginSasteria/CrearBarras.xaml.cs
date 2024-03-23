@@ -111,6 +111,26 @@ namespace LoginSasteria
 
         private void btnRegistrar_Click(object sender, RoutedEventArgs e)
         {
+            // Validar que los campos de texto y los ComboBox no estén vacíos
+            if (string.IsNullOrWhiteSpace(txtCodigo.Text) ||
+                string.IsNullOrWhiteSpace(txtPrecio.Text) ||
+                cbNombre.SelectedItem == null ||
+                cbTela.SelectedItem == null ||
+                cbTalla.SelectedItem == null ||
+                cbColor.SelectedItem == null ||
+                string.IsNullOrWhiteSpace(txtDetalles.Text) ||
+                (cbNombre.SelectedItem.ToString() == "OTRO" && string.IsNullOrWhiteSpace(txtOtroNombre.Text))) // Condición adicional si cbNombre es "OTRO"
+            {
+                MessageBox.Show("Por favor, completa todos los campos antes de registrar.");
+                return; // Salir del método para evitar ejecutar el resto del código
+            }
+
+            // Si cbNombre es "OTRO", se debe validar también txtOtroNombre
+            if (cbNombre.SelectedItem.ToString() == "OTRO" && string.IsNullOrWhiteSpace(txtOtroNombre.Text))
+            {
+                MessageBox.Show("Por favor, ingresa el nombre del producto.");
+                return; // Salir del método para evitar ejecutar el resto del código
+            }
             try
             {
 

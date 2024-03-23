@@ -26,6 +26,15 @@ using BarcodeStandard;
 using System.CodeDom.Compiler;
 using ZXing;
 using ZXing.Common;
+using iText.Commons.Datastructures;
+using System.Drawing.Imaging;
+using System.Drawing;
+using Image = iText.Layout.Element.Image;
+using PixelFormat = System.Drawing.Imaging.PixelFormat;
+using Paragraph = iText.Layout.Element.Paragraph;
+using iText.Layout.Properties;
+using Table = iText.Layout.Element.Table;
+
 
 namespace LoginSasteria
 {
@@ -39,6 +48,7 @@ namespace LoginSasteria
         public ImprimirBarras()
         {
             InitializeComponent();
+            btnImprimir.IsEnabled = false;
         }
 
         private void btnSalir(object sender, RoutedEventArgs e)
@@ -88,6 +98,7 @@ namespace LoginSasteria
                 dgFechas.ItemsSource = dataTable.DefaultView;
             }
             objConection.cerrarCN();
+            btnImprimir.IsEnabled = true;
         }
 
         private void btnImprimir_Click(object sender, RoutedEventArgs e)
@@ -95,51 +106,94 @@ namespace LoginSasteria
             DateTime now = DateTime.Now;
             string fecha = now.ToString("dd-MM-yyyy");
 
-            //Vamos a crear un DateTimePicker con los DatePicker y los ComboBox
-            int horaPrimeraFecha = int.Parse(cbHoraInicio.Text);
-            int minutosPrimeraFecha = int.Parse(cbMinutosInicio.Text);
+            // Ruta para el archivo PDF que se creará
+            string dest = "C:\\Codigos\\Codigos"+fecha+".pdf";
 
-            DateTime fechaHoraInicio = dpPrimeraFecha.SelectedDate.Value;
-            fechaHoraInicio = fechaHoraInicio.AddHours(horaPrimeraFecha);
-            fechaHoraInicio = fechaHoraInicio.AddMinutes(minutosPrimeraFecha);
+            // Crear un objeto PdfWriter
+            PdfWriter writer = new PdfWriter(dest);
 
-            // Repite para la segunda fecha
-            int horaSegundaFecha = int.Parse(cbHoraFin.Text);
-            int minutosSegundaFecha = int.Parse(cbMinutosFin.Text);
+            // Crear un objeto PdfDocument
+            PdfDocument pdf = new PdfDocument(writer);
 
-            DateTime fechaHoraFin = dpSegundaFecha.SelectedDate.Value;
-            fechaHoraFin = fechaHoraFin.AddHours(horaSegundaFecha);
-            fechaHoraFin = fechaHoraFin.AddMinutes(minutosSegundaFecha);
+            // Crear un objeto Document
+            Document document = new Document(pdf);
 
-            //Creamos el documento PDF
-            PdfWriter pdfEscribir = new PdfWriter(@"C:\Codigos\codigos"+ fecha +".pdf");
-            PdfDocument pdf = new PdfDocument(pdfEscribir);
-            Document documento = new Document(pdf, PageSize.LETTER);
-            documento.SetMargins(2, 2, 2, 2);
+            // Crear una tabla con 2 columnas para organizar los códigos de barras
+            Table table = new Table(UnitValue.CreatePercentArray(new float[] { 1, 1 })).UseAllAvailableWidth();
 
-            //Iniciamos a crear el codigo de barras
-            var codigo = new Barcode();
-            codigo.IncludeLabel = true;
-            codigo.Alignment = AlignmentPositions.Center;
 
-            string query = "SELECT idproducto FROM dbleonv2.producto WHERE fechaCodigo BETWEEN '"+ fechaHoraInicio + "' AND '"+ fechaHoraFin + "'";
-            MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN());
-            MySqlDataReader leer = comando.ExecuteReader();
-
-            while (leer.Read())
+            foreach (DataRowView row in dgFechas.Items)
             {
-                string idproducto = leer["idproducto"].ToString();
-                string nombreImg = @"C:\Codigos\img" + idproducto + ".jpg";
+                if (row.Row.RowState != DataRowState.Detached)
+                {
+                    // Obtener el valor del "codigo" de la fila actual
+                    string codigo = row["codigo"].ToString();
 
-                codigo.Encode(BarcodeStandard.Type.Code128, idproducto, SKColors.Black, SKColors.White, 200, 100);
-                codigo.SaveImage(nombreImg, SaveTypes.Jpg);
+                    // Generar la imagen del código de barras con el texto
+                    byte[] barcodeBytes = GenerateBarcode(codigo);
+                    ImageData imageData = ImageDataFactory.Create(barcodeBytes);
+                    Image barcodeImage = new Image(imageData);
 
-                iText.Layout.Element.Image imagen = new iText.Layout.Element.Image(ImageDataFactory.Create(nombreImg));
-                iText.Layout.Element.Paragraph parrafo = new iText.Layout.Element.Paragraph().Add(imagen);
-                documento.Add(parrafo);
+                    // Agregar la celda con la imagen del código de barras a la tabla
+                    Cell cell = new Cell().Add(barcodeImage);
+                    table.AddCell(cell);
+                }
             }
-            documento.Close();
-            objConection.cerrarCN();
+
+            // Asegurarse de que la última fila se llene completamente
+            if ((dgFechas.Items.Count % 2) != 0)
+            {
+                table.AddCell(new Cell().Add(new Paragraph(""))); // Agregar una celda vacía si el número de códigos es impar
+            }
+
+            // Agregar la tabla al documento
+            document.Add(table);
+
+            // Cerrar el documento
+            document.Close();
+            MessageBox.Show("Archivo pdf generado en: " + "C:\\Codigos\\Codigos"+fecha+".pdf");
+            btnImprimir.IsEnabled = false;
+        }
+
+        //Permite generar el codigo de barras
+        public  byte[] GenerateBarcode(string data)
+        {
+            var writer = new BarcodeWriterPixelData
+            {
+                Format = BarcodeFormat.CODE_128,
+                Options = new EncodingOptions
+                {
+                    Height = 50,
+                    Width = 100,
+                    PureBarcode = true
+                }
+            };
+
+            var pixelData = writer.Write(data);
+            // Crear un bitmap para el código de barras
+            using (var bitmap = new Bitmap(pixelData.Width, pixelData.Height + 20)) // +20 pixeles para el texto
+            using (var graphics = System.Drawing.Graphics.FromImage(bitmap))
+            using (var font = new Font(System.Drawing.FontFamily.GenericMonospace, 10))
+            using (var brush = new SolidBrush(System.Drawing.Color.Black))
+            using (var format = new StringFormat() { Alignment = System.Drawing.StringAlignment.Center })
+            using (var stream = new MemoryStream())
+            {
+                // Dibujar el código de barras
+                graphics.FillRectangle(System.Drawing.Brushes.White, 0, 0, bitmap.Width, bitmap.Height);
+                var barcodeBitmap = new Bitmap(pixelData.Width, pixelData.Height, PixelFormat.Format32bppArgb);
+                var bitmapData = barcodeBitmap.LockBits(new System.Drawing.Rectangle(0, 0, pixelData.Width, pixelData.Height), ImageLockMode.WriteOnly, PixelFormat.Format32bppArgb);
+                System.Runtime.InteropServices.Marshal.Copy(pixelData.Pixels, 0, bitmapData.Scan0, pixelData.Pixels.Length);
+                barcodeBitmap.UnlockBits(bitmapData);
+
+                graphics.DrawImage(barcodeBitmap, 1, 1);
+
+                // Dibujar el texto del código debajo del código de barras
+                graphics.DrawString(data, font, brush, bitmap.Width / 2, pixelData.Height, format);
+
+                // Guardar la imagen combinada en un stream y retornarlo
+                bitmap.Save(stream, ImageFormat.Png);
+                return stream.ToArray();
+            }
         }
 
         private void btnCancelar_Click_1(object sender, RoutedEventArgs e)

@@ -242,7 +242,7 @@
                  Height="30" Margin="430,57,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="245" 
                  SelectionBrush="{x:Null}" BorderBrush="{x:Null}" Background="White" FontSize="16"/>
 
-            <TextBox x:Name="txtCantidad" Template="{StaticResource TextBoxBaseControlTemplate}" HorizontalAlignment="Left" 
+            <TextBox x:Name="txtCantidad" Template="{StaticResource TextBoxBaseControlTemplate}" HorizontalAlignment="Left" Visibility="Collapsed"
                  Padding="1,1,1,1" 
                  Height="30" Margin="635,125,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="245" 
                  SelectionBrush="{x:Null}" BorderBrush="{x:Null}" Background="White" FontSize="16" Text="1"/>
@@ -261,7 +261,7 @@
             <Label Content="Detalles" HorizontalAlignment="Left" Height="30" Margin="483,251,0,0" VerticalAlignment="Top" Width="100" FontSize="16" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.533"/>
             <Label Content="Código" HorizontalAlignment="Left" Height="32" Margin="483,330,0,0" VerticalAlignment="Top" Width="100" FontSize="16" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.533"/>
             <Label Content="Producto" HorizontalAlignment="Left" Height="30" Margin="45,125,0,0" VerticalAlignment="Top" Width="100" FontSize="16" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.533"/>
-            <Label Content="Cantidad" HorizontalAlignment="Left" Height="30" Margin="483,125,0,0" VerticalAlignment="Top" Width="100" FontSize="16" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.533"/>
+            <Label Content="Cantidad" HorizontalAlignment="Left" Height="30" Margin="483,125,0,0" VerticalAlignment="Top" Width="100" FontSize="16" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.533" Visibility="Collapsed"/>
 
             <Button x:Name="btnRegistrar" HorizontalAlignment="Left" Height="60" Margin="150,442,0,0" VerticalAlignment="Top" Width="282" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FF255909" Click="btnRegistrar_Click">
                 <Button.Resources>
