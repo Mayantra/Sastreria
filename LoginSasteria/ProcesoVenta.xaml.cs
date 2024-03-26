@@ -53,7 +53,7 @@ namespace LoginSasteria
             this.WindowState = WindowState.Minimized;
         }
 
-        public void getData()
+        public void getData()//obtener los datos de todo los productos y clientes si los hay
         {
             tabla = data.getTabla();
 
@@ -61,24 +61,22 @@ namespace LoginSasteria
             Regalo = data.getRegalo();
             IDCliente = data.getIDCliente();
             existeCliente = data.getExistenciaCliente();
-            sumaTotal(listacodigos);
+            sumaTotal(listacodigos);//llamar a la lista de los cogigos, para obtener el total
             
         }
         public void printTable()
         {
-            DataDatos.DataContext = tabla;
+            DataDatos.DataContext = tabla;//imprimir la tabla
         }
         public void setExistencia(Boolean existe)
         {
-            existeCliente = existe;
+            existeCliente = existe;//asignar existencia de cliente cuando se ingresan los datos en la interfaz
         }
-        public void sumaTotal(List<string> codigos)
+        public void sumaTotal(List<string> codigos)//suma total de los productos en el txblock
         {
             double total = 0.00;
             try
-            {
-                
-                
+            {                  
                 for (int i = 0; i < codigos.Count; i++)
                 {
                     cn.cerrarCN();
@@ -101,19 +99,16 @@ namespace LoginSasteria
                 MessageBox.Show(e.ToString());
             }
             txTotal.Text = "Q "+total.ToString();
-            
         }
         
 
         public void getDatosCliente()
         {
-            
+            //obtener los datos del cliente cuando haya existencia de el
             if (existeCliente == true)
             {
-
                 try
                 {
-
                     string query = "SELECT * FROM dbleonv2.cliente where idCliente='" + IDCliente + "';";
 
                     MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
@@ -142,26 +137,26 @@ namespace LoginSasteria
             }
         }
 
-        void getVendedor()
+        void getVendedor()//obtener el id del vendedor para los datos de la venta
         {
             leerPass id = new leerPass();
             IDVendedor = id.getIDuser();
         }
         public void setLog(Boolean acceso)
         {
-            Log = acceso;
-            venta();
+            Log = acceso;//otorgar el acceso a la venta para proceder
+            venta();//realizar venta
         }
         public void setVendedor(int id)
         {
-            IDVendedor = id;
+            IDVendedor = id;//asignar el valor del vendedor
         }
         void venta()
         {
 
-            if (Log == true)
+            if (Log == true)//si el logeo fue autorizado entonces se procede a crear la venta
             {
-                if (existeCliente == true)
+                if (existeCliente == true)//si existe el cliente se procede a agregar datos
                 {
                     detallesVenta(IDCliente, IDVendedor, Regalo);
                 }                
@@ -174,7 +169,7 @@ namespace LoginSasteria
 
         }
 
-        int getMaxIDclient()
+        int getMaxIDclient()//obtener el ultimo id del cleinte para agregar el valor maximo en la prioxima consulta
         {
             int maxid = 0;
             try
@@ -199,7 +194,7 @@ namespace LoginSasteria
             return maxid;
         }
 
-        void setDatoscliente()
+        void setDatoscliente()//agregar los datos del cliente a la base de datos
         {
             if (txNombres.Text == null | txNombres.Text == "" | txApellidos.Text == null | txApellidos.Text == "")
             {
@@ -225,7 +220,7 @@ namespace LoginSasteria
                 
             }
         }
-        void crearcliente(string nombres, string apellidos, Int32 telefono, string nit)
+        void crearcliente(string nombres, string apellidos, Int32 telefono, string nit)//crear cliente en a base de datos
         {
             //creamos al cliente con el id maximo que encuentre
             int maxid = getMaxIDclient() + 1;
@@ -254,7 +249,7 @@ namespace LoginSasteria
 
 
         }
-        int maxIdDetalles()
+        int maxIdDetalles()//obtener el ultimo id de detalles
         {
             int maxid = 0;
             try
@@ -278,7 +273,7 @@ namespace LoginSasteria
 
             return maxid;
         }
-        void detallesVenta(int idClient, int idEmpleado, int regalo)
+        void detallesVenta(int idClient, int idEmpleado, int regalo)//agregar datos de los detalles de la venta
         {
             int idDetalles = maxIdDetalles() + 1;
             DateTime now = DateTime.Now;
@@ -302,7 +297,7 @@ namespace LoginSasteria
             completarVenta(idDetalles, listacodigos);
 
         }
-        int maxIdVentas()
+        int maxIdVentas()//obtener el ultimo dato de las ventas
         {
             int maxid = 0;
             try
@@ -357,18 +352,12 @@ namespace LoginSasteria
             //creacion de funcion suma puntos
             MessageBox.Show("Venta Realizada");
             
-            
-            
-            
             winVenta.cleanValues();
             winVenta.Show();
             this.Close();
 
-
-
-
         }
-        public void DeletFromInventario(List<string> productos)
+        public void DeletFromInventario(List<string> productos)//eliminar los productos del inventario
         {
             try
             {                
@@ -400,7 +389,13 @@ namespace LoginSasteria
             }
         }
 
-        private void crearVenta(object sender, RoutedEventArgs e)
+        //funcion para crear factura
+        public void crearFactura()
+        {
+
+        }
+
+        private void crearVenta(object sender, RoutedEventArgs e)//boton de crear venta que desprende todo el proceso
         {
             if(existeCliente == false)
             {
@@ -409,18 +404,15 @@ namespace LoginSasteria
             else
             {
                 Logeo abrir = new Logeo();
-                cn.cerrarCN();
+                cn.cerrarCN();//funcion que desengloba todo
                 abrir.Show();
                 this.Close();
 
             }
-
-            
-            
             
         }        
 
-        private void CancelarOp(object sender, RoutedEventArgs e)
+        private void CancelarOp(object sender, RoutedEventArgs e)//Canelar las operaciones
         {
             ventaInventario abrir = new ventaInventario();
             abrir.cleanValues();
