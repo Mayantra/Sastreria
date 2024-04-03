@@ -31,6 +31,8 @@ namespace LoginSasteria
         public static int Regalo;
         public Boolean existeCliente;
         public static Boolean Log = false;
+        double TotalProdcutos=0.00;
+        Int32 nombreCLientes=0;
 
         ClientesVentas data = new ClientesVentas();
         ventaInventario winVenta = new ventaInventario();
@@ -99,6 +101,7 @@ namespace LoginSasteria
                 MessageBox.Show(e.ToString());
             }
             txTotal.Text = "Q "+total.ToString();
+            TotalProdcutos=total;
         }
         
 
@@ -217,6 +220,7 @@ namespace LoginSasteria
                 }
 
                 crearcliente(nombreclient, apellidosCliente, telefonoclient, nit);//funcion para crear al cliente
+                nombreCLientes = telefonoclient;
                 
             }
         }
@@ -228,7 +232,7 @@ namespace LoginSasteria
             {
                 cn.cerrarCN();
                 string query = "INSERT INTO `dbleonv2`.`cliente` (`idCliente`, `Nombres`, `Apellidos`, `telefono`, `puntos`, `NIT`) " +
-                    "VALUES ('" + maxid + "', '" + nombres + "', '" + apellidos + "', '" + telefono + "', '0', '" + nit + "');";
+                    "VALUES ('" + maxid + "', '" + nombres + "', '" + apellidos + "', '" + telefono + "', '1', '" + nit + "');";
 
                 MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
                 MySqlDataReader dr = comando.ExecuteReader();
@@ -244,7 +248,6 @@ namespace LoginSasteria
                 MessageBox.Show(e.ToString());
             }
             cn.cerrarCN();
-            
             
 
 
@@ -325,10 +328,11 @@ namespace LoginSasteria
         void completarVenta(int Detalles, List<string> productos)
         {
             //Completar la venta
+            int idVenta=0;
             for (int i =0; i < productos.Count;i++)
             {
                 cn.cerrarCN();
-                int idVenta = maxIdVentas() + 1;
+                idVenta = maxIdVentas() + 1;
                 
                 try
                 {
@@ -351,7 +355,10 @@ namespace LoginSasteria
             DeletFromInventario(listacodigos);
             //creacion de funcion suma puntos
             MessageBox.Show("Venta Realizada");
-            
+            GenerarFactura factura = new GenerarFactura();
+            //GENERAR la FACTURA -------------------------------------------------------------------------*************
+            factura.GenerarDatosFactura(idVenta.ToString(), IDVendedor, nombreCLientes,tabla, TotalProdcutos);
+            //------------------------------------------------------------------------------------------------------
             winVenta.cleanValues();
             winVenta.Show();
             this.Close();
@@ -387,12 +394,6 @@ namespace LoginSasteria
             {
                 MessageBox.Show (e.ToString());
             }
-        }
-
-        //funcion para crear factura
-        public void crearFactura()
-        {
-
         }
 
         private void crearVenta(object sender, RoutedEventArgs e)//boton de crear venta que desprende todo el proceso

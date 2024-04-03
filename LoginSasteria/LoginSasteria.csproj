@@ -192,6 +192,7 @@
     <Compile Include="crearBarrasMenu.xaml.cs">
       <DependentUpon>crearBarrasMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GenerarFactura.cs" />
     <Compile Include="ImprimirBarras.xaml.cs">
       <DependentUpon>ImprimirBarras.xaml</DependentUpon>
     </Compile>
@@ -346,6 +347,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="about.svg" />
+    <Resource Include="LogoBlack.png" />
     <Resource Include="LupaBuscar.png" />
     <Resource Include="printingBar.png" />
     <Resource Include="barcodeW.png" />
