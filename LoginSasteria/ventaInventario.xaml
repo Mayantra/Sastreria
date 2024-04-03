@@ -257,7 +257,7 @@
         <TextBox x:Name="txCodigo" Template="{StaticResource  TextBoxBaseControlTemplate}" HorizontalAlignment="Left" 
                  Padding="15" 
                  Height="60" Margin="1021,80,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="245" 
-                 SelectionBrush="#FF74EFFF" BorderBrush="{x:Null}" Background="White" FontSize="18"/>
+                 SelectionBrush="#FF74EFFF" BorderBrush="{x:Null}" Background="White" FontSize="18" KeyDown="LeerCodigoBarras"/>
 
         <Button x:Name="btnVenta" HorizontalAlignment="Left" Height="60" Margin="1019,340,0,0" VerticalAlignment="Top" Width="246" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FF684BA8" Click="RealizarVenta">
             <Button.Resources>
