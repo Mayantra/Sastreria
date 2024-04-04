@@ -13,7 +13,7 @@ namespace LoginSasteria
         public static DataTable tabla = new DataTable();
         public static List<string> listacodigos;
         public static int IDCliente;
-        public static int IDUsuario;
+        public static int IDUsuario=0;
         public static int regalo;
         public static Boolean existeCliente;
         

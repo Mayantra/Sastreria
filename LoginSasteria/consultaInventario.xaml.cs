@@ -60,5 +60,12 @@ namespace LoginSasteria
             abrir.Show();
             this.Close();
         }
+
+        private void abrirEstadoCuenta(object sender, RoutedEventArgs e)
+        {
+            estadoCuentaInventario abrir = new estadoCuentaInventario();
+            abrir.Show();
+            this.Close();
+        }
     }
 }

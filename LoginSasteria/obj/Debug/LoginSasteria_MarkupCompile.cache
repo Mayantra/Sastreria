@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\App.xaml
-12-1928981463
+141598150547
 141833496081
-21-2110848474
+23-298639028
 56-622374123
-AccesoNoAutorizado.xaml;consultaInventario.xaml;CrearBarras.xaml;crearBarrasMenu.xaml;ImprimirBarras.xaml;InventarioInventario.xaml;Logeo.xaml;mainInventario.xaml;MainWindow.xaml;ProcesoVenta.xaml;ventaInventario.xaml;ventanaInicio.xaml;
+AccesoNoAutorizado.xaml;consultaInventario.xaml;CrearBarras.xaml;crearBarrasMenu.xaml;estadoCuentaInventario.xaml;EstadoPorFechas.xaml;ImprimirBarras.xaml;InventarioInventario.xaml;Logeo.xaml;mainInventario.xaml;MainWindow.xaml;ProcesoVenta.xaml;ventaInventario.xaml;ventanaInicio.xaml;
 
 False
 

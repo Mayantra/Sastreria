@@ -192,6 +192,12 @@
     <Compile Include="crearBarrasMenu.xaml.cs">
       <DependentUpon>crearBarrasMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="estadoCuentaInventario.xaml.cs">
+      <DependentUpon>estadoCuentaInventario.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EstadoPorFechas.xaml.cs">
+      <DependentUpon>EstadoPorFechas.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GenerarFactura.cs" />
     <Compile Include="ImprimirBarras.xaml.cs">
       <DependentUpon>ImprimirBarras.xaml</DependentUpon>
@@ -227,6 +233,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="crearBarrasMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="estadoCuentaInventario.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EstadoPorFechas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

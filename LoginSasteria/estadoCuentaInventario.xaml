@@ -1,11 +1,11 @@
-﻿<Window x:Class="LoginSasteria.consultaInventario"
+﻿<Window x:Class="LoginSasteria.estadoCuentaInventario"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LoginSasteria"
-        mc:Ignorable="d"
-                         WindowStartupLocation="CenterScreen"
+                mc:Ignorable="d"
+                 WindowStartupLocation="CenterScreen"
   Title="" Height="700" Width="1300"  Foreground="{x:Null}"
   WindowStyle="None"
   Background="Transparent"
@@ -55,7 +55,7 @@ BorderThickness="{TemplateBinding BorderThickness}">
 
         <Rectangle HorizontalAlignment="Left" Height="700" VerticalAlignment="Center" Width="15" Fill="#FFEDE4A4"/>
 
-        <Button x:Name="btnInicio" HorizontalAlignment="Left" Height="60" Margin="15,353,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB" Click="abrirInicio">
+        <Button x:Name="btnInicio" HorizontalAlignment="Left" Height="60" Margin="15,353,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB">
             <Grid Height="60" Width="170">
                 <Label Content="Inicio" Foreground="#FFEDE4A4" Margin="14,14,81,10"></Label>
                 <Rectangle Margin="119,14,10,10">
@@ -69,9 +69,9 @@ BorderThickness="{TemplateBinding BorderThickness}">
                 <StaticResource ResourceKey="NoMouseOverButtonTemplate"/>
             </Button.Template>
         </Button>
-        <Button HorizontalAlignment="Left" Height="60" Margin="15,413,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB">
+        <Button x:Name="btnVenta" HorizontalAlignment="Left" Height="60" Margin="15,413,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB">
             <Grid Height="60" Width="170">
-                <Label Content="Venta" Foreground="#FFEDE4A4" Margin="10,14,70,10"></Label>
+                <Label Content="Venta" Foreground="#FFEDE4A4" Margin="14,14,81,10"></Label>
                 <Rectangle Margin="119,14,10,10">
                     <Rectangle.Fill>
                         <ImageBrush ImageSource="/1.png" Stretch="Uniform"/>
@@ -83,29 +83,29 @@ BorderThickness="{TemplateBinding BorderThickness}">
                 <StaticResource ResourceKey="NoMouseOverButtonTemplate"/>
             </Button.Template>
         </Button>
-        <Button HorizontalAlignment="Left" Height="60" Margin="0,473,0,0" VerticalAlignment="Top" Width="185" BorderBrush="{x:Null}" Background="#FFEDE4A4" Foreground="{x:Null}" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB" Template="{StaticResource NoMouseOverButtonTemplate}">
+        <Button x:Name="btnConsulta" HorizontalAlignment="Left" Height="60" Margin="15,473,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="{x:Null}" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB" Template="{StaticResource NoMouseOverButtonTemplate}">
             <Grid Height="60" Width="170">
-                <Label Content="Consulta" Foreground="Black" Margin="10,14,70,10" FontSize="20"/>
+                <Label Content="Consulta" Foreground="#FFEDE4A4" Margin="10,14,70,10" FontSize="20"/>
                 <Rectangle Margin="119,14,10,10">
                     <Rectangle.Fill>
-                        <ImageBrush ImageSource="/consB.png" Stretch="Uniform"/>
+                        <ImageBrush ImageSource="/ConsultaA.png" Stretch="Uniform"/>
                     </Rectangle.Fill>
                 </Rectangle>
             </Grid>
 
         </Button>
-        <Button HorizontalAlignment="Left" Height="60" Margin="15,533,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB" Template="{StaticResource NoMouseOverButtonTemplate}">
+        <Button HorizontalAlignment="Left" Height="60" Margin="0,533,0,0" VerticalAlignment="Top" Width="185" BorderBrush="{x:Null}" Background="#FFEDE4A4" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB" Template="{StaticResource NoMouseOverButtonTemplate}">
             <Grid Height="60" Width="170">
-                <Label Content="Inventario" Foreground="#FFEDE4A4" Margin="5,14,56,10" FontSize="20"/>
+                <Label Content="Inventario" Foreground="Black" Margin="5,14,56,10" FontSize="20"/>
                 <Rectangle Margin="119,14,10,10">
                     <Rectangle.Fill>
-                        <ImageBrush ImageSource="/hanger_114789.png" Stretch="Uniform"/>
+                        <ImageBrush ImageSource="/invB.png" Stretch="Uniform"/>
                     </Rectangle.Fill>
                 </Rectangle>
             </Grid>
 
         </Button>
-        <Button HorizontalAlignment="Left" Height="60" Margin="15,593,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB" Template="{StaticResource NoMouseOverButtonTemplate}">
+        <Button x:Name="btnBarras" HorizontalAlignment="Left" Height="60" Margin="15,593,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB" Template="{StaticResource NoMouseOverButtonTemplate}">
             <Grid Height="60" Width="170">
                 <Label Content="Barras" Foreground="#FFEDE4A4" Margin="10,14,70,10"/>
                 <Rectangle Margin="119,14,10,10">
@@ -118,6 +118,8 @@ BorderThickness="{TemplateBinding BorderThickness}">
         </Button>
 
 
+
+
         <Label x:Name="lbH" Height="85" Margin="40,10,1145,0" VerticalAlignment="Top" FontSize="20" FontFamily="MingLiU_HKSCS-ExtB" FontWeight="Bold" Foreground="White">
             <Label.Resources>
                 <Style TargetType="{x:Type AccessText}">
@@ -126,53 +128,36 @@ BorderThickness="{TemplateBinding BorderThickness}">
             </Label.Resources>
             <TextBlock x:Name="txblockHora" TextAlignment="Left" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Height="77" Width="105" FontWeight="Normal" FontSize="22"/>
         </Label>
-        <Button  HorizontalContentAlignment="Left" VerticalContentAlignment="Bottom" HorizontalAlignment="Left" Height="260" Margin="380,75,0,0" VerticalAlignment="Top" Width="320" Background="#FFE6C8B8" BorderBrush="{x:Null}" Foreground="{x:Null}">
-            <Grid Height="260" Width="320">
-                <Rectangle HorizontalAlignment="Left" Height="145" VerticalAlignment="Top" Width="145" Margin="18,98,0,0">
+        <Button x:Name="btnFecha" HorizontalAlignment="Left" Height="560" Margin="376,80,0,0"
+            VerticalAlignment="Top" Width="320" Background="#FF09594D" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="abrirEstadoFechas">
+            <Grid Height="550" Width="290">
+                <Rectangle Margin="26,80,26,275">
                     <Rectangle.Fill>
-                        <ImageBrush ImageSource="/pencilblack.png" Stretch="Uniform"/>
+                        <ImageBrush Stretch="Uniform" ImageSource="/weeklycalendarcircularbutton_104710.png"/>
                     </Rectangle.Fill>
                 </Rectangle>
-                <Label Content="Editar" HorizontalAlignment="Left" Height="60" Margin="160,10,0,0" VerticalAlignment="Top" Width="140" Foreground="Black" Background="{x:Null}" FontFamily="MingLiU_HKSCS-ExtB" FontSize="45"/>
+
+                <TextBlock Text="Estado por Fechas" FontSize="50" Margin="26,300,26,100" Foreground="White"
+                    TextWrapping="WrapWithOverflow" TextAlignment="Center"/>
 
             </Grid>
         </Button>
-        <Button HorizontalAlignment="Left" Height="260" Margin="740,75,0,0" VerticalAlignment="Top" Width="320" Background="#FF336653" BorderBrush="{x:Null}" Foreground="{x:Null}">
-            <Grid Height="260" Width="320">
-                <Rectangle HorizontalAlignment="Left" Height="145" VerticalAlignment="Top" Width="145" Margin="0,115,0,0">
+        <Button x:Name="btnFechaEmpleado" HorizontalAlignment="Left" Height="560" Margin="748,80,0,0"
+    VerticalAlignment="Top" Width="320" Background="#FF213E61" BorderBrush="{x:Null}" Foreground="{x:Null}">
+            <Grid Height="550" Width="290">
+                <Rectangle Margin="26,80,26,275">
                     <Rectangle.Fill>
-                        <ImageBrush ImageSource="/trajewhite.png" Stretch="Uniform"/>
+                        <ImageBrush Stretch="Uniform" ImageSource="/about.png"/>
                     </Rectangle.Fill>
                 </Rectangle>
-                <Label Content="Conversión" HorizontalAlignment="Left" Height="50" Margin="120,18,0,0" VerticalAlignment="Top" Width="190" Foreground="White" Background="{x:Null}" FontFamily="MingLiU_HKSCS-ExtB" FontSize="35"/>
+
+                <TextBlock Text="Estado por Empleados" FontSize="50" Margin="26,300,26,100" Foreground="White"
+            TextWrapping="WrapWithOverflow" TextAlignment="Center"/>
 
             </Grid>
         </Button>
-        <Button HorizontalAlignment="Left" Height="260" Margin="380,375,0,0" VerticalAlignment="Top" Width="320" Background="#FFB8E6D5" BorderBrush="{x:Null}" Foreground="{x:Null}">
-            <Grid Height="260" Width="320">
-                <Rectangle HorizontalAlignment="Left" Height="113" VerticalAlignment="Top" Width="115" Margin="18,130,0,0">
-                    <Rectangle.Fill>
-                        <ImageBrush ImageSource="/RegaloBlack.png" Stretch="Uniform"/>
-                    </Rectangle.Fill>
-                </Rectangle>
-                <Label HorizontalAlignment="Left" Height="138" Margin="63,32,0,0" VerticalAlignment="Top" Width="300" Foreground="Black" Background="{x:Null}" FontFamily="MingLiU_HKSCS-ExtB" FontSize="45">
-                    <TextBlock HorizontalAlignment="Center" TextAlignment="Right" Height="124" TextWrapping="Wrap" Text="Proceso de Regalo" VerticalAlignment="Center" Width="225" FontSize="35"/>
-                </Label>
-            </Grid>
-        </Button>
-        <Button x:Name="btnEstado" HorizontalAlignment="Left" Height="260" Margin="740,375,0,0" VerticalAlignment="Top" Width="320" Background="White" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="abrirEstadoCuenta">
-            <Grid Height="260" Width="320">
-                <Rectangle HorizontalAlignment="Left" Height="113" VerticalAlignment="Top" Width="110" Margin="18,130,0,0">
-                    <Rectangle.Fill>
-                        <ImageBrush ImageSource="/Qblack.png" Stretch="Uniform"/>
-                    </Rectangle.Fill>
-                </Rectangle>
-                <Label HorizontalAlignment="Left" Height="138" Margin="63,32,0,0" VerticalAlignment="Top" Width="300" Foreground="Black" Background="{x:Null}" FontFamily="MingLiU_HKSCS-ExtB" FontSize="45">
-                    <TextBlock HorizontalAlignment="Center" TextAlignment="Right" Height="124" TextWrapping="Wrap" Text="Estado de cuenta" VerticalAlignment="Center" Width="225" FontSize="35"/>
-                </Label>
-            </Grid>
-        </Button>
-        
+
+
 
 
     </Grid>
