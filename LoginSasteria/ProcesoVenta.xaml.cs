@@ -220,7 +220,7 @@ namespace LoginSasteria
                 }
 
                 crearcliente(nombreclient, apellidosCliente, telefonoclient, nit);//funcion para crear al cliente
-                nombreCLientes = telefonoclient;
+                
                 
             }
         }
@@ -353,6 +353,7 @@ namespace LoginSasteria
             cn.cerrarCN();
 
             DeletFromInventario(listacodigos);
+            nombreCLientes = int.Parse(txTelefono.Text);
             //creacion de funcion suma puntos
             MessageBox.Show("Venta Realizada");
             GenerarFactura factura = new GenerarFactura();
