@@ -121,26 +121,6 @@ E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSaster
 E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\bin\Debug\zxing.presentation.dll
 E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\bin\Debug\zxing.xml
 E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\bin\Debug\zxing.presentation.xml
-C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\LoginSasteria.csproj.AssemblyReference.cache
-C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\MainWindow.baml
-C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\AccesoNoAutorizado.g.cs
-C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\consultaInventario.g.cs
-C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\CrearBarras.g.cs
-C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\crearBarrasMenu.g.cs
-C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\estadoCuentaInventario.g.cs
-C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\EstadoPorFechas.g.cs
-C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\ImprimirBarras.g.cs
-C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\InventarioInventario.g.cs
-C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\Logeo.g.cs
-C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\mainInventario.g.cs
-C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\MainWindow.g.cs
-C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\ProcesoVenta.g.cs
-C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\ventaInventario.g.cs
-C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\ventanaInicio.g.cs
-C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\App.g.cs
-C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\LoginSasteria_Content.g.cs
-C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\LoginSasteria_MarkupCompile.cache
-C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\LoginSasteria_MarkupCompile.lref
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\libSkiaSharp.dylib
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\x86\libSkiaSharp.dll
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\x64\libSkiaSharp.dll
@@ -229,6 +209,26 @@ C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\System.Threadi
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\System.ValueTuple.xml
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\zxing.xml
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\zxing.presentation.xml
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\LoginSasteria.csproj.AssemblyReference.cache
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\MainWindow.baml
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\AccesoNoAutorizado.g.cs
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\consultaInventario.g.cs
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\CrearBarras.g.cs
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\crearBarrasMenu.g.cs
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\estadoCuentaInventario.g.cs
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\EstadoPorFechas.g.cs
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\ImprimirBarras.g.cs
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\InventarioInventario.g.cs
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\Logeo.g.cs
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\mainInventario.g.cs
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\MainWindow.g.cs
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\ProcesoVenta.g.cs
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\ventaInventario.g.cs
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\ventanaInicio.g.cs
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\App.g.cs
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\LoginSasteria_Content.g.cs
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\LoginSasteria_MarkupCompile.cache
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\LoginSasteria_MarkupCompile.lref
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\AccesoNoAutorizado.baml
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\consultaInventario.baml
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\CrearBarras.baml

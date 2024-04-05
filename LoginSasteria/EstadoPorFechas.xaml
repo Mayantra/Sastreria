@@ -53,7 +53,7 @@ BorderThickness="{TemplateBinding BorderThickness}">
         </ControlTemplate>
 
 
-        
+
 
 
 
@@ -162,7 +162,7 @@ BorderThickness="{TemplateBinding BorderThickness}">
         <DataGrid ItemsSource="{Binding}" ColumnWidth="Auto" IsReadOnly="True" GridLinesVisibility="None" CanUserAddRows="False" 
            CanUserDeleteRows="False" Padding="10"
            CanUserResizeColumns="False" CanUserResizeRows="False"
-           x:Name="DataConsulta" HorizontalAlignment="Left" Height="325" Margin="245,75,0,0" VerticalAlignment="Top" Width="950" FontSize="15" BorderBrush="{x:Null}" Background="White" AreRowDetailsFrozen="True" RowBackground="#FFF1F1F1" AlternatingRowBackground="White" Foreground="Black" FontFamily="Arial">
+           x:Name="DataConsulta" HorizontalAlignment="Left" Height="325" Margin="240,75,0,0" VerticalAlignment="Top" Width="960" FontSize="15" BorderBrush="{x:Null}" Background="White" AreRowDetailsFrozen="True" RowBackground="#FFF1F1F1" AlternatingRowBackground="White" Foreground="Black" FontFamily="Arial">
             <DataGrid.ColumnHeaderStyle>
                 <Style TargetType="DataGridColumnHeader">
                     <Setter Property="Background" Value="#580000"/>
@@ -191,9 +191,150 @@ BorderThickness="{TemplateBinding BorderThickness}">
                 </Style>
             </DataGrid.Resources>
         </DataGrid>
-        <DatePicker  HorizontalAlignment="Left" Margin="365,525,0,0" VerticalAlignment="Top" Height="50" Width="385">
+        <DatePicker x:Name="Date1" HorizontalAlignment="Left" Margin="400,443,0,0" VerticalAlignment="Top" Height="60" Width="300" VerticalContentAlignment="Center"
+                     BorderBrush="Transparent">
+            <DatePicker.Resources>
 
+                <Style TargetType="Button">
+                    <Setter Property="Width" Value="50"/>
+
+                </Style>
+                <Style TargetType="DatePicker">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="DatePicker">
+                                <StackPanel>
+                                    <Grid Margin="5">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <DatePickerTextBox x:Name="PART_TextBox" Grid.Column="0"  Template="{StaticResource TextBoxBaseControlTemplate}" 
+                                                 Height="50" Padding="10" FontSize="20"  Margin="0,0,20,0"/>
+                                        <Button Grid.Column="1" Click="AbrirCalendario" BorderBrush="Transparent" Background="#580000">
+                                            <Button.Resources>
+                                                <Style TargetType="Border">
+                                                    <Setter Property="CornerRadius" Value="100"/>
+                                                </Style>
+                                            </Button.Resources>
+                                        </Button>
+                                        <Popup x:Name="PART_Popup" PlacementTarget="{Binding ElementName=PART_TextBox}" StaysOpen="False">
+                                            <Calendar x:Name="PART_Calendar" SelectedDatesChanged="Calendar_SelectedDatesChanged"/>
+                                        </Popup>
+                                    </Grid>
+                                </StackPanel>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="DatePicker.CalendarStyle">
+                        <Setter.Value>
+                            <Style TargetType="{x:Type Calendar}">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Calendar}">
+                                            <Viewbox>
+                                                <CalendarItem x:Name="PART_CalendarItem"
+                                          Background="{TemplateBinding Background}"
+                                          BorderBrush="Transparent"
+                                          BorderThickness="{TemplateBinding BorderThickness}" 
+                                          
+                                          Width="auto"/>
+                                            </Viewbox>
+                                        </ControlTemplate>
+
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Width" Value="230"/>
+                            </Style>
+
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+
+            </DatePicker.Resources>
         </DatePicker>
+        <DatePicker x:Name="Date2" HorizontalAlignment="Left" Margin="740,443,0,0" VerticalAlignment="Top" 
+                    Height="60" Width="300" VerticalContentAlignment="Center"
+             BorderBrush="Transparent">
+            <DatePicker.Resources>
+
+                <Style TargetType="Button">
+                    <Setter Property="Width" Value="50"/>
+
+                </Style>
+                <Style TargetType="DatePicker">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="DatePicker">
+                                <StackPanel>
+                                    <Grid Margin="5">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <DatePickerTextBox x:Name="PART_TextBox" Grid.Column="0"  Template="{StaticResource TextBoxBaseControlTemplate}" 
+                                         Height="50" Padding="10" FontSize="20" Margin="0,0,20,0"/>
+                                        <Button Grid.Column="1" Click="AbrirCalendario" BorderBrush="Transparent" Background="#580000">
+                                            <Button.Resources>
+                                                <Style TargetType="Border">
+                                                    <Setter Property="CornerRadius" Value="100"/>
+                                                </Style>
+                                            </Button.Resources>
+                                        </Button>
+                                        <Popup x:Name="PART_Popup" PlacementTarget="{Binding ElementName=PART_TextBox}" StaysOpen="False">
+                                            <Calendar x:Name="PART_Calendar" SelectedDatesChanged="Calendar_SelectedDatesChanged" />
+                                        </Popup>
+                                    </Grid>
+                                </StackPanel>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+
+                    <Setter Property="DatePicker.CalendarStyle">
+                        <Setter.Value>
+                            <Style TargetType="{x:Type Calendar}">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Calendar}">
+                                            <Viewbox>
+                                                <CalendarItem x:Name="PART_CalendarItem"
+                                                              Background="{TemplateBinding Background}"
+                                                              BorderBrush="Transparent"
+                                                              BorderThickness="{TemplateBinding BorderThickness}" 
+                                                              
+                                                              Width="auto"/>                                                
+                                            </Viewbox>
+                                        </ControlTemplate>
+                                        
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Width" Value="230"/>
+                            </Style>
+                            
+                        </Setter.Value>
+                    </Setter>
+                    
+                </Style>
+                
+                
+            </DatePicker.Resources>
+            
+            
+        </DatePicker>
+        <Button x:Name="btnEstado" Content="Ver Estado" HorizontalAlignment="Left" Height="60" FontSize="20"
+                BorderBrush="Transparent" Background="#FFEDE4A4"
+                Margin="740,554,0,0" VerticalAlignment="Top" Width="300" Click="ObtenerFechas">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <TextBlock x:Name="txTotalFecha" HorizontalAlignment="Left" Margin="240,545,0,0" TextWrapping="Wrap"
+                   Foreground="White" FontSize="30" TextAlignment="Right" Padding="15" 
+                   VerticalAlignment="Top" Height="78" Width="460"/>
 
 
 
