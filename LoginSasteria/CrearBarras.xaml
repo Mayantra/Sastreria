@@ -224,44 +224,46 @@
         <Grid HorizontalAlignment="Left" Height="584" Margin="285,0,0,0" VerticalAlignment="Center" Width="935" RenderTransformOrigin="0.5,0.5">
             <TextBox x:Name="txtPrecio" Template="{StaticResource  TextBoxBaseControlTemplate}" HorizontalAlignment="Left" 
                  Padding="1,1,1,1" 
-                 Height="30" Margin="635,173,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="245" 
+                 Height="30" Margin="634,193,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="245" 
                  SelectionBrush="{x:Null}" BorderBrush="{x:Null}" Background="White" FontSize="16"/>
 
             <TextBox x:Name="txtCodigo" Template="{StaticResource  TextBoxBaseControlTemplate}" HorizontalAlignment="Left" 
                  Padding="1,1,1,1"
-                 Height="30" Margin="635,331,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="245" 
-                 SelectionBrush="{x:Null}" BorderBrush="{x:Null}" Background="White" FontSize="16" IsEnabled="False"/>
+                 Height="30" Margin="634,384,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="245" 
+                 SelectionBrush="{x:Null}" BorderBrush="{x:Null}" Background="White" FontSize="16" IsEnabled="False" Visibility="Collapsed"/>
 
             <TextBox x:Name="txtDetalles" Template="{StaticResource  TextBoxBaseControlTemplate}" HorizontalAlignment="Left" 
                  Padding="1,1,1,1"
-                 Height="84" Margin="635,224,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="245" 
+                 Height="100" Margin="634,261,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="245" 
                  SelectionBrush="{x:Null}" BorderBrush="{x:Null}" Background="White" FontSize="16" Text="Sin detalles"/>
 
             <TextBox x:Name="txtOtroNombre" Template="{StaticResource TextBoxBaseControlTemplate}" HorizontalAlignment="Left" Visibility="Collapsed"
                  Padding="1,1,1,1" 
-                 Height="30" Margin="430,57,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="245" 
+                 Height="30" Margin="634,58,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="245" 
                  SelectionBrush="{x:Null}" BorderBrush="{x:Null}" Background="White" FontSize="16"/>
 
-            <TextBox x:Name="txtCantidad" Template="{StaticResource TextBoxBaseControlTemplate}" HorizontalAlignment="Left" Visibility="Collapsed"
+            <TextBox x:Name="txtCantidad" Template="{StaticResource TextBoxBaseControlTemplate}" HorizontalAlignment="Left"
                  Padding="1,1,1,1" 
-                 Height="30" Margin="635,125,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="245" 
+                 Height="30" Margin="634,125,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="245" 
                  SelectionBrush="{x:Null}" BorderBrush="{x:Null}" Background="White" FontSize="16" Text="1"/>
 
             <ComboBox x:Name="cbNombre" HorizontalAlignment="Left" Margin="168,57,0,0" VerticalAlignment="Top" Width="245" Height="30" FontSize="16" Padding="1,1,1,1" SelectionChanged="SeleccionarNombreProducto"/>
             <ComboBox x:Name="cbColor" HorizontalAlignment="Left" Margin="168,193,0,0" VerticalAlignment="Top" Width="245" Height="30" FontSize="16" Padding="1,1,1,1"/>
             <ComboBox x:Name="cbTalla" HorizontalAlignment="Left" Margin="168,261,0,0" VerticalAlignment="Top" Width="245" Height="30" FontSize="16" Padding="1,1,1,1"/>
             <ComboBox x:Name="cbTela"  HorizontalAlignment="Left" Margin="168,331,0,0" VerticalAlignment="Top" Width="245" Height="30" FontSize="16" Padding="1,1,1,1"/>
-            <ComboBox x:Name="cbTipoProducto" HorizontalAlignment="Left" Margin="168,125,0,0" VerticalAlignment="Top" Width="245" Height="30" FontSize="16" Padding="1,1,1,1" SelectionChanged="CrearCodigoBarras"/>
+            <ComboBox x:Name="cbTipoProducto" HorizontalAlignment="Left" Margin="168,125,0,0" VerticalAlignment="Top" Width="245" Height="30" FontSize="16" Padding="1,1,1,1" SelectionChanged="CargarDatosTalla"/>
 
-            <Label Content="Nombre" HorizontalAlignment="Left" Height="30" Margin="45,57,0,0" VerticalAlignment="Top" Width="100" FontSize="16" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.533"/>
+            <Label Content="Articulo" HorizontalAlignment="Left" Height="30" Margin="45,57,0,0" VerticalAlignment="Top" Width="100" FontSize="16" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.533"/>
             <Label Content="Color" HorizontalAlignment="Left" Height="30" Margin="45,193,0,0" VerticalAlignment="Top" Width="100" FontSize="16" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.533"/>
             <Label Content="Talla" HorizontalAlignment="Left" Height="30" Margin="45,261,0,0" VerticalAlignment="Top" Width="100" FontSize="16" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.533"/>
             <Label Content="Tela" HorizontalAlignment="Left" Height="30" Margin="45,331,0,0" VerticalAlignment="Top" Width="100" FontSize="16" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.533"/>
-            <Label Content="Precio" HorizontalAlignment="Left" Height="30" Margin="483,173,0,0" VerticalAlignment="Top" Width="100" FontSize="16" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.533"/>
-            <Label Content="Detalles" HorizontalAlignment="Left" Height="30" Margin="483,251,0,0" VerticalAlignment="Top" Width="100" FontSize="16" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.533"/>
-            <Label Content="Código" HorizontalAlignment="Left" Height="32" Margin="483,330,0,0" VerticalAlignment="Top" Width="100" FontSize="16" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.533"/>
+            <Label Content="Precio" HorizontalAlignment="Left" Height="30" Margin="482,193,0,0" VerticalAlignment="Top" Width="100" FontSize="16" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.533"/>
+            <Label Content="Detalles" HorizontalAlignment="Left" Height="30" Margin="482,296,0,0" VerticalAlignment="Top" Width="100" FontSize="16" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.533"/>
+            <Label Content="Código" HorizontalAlignment="Left" Height="32" Margin="482,383,0,0" VerticalAlignment="Top" Width="100" FontSize="16" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.533" Visibility="Collapsed"/>
             <Label Content="Producto" HorizontalAlignment="Left" Height="30" Margin="45,125,0,0" VerticalAlignment="Top" Width="100" FontSize="16" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.533"/>
-            <Label Content="Cantidad" HorizontalAlignment="Left" Height="30" Margin="483,125,0,0" VerticalAlignment="Top" Width="100" FontSize="16" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.533" Visibility="Collapsed"/>
+            <Label Content="Cantidad" HorizontalAlignment="Left" Height="30" Margin="482,125,0,0" VerticalAlignment="Top" Width="100" FontSize="16" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.533"/>
+            <Label x:Name="lblArticuloNuevo" Content="Nombre articulo nuevo" HorizontalAlignment="Left" Height="41" Margin="442,52,0,0" VerticalAlignment="Top" Width="180" FontSize="16" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.533" Visibility="Collapsed"/>
+
 
             <Button x:Name="btnRegistrar" HorizontalAlignment="Left" Height="60" Margin="150,442,0,0" VerticalAlignment="Top" Width="282" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FF255909" Click="btnRegistrar_Click">
                 <Button.Resources>

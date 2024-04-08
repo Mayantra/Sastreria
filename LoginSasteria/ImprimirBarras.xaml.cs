@@ -1,10 +1,26 @@
 ﻿using MySql.Data.MySqlClient;
 using Mysqlx.Cursor;
 using MySqlX.XDevAPI.Relational;
-using SkiaSharp;
+using System.Data;
+using ZXing;
+using ZXing.Common;
+using BarcodeStandard;
+using iText.Layout;
+using iText.Kernel.Pdf;
+using iText.Kernel.Geom;
+using iText.IO.Image;
+using iText.Layout.Element;
+using iText.Commons.Datastructures;
+using System.Drawing.Imaging;
+using System.Drawing;
+using Image = iText.Layout.Element.Image;
+using PixelFormat = System.Drawing.Imaging.PixelFormat;
+using Paragraph = iText.Layout.Element.Paragraph;
+using iText.Layout.Properties;
+using Table = iText.Layout.Element.Table;
+
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,23 +33,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.IO;
-using iText.Layout;
-using iText.Kernel.Pdf;
-using iText.Kernel.Geom;
-using iText.IO.Image;
-using iText.Layout.Element;
-using BarcodeStandard;
-using System.CodeDom.Compiler;
-using ZXing;
-using ZXing.Common;
-using iText.Commons.Datastructures;
-using System.Drawing.Imaging;
-using System.Drawing;
-using Image = iText.Layout.Element.Image;
-using PixelFormat = System.Drawing.Imaging.PixelFormat;
-using Paragraph = iText.Layout.Element.Paragraph;
-using iText.Layout.Properties;
-using Table = iText.Layout.Element.Table;
+using System.Reflection.Emit;
 
 
 namespace LoginSasteria
@@ -103,55 +103,72 @@ namespace LoginSasteria
 
         private void btnImprimir_Click(object sender, RoutedEventArgs e)
         {
-            DateTime now = DateTime.Now;
-            string fecha = now.ToString("dd-MM-yyyy");
-
-            // Ruta para el archivo PDF que se creará
-            string dest = "C:\\Codigos\\Codigos"+fecha+".pdf";
-
-            // Crear un objeto PdfWriter
-            PdfWriter writer = new PdfWriter(dest);
-
-            // Crear un objeto PdfDocument
-            PdfDocument pdf = new PdfDocument(writer);
-
-            // Crear un objeto Document
-            Document document = new Document(pdf);
-
-            // Crear una tabla con 2 columnas para organizar los códigos de barras
-            Table table = new Table(UnitValue.CreatePercentArray(new float[] { 1, 1 })).UseAllAvailableWidth();
-
-
-            foreach (DataRowView row in dgFechas.Items)
+            using (MemoryStream memoryStream = new MemoryStream())
             {
-                if (row.Row.RowState != DataRowState.Detached)
+                // Crear un objeto PdfWriter que escribe en el MemoryStream
+                PdfWriter writer = new PdfWriter(memoryStream);
+                writer.SetCloseStream(false);
+
+                // Crear un objeto PdfDocument
+                PdfDocument pdf = new PdfDocument(writer);
+
+                // Crear un objeto Document
+                Document document = new Document(pdf);
+
+                // Crear una tabla con 2 columnas para organizar los códigos de barras
+                Table table = new Table(UnitValue.CreatePercentArray(new float[] { 1, 1 })).UseAllAvailableWidth();
+
+                //Logica de la creacion de la tabla de 2 columnas para la colocacion de los codigos
+                foreach (DataRowView row in dgFechas.Items)
                 {
-                    // Obtener el valor del "codigo" de la fila actual
-                    string codigo = row["codigo"].ToString();
+                    if (row.Row.RowState != DataRowState.Detached)
+                    {
+                        // Obtener el valor del "codigo" de la fila actual
+                        string codigo = row["codigo"].ToString();
 
-                    // Generar la imagen del código de barras con el texto
-                    byte[] barcodeBytes = GenerateBarcode(codigo);
-                    ImageData imageData = ImageDataFactory.Create(barcodeBytes);
-                    Image barcodeImage = new Image(imageData);
+                        // Generar la imagen del código de barras con el texto
+                        byte[] barcodeBytes = GenerateBarcode(codigo);
+                        ImageData imageData = ImageDataFactory.Create(barcodeBytes);
+                        Image barcodeImage = new Image(imageData);
 
-                    // Agregar la celda con la imagen del código de barras a la tabla
-                    Cell cell = new Cell().Add(barcodeImage);
-                    table.AddCell(cell);
+                        // Agregar la celda con la imagen del código de barras a la tabla
+                        Cell cell = new Cell().Add(barcodeImage);
+                        table.AddCell(cell);
+                    }
                 }
+
+                // Asegurarse de que la última fila se llene completamente
+                if ((dgFechas.Items.Count % 2) != 0)
+                {
+                    table.AddCell(new Cell().Add(new Paragraph(""))); // Agregar una celda vacía si el número de códigos es impar
+                }
+
+                // Agregar la tabla al documento
+                document.Add(table);
+
+                // Cerrar el documento
+                document.Close();
+
+                // Es necesario rebobinar el MemoryStream antes de leerlo
+                memoryStream.Seek(0, SeekOrigin.Begin);
+
+                // Crear una ruta temporal para el archivo PDF
+                string tempFilePath = System.IO.Path.Combine(System.IO.Path.GetTempPath(), "Codigos" + DateTime.Now.ToString("dd-MM-yyyy") + ".pdf");
+
+                // Escribir el MemoryStream a un archivo temporal
+                using (FileStream fileStream = new FileStream(tempFilePath, FileMode.Create, FileAccess.Write))
+                {
+                    memoryStream.CopyTo(fileStream);
+                }
+
+                // Abrir el archivo PDF temporal con el visor predeterminado
+                System.Diagnostics.Process.Start(tempFilePath);
+
+                /*Si no abre el PDF con la linea anterior, usar la siguiente. Esta es la forma recomendada para abrir archivos con 
+                  la aplicación predeterminada en versiones más recientes de .NET.*/
+                //System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(tempFilePath) { UseShellExecute = true });
             }
 
-            // Asegurarse de que la última fila se llene completamente
-            if ((dgFechas.Items.Count % 2) != 0)
-            {
-                table.AddCell(new Cell().Add(new Paragraph(""))); // Agregar una celda vacía si el número de códigos es impar
-            }
-
-            // Agregar la tabla al documento
-            document.Add(table);
-
-            // Cerrar el documento
-            document.Close();
-            MessageBox.Show("Archivo pdf generado en: " + "C:\\Codigos\\Codigos"+fecha+".pdf");
             btnImprimir.IsEnabled = false;
         }
 

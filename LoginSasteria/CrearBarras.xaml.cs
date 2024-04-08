@@ -59,18 +59,20 @@ namespace LoginSasteria
 
         public void Limpiar()
         {
-            cbTalla.SelectedValue = null;
-            cbColor.SelectedValue = null;
-            cbNombre.SelectedValue = null;
-            cbTela.SelectedValue = null;
-            cbTipoProducto.SelectedValue = null;
-            txtCodigo.Clear();
+            cbTalla.Items.Clear();
+            cbColor.Items.Clear();
+            cbNombre.Items.Clear();
+            cbTela.Items.Clear();
+            //cbTipoProducto.SelectedValue = null;
+            cbTipoProducto.Items.Clear();
             txtOtroNombre.Clear();
             txtPrecio.Clear();
+            txtCantidad.Text = "1";
         }
 
         public int MaxID()
         {
+            objConection.cerrarCN();
             int id = 0;
 
             try
@@ -111,9 +113,10 @@ namespace LoginSasteria
 
         private void btnRegistrar_Click(object sender, RoutedEventArgs e)
         {
+            objConection.cerrarCN();
+
             // Validar que los campos de texto y los ComboBox no estén vacíos
-            if (string.IsNullOrWhiteSpace(txtCodigo.Text) ||
-                string.IsNullOrWhiteSpace(txtPrecio.Text) ||
+            if (string.IsNullOrWhiteSpace(txtPrecio.Text) ||
                 cbNombre.SelectedItem == null ||
                 cbTela.SelectedItem == null ||
                 cbTalla.SelectedItem == null ||
@@ -128,14 +131,25 @@ namespace LoginSasteria
             // Si cbNombre es "OTRO", se debe validar también txtOtroNombre
             if (cbNombre.SelectedItem.ToString() == "OTRO" && string.IsNullOrWhiteSpace(txtOtroNombre.Text))
             {
-                MessageBox.Show("Por favor, ingresa el nombre del producto.");
+                MessageBox.Show("Por favor, ingresa el nombre del nuevo articulo.");
                 return; // Salir del método para evitar ejecutar el resto del código
             }
+
+            //Permite verificar que el txtCantidad contenga un dato mayor a 0
+            int cantidad = 0;
+            if (!int.TryParse(txtCantidad.Text, out cantidad) || cantidad <= 0)
+            {
+                MessageBox.Show("Por favor, ingresa una cantidad válida.");
+                return;
+            }
+
             try
             {
 
                 if (cbNombre.SelectedItem != null && cbNombre.SelectedItem.ToString() == "OTRO")//Obtengo lo que hay dentro del ComboBox cbNombre
                 {
+                    objConection.cerrarCN();
+
                     //Si lo que esta en el ComboBox cbNombre es iguala "OTRO" los datos a insertar en la BD seran los siguientes
 
                     //Ingresamos primero el nuevo nombre del producto dentro de la tabla 'nombreproducto'
@@ -164,100 +178,114 @@ namespace LoginSasteria
                     }
 
                     //Insertamos los datos dentro de la BD
-
-                    string query2 = "INSERT INTO `dbleonv2`.`producto` (idproducto, precio, nombreProducto_idnombreProducto, color_idcolor, talla_idtalla, tela_idtela, detalles, imagen, fechaCodigo) " +
-                            "VALUES (@codigo, @precio, @idNombreProducto, @idColor, @idTalla, @idTela, @detalles, @imagen, @fecha)";
-                    using (MySqlCommand comando = new MySqlCommand(query2, objConection.establecerCN()))
+                    for (int i = 0; i < cantidad; i++)
                     {
-                        // Obtenemos el ID seleccionado de cada ComboBox
-                        //int idTipoProducto = ((ComboItem)cbTipoProducto.SelectedItem).Id;
-                        int idColor = ((ComboItem)cbColor.SelectedItem).Id;
-                        int idTalla = ((ComboItem)cbTalla.SelectedItem).Id;
-                        int idTela = ((ComboItem)cbTela.SelectedItem).Id;
-                        //int idNombreProducto = ((ComboItem)cbNombre.SelectedItem).Id;
+                        objConection.cerrarCN();
 
-                        //Obtiene la fecha y hora actual
-                        DateTime now = DateTime.Now;
-                        string fechahora = now.ToString("yyyy-MM-dd HH:mm:ss");
+                        string CodBarras = CrearCodigoBarras();
 
-                        // Agregar los parámetros al comando
-                        comando.Parameters.AddWithValue("@codigo", txtCodigo.Text);
-                        comando.Parameters.AddWithValue("@precio", txtPrecio.Text);
-                        comando.Parameters.AddWithValue("@idNombreProducto", IdnombreProducto);
-                        comando.Parameters.AddWithValue("@idColor", idColor);
-                        comando.Parameters.AddWithValue("@idTalla", idTalla);
-                        comando.Parameters.AddWithValue("@idTela", idTela);
-                        comando.Parameters.AddWithValue("@detalles", txtDetalles.Text);
-                        comando.Parameters.AddWithValue("@imagen", DBNull.Value);
-                        comando.Parameters.AddWithValue("@fecha", fechahora);
+                        string query2 = "INSERT INTO `dbleonv2`.`producto` (idproducto, precio, nombreProducto_idnombreProducto, color_idcolor, talla_idtalla, tela_idtela, detalles, imagen, fechaCodigo) " +
+                            "VALUES (@codigo, @precio, @idNombreProducto, @idColor, @idTalla, @idTela, @detalles, @imagen, @fecha)";
+                        using (MySqlCommand comando = new MySqlCommand(query2, objConection.establecerCN()))
+                        {
+                            // Obtenemos el ID seleccionado de cada ComboBox
+                            //int idTipoProducto = ((ComboItem)cbTipoProducto.SelectedItem).Id;
+                            int idColor = ((ComboItem)cbColor.SelectedItem).Id;
+                            int idTalla = ((ComboItem)cbTalla.SelectedItem).Id;
+                            int idTela = ((ComboItem)cbTela.SelectedItem).Id;
+                            //int idNombreProducto = ((ComboItem)cbNombre.SelectedItem).Id;
 
-                        try
-                        {
-                            comando.ExecuteNonQuery();
-                            MessageBox.Show("Producto ingresado correctamente");
-                        }
-                        catch (Exception ex)
-                        {
-                            // Manejar cualquier error aquí
-                            MessageBox.Show("Error al ingresar los datos" + ex);
-                        }
-                        finally
-                        {
-                            // Cerrar la conexión
-                            objConection.cerrarCN();
-                            Limpiar();
+                            //Obtiene la fecha y hora actual
+                            DateTime now = DateTime.Now;
+                            string fechahora = now.ToString("yyyy-MM-dd HH:mm:ss");
+
+                            // Agregar los parámetros al comando
+                            comando.Parameters.AddWithValue("@codigo", CodBarras);
+                            comando.Parameters.AddWithValue("@precio", txtPrecio.Text);
+                            comando.Parameters.AddWithValue("@idNombreProducto", IdnombreProducto);
+                            comando.Parameters.AddWithValue("@idColor", idColor);
+                            comando.Parameters.AddWithValue("@idTalla", idTalla);
+                            comando.Parameters.AddWithValue("@idTela", idTela);
+                            comando.Parameters.AddWithValue("@detalles", txtDetalles.Text);
+                            comando.Parameters.AddWithValue("@imagen", DBNull.Value);
+                            comando.Parameters.AddWithValue("@fecha", fechahora);
+
+                            try
+                            {
+                                comando.ExecuteNonQuery();
+                                //MessageBox.Show("Producto ingresado correctamente");
+                            }
+                            catch (Exception ex)
+                            {
+                                // Manejar cualquier error aquí
+                                MessageBox.Show("Error al ingresar los datos" + ex);
+                            }
+                            finally
+                            {
+                                // Cerrar la conexión
+                                objConection.cerrarCN();
+
+                            }
                         }
                     }
+                    MessageBox.Show("Se han creado exitosamente " + txtCantidad.Text + " codigos de barras unicos para el producto ingresado");
+                    objConection.cerrarCN();
 
                 }
                 else
                 {
                     //Si lo que esta en el ComboBox cbNombre son diferentes a "OTRO" los datos a insertar en la BD seran los siguientes
-
-                    string query = "INSERT INTO `dbleonv2`.`producto` (idproducto, precio, nombreProducto_idnombreProducto, color_idcolor, talla_idtalla, tela_idtela, detalles, imagen, fechaCodigo) " +
-                            "VALUES (@codigo, @precio, @idNombreProducto, @idColor, @idTalla, @idTela, @detalles, @imagen, @fecha)";
-                    using (MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN()))
+                    for (int i = 0; i < cantidad; i++)
                     {
-                        // Obtenemos el ID seleccionado de cada ComboBox
-                        //int idTipoProducto = ((ComboItem)cbTipoProducto.SelectedItem).Id;
-                        int idColor = ((ComboItem)cbColor.SelectedItem).Id;
-                        int idTalla = ((ComboItem)cbTalla.SelectedItem).Id;
-                        int idTela = ((ComboItem)cbTela.SelectedItem).Id;
-                        int idNombreProducto = ((ComboItem)cbNombre.SelectedItem).Id;
+                        objConection.cerrarCN();
 
-                        //Obtiene la fecha y hora actual
-                        DateTime now = DateTime.Now;
-                        string fechahora = now.ToString("yyyy-MM-dd HH:mm:ss");
+                        string CodBarras = CrearCodigoBarras();
 
-                        // Agregar los parámetros al comando
-                        comando.Parameters.AddWithValue("@codigo", txtCodigo.Text);
-                        comando.Parameters.AddWithValue("@precio", txtPrecio.Text);
-                        comando.Parameters.AddWithValue("@idNombreProducto", idNombreProducto);
-                        comando.Parameters.AddWithValue("@idColor", idColor);
-                        comando.Parameters.AddWithValue("@idTalla", idTalla);
-                        comando.Parameters.AddWithValue("@idTela", idTela);
-                        comando.Parameters.AddWithValue("@detalles", txtDetalles.Text);
-                        comando.Parameters.AddWithValue("@imagen", DBNull.Value);
-                        comando.Parameters.AddWithValue("@fecha", fechahora);
+                        string query = "INSERT INTO `dbleonv2`.`producto` (idproducto, precio, nombreProducto_idnombreProducto, color_idcolor, talla_idtalla, tela_idtela, detalles, imagen, fechaCodigo) " +
+                            "VALUES (@codigo, @precio, @idNombreProducto, @idColor, @idTalla, @idTela, @detalles, @imagen, @fecha)";
+                        using (MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN()))
+                        {
+                            // Obtenemos el ID seleccionado de cada ComboBox
+                            //int idTipoProducto = ((ComboItem)cbTipoProducto.SelectedItem).Id;
+                            int idColor = ((ComboItem)cbColor.SelectedItem).Id;
+                            int idTalla = ((ComboItem)cbTalla.SelectedItem).Id;
+                            int idTela = ((ComboItem)cbTela.SelectedItem).Id;
+                            int idNombreProducto = ((ComboItem)cbNombre.SelectedItem).Id;
 
-                        try
-                        {
-                            comando.ExecuteNonQuery();
-                            MessageBox.Show("Producto ingresado correctamente");
-                        }
-                        catch (Exception ex)
-                        {
-                            // Manejar cualquier error aquí
-                            MessageBox.Show("Error al ingresar los datos" + ex);
-                        }
-                        finally
-                        {
-                            // Cerrar la conexión
-                            objConection.cerrarCN();
-                            Limpiar();
+                            //Obtiene la fecha y hora actual
+                            DateTime now = DateTime.Now;
+                            string fechahora = now.ToString("yyyy-MM-dd HH:mm:ss");
+
+                            // Agregar los parámetros al comando
+                            comando.Parameters.AddWithValue("@codigo", CodBarras);
+                            comando.Parameters.AddWithValue("@precio", txtPrecio.Text);
+                            comando.Parameters.AddWithValue("@idNombreProducto", idNombreProducto);
+                            comando.Parameters.AddWithValue("@idColor", idColor);
+                            comando.Parameters.AddWithValue("@idTalla", idTalla);
+                            comando.Parameters.AddWithValue("@idTela", idTela);
+                            comando.Parameters.AddWithValue("@detalles", txtDetalles.Text);
+                            comando.Parameters.AddWithValue("@imagen", DBNull.Value);
+                            comando.Parameters.AddWithValue("@fecha", fechahora);
+
+                            try
+                            {
+                                comando.ExecuteNonQuery();
+                                //MessageBox.Show("Producto ingresado correctamente");
+                            }
+                            catch (Exception ex)
+                            {
+                                // Manejar cualquier error aquí
+                                MessageBox.Show("Error al ingresar los datos" + ex);
+                            }
+                            finally
+                            {
+                                // Cerrar la conexión
+                                objConection.cerrarCN();
+                            }
                         }
                     }
-
+                    MessageBox.Show("Se han creado exitosamente " + txtCantidad.Text + " codigos de barras unicos para el producto ingresado");
+                    objConection.cerrarCN();
                 }
             }
             catch (Exception Er)
@@ -265,6 +293,7 @@ namespace LoginSasteria
                 MessageBox.Show("Error" + Er);
             }
 
+            Limpiar();
             CargarDatos();
         }
 
@@ -287,6 +316,8 @@ namespace LoginSasteria
 
         void CargarDatos()
         {
+            objConection.cerrarCN();
+
             try
             {
                 //Vamos a traer todo de la tabla tipoproducto
@@ -303,8 +334,8 @@ namespace LoginSasteria
                 objConection.cerrarCN();
 
                 //Vamos a traer todo de la tabla color
-                query = "SELECT * FROM dbleonv2.color;";
-                MySqlCommand comando2 = new MySqlCommand(query, objConection.establecerCN());
+                string query2 = "SELECT * FROM dbleonv2.color;";
+                MySqlCommand comando2 = new MySqlCommand(query2, objConection.establecerCN());
                 MySqlDataReader myReader2 = comando2.ExecuteReader();
                 while (myReader2.Read())
                 {
@@ -316,8 +347,8 @@ namespace LoginSasteria
                 objConection.cerrarCN();
 
                 //Vamos a traer todo de la tabla tela
-                query = "SELECT * FROM dbleonv2.tela;";
-                MySqlCommand comando4 = new MySqlCommand(query, objConection.establecerCN());
+                string query4 = "SELECT * FROM dbleonv2.tela;";
+                MySqlCommand comando4 = new MySqlCommand(query4, objConection.establecerCN());
                 MySqlDataReader myReader4 = comando4.ExecuteReader();
                 while (myReader4.Read())
                 {
@@ -329,8 +360,8 @@ namespace LoginSasteria
                 objConection.cerrarCN();
 
                 //Vamos a traer todo de la tabla nombreproducto
-                query = "SELECT * FROM dbleonv2.nombreproducto;";
-                MySqlCommand comando5 = new MySqlCommand(query, objConection.establecerCN());
+                string query5 = "SELECT * FROM dbleonv2.nombreproducto;";
+                MySqlCommand comando5 = new MySqlCommand(query5, objConection.establecerCN());
                 MySqlDataReader myReader5 = comando5.ExecuteReader();
                 while (myReader5.Read())
                 {
@@ -353,15 +384,76 @@ namespace LoginSasteria
             if (cbNombre.SelectedItem != null && cbNombre.SelectedItem.ToString() == "OTRO")//Obtengo lo que hay dentro del ComboBox
             {
                 txtOtroNombre.Visibility = Visibility.Visible;
+                lblArticuloNuevo.Visibility = Visibility.Visible;
             }
             else
             {
                 txtOtroNombre.Visibility = Visibility.Collapsed;
+                lblArticuloNuevo.Visibility = Visibility.Collapsed;
             }
         }
 
-        private void CrearCodigoBarras(object sender, SelectionChangedEventArgs e)
+        //Crea los codigos de barras segun el producto seleccionado en el objeto cbTipoProducto
+        public string CrearCodigoBarras()
         {
+            int idTipoProducto = ((ComboItem)cbTipoProducto.SelectedItem).Id;
+            bool codigoExiste = true;
+            string codigo = "";
+
+            while (codigoExiste)
+            {
+                long numeroAleatorio = GenerarNumeroAleatorio();
+                string prefijo = "";
+
+                switch (idTipoProducto)
+                {
+                    case 1:
+                        prefijo = "CA";
+                        break;
+                    case 2:
+                        prefijo = "PA";
+                        break;
+                    case 3:
+                        prefijo = "SA";
+                        break;
+                    case 5:
+                        prefijo = "CH";
+                        break;
+                    default:
+
+                        break;
+                }
+                codigo = prefijo + numeroAleatorio.ToString();
+                codigoExiste = ExisteCodigoBarras(codigo);
+            }
+
+            return codigo;
+        }
+
+        //Verificar si el codigo de barras ya existen o no en la BD
+        bool ExisteCodigoBarras(string codigoBarras)
+        {
+            objConection.cerrarCN();
+
+            string query = "SELECT COUNT(*) FROM dbleonv2.producto WHERE idproducto = @codigo";
+
+            using (MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN()))
+            {
+                comando.Parameters.AddWithValue("@codigo", codigoBarras);
+
+                // Ejecuta la consulta
+                int count = Convert.ToInt32(comando.ExecuteScalar());
+
+                // Retorna true si se encontró al menos un registro con ese código de barras
+                return count > 0;
+            }
+        }
+
+        //Se cargan las tallas al objeto cbTalla segun el producto seleccionado
+        private void CargarDatosTalla(object sender, SelectionChangedEventArgs e)
+        {
+            objConection.cerrarCN();
+
             cbTalla.Items.Clear();
 
             int idTipoProducto = 0; // Inicializa con un valor por defecto
@@ -374,19 +466,15 @@ namespace LoginSasteria
                 //Vamos a generar el Codigo de barras segun el TipoProducto
                 if (idTipoProducto == 1)
                 {
-                    long numeroAleatorio = GenerarNumeroAleatorio();
-                    string valorFinal = "CA" + numeroAleatorio.ToString();
-                    txtCodigo.Text = valorFinal;
-
                     //Vamos a traer las tallas pertenecientes a las camisas
-                    string query = "SELECT tt.idtalla, t.nombreTalla FROM dbleonv2.tipotall AS tt " +
+                    string query1 = "SELECT tt.idtalla, t.nombreTalla FROM dbleonv2.tipotall AS tt " +
                         "JOIN dbleonv2.talla AS t ON tt.talla_idtalla = t.idtalla WHERE tt.tipoProducto_idtipoProducto = '1'";
-                    MySqlCommand comando3 = new MySqlCommand(query, objConection.establecerCN());
-                    MySqlDataReader myReader3 = comando3.ExecuteReader();
-                    while (myReader3.Read())
+                    MySqlCommand comando1 = new MySqlCommand(query1, objConection.establecerCN());
+                    MySqlDataReader myReader1 = comando1.ExecuteReader();
+                    while (myReader1.Read())
                     {
-                        int id = myReader3.GetInt32("idTalla"); // Asumiendo que el campo se llama idTalla
-                        string nombre = myReader3.GetString("nombreTalla");
+                        int id = myReader1.GetInt32("idTalla"); // Asumiendo que el campo se llama idTalla
+                        string nombre = myReader1.GetString("nombreTalla");
                         ComboItem item = new ComboItem() { Id = id, Nombre = nombre };
                         cbTalla.Items.Add(item);
                     }
@@ -394,19 +482,15 @@ namespace LoginSasteria
                 }
                 else if (idTipoProducto == 2)
                 {
-                    long numeroAleatorio = GenerarNumeroAleatorio();
-                    string valorFinal = "PA" + numeroAleatorio.ToString();
-                    txtCodigo.Text = valorFinal;
-
                     //Vamos a traer las tallas pertenecientes a los pantalones
-                    string query = "SELECT tt.idtalla, t.nombreTalla FROM dbleonv2.tipotall AS tt " +
+                    string query2 = "SELECT tt.idtalla, t.nombreTalla FROM dbleonv2.tipotall AS tt " +
                         "JOIN dbleonv2.talla AS t ON tt.talla_idtalla = t.idtalla WHERE tt.tipoProducto_idtipoProducto = '2'";
-                    MySqlCommand comando3 = new MySqlCommand(query, objConection.establecerCN());
-                    MySqlDataReader myReader3 = comando3.ExecuteReader();
-                    while (myReader3.Read())
+                    MySqlCommand comando2 = new MySqlCommand(query2, objConection.establecerCN());
+                    MySqlDataReader myReader2 = comando2.ExecuteReader();
+                    while (myReader2.Read())
                     {
-                        int id = myReader3.GetInt32("idTalla"); // Asumiendo que el campo se llama idTalla
-                        string nombre = myReader3.GetString("nombreTalla");
+                        int id = myReader2.GetInt32("idTalla"); // Asumiendo que el campo se llama idTalla
+                        string nombre = myReader2.GetString("nombreTalla");
                         ComboItem item = new ComboItem() { Id = id, Nombre = nombre };
                         cbTalla.Items.Add(item);
                     }
@@ -414,14 +498,10 @@ namespace LoginSasteria
                 }
                 else if (idTipoProducto == 3)
                 {
-                    long numeroAleatorio = GenerarNumeroAleatorio();
-                    string valorFinal = "SA" + numeroAleatorio.ToString();
-                    txtCodigo.Text = valorFinal;
-
                     //Vamos a traer las tallas pertenecientes a los sacos
-                    string query = "SELECT tt.idtalla, t.nombreTalla FROM dbleonv2.tipotall AS tt " +
+                    string query3 = "SELECT tt.idtalla, t.nombreTalla FROM dbleonv2.tipotall AS tt " +
                          "JOIN dbleonv2.talla AS t ON tt.talla_idtalla = t.idtalla WHERE tt.tipoProducto_idtipoProducto = '3'";
-                    MySqlCommand comando3 = new MySqlCommand(query, objConection.establecerCN());
+                    MySqlCommand comando3 = new MySqlCommand(query3, objConection.establecerCN());
                     MySqlDataReader myReader3 = comando3.ExecuteReader();
                     while (myReader3.Read())
                     {
@@ -434,19 +514,15 @@ namespace LoginSasteria
                 }
                 else if (idTipoProducto == 5)
                 {
-                    long numeroAleatorio = GenerarNumeroAleatorio();
-                    string valorFinal = "CH" + numeroAleatorio.ToString();
-                    txtCodigo.Text = valorFinal;
-
                     //Vamos a traer las tallas pertenecientes a los chalecos
-                    string query = "SELECT tt.idtalla, t.nombreTalla FROM dbleonv2.tipotall AS tt " +
+                    string query4 = "SELECT tt.idtalla, t.nombreTalla FROM dbleonv2.tipotall AS tt " +
                         "JOIN dbleonv2.talla AS t ON tt.talla_idtalla = t.idtalla WHERE tt.tipoProducto_idtipoProducto = '5'";
-                    MySqlCommand comando3 = new MySqlCommand(query, objConection.establecerCN());
-                    MySqlDataReader myReader3 = comando3.ExecuteReader();
-                    while (myReader3.Read())
+                    MySqlCommand comando4 = new MySqlCommand(query4, objConection.establecerCN());
+                    MySqlDataReader myReader4 = comando4.ExecuteReader();
+                    while (myReader4.Read())
                     {
-                        int id = myReader3.GetInt32("idTalla"); // Asumiendo que el campo se llama idTalla
-                        string nombre = myReader3.GetString("nombreTalla");
+                        int id = myReader4.GetInt32("idTalla"); // Asumiendo que el campo se llama idTalla
+                        string nombre = myReader4.GetString("nombreTalla");
                         ComboItem item = new ComboItem() { Id = id, Nombre = nombre };
                         cbTalla.Items.Add(item);
                     }
@@ -462,6 +538,7 @@ namespace LoginSasteria
         private void btnCancelar_Click_1(object sender, RoutedEventArgs e)
         {
             Limpiar();
+            objConection.cerrarCN();
             crearBarrasMenu abrirMenu = new crearBarrasMenu();
             abrirMenu.Show();
             this.Close();

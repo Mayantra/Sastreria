@@ -249,3 +249,7 @@ C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\LoginSasteria.
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\LoginSasteria.csproj.CopyComplete
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\LoginSasteria.exe
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\LoginSasteria.pdb
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\estadoCuentaInventario.g.cs
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\EstadoPorFechas.g.cs
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\estadoCuentaInventario.baml
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\EstadoPorFechas.baml
