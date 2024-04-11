@@ -143,7 +143,7 @@ BorderThickness="{TemplateBinding BorderThickness}">
             </Grid>
         </Button>
         <Button x:Name="btnFechaEmpleado" HorizontalAlignment="Left" Height="560" Margin="748,80,0,0"
-    VerticalAlignment="Top" Width="320" Background="#FF213E61" BorderBrush="{x:Null}" Foreground="{x:Null}">
+    VerticalAlignment="Top" Width="320" Background="#FF213E61" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="abrirEstadoEmpleados">
             <Grid Height="550" Width="290">
                 <Rectangle Margin="26,80,26,275">
                     <Rectangle.Fill>

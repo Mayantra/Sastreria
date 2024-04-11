@@ -253,3 +253,5 @@ E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSaster
 E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\EstadoPorFechas.g.cs
 E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\estadoCuentaInventario.baml
 E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\EstadoPorFechas.baml
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\EstadoPorClientes.g.cs
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\EstadoPorClientes.baml

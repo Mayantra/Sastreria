@@ -40,5 +40,12 @@ namespace LoginSasteria
         {
             this.WindowState = WindowState.Minimized;
         }
+
+        private void abrirEstadoEmpleados(object sender, RoutedEventArgs e)
+        {
+            EstadoPorClientes abrir = new EstadoPorClientes();
+            abrir.Show();
+            this.Close();
+        }
     }
 }

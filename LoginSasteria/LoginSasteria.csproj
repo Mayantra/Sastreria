@@ -195,6 +195,9 @@
     <Compile Include="estadoCuentaInventario.xaml.cs">
       <DependentUpon>estadoCuentaInventario.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EstadoPorClientes.xaml.cs">
+      <DependentUpon>EstadoPorClientes.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EstadoPorFechas.xaml.cs">
       <DependentUpon>EstadoPorFechas.xaml</DependentUpon>
     </Compile>
@@ -237,6 +240,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="estadoCuentaInventario.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EstadoPorClientes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
