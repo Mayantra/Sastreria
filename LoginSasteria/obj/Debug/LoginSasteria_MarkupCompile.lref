@@ -1,22 +1,22 @@
 ﻿
 
-FE:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\AccesoNoAutorizado.xaml;;
-FE:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\consultaInventario.xaml;;
-FE:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\CrearBarras.xaml;;
-FE:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\crearBarrasMenu.xaml;;
-FE:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\DevolucionRegalo.xaml;;
-FE:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\estadoCuentaInventario.xaml;;
-FE:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\EstadoPorClientes.xaml;;
-FE:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\EstadoPorFechas.xaml;;
-FE:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\ImprimirBarras.xaml;;
-FE:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\InventarioInventario.xaml;;
-FE:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\Logeo.xaml;;
-FE:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\mainInventario.xaml;;
-FE:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\ProcesoVenta.xaml;;
-FE:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\ventaInventario.xaml;;
-FE:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\ventanaInicio.xaml;;
-FE:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\AgregarProdIventario.xaml;;
-FE:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\EditarProdInventario.xaml;;
-FE:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\VerificarUsuario.xaml;;
-FE:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\VerInventario.xaml;;
+FC:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\AccesoNoAutorizado.xaml;;
+FC:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\AgregarProdIventario.xaml;;
+FC:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\consultaInventario.xaml;;
+FC:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\CrearBarras.xaml;;
+FC:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\crearBarrasMenu.xaml;;
+FC:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\DevolucionRegalo.xaml;;
+FC:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\EditarProdInventario.xaml;;
+FC:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\estadoCuentaInventario.xaml;;
+FC:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\EstadoPorClientes.xaml;;
+FC:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\EstadoPorFechas.xaml;;
+FC:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\ImprimirBarras.xaml;;
+FC:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\InventarioInventario.xaml;;
+FC:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\Logeo.xaml;;
+FC:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\mainInventario.xaml;;
+FC:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\ProcesoVenta.xaml;;
+FC:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\ventaInventario.xaml;;
+FC:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\ventanaInicio.xaml;;
+FC:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\VerificarUsuario.xaml;;
+FC:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\VerInventario.xaml;;
 

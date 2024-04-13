@@ -40,8 +40,55 @@ namespace LoginSasteria
         private void obtenerFactura(object sender, RoutedEventArgs e)
         {
             string codigo = txFactura.Text;
-            CargarFactura(codigo);
-            CargarTotalFacturas(codigo);
+            if (verificarFactura(codigo) == true)
+            {
+                //MessageBox.Show("Acceso consedido");
+                CargarFactura(codigo);
+                CargarTotalFacturas(codigo);
+            }
+            else
+            {
+                MessageBox.Show("No es posible cumplir con el proceso de Regalo" +
+                    "\nEl tiempo de devolución a Finalizado");
+            }
+            
+        }
+        public Boolean verificarFactura(string codigo)
+        {
+            Boolean autorizar = false;
+            DateTime fechaHoy = DateTime.Now;
+            DateTime fechaFactura= DateTime.Now;
+            cn.cerrarCN();
+            string query = "SELECT FechaHora FROM dbleonv2.detallesventa where idDetallesVenta='"+codigo+"';";
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
+                MySqlDataReader reader = comando.ExecuteReader();
+                while (reader.Read())
+                {
+                    fechaFactura = reader.GetDateTime(0);
+                }
+                reader.Close();
+                cn.cerrarCN();
+            }
+            catch (MySqlException x)
+            {
+                MessageBox.Show("Error: " + x);
+            }
+            TimeSpan diferencia = fechaHoy - fechaFactura;
+            int diasDiferencia = Math.Abs((int)diferencia.TotalDays);
+            if (diasDiferencia <= 5)
+            {
+                // La diferencia entre las fechas es menor o igual a 5 días
+                autorizar = true;
+            }
+            else
+            {
+                // La diferencia entre las fechas es mayor a 5 días
+                autorizar = false;
+            }
+
+            return autorizar;
         }
         public void CargarFactura(string codigoFactura)
         {

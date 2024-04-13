@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\
 LoginSasteria
 none
 false
 DEBUG;TRACE
-E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\App.xaml
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\App.xaml
 20-576854734
-141003741212
+141833496081
 29553647209
-56-1490028516
+56-622374123
 AccesoNoAutorizado.xaml;AgregarProdIventario.xaml;consultaInventario.xaml;CrearBarras.xaml;crearBarrasMenu.xaml;DevolucionRegalo.xaml;EditarProdInventario.xaml;estadoCuentaInventario.xaml;EstadoPorClientes.xaml;EstadoPorFechas.xaml;ImprimirBarras.xaml;InventarioInventario.xaml;Logeo.xaml;mainInventario.xaml;MainWindow.xaml;ProcesoVenta.xaml;ventaInventario.xaml;ventanaInicio.xaml;VerificarUsuario.xaml;VerInventario.xaml;
 
 False

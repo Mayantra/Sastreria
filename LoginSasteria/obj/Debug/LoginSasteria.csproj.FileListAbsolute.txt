@@ -269,3 +269,11 @@ E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSaster
 E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\EditarProdInventario.baml
 E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\VerificarUsuario.baml
 E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\VerInventario.baml
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\AgregarProdIventario.g.cs
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\EditarProdInventario.g.cs
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\VerificarUsuario.g.cs
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\VerInventario.g.cs
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\AgregarProdIventario.baml
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\EditarProdInventario.baml
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\VerificarUsuario.baml
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\VerInventario.baml
