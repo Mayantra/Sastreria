@@ -358,7 +358,7 @@ namespace LoginSasteria
             MessageBox.Show("Venta Realizada");
             GenerarFactura factura = new GenerarFactura();
             //GENERAR la FACTURA -------------------------------------------------------------------------*************
-            factura.GenerarDatosFactura(idVenta.ToString(), IDVendedor, nombreCLientes,tabla, TotalProdcutos);
+            factura.GenerarDatosFactura(Detalles.ToString(), IDVendedor, nombreCLientes,tabla, TotalProdcutos);
             //------------------------------------------------------------------------------------------------------
             winVenta.cleanValues();
             winVenta.Show();

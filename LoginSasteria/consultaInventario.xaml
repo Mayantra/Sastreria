@@ -148,7 +148,7 @@ BorderThickness="{TemplateBinding BorderThickness}">
 
             </Grid>
         </Button>
-        <Button HorizontalAlignment="Left" Height="260" Margin="380,375,0,0" VerticalAlignment="Top" Width="320" Background="#FFB8E6D5" BorderBrush="{x:Null}" Foreground="{x:Null}">
+        <Button x:Name="btnAbrirRegalo" HorizontalAlignment="Left" Height="260" Margin="380,375,0,0" VerticalAlignment="Top" Width="320" Background="#FFB8E6D5" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="AbrirProcesoRegalo">
             <Grid Height="260" Width="320">
                 <Rectangle HorizontalAlignment="Left" Height="113" VerticalAlignment="Top" Width="115" Margin="18,130,0,0">
                     <Rectangle.Fill>

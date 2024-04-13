@@ -1,0 +1,329 @@
+﻿<Window x:Class="LoginSasteria.DevolucionRegalo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LoginSasteria"
+                                        mc:Ignorable="d"
+                 WindowStartupLocation="CenterScreen"
+  Title="" Height="700" Width="1300"  Foreground="{x:Null}"
+  WindowStyle="None"
+  Background="Transparent"
+  AllowsTransparency="True"
+  Icon="/tshirt_120689.ico">
+
+    <Window.Resources>
+        <ControlTemplate x:Key="NoMouseOverButtonTemplate"   
+       TargetType="Button">
+            <Border Background="{TemplateBinding Background}"  
+BorderBrush="{TemplateBinding BorderBrush}"  
+BorderThickness="{TemplateBinding BorderThickness}">
+                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"  
+            VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+            </Border>
+
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled"  
+   Value="False">
+                    <Setter Property="Background"  
+    Value="{x:Static SystemColors.ControlLightBrush}" />
+                    <Setter Property="Foreground"  
+    Value="{x:Static SystemColors.GrayTextBrush}" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <ControlTemplate x:Key="TextBoxBaseControlTemplate" TargetType="{x:Type TextBoxBase}">
+            <Border Background="{TemplateBinding Background}" 
+        x:Name="Bd" BorderBrush="Black"
+        BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="20">
+                <ScrollViewer x:Name="PART_ContentHost"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" TargetName="Bd"/>
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="Width" Value="Auto">
+                    <Setter Property="MinWidth" Value="100"/>
+                </Trigger>
+                <Trigger Property="Height" Value="Auto">
+                    <Setter Property="MinHeight" Value="20"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <Style x:Key="ComboBoxTextBoxStyle" TargetType="{x:Type TextBox}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Grid>
+                            <Border CornerRadius="5,0,0,5"
+                    BorderThickness="1"
+                    Background="{TemplateBinding Background}"
+                        BorderBrush="Black">
+                                <ScrollViewer x:Name="PART_ContentHost"/>
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="{x:Type ComboBox}">
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ComboBox}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition MaxWidth="20"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBox Name="PART_EditableTextBox" IsEnabled="False"
+                         Style="{StaticResource ComboBoxTextBoxStyle}"
+                         Padding="5,0,0,0"
+                         Height="{TemplateBinding Height}"/>
+                            <ToggleButton Grid.Column="1" Margin="0"
+                             Height="{TemplateBinding Height}"
+                             Focusable="False"
+                                  Background="#580000"
+                             IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                              ClickMode="Press">
+                                <Path Grid.Column="1"
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Center"
+                          Data="M 0 0 L 4 4 L 8 0 Z"
+                          Fill="White"/>
+                            </ToggleButton>
+
+                            <ContentPresenter Name="ContentSite"
+                              Content="{TemplateBinding SelectionBoxItem}"
+                              ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                              ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                              VerticalAlignment="Center"
+                              HorizontalAlignment="Left"
+                              Margin="5,0,0,0"/>
+                            <Popup Name="Popup"
+                       Placement="Bottom"
+                       IsOpen="{TemplateBinding IsDropDownOpen}"
+                       AllowsTransparency="True" 
+                       Focusable="False"
+                       PopupAnimation="Slide">
+                                <Grid Name="DropDown"
+                          SnapsToDevicePixels="True"                
+                          MinWidth="{TemplateBinding ActualWidth}"
+                          MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                    <Border 
+                            x:Name="DropDownBorder"
+                            BorderThickness="1"
+                            CornerRadius="5"
+                            Background="White"
+                            BorderBrush="Black"/>
+                                    <ScrollViewer Margin="4,6,4,6" SnapsToDevicePixels="True">
+                                        <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained" />
+                                    </ScrollViewer>
+
+                                </Grid>
+                            </Popup>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
+
+
+    <Grid Background="#FF150000" Width="1300">
+        <Button x:Name="btnExit" HorizontalAlignment="Left" Height="30" Margin="1250,20,0,0" VerticalAlignment="Top" Width="30" Background="#FFE50000" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="btnSalir" AutomationProperties.Name="btnSalir" RenderTransformOrigin="-13363.5,4.2">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="100"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="btnMin" HorizontalAlignment="Left" Height="30" Margin="1205,20,0,0" VerticalAlignment="Top" Width="30" Background="#FF336653" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="Minimizar">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="100"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Rectangle HorizontalAlignment="Left" Height="700" VerticalAlignment="Center" Width="185" Fill="#FF580000" >
+        </Rectangle>
+
+        <Rectangle HorizontalAlignment="Left" Height="700" VerticalAlignment="Center" Width="15" Fill="#FFEDE4A4"/>
+
+        <Button x:Name="btnInicio" HorizontalAlignment="Left" Height="60" Margin="15,353,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB">
+            <Grid Height="60" Width="170">
+                <Label Content="Inicio" Foreground="#FFEDE4A4" Margin="14,14,81,10"></Label>
+                <Rectangle Margin="119,14,10,10">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="/CasaA.png" Stretch="Uniform"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Grid>
+
+            <Button.Template>
+                <StaticResource ResourceKey="NoMouseOverButtonTemplate"/>
+            </Button.Template>
+        </Button>
+        <Button x:Name="btnVenta" HorizontalAlignment="Left" Height="60" Margin="15,413,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB">
+            <Grid Height="60" Width="170">
+                <Label Content="Venta" Foreground="#FFEDE4A4" Margin="14,14,81,10"></Label>
+                <Rectangle Margin="119,14,10,10">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="/1.png" Stretch="Uniform"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Grid>
+
+            <Button.Template>
+                <StaticResource ResourceKey="NoMouseOverButtonTemplate"/>
+            </Button.Template>
+        </Button>
+        <Button x:Name="btnConsulta" HorizontalAlignment="Left" Height="60" Margin="15,473,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="{x:Null}" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB" Template="{StaticResource NoMouseOverButtonTemplate}">
+            <Grid Height="60" Width="170">
+                <Label Content="Consulta" Foreground="#FFEDE4A4" Margin="10,14,70,10" FontSize="20"/>
+                <Rectangle Margin="119,14,10,10">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="/ConsultaA.png" Stretch="Uniform"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Grid>
+
+        </Button>
+        <Button HorizontalAlignment="Left" Height="60" Margin="0,533,0,0" VerticalAlignment="Top" Width="185" BorderBrush="{x:Null}" Background="Transparent" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB" Template="{StaticResource NoMouseOverButtonTemplate}">
+            <Grid Height="60" Width="170">
+                <Label Content="Inventario" Foreground="#FFEDE4A4" Margin="10,14,51,10" FontSize="20"/>
+                <Rectangle Margin="129,14,0,10">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="/hanger_114789.png" Stretch="Uniform"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Grid>
+
+        </Button>
+        <Button x:Name="btnBarras" HorizontalAlignment="Left" Height="60" Margin="15,593,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB" Template="{StaticResource NoMouseOverButtonTemplate}">
+            <Grid Height="60" Width="170">
+                <Label Content="Barras" Foreground="#FFEDE4A4" Margin="10,14,70,10"/>
+                <Rectangle Margin="119,14,10,10">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="/barcode_icon-icons.com_73665.png" Stretch="Uniform"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Grid>
+
+        </Button>
+
+
+
+
+        <Label x:Name="lbH" Height="85" Margin="40,10,1145,0" VerticalAlignment="Top" FontSize="20" FontFamily="MingLiU_HKSCS-ExtB" FontWeight="Bold" Foreground="White">
+            <Label.Resources>
+                <Style TargetType="{x:Type AccessText}">
+                    <Setter Property="TextWrapping" Value="Wrap"/>
+                </Style>
+            </Label.Resources>
+            <TextBlock x:Name="txblockHora" TextAlignment="Left" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Height="77" Width="105" FontWeight="Normal" FontSize="22"/>
+        </Label>
+
+        <DataGrid ItemsSource="{Binding}" ColumnWidth="Auto" IsReadOnly="True" GridLinesVisibility="None" CanUserAddRows="False" 
+           CanUserDeleteRows="False" Padding="10"
+           CanUserResizeColumns="False" CanUserResizeRows="False"
+           x:Name="DataConsulta" HorizontalAlignment="Left" Height="250" Margin="230,50,0,0" VerticalAlignment="Top" Width="750" FontSize="15" BorderBrush="{x:Null}" Background="White" AreRowDetailsFrozen="True" RowBackground="#FFF1F1F1" AlternatingRowBackground="White" Foreground="Black" FontFamily="Arial">
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Background" Value="#580000"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="Padding" Value="5"/>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="Padding" Value="5"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type DataGridCell}">
+                                <Border Padding="{TemplateBinding Padding}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                                    <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </DataGrid.CellStyle>
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </DataGrid.Resources>
+        </DataGrid>
+        <DataGrid ItemsSource="{Binding}" ColumnWidth="Auto" IsReadOnly="True" GridLinesVisibility="None" CanUserAddRows="False" 
+            CanUserDeleteRows="False" Padding="10"
+            CanUserResizeColumns="False" CanUserResizeRows="False"
+            x:Name="DataConsultaNueva" HorizontalAlignment="Left" Height="284" Margin="230,386,0,0" VerticalAlignment="Top" Width="750" FontSize="15" BorderBrush="{x:Null}" Background="White" AreRowDetailsFrozen="True" RowBackground="#FFF1F1F1" AlternatingRowBackground="White" Foreground="Black" FontFamily="Arial">
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </DataGrid.Resources>
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="#580000"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="Padding" Value="5"/>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+
+            <DataGrid.CellStyle>
+                <Style TargetType="{x:Type DataGridCell}">
+                    <Setter Property="Padding" Value="5"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type DataGridCell}">
+                                <Border Padding="{TemplateBinding Padding}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                                    <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </DataGrid.CellStyle>
+        </DataGrid>
+        <TextBox x:Name="txFactura" HorizontalAlignment="Left" Height="40" Margin="1030,112,0,0" 
+            Template="{StaticResource TextBoxBaseControlTemplate}"
+            TextWrapping="Wrap"  VerticalAlignment="Top" Width="235" BorderBrush="{x:Null}" SelectionBrush="#FF74EFFF"
+            Padding="6" FontSize="16"/>
+        <TextBox x:Name="txProducto" HorizontalAlignment="Left" Height="40" Margin="1030,386,0,0" 
+            Template="{StaticResource TextBoxBaseControlTemplate}"
+            TextWrapping="Wrap"  VerticalAlignment="Top" Width="235" BorderBrush="{x:Null}" SelectionBrush="#FF74EFFF"
+            Padding="6" FontSize="16"/>
+        <Button x:Name="btnAgregarP" Content="Button" HorizontalAlignment="Left" Height="40" Margin="1030,436,0,0" VerticalAlignment="Top" Width="235"/>
+        <Rectangle HorizontalAlignment="Left" Height="12" Margin="230,338,0,0" Stroke="Transparent"
+                   Fill="#FFEDE4A4"
+                   VerticalAlignment="Top" Width="1035"/>
+        <TextBlock x:Name="txTotalFac" HorizontalAlignment="Left" Height="55"
+                   Foreground="White"
+                   TextAlignment="Right"
+                   FontSize="35"
+                   Margin="1030,245,0,0" TextWrapping="Wrap" 
+                   Text="Q 00.00" VerticalAlignment="Top" Width="235"/>
+        <TextBlock x:Name="txTotalFac_Copiar" HorizontalAlignment="Left" Height="55"
+            Foreground="White"
+            TextAlignment="Right"
+            FontSize="35"
+            Margin="1030,615,0,0" TextWrapping="Wrap" 
+            Text="Q 00.00" VerticalAlignment="Top" Width="235"/>
+        <Button x:Name="btnEliminar" Content="Button" HorizontalAlignment="Left" Height="40" Margin="1030,486,0,0" VerticalAlignment="Top" Width="235"/>
+        <Button x:Name="btnAgregarF" Content="Button" HorizontalAlignment="Left" Height="40" Margin="1030,175,0,0" VerticalAlignment="Top" Width="235" Click="obtenerFactura"/>
+
+
+
+
+
+
+
+    </Grid>
+</Window>

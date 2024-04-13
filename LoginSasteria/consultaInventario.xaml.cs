@@ -67,5 +67,12 @@ namespace LoginSasteria
             abrir.Show();
             this.Close();
         }
+
+        private void AbrirProcesoRegalo(object sender, RoutedEventArgs e)
+        {
+            DevolucionRegalo abrir = new DevolucionRegalo();
+            abrir.Show();
+            this.Close();
+        }
     }
 }
