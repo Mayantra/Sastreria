@@ -53,5 +53,40 @@ namespace LoginSasteria
         {
             this.WindowState = WindowState.Minimized;
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            VerificarUsuario abrirVerificarUsuario = new VerificarUsuario();
+            abrirVerificarUsuario.Show();
+            this.Close();
+        }
+
+        private void btnEditarProducto_Click_1(object sender, RoutedEventArgs e)
+        {
+            EditarProdInventario abrirEditarProducto = new EditarProdInventario();
+            abrirEditarProducto.Show();
+            this.Close();
+        }
+
+        private void btnVerInventario_Click_1(object sender, RoutedEventArgs e)
+        {
+            VerInventario abrirVerInventario = new VerInventario();
+            abrirVerInventario.Show();
+            this.Close();
+        }
+
+        private void btnBarras_Click_1(object sender, RoutedEventArgs e)
+        {
+            crearBarrasMenu abrirMenuCrearBarras = new crearBarrasMenu();
+            abrirMenuCrearBarras.Show();
+            this.Close();
+        }
+
+        private void btnInicio_Click_1(object sender, RoutedEventArgs e)
+        {
+            mainInventario abrirmainInventario = new mainInventario();
+            abrirmainInventario.Show();
+            this.Close();
+        }
     }
 }

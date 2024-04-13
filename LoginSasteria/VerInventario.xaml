@@ -1,11 +1,11 @@
-﻿<Window x:Class="LoginSasteria.InventarioInventario"
+﻿<Window x:Class="LoginSasteria.VerInventario"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LoginSasteria"
         mc:Ignorable="d"
-                 WindowStartupLocation="CenterScreen"
+                                 WindowStartupLocation="CenterScreen"
   Title="" Height="700" Width="1300"  Foreground="{x:Null}"
   WindowStyle="None"
   Background="Transparent"
@@ -55,7 +55,7 @@ BorderThickness="{TemplateBinding BorderThickness}">
 
         <Rectangle HorizontalAlignment="Left" Height="700" VerticalAlignment="Center" Width="15" Fill="#FFEDE4A4"/>
 
-        <Button x:Name="btnInicio" HorizontalAlignment="Left" Height="60" Margin="15,353,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB" Click="btnInicio_Click_1">
+        <Button x:Name="btnInicio" HorizontalAlignment="Left" Height="60" Margin="15,353,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB">
             <Grid Height="60" Width="170">
                 <Label Content="Inicio" Foreground="#FFEDE4A4" Margin="14,14,81,10"></Label>
                 <Rectangle Margin="119,14,10,10">
@@ -105,7 +105,7 @@ BorderThickness="{TemplateBinding BorderThickness}">
             </Grid>
 
         </Button>
-        <Button x:Name="btnBarras" HorizontalAlignment="Left" Height="60" Margin="15,593,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB" Template="{StaticResource NoMouseOverButtonTemplate}" Click="btnBarras_Click_1">
+        <Button x:Name="btnBarras" HorizontalAlignment="Left" Height="60" Margin="15,593,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB" Template="{StaticResource NoMouseOverButtonTemplate}">
             <Grid Height="60" Width="170">
                 <Label Content="Barras" Foreground="#FFEDE4A4" Margin="10,14,70,10"/>
                 <Rectangle Margin="119,14,10,10">
@@ -128,69 +128,82 @@ BorderThickness="{TemplateBinding BorderThickness}">
             </Label.Resources>
             <TextBlock x:Name="txblockHora" TextAlignment="Left" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Height="77" Width="105" FontWeight="Normal" FontSize="22"/>
         </Label>
-        <Button x:Name="btnAgregarProducto" HorizontalAlignment="Left" Height="560" Margin="320,80,0,0" 
-                VerticalAlignment="Top" Width="320" Background="#FF09594D" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="Button_Click">
-            <Grid Height="550" Width="290">
-                <Rectangle Margin="26,80,26,275">
+
+        <!-- Formulario para ver los productos -->
+        <TextBlock Text="Ver Inventario" FontSize="35" Margin="515,84,370,0" Foreground="White"
+        TextWrapping="WrapWithOverflow" TextAlignment="Center" VerticalAlignment="Top" Background="#FF684BA8"/>
+
+        <Button x:Name="btnCancelar" HorizontalAlignment="Left" Height="60" Margin="600,598,0,0" VerticalAlignment="Top" Width="245" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FF580000" Click="btnCancelar_Click_1">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+            <Grid Height="60" Width="200">
+                <Label Content="Cancelar" Margin="100,10,10,10" FontSize="20" Foreground="White" FontFamily="MingLiU_HKSCS-ExtB" >
+                </Label>
+                <Rectangle Margin="8,10,122,15">
                     <Rectangle.Fill>
-                        <ImageBrush Stretch="Uniform" ImageSource="/plusWhite.png"/>
+                        <ImageBrush ImageSource="/deleteWhite.png" Stretch="Uniform"/>
                     </Rectangle.Fill>
                 </Rectangle>
-
-                <TextBlock Text="Agregar Productos" FontSize="50" Margin="26,300,26,100" Foreground="White"
-                           TextWrapping="WrapWithOverflow" TextAlignment="Center">
-
-                </TextBlock>
-
-            </Grid>
-        </Button>
-        <Button x:Name="btnEditarProducto" HorizontalAlignment="Left" Height="160" Margin="720,80,0,0" 
-        VerticalAlignment="Top" Width="480" Background="#FF255909" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="btnEditarProducto_Click_1">
-            <Grid Height="140" Width="450">
-                <Rectangle Margin="30,5,275,5">
-                    <Rectangle.Fill>
-                        <ImageBrush Stretch="Uniform" ImageSource="/plusWhite.png"/>
-                    </Rectangle.Fill>
-                </Rectangle>
-
-                <TextBlock Text="Editar Productos" FontSize="35" Margin="235,0,26,0" Foreground="White"
-                   TextWrapping="WrapWithOverflow" TextAlignment="Center" VerticalAlignment="Center">
-
-                </TextBlock>
-
-            </Grid>
-        </Button>
-        <Button x:Name="btnVerInventario" HorizontalAlignment="Left" Height="160" Margin="720,280,0,0" 
-            VerticalAlignment="Top" Width="480" Background="#FF684BA8" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="btnVerInventario_Click_1">
-            <Grid Height="140" Width="450">
-                <Rectangle Margin="30,5,275,5">
-                    <Rectangle.Fill>
-                        <ImageBrush Stretch="Uniform" ImageSource="/plusWhite.png"/>
-                    </Rectangle.Fill>
-                </Rectangle>
-
-                <TextBlock Text="Ver Inventario" FontSize="35" Margin="235,0,26,0" Foreground="White"
-                    TextWrapping="WrapWithOverflow" TextAlignment="Center" VerticalAlignment="Center"/>
-
-            </Grid>
-        </Button>
-        <Button HorizontalAlignment="Left" Height="160" Margin="720,480,0,0" 
-            VerticalAlignment="Top" Width="480" Background="#FF213E61" BorderBrush="{x:Null}" Foreground="{x:Null}">
-            <Grid Height="140" Width="450">
-                <Rectangle Margin="30,5,275,5">
-                    <Rectangle.Fill>
-                        <ImageBrush Stretch="Uniform" ImageSource="/plusWhite.png"/>
-                    </Rectangle.Fill>
-                </Rectangle>
-
-                <TextBlock Text="********" FontSize="35" Margin="235,0,26,0" Foreground="White"
-                    TextWrapping="WrapWithOverflow" TextAlignment="Center" VerticalAlignment="Center"/>
-
             </Grid>
         </Button>
 
+        <DataGrid ItemsSource="{Binding}" ColumnWidth="Auto" IsReadOnly="True" GridLinesVisibility="None" 
+           CanUserDeleteRows="False" Padding="10"
+           CanUserResizeColumns="False" CanUserResizeRows="False"
+           x:Name="dgEdiInventario" HorizontalAlignment="Left" Height="400" Margin="215,163,0,0" VerticalAlignment="Top" 
+           Width="1050" FontSize="15" BorderBrush="{x:Null}" Background="White" AreRowDetailsFrozen="True" 
+           RowBackground="#FFF1F1F1" AlternatingRowBackground="White" Foreground="Black" FontFamily="Arial" 
+           AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Código" Binding="{Binding codigo}" Width="200"/>
 
+                <DataGridTextColumn Header="Precio" Binding="{Binding precio}" Width="80"/>
 
+                <DataGridTextColumn Header="Producto" Binding="{Binding Producto}" Width="150"/>
 
+                <DataGridTextColumn Header="Color" Binding="{Binding Color}" Width="70"/>
+
+                <DataGridTextColumn Header="Talla" Binding="{Binding Talla}" Width="85"/>
+
+                <DataGridTextColumn Header="Tela" Binding="{Binding Tela}" Width="90"/>
+
+                <DataGridTextColumn Header="Almacén" Binding="{Binding Almacen}" Width="150"/>
+
+                <DataGridTextColumn Header="Empleado" Binding="{Binding Empleado}" Width="120"/>
+
+                <DataGridTextColumn Header="Proveedor" Binding="{Binding Proveedor}" Width="115"/>
+
+            </DataGrid.Columns>
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </DataGrid.Resources>
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="#580000"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="Padding" Value="5"/>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+
+            <DataGrid.CellStyle>
+                <Style TargetType="{x:Type DataGridCell}">
+                    <Setter Property="Padding" Value="5"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type DataGridCell}">
+                                <Border Padding="{TemplateBinding Padding}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                                    <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </DataGrid.CellStyle>
+        </DataGrid>
     </Grid>
 </Window>

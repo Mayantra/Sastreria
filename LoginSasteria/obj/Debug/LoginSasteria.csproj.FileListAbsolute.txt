@@ -257,3 +257,15 @@ C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\EstadoPorClien
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\EstadoPorClientes.baml
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\DevolucionRegalo.g.cs
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\DevolucionRegalo.baml
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\AgregarProdIventario.g.cs
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\DevolucionRegalo.g.cs
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\EditarProdInventario.g.cs
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\EstadoPorClientes.g.cs
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\VerificarUsuario.g.cs
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\VerInventario.g.cs
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\DevolucionRegalo.baml
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\EstadoPorClientes.baml
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\AgregarProdIventario.baml
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\EditarProdInventario.baml
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\VerificarUsuario.baml
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\VerInventario.baml

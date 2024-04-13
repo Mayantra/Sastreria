@@ -9,14 +9,14 @@ namespace LoginSasteria
 {
     internal class ConexionDB
     {
-        MySqlConnection con = new MySqlConnection();
+        //MySqlConnection con = new MySqlConnection();
         public static string servidor = "localhost";
         public static string db = "dbLeonV2";
         public static string username = "root";
         public static string password = "Admin";
-        public static string port="3306";
+        public static string port = "3306";
 
-        string conexion = "server=" + servidor + ";" + "port=" + port+";" + "user id=" + username + ";"
+        /*string conexion = "server=" + servidor + ";" + "port=" + port+";" + "user id=" + username + ";"
             + "password="+password+";"+"database="+db+";";
         
         public MySqlConnection establecerCN()
@@ -34,6 +34,33 @@ namespace LoginSasteria
         }
         public MySqlConnection cerrarCN()
         {
+            con.Close();
+            return con;
+        }*/
+
+        string conexion = "server=" + servidor + ";" + "port=" + port + ";" + "user id=" + username + ";"
+            + "password=" + password + ";" + "database=" + db + ";";
+
+        public MySqlConnection establecerCN()
+        {
+            // Crea una nueva instancia de conexión cada vez.
+            var con = new MySqlConnection(conexion);
+            try
+            {
+                con.Open();
+                // MessageBox.Show("Data Base Connection Already");
+            }
+            catch (MySqlException e)
+            {
+                MessageBox.Show("Error al conectarse a la base de datos" + e.ToString());
+                return null;
+            }
+            return con;
+        }
+        public MySqlConnection cerrarCN()
+        {
+            var con = new MySqlConnection(conexion);
+
             con.Close();
             return con;
         }

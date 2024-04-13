@@ -181,6 +181,9 @@
     <Compile Include="AccesoNoAutorizado.xaml.cs">
       <DependentUpon>AccesoNoAutorizado.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AgregarProdIventario.xaml.cs">
+      <DependentUpon>AgregarProdIventario.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AgregarVenta.cs" />
     <Compile Include="ClientesVentas.cs" />
     <Compile Include="consultaInventario.xaml.cs">
@@ -194,6 +197,9 @@
     </Compile>
     <Compile Include="DevolucionRegalo.xaml.cs">
       <DependentUpon>DevolucionRegalo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EditarProdInventario.xaml.cs">
+      <DependentUpon>EditarProdInventario.xaml</DependentUpon>
     </Compile>
     <Compile Include="estadoCuentaInventario.xaml.cs">
       <DependentUpon>estadoCuentaInventario.xaml</DependentUpon>
@@ -226,7 +232,17 @@
     <Compile Include="ventanaInicio.xaml.cs">
       <DependentUpon>ventanaInicio.xaml</DependentUpon>
     </Compile>
+    <Compile Include="VerificarUsuario.xaml.cs">
+      <DependentUpon>VerificarUsuario.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VerInventario.xaml.cs">
+      <DependentUpon>VerInventario.xaml</DependentUpon>
+    </Compile>
     <Page Include="AccesoNoAutorizado.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AgregarProdIventario.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -243,6 +259,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DevolucionRegalo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditarProdInventario.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -297,6 +317,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ventanaInicio.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VerificarUsuario.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VerInventario.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

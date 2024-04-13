@@ -47,5 +47,19 @@ namespace LoginSasteria
             abrirImprimir.Show();
             this.Close();
         }
+
+        private void btnInicio_Click_1(object sender, RoutedEventArgs e)
+        {
+            mainInventario abrirInicio = new mainInventario();
+            abrirInicio.Show();
+            this.Close();
+        }
+
+        private void btnInventario_Click_1(object sender, RoutedEventArgs e)
+        {
+            InventarioInventario abrirInventario = new InventarioInventario();
+            abrirInventario.Show();
+            this.Close();
+        }
     }
 }

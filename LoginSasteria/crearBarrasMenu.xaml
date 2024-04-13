@@ -157,7 +157,7 @@ Icon="/tshirt_120689.ico">
 
         <Rectangle HorizontalAlignment="Left" Height="700" VerticalAlignment="Center" Width="15" Fill="#FFEDE4A4"/>
 
-        <Button HorizontalAlignment="Left" Height="60" Margin="15,353,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB">
+        <Button x:Name="btnInicio" HorizontalAlignment="Left" Height="60" Margin="15,353,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB" Click="btnInicio_Click_1">
             <Grid Height="60" Width="170">
                 <Label Content="Inicio" Foreground="#FFEDE4A4" Margin="14,14,81,10"></Label>
                 <Rectangle Margin="119,14,10,10">
@@ -198,7 +198,7 @@ Icon="/tshirt_120689.ico">
         </Button>
 
         <!-- Boton Inventario -->
-        <Button HorizontalAlignment="Left" Height="60" Margin="0,533,0,0" VerticalAlignment="Top" Width="185" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB" Template="{StaticResource NoMouseOverButtonTemplate}">
+        <Button x:Name="btnInventario" HorizontalAlignment="Left" Height="60" Margin="0,533,0,0" VerticalAlignment="Top" Width="185" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB" Template="{StaticResource NoMouseOverButtonTemplate}" Click="btnInventario_Click_1">
             <Grid Height="60" Width="170">
                 <Label Content="Inventario" Foreground="#FFEDE4A4" Margin="5,14,56,10" FontSize="20"/>
                 <Rectangle Margin="125,14,4,10">
