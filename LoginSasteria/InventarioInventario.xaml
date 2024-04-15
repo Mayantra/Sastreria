@@ -149,7 +149,7 @@ BorderThickness="{TemplateBinding BorderThickness}">
             <Grid Height="140" Width="450">
                 <Rectangle Margin="30,5,275,5">
                     <Rectangle.Fill>
-                        <ImageBrush Stretch="Uniform" ImageSource="/plusWhite.png"/>
+                        <ImageBrush Stretch="Uniform" ImageSource="/pencilWhite.png"/>
                     </Rectangle.Fill>
                 </Rectangle>
 
@@ -165,7 +165,7 @@ BorderThickness="{TemplateBinding BorderThickness}">
             <Grid Height="140" Width="450">
                 <Rectangle Margin="30,5,275,5">
                     <Rectangle.Fill>
-                        <ImageBrush Stretch="Uniform" ImageSource="/plusWhite.png"/>
+                        <ImageBrush Stretch="Uniform" ImageSource="/LupaWhite.png"/>
                     </Rectangle.Fill>
                 </Rectangle>
 
@@ -179,7 +179,7 @@ BorderThickness="{TemplateBinding BorderThickness}">
             <Grid Height="140" Width="450">
                 <Rectangle Margin="30,5,275,5">
                     <Rectangle.Fill>
-                        <ImageBrush Stretch="Uniform" ImageSource="/plusWhite.png"/>
+                        <ImageBrush Stretch="Uniform" ImageSource="/cancelWhite.png"/>
                     </Rectangle.Fill>
                 </Rectangle>
 

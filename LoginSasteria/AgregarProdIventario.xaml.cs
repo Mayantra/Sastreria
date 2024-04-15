@@ -154,7 +154,7 @@ namespace LoginSasteria
         private bool InsertarInventario()
         {
             string codigoProducto = txtCodBarras.Text;
-
+            objConection.cerrarCN();
             // Verificar si el producto ya existe en el inventario
             if (VerificarProductoExistente(codigoProducto))
             {

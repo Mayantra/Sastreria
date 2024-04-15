@@ -300,7 +300,13 @@ BorderThickness="{TemplateBinding BorderThickness}">
             Template="{StaticResource TextBoxBaseControlTemplate}"
             TextWrapping="Wrap"  VerticalAlignment="Top" Width="235" BorderBrush="{x:Null}" SelectionBrush="#FF74EFFF"
             Padding="6" FontSize="16"/>
-        <Button x:Name="btnAgregarP" Content="Button" HorizontalAlignment="Left" Height="40" Margin="1030,436,0,0" VerticalAlignment="Top" Width="235"/>
+        <Button x:Name="btnAgregarP" Content="Agregar Producto" HorizontalAlignment="Left" Height="40" Margin="1030,436,0,0" VerticalAlignment="Top" Width="235">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
         <Rectangle HorizontalAlignment="Left" Height="12" Margin="230,338,0,0" Stroke="Transparent"
                    Fill="#FFEDE4A4"
                    VerticalAlignment="Top" Width="1035"/>
@@ -316,8 +322,29 @@ BorderThickness="{TemplateBinding BorderThickness}">
             FontSize="35"
             Margin="1030,615,0,0" TextWrapping="Wrap" 
             Text="Q 00.00" VerticalAlignment="Top" Width="235"/>
-        <Button x:Name="btnEliminar" Content="Button" HorizontalAlignment="Left" Height="40" Margin="1030,486,0,0" VerticalAlignment="Top" Width="235"/>
-        <Button x:Name="btnAgregarF" Content="Button" HorizontalAlignment="Left" Height="40" Margin="1030,175,0,0" VerticalAlignment="Top" Width="235" Click="obtenerFactura"/>
+        <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Height="40" Margin="1030,486,0,0" VerticalAlignment="Top" Width="235">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="btnAgregarF" Content="Agregar Código" HorizontalAlignment="Left" Height="40" Margin="1030,175,0,0" 
+                VerticalAlignment="Top" Width="235" Click="obtenerFactura">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="btnDevolver" Content="Devolución" HorizontalAlignment="Left" Height="40" Margin="1030,538,0,0" 
+        VerticalAlignment="Top" Width="235" Click="obtenerFactura">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
 
 
 

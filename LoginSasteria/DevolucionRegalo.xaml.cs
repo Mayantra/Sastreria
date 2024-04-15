@@ -40,16 +40,23 @@ namespace LoginSasteria
         private void obtenerFactura(object sender, RoutedEventArgs e)
         {
             string codigo = txFactura.Text;
-            if (verificarFactura(codigo) == true)
+            if (codigo == null | codigo == "")
             {
-                //MessageBox.Show("Acceso consedido");
-                CargarFactura(codigo);
-                CargarTotalFacturas(codigo);
+                MessageBox.Show("Ingrese un codigo de producto");
             }
             else
             {
-                MessageBox.Show("No es posible cumplir con el proceso de Regalo" +
-                    "\nEl tiempo de devolución a Finalizado");
+                if (verificarFactura(codigo) == true)
+                {
+                    //MessageBox.Show("Acceso consedido");
+                    CargarFactura(codigo);
+                    
+                }
+                else
+                {
+                    MessageBox.Show("No es posible cumplir con el proceso de Regalo" +
+                        "\nEl tiempo de devolución a Finalizado");
+                }
             }
             
         }
@@ -112,8 +119,19 @@ namespace LoginSasteria
                 DataTable tabla = new DataTable();
 
                 data.Fill(tabla);
+                if (tabla.Rows.Count < 1)//si el codigo es incorrecto
+                {
+                    MessageBox.Show("Ingrese un código de producto correcto");
 
-                DataConsulta.DataContext = tabla;
+                }
+                else
+                {
+
+                    DataConsulta.DataContext = tabla;
+                    cn.cerrarCN();
+                    CargarTotalFacturas(codigoFactura);
+
+                }
                 cn.cerrarCN();
             }
             catch (MySqlException x)
@@ -124,6 +142,7 @@ namespace LoginSasteria
 
         public void CargarTotalFacturas(string codigoFactura)
         {
+            
             cn.cerrarCN();
             string query = "SELECT  sum(precio) as Total" +
                 "\r\n \r\nFROM dbleonv2.registroventa\r\ninner join dbleonv2.detallesventa" +
@@ -139,7 +158,7 @@ namespace LoginSasteria
                 MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
                 MySqlDataReader reader = comando.ExecuteReader();
                 while (reader.Read())
-                {
+                {                    
                     txTotalFac.Text = "Q " + reader.GetDouble(0).ToString();
                 }
                 reader.Close();

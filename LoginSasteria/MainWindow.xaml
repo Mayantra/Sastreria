@@ -163,7 +163,9 @@
         <DataGrid ItemsSource="{Binding}" ColumnWidth="Auto" IsReadOnly="True" GridLinesVisibility="None" CanUserAddRows="False" 
                   CanUserDeleteRows="False" Padding="10"
                   CanUserResizeColumns="False" CanUserResizeRows="False"
-                  x:Name="DataConsulta" HorizontalAlignment="Left" Height="245" Margin="55,70,0,0" VerticalAlignment="Top" Width="720" FontSize="15" BorderBrush="{x:Null}" Background="White" AreRowDetailsFrozen="True" RowBackground="#FFF1F1F1" AlternatingRowBackground="White" Foreground="Black" FontFamily="Arial">
+                  x:Name="DataConsulta" HorizontalAlignment="Left" Height="245" Margin="55,70,0,0" VerticalAlignment="Top" 
+                  Width="720" BorderBrush="{x:Null}" Background="White" AreRowDetailsFrozen="True" 
+                  RowBackground="#FFF1F1F1" AlternatingRowBackground="White" Foreground="Black" FontFamily="Arial" FontSize="13">
             <DataGrid.ColumnHeaderStyle>
                 <Style TargetType="DataGridColumnHeader">
                     <Setter Property="Background" Value="#580000"/>
@@ -242,7 +244,7 @@
         <Label Content="Producto" HorizontalAlignment="Left" Height="30" Margin="55,324,0,0" VerticalAlignment="Top" Width="100" FontSize="16" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.533"/>
         <Label Content="Talla" HorizontalAlignment="Left" Height="30" Margin="240,324,0,0" VerticalAlignment="Top" Width="100" FontSize="16" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.533"/>
         <Label Content="Color" HorizontalAlignment="Left" Height="30" Margin="430,324,0,0" VerticalAlignment="Top" Width="100" FontSize="16" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.55,0.533"/>
-        <Button  HorizontalAlignment="Left" Height="200" Margin="610,500,0,0" VerticalAlignment="Top" Width="165" BorderBrush="{x:Null}" Foreground="{x:Null}">
+        <Button x:Name="btnPrecio"  HorizontalAlignment="Left" Height="200" Margin="610,500,0,0" VerticalAlignment="Top" Width="165" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="verPrecio">
             <Button.Background>
                 <ImageBrush ImageSource="/Grupo 14.png" Stretch="Uniform"/>
             </Button.Background>

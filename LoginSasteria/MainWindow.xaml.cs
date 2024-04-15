@@ -301,5 +301,13 @@ namespace LoginSasteria
         {
             return !_regex.IsMatch(text);
         }
+
+        private void verPrecio(object sender, RoutedEventArgs e)
+        {
+            verPrecioProducto abrir = new verPrecioProducto();
+            abrir.Show();
+            this.Close();
+
+        }
     }
 }
