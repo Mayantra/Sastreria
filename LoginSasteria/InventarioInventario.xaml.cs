@@ -88,6 +88,27 @@ namespace LoginSasteria
             abrirmainInventario.Show();
             this.Close();
         }
+        private void abrirCons(object sender, RoutedEventArgs e)
+        {
+            consultaInventario abrir = new consultaInventario();
+            abrir.Show();
+            this.Close();
+        }
+
+        private void abrirVenta(object sender, RoutedEventArgs e)
+        {
+            ventaInventario abrir = new ventaInventario();
+            abrir.Show();
+            this.Close();
+        }
+
+        
+        private void abrirInventario(object sender, RoutedEventArgs e)
+        {
+            InventarioInventario abrir = new InventarioInventario();
+            abrir.Show();
+            this.Close();
+        }
 
         private void btnEliminarProducto_Click(object sender, RoutedEventArgs e)
         {

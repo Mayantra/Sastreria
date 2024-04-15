@@ -91,7 +91,7 @@
                 <StaticResource ResourceKey="NoMouseOverButtonTemplate"/>
             </Button.Template>
         </Button>
-        <Button HorizontalAlignment="Left" Height="60" Margin="0,413,0,0" VerticalAlignment="Top" Width="185" BorderBrush="{x:Null}" Background="#FFEDE4A4" Foreground="{x:Null}" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB">
+        <Button HorizontalAlignment="Left" Height="60" Margin="0,413,0,0" VerticalAlignment="Top" Width="185" BorderBrush="{x:Null}" Background="#FFEDE4A4" Foreground="{x:Null}" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB" Click="abrirVenta">
             <Grid Height="60" Width="170">
                 <Label Content="Venta" Foreground="Black" Margin="10,14,70,10"></Label>
                 <Rectangle Margin="119,14,10,10">
@@ -105,7 +105,7 @@
                 <StaticResource ResourceKey="NoMouseOverButtonTemplate"/>
             </Button.Template>
         </Button>
-        <Button HorizontalAlignment="Left" Height="60" Margin="15,473,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="{x:Null}" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB" Template="{StaticResource NoMouseOverButtonTemplate}">
+        <Button HorizontalAlignment="Left" Height="60" Margin="15,473,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="{x:Null}" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB" Template="{StaticResource NoMouseOverButtonTemplate}" Click="abrirCons">
             <Grid Height="60" Width="170">
                 <Label Content="Consulta" Foreground="#FFEDE4A4" Margin="10,14,70,10" FontSize="20"/>
                 <Rectangle Margin="119,14,10,10">
@@ -116,7 +116,7 @@
             </Grid>
 
         </Button>
-        <Button HorizontalAlignment="Left" Height="60" Margin="15,533,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB" Template="{StaticResource NoMouseOverButtonTemplate}">
+        <Button HorizontalAlignment="Left" Height="60" Margin="15,533,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB" Template="{StaticResource NoMouseOverButtonTemplate}" Click="abrirInventario">
             <Grid Height="60" Width="170">
                 <Label Content="Inventario" Foreground="#FFEDE4A4" Margin="5,14,56,10" FontSize="20"/>
                 <Rectangle Margin="119,14,10,10">
@@ -127,7 +127,7 @@
             </Grid>
 
         </Button>
-        <Button HorizontalAlignment="Left" Height="60" Margin="15,593,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB" Template="{StaticResource NoMouseOverButtonTemplate}">
+        <Button HorizontalAlignment="Left" Height="60" Margin="15,593,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB" Template="{StaticResource NoMouseOverButtonTemplate}" Click="abrirBarras">
             <Grid Height="60" Width="170">
                 <Label Content="Barras" Foreground="#FFEDE4A4" Margin="10,14,70,10"/>
                 <Rectangle Margin="119,14,10,10">
@@ -299,11 +299,14 @@
                 </Rectangle>
             </Grid>
         </Button>
-        <TextBlock x:Name="txNombreCliente" HorizontalAlignment="Left" Height="70" Margin="240,591,0,0" 
+        <Rectangle HorizontalAlignment="Left" Height="80" Margin="235,579,0,0" Stroke="Transparent" 
+                   VerticalAlignment="Top" Width="720" Fill="White" Opacity="0.14"/>
+        <TextBlock x:Name="txNombreCliente" HorizontalAlignment="Left" Height="80" Margin="235,579,0,0" 
                    Foreground="White" TextWrapping="Wrap" Text="Nombre del Cliente:" 
-                   VerticalAlignment="Top" Width="720" FontSize="20"/>
+                   VerticalAlignment="Top" Width="720" FontSize="20" LineHeight="30" Padding="15"/>
         <Label Content="NIT" HorizontalAlignment="Left" Height="35" Margin="240,443,0,0" VerticalAlignment="Top" Width="140" Foreground="White" FontSize="18"/>
         <Label Content="No. Teléfono" HorizontalAlignment="Left" Height="35" Margin="475,443,0,0" VerticalAlignment="Top" Width="140" Foreground="White" FontSize="18"/>
+        
 
 
 

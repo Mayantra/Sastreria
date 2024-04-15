@@ -88,7 +88,35 @@ namespace LoginSasteria
             abrir.Show();
             this.Close();
         }
+        private void abrirCons(object sender, RoutedEventArgs e)
+        {
+            consultaInventario abrir = new consultaInventario();
+            abrir.Show();
+            this.Close();
+        }
 
+        private void abrirVenta(object sender, RoutedEventArgs e)
+        {
+            ventaInventario abrir = new ventaInventario();
+            abrir.Show();
+            this.Close();
+        }
+
+        private void abrirBarras(object sender, RoutedEventArgs e)
+        {
+            crearBarrasMenu abrir = new crearBarrasMenu();
+            abrir.Show();
+            this.Close();
+        }
+
+        private void abrirInventario(object sender, RoutedEventArgs e)
+        {
+            InventarioInventario abrir = new InventarioInventario();
+            abrir.Show();
+            this.Close();
+        }
+
+        
         public void addlist(string codigosList)
         {
             listacodigos.Add(codigosList);
@@ -288,7 +316,7 @@ namespace LoginSasteria
             if (txNit.Text.Length > 0)
             {
                 string NIT = txNit.Text;
-                string query = "SELECT Nombres, Apellidos, puntos FROM dbleonv2.cliente where NIT ='" + NIT + "';";
+                string query = "SELECT Nombres, Apellidos FROM dbleonv2.cliente where NIT ='" + NIT + "';";
                 buscarCliente(query);
                 if (existeCliente == true)
                 {
@@ -300,7 +328,7 @@ namespace LoginSasteria
             else if (txTelefono.Text.Length>0)
             {
                 string cel = txTelefono.Text;
-                string query = "SELECT Nombres, Apellidos, puntos FROM dbleonv2.cliente where telefono ='" + cel + "';";
+                string query = "SELECT Nombres, Apellidos FROM dbleonv2.cliente where telefono ='" + cel + "';";
                 buscarCliente(query);
                 if (existeCliente == true)
                 {
@@ -316,43 +344,97 @@ namespace LoginSasteria
         }
         private void RealizarVenta(object sender, RoutedEventArgs e)
         {
-            
-            regalo = 0;
-            if (DataDatos.Items.Count == 0)
+
+            if (existeCliente == false)
             {
-                MessageBox.Show("Debe de agregar productos para realizar una venta");
+                MessageBoxResult result = MessageBox.Show("¿Está seguro que quiere realizar la venta sin los datos del Cliente?",
+                    "Datos del Cliente",MessageBoxButton.OKCancel);
+                if (result == MessageBoxResult.OK)
+                {
+                    // Aquí va el proceso que deseas realizar si el usuario hace clic en OK
+                    regalo = 0;
+                    if (DataDatos.Items.Count == 0)
+                    {
+                        MessageBox.Show("Debe de agregar productos para realizar una venta");
+                    }
+                    else
+                    {
+
+                        ClientesVentas agregar = new ClientesVentas();
+                        agregar.setDatos(tabla, listacodigos, IDCliente, regalo, existeCliente);
+                        agregar.abrir();
+                        this.Close();
+
+                    }
+                    
+                }
             }
             else
             {
+                regalo = 0;
+                if (DataDatos.Items.Count == 0)
+                {
+                    MessageBox.Show("Debe de agregar productos para realizar una venta");
+                }
+                else
+                {
 
-                ClientesVentas agregar = new ClientesVentas();
-                agregar.setDatos(tabla, listacodigos, IDCliente, regalo, existeCliente);
-                agregar.abrir();
+                    ClientesVentas agregar = new ClientesVentas();
+                    agregar.setDatos(tabla, listacodigos, IDCliente, regalo, existeCliente);
+                    agregar.abrir();
+                    this.Close();
 
+                }
+                
             }
-            this.Close();
+            
+            
 
         }
 
         private void ProcesoRegaloVenta(object sender, RoutedEventArgs e)
         {
-            
-            regalo = 1;
-            if (DataDatos.Items.Count == 0)
+            if (existeCliente == false)
             {
-                MessageBox.Show("Debe de agregar productos para realizar una venta");
+                MessageBoxResult result = MessageBox.Show("¿Está seguro que quiere realizar la venta sin los datos del Cliente?",
+                    "Datos del Cliente", MessageBoxButton.OKCancel);
+                if (result == MessageBoxResult.OK)
+                {
+                    regalo = 1;
+                    if (DataDatos.Items.Count == 0)
+                    {
+                        MessageBox.Show("Debe de agregar productos para realizar una venta");
+                    }
+                    else
+                    {
+
+                        ClientesVentas agregar = new ClientesVentas();
+                        agregar.setDatos(tabla, listacodigos, IDCliente, regalo, existeCliente);
+                        agregar.abrir();
+                        this.Close();
+
+                    }
+                    
+                }
             }
             else
             {
+                regalo = 1;
+                if (DataDatos.Items.Count == 0)
+                {
+                    MessageBox.Show("Debe de agregar productos para realizar una venta");
+                }
+                else
+                {
 
-                ClientesVentas agregar = new ClientesVentas();
-                agregar.setDatos(tabla, listacodigos, IDCliente, regalo, existeCliente);
-                agregar.abrir();
+                    ClientesVentas agregar = new ClientesVentas();
+                    agregar.setDatos(tabla, listacodigos, IDCliente, regalo, existeCliente);
+                    agregar.abrir();
+                    this.Close();
 
+                }
+                
             }
-            
-            this.Close();
-            
 
         }
 

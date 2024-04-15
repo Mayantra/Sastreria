@@ -55,7 +55,7 @@
         <Rectangle HorizontalAlignment="Left" Height="700" VerticalAlignment="Center" Width="15" Fill="#FFEDE4A4"/>
 
 
-        <Button HorizontalAlignment="Left" Height="60" Margin="0,353,0,0" VerticalAlignment="Top" Width="185" BorderBrush="{x:Null}" Background="#FFEDE4A4" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB">
+        <Button HorizontalAlignment="Left" Height="60" Margin="0,353,0,0" VerticalAlignment="Top" Width="185" BorderBrush="{x:Null}" Background="#FFEDE4A4" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB" Click="abrirInicio">
             <Grid Height="60" Width="170">
                 <Label Content="Inicio" Foreground="Black" Margin="14,14,81,10"></Label>
                 <Rectangle Margin="119,14,10,10">

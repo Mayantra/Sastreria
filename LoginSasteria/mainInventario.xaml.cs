@@ -103,5 +103,12 @@ namespace LoginSasteria
             abrir.Show();
             this.Close();
         }
+
+        private void abrirInicio(object sender, RoutedEventArgs e)
+        {
+            mainInventario abrir = new mainInventario();
+            abrir.Show();
+            this.Close();
+        }
     }
 }
