@@ -277,3 +277,5 @@ C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\AgregarProdIve
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\EditarProdInventario.baml
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\VerificarUsuario.baml
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\VerInventario.baml
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\EliminarProdInventario.g.cs
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\EliminarProdInventario.baml

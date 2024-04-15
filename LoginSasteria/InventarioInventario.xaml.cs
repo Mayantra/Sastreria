@@ -88,5 +88,12 @@ namespace LoginSasteria
             abrirmainInventario.Show();
             this.Close();
         }
+
+        private void btnEliminarProducto_Click(object sender, RoutedEventArgs e)
+        {
+            EliminarProdInventario abrirEliminarProdInventario = new EliminarProdInventario();
+            abrirEliminarProdInventario.Show();
+            this.Close();
+        }
     }
 }

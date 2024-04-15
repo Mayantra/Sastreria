@@ -174,8 +174,8 @@ BorderThickness="{TemplateBinding BorderThickness}">
 
             </Grid>
         </Button>
-        <Button HorizontalAlignment="Left" Height="160" Margin="720,480,0,0" 
-            VerticalAlignment="Top" Width="480" Background="#FF213E61" BorderBrush="{x:Null}" Foreground="{x:Null}">
+        <Button x:Name="btnEliminarProducto" HorizontalAlignment="Left" Height="160" Margin="720,480,0,0" 
+            VerticalAlignment="Top" Width="480" Background="#FF213E61" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="btnEliminarProducto_Click">
             <Grid Height="140" Width="450">
                 <Rectangle Margin="30,5,275,5">
                     <Rectangle.Fill>
@@ -183,7 +183,7 @@ BorderThickness="{TemplateBinding BorderThickness}">
                     </Rectangle.Fill>
                 </Rectangle>
 
-                <TextBlock Text="********" FontSize="35" Margin="235,0,26,0" Foreground="White"
+                <TextBlock Text="Eliminar Producto" FontSize="35" Margin="235,0,26,0" Foreground="White"
                     TextWrapping="WrapWithOverflow" TextAlignment="Center" VerticalAlignment="Center"/>
 
             </Grid>

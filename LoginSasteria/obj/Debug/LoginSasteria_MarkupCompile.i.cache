@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\App.xaml
-20-576854734
+21-1454778861
 141003741212
-30-1528441409
+31-86090310
 56-1490028516
-AccesoNoAutorizado.xaml;AgregarProdIventario.xaml;consultaInventario.xaml;CrearBarras.xaml;crearBarrasMenu.xaml;DevolucionRegalo.xaml;EditarProdInventario.xaml;estadoCuentaInventario.xaml;EstadoPorClientes.xaml;EstadoPorFechas.xaml;ImprimirBarras.xaml;InventarioInventario.xaml;Logeo.xaml;mainInventario.xaml;MainWindow.xaml;ProcesoVenta.xaml;ventaInventario.xaml;ventanaInicio.xaml;VerificarUsuario.xaml;VerInventario.xaml;
+AccesoNoAutorizado.xaml;AgregarProdIventario.xaml;consultaInventario.xaml;CrearBarras.xaml;crearBarrasMenu.xaml;DevolucionRegalo.xaml;EditarProdInventario.xaml;EliminarProdInventario.xaml;estadoCuentaInventario.xaml;EstadoPorClientes.xaml;EstadoPorFechas.xaml;ImprimirBarras.xaml;InventarioInventario.xaml;Logeo.xaml;mainInventario.xaml;MainWindow.xaml;ProcesoVenta.xaml;ventaInventario.xaml;ventanaInicio.xaml;VerificarUsuario.xaml;VerInventario.xaml;
 
 True
 

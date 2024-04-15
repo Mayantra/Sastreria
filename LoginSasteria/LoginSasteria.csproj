@@ -201,6 +201,9 @@
     <Compile Include="EditarProdInventario.xaml.cs">
       <DependentUpon>EditarProdInventario.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EliminarProdInventario.xaml.cs">
+      <DependentUpon>EliminarProdInventario.xaml</DependentUpon>
+    </Compile>
     <Compile Include="estadoCuentaInventario.xaml.cs">
       <DependentUpon>estadoCuentaInventario.xaml</DependentUpon>
     </Compile>
@@ -263,6 +266,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="EditarProdInventario.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EliminarProdInventario.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

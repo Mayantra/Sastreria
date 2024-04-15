@@ -122,7 +122,7 @@ namespace LoginSasteria
             if (e.Key == Key.Enter)
             {
                 //Antes de llenar el DataGrid con los datos del codigo a buscar, se verifica que el codigo exista en el inventario
-                string Query = "SELECT COUNT(*) FROM dbleonv2.producto WHERE idproducto = @codigo";
+                string Query = "SELECT COUNT(*) FROM dbleonv2.inventario WHERE producto_idproducto = @codigo";
 
                 using (MySqlCommand comando2 = new MySqlCommand(Query, objConection.establecerCN()))
                 {
