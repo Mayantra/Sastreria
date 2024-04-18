@@ -417,6 +417,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="about.svg" />
+    <Resource Include="chalecoWhite.png" />
     <Resource Include="pencilWhite.png" />
     <Resource Include="LogoBlack.png" />
     <Resource Include="LupaBuscar.png" />

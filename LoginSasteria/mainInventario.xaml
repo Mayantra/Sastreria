@@ -120,9 +120,9 @@
 
 
 
-        <Rectangle HorizontalAlignment="Left" Height="320" Margin="800,320,0,0" VerticalAlignment="Top" Width="320" Fill="#FF255909"/>
-        <Rectangle HorizontalAlignment="Left" Height="320" Margin="388,320,0,0" VerticalAlignment="Top" Width="320" Fill="#FF09594D"/>
-        <Label x:Name="lbUser" Height="85" Margin="420,515,625,0" VerticalAlignment="Top" FontSize="20" FontFamily="MingLiU_HKSCS-ExtB" FontWeight="Bold" Foreground="White">
+        <Rectangle HorizontalAlignment="Left" Height="150" Margin="750,490,0,0" VerticalAlignment="Top" Width="480" Fill="#FF255909"/>
+        <Rectangle HorizontalAlignment="Left" Height="320" Margin="320,320,0,0" VerticalAlignment="Top" Width="320" Fill="#FF09594D"/>
+        <Label x:Name="lbUser" Height="85" Margin="352,515,693,0" VerticalAlignment="Top" FontSize="20" FontFamily="MingLiU_HKSCS-ExtB" FontWeight="Bold" Foreground="White">
             <Label.Resources>
                 <Style TargetType="{x:Type AccessText}">
                     <Setter Property="TextWrapping" Value="Wrap"/>
@@ -135,20 +135,20 @@
                 <ImageBrush ImageSource="/Imagen_de_WhatsApp_2024-01-17_a_las_20.09.20_1e6cb21b-removebg-preview.png" Stretch="Uniform"/>
             </Rectangle.Fill>
         </Rectangle>
-        <Rectangle HorizontalAlignment="Left" Height="127" Margin="478,353,0,0" VerticalAlignment="Top" Width="140">
+        <Rectangle HorizontalAlignment="Left" Height="127" Margin="410,353,0,0" VerticalAlignment="Top" Width="140">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="/about.png" Stretch="Uniform" TileMode="None"/>
             </Rectangle.Fill>
         </Rectangle>
-        <Label x:Name="lbf" Height="85" Margin="868,515,248,0" VerticalAlignment="Top" Width="185" FontSize="20" FontFamily="MingLiU_HKSCS-ExtB" FontWeight="Bold" Foreground="White">
+        <Label x:Name="lbf" Height="108" Margin="990,515,85,0" VerticalAlignment="Top" FontSize="20" FontFamily="MingLiU_HKSCS-ExtB" FontWeight="Bold" Foreground="White">
             <Label.Resources>
                 <Style TargetType="{x:Type AccessText}">
                     <Setter Property="TextWrapping" Value="Wrap"/>
                 </Style>
             </Label.Resources>
-            <TextBlock x:Name="txblockfecha" TextAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" Text="lorem" VerticalAlignment="Top" Height="77" Width="175" FontWeight="Normal" FontSize="25"/>
+            <TextBlock x:Name="txblockfecha" TextAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" Text="lorem" VerticalAlignment="Top" Height="98" Width="215" FontWeight="Normal" FontSize="30"/>
         </Label>
-        <Rectangle HorizontalAlignment="Left" Height="127" Margin="890,353,0,0" VerticalAlignment="Top" Width="140">
+        <Rectangle HorizontalAlignment="Left" Height="126" Margin="785,502,0,0" VerticalAlignment="Top" Width="140">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="/weeklycalendarcircularbutton_104710.png" Stretch="Uniform"/>
             </Rectangle.Fill>
@@ -161,6 +161,20 @@
             </Label.Resources>
             <TextBlock x:Name="txblockHora" TextAlignment="Left" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Height="77" Width="105" FontWeight="Normal" FontSize="22"/>
         </Label>
+        <Button HorizontalAlignment="Left" Height="153" Background="#590959" Margin="750,320,0,0" VerticalAlignment="Top" Width="480" BorderBrush="{x:Null}" Foreground="{x:Null}">
+            <Grid Width="460" Height="130">
+                <Rectangle Margin="25,0,305,0">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="/chalecoWhite.png" Stretch="Uniform"/>
+                    </Rectangle.Fill>
+
+                </Rectangle>
+                <Label Content="Trajes" Margin="230,35,10,35" FontSize="40" FontFamily="MingLiU_HKSCS-ExtB" Foreground="White" 
+                       HorizontalContentAlignment="Center">
+
+                </Label>
+            </Grid>
+        </Button>
 
 
     </Grid>
