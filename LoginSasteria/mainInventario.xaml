@@ -169,7 +169,7 @@
                     </Rectangle.Fill>
 
                 </Rectangle>
-                <Label Content="Trajes" Margin="230,35,10,35" FontSize="40" FontFamily="MingLiU_HKSCS-ExtB" Foreground="White" 
+                <Label Content="Clientes" Margin="230,35,10,35" FontSize="40" FontFamily="MingLiU_HKSCS-ExtB" Foreground="White" 
                        HorizontalContentAlignment="Center">
 
                 </Label>

@@ -229,6 +229,9 @@
     <Compile Include="ProcesoVenta.xaml.cs">
       <DependentUpon>ProcesoVenta.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TrajesClientes.xaml.cs">
+      <DependentUpon>TrajesClientes.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ventaInventario.xaml.cs">
       <DependentUpon>ventaInventario.xaml</DependentUpon>
     </Compile>
@@ -319,6 +322,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="ProcesoVenta.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TrajesClientes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
