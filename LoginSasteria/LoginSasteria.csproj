@@ -195,6 +195,9 @@
     <Compile Include="crearBarrasMenu.xaml.cs">
       <DependentUpon>crearBarrasMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CrearEncargoInventario.xaml.cs">
+      <DependentUpon>CrearEncargoInventario.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DevolucionRegalo.xaml.cs">
       <DependentUpon>DevolucionRegalo.xaml</DependentUpon>
     </Compile>
@@ -229,9 +232,6 @@
     <Compile Include="ProcesoVenta.xaml.cs">
       <DependentUpon>ProcesoVenta.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TrajesClientes.xaml.cs">
-      <DependentUpon>TrajesClientes.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ventaInventario.xaml.cs">
       <DependentUpon>ventaInventario.xaml</DependentUpon>
     </Compile>
@@ -264,6 +264,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="crearBarrasMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CrearEncargoInventario.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -322,10 +326,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="ProcesoVenta.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="TrajesClientes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -424,6 +424,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="about.svg" />
+    <Resource Include="Qwhite.png" />
     <Resource Include="chalecoWhite.png" />
     <Resource Include="pencilWhite.png" />
     <Resource Include="LogoBlack.png" />
