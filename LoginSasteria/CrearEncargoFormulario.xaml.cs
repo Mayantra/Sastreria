@@ -15,21 +15,13 @@ using System.Windows.Shapes;
 namespace LoginSasteria
 {
     /// <summary>
-    /// Lógica de interacción para CrearEncargoInventario.xaml
+    /// Lógica de interacción para CrearEncargoFormulario.xaml
     /// </summary>
-    public partial class CrearEncargoInventario : Window
+    public partial class CrearEncargoFormulario : Window
     {
-        public CrearEncargoInventario()
+        public CrearEncargoFormulario()
         {
             InitializeComponent();
-        }
-
-        private void LeerCodigoBarras(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter)
-            {
-                
-            }
         }
     }
 }

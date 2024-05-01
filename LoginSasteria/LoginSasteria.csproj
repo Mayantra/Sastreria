@@ -195,6 +195,9 @@
     <Compile Include="crearBarrasMenu.xaml.cs">
       <DependentUpon>crearBarrasMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CrearEncargoFormulario.xaml.cs">
+      <DependentUpon>CrearEncargoFormulario.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CrearEncargoInventario.xaml.cs">
       <DependentUpon>CrearEncargoInventario.xaml</DependentUpon>
     </Compile>
@@ -264,6 +267,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="crearBarrasMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CrearEncargoFormulario.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
