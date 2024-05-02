@@ -23,6 +23,15 @@ namespace LoginSasteria
         {
             InitializeComponent();
         }
+        private void btnSalir(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Minimizar(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
 
         private void LeerCodigoBarras(object sender, KeyEventArgs e)
         {
@@ -30,6 +39,13 @@ namespace LoginSasteria
             {
                 
             }
+        }
+
+        private void AbrirCrearEncargo(object sender, RoutedEventArgs e)
+        {
+            CrearEncargoFormulario abrir = new CrearEncargoFormulario();
+            abrir.Show();
+            this.Close();
         }
     }
 }

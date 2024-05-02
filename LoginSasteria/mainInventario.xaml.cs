@@ -110,5 +110,12 @@ namespace LoginSasteria
             abrir.Show();
             this.Close();
         }
+
+        private void AbrirClientes(object sender, RoutedEventArgs e)
+        {
+            CrearEncargoInventario abrir = new CrearEncargoInventario();
+            abrir.Show();
+            this.Close();
+        }
     }
 }

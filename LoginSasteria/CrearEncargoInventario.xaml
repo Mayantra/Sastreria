@@ -148,8 +148,8 @@ BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
             </Label.Resources>
             <TextBlock x:Name="txblockHora" TextAlignment="Left" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Height="77" Width="105" FontWeight="Normal" FontSize="22"/>
         </Label>
-        <Button x:Name="AbrirCrearEncargo" HorizontalAlignment="Left" Background="#590959" BorderBrush="Transparent"
-                Height="288" Margin="300,95,0,0" VerticalAlignment="Top" Width="360">
+        <Button x:Name="btnAbrirCrearEncargo" HorizontalAlignment="Left" Background="#590959" BorderBrush="Transparent"
+                Height="288" Margin="300,95,0,0" VerticalAlignment="Top" Width="360" Click="AbrirCrearEncargo">
             <Grid Height="256" Width="315">
                 <Rectangle Margin="0,10,0,152">
                     <Rectangle.Fill>

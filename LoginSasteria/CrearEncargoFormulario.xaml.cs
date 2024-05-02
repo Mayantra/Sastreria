@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+
 namespace LoginSasteria
 {
     /// <summary>
@@ -22,6 +23,15 @@ namespace LoginSasteria
         public CrearEncargoFormulario()
         {
             InitializeComponent();
+        }
+        private void btnSalir(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Minimizar(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
         }
     }
 }

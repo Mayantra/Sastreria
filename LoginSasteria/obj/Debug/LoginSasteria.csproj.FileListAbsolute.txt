@@ -121,6 +121,24 @@ E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSaster
 E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\bin\Debug\zxing.presentation.dll
 E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\bin\Debug\zxing.xml
 E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\bin\Debug\zxing.presentation.xml
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\estadoCuentaInventario.g.cs
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\EstadoPorFechas.g.cs
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\estadoCuentaInventario.baml
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\EstadoPorFechas.baml
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\AgregarProdIventario.g.cs
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\DevolucionRegalo.g.cs
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\EditarProdInventario.g.cs
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\EstadoPorClientes.g.cs
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\VerificarUsuario.g.cs
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\VerInventario.g.cs
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\DevolucionRegalo.baml
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\EstadoPorClientes.baml
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\AgregarProdIventario.baml
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\EditarProdInventario.baml
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\VerificarUsuario.baml
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\VerInventario.baml
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\EliminarProdInventario.g.cs
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\EliminarProdInventario.baml
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\libSkiaSharp.dylib
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\x86\libSkiaSharp.dll
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\x64\libSkiaSharp.dll
@@ -149,7 +167,9 @@ C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\itext.sign.dll
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\itext.styledxmlparser.dll
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\itext.svg.dll
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\itextsharp.dll
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\JetBrains.Annotations.dll
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\Microsoft.Expression.Interactions.dll
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
@@ -158,6 +178,7 @@ C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\Microsoft.Exte
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\Microsoft.Extensions.Primitives.dll
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\MySql.Data.dll
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\Newtonsoft.Json.dll
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\Scar.Common.WPF.Controls.Behaviors.dll
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\SkiaSharp.dll
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\System.Buffers.dll
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\System.Diagnostics.DiagnosticSource.dll
@@ -169,6 +190,7 @@ C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\System.Text.En
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\System.Text.Json.dll
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\System.Threading.Tasks.Extensions.dll
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\System.ValueTuple.dll
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\System.Windows.Interactivity.dll
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\zxing.dll
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\zxing.presentation.dll
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\BouncyCastle.Cryptography.xml
@@ -186,7 +208,9 @@ C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\itext.sign.xml
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\itext.styledxmlparser.xml
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\itext.svg.xml
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\itextsharp.xml
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\JetBrains.Annotations.xml
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\Microsoft.Expression.Interactions.xml
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\Microsoft.Extensions.DependencyInjection.xml
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\Microsoft.Extensions.Logging.xml
@@ -195,6 +219,7 @@ C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\Microsoft.Exte
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\Microsoft.Extensions.Primitives.xml
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\MySql.Data.xml
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\Newtonsoft.Json.xml
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\Scar.Common.WPF.Controls.Behaviors.pdb
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\SkiaSharp.pdb
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\SkiaSharp.xml
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\System.Buffers.xml
@@ -207,15 +232,23 @@ C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\System.Text.En
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\System.Text.Json.xml
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\System.ValueTuple.xml
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\System.Windows.Interactivity.xml
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\zxing.xml
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\zxing.presentation.xml
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\LoginSasteria.csproj.AssemblyReference.cache
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\MainWindow.baml
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\AccesoNoAutorizado.g.cs
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\AgregarProdIventario.g.cs
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\consultaInventario.g.cs
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\CrearBarras.g.cs
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\crearBarrasMenu.g.cs
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\CrearEncargoFormulario.g.cs
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\CrearEncargoInventario.g.cs
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\DevolucionRegalo.g.cs
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\EditarProdInventario.g.cs
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\EliminarProdInventario.g.cs
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\estadoCuentaInventario.g.cs
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\EstadoPorClientes.g.cs
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\EstadoPorFechas.g.cs
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\ImprimirBarras.g.cs
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\InventarioInventario.g.cs
@@ -225,15 +258,25 @@ C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\MainWindow.g.c
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\ProcesoVenta.g.cs
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\ventaInventario.g.cs
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\ventanaInicio.g.cs
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\VerificarUsuario.g.cs
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\VerInventario.g.cs
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\verPrecioProducto.g.cs
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\App.g.cs
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\LoginSasteria_Content.g.cs
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\LoginSasteria_MarkupCompile.cache
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\LoginSasteria_MarkupCompile.lref
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\AccesoNoAutorizado.baml
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\AgregarProdIventario.baml
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\consultaInventario.baml
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\CrearBarras.baml
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\crearBarrasMenu.baml
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\CrearEncargoFormulario.baml
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\CrearEncargoInventario.baml
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\DevolucionRegalo.baml
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\EditarProdInventario.baml
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\EliminarProdInventario.baml
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\estadoCuentaInventario.baml
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\EstadoPorClientes.baml
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\EstadoPorFechas.baml
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\ImprimirBarras.baml
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\InventarioInventario.baml
@@ -242,6 +285,9 @@ C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\mainInventario
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\ProcesoVenta.baml
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\ventaInventario.baml
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\ventanaInicio.baml
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\VerificarUsuario.baml
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\VerInventario.baml
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\verPrecioProducto.baml
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\LoginSasteria.g.resources
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\LoginSasteria.Properties.Resources.resources
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\LoginSasteria.csproj.GenerateResource.cache
@@ -249,37 +295,21 @@ C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\LoginSasteria.
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\LoginSasteria.csproj.CopyComplete
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\LoginSasteria.exe
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\LoginSasteria.pdb
-E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\estadoCuentaInventario.g.cs
-E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\EstadoPorFechas.g.cs
-E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\estadoCuentaInventario.baml
-E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\EstadoPorFechas.baml
-C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\EstadoPorClientes.g.cs
-C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\EstadoPorClientes.baml
-C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\DevolucionRegalo.g.cs
-C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\DevolucionRegalo.baml
-E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\AgregarProdIventario.g.cs
-E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\DevolucionRegalo.g.cs
-E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\EditarProdInventario.g.cs
-E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\EstadoPorClientes.g.cs
-E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\VerificarUsuario.g.cs
-E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\VerInventario.g.cs
-E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\DevolucionRegalo.baml
-E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\EstadoPorClientes.baml
-E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\AgregarProdIventario.baml
-E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\EditarProdInventario.baml
-E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\VerificarUsuario.baml
-E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\VerInventario.baml
-C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\AgregarProdIventario.g.cs
-C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\EditarProdInventario.g.cs
-C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\VerificarUsuario.g.cs
-C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\VerInventario.g.cs
-C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\AgregarProdIventario.baml
-C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\EditarProdInventario.baml
-C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\VerificarUsuario.baml
-C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\VerInventario.baml
-E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\EliminarProdInventario.g.cs
-E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\EliminarProdInventario.baml
-C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\EliminarProdInventario.g.cs
-C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\EliminarProdInventario.baml
-C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\verPrecioProducto.g.cs
-C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\verPrecioProducto.baml
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\Xceed.Wpf.AvalonDock.dll
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Aero.dll
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Metro.dll
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\Xceed.Wpf.AvalonDock.Themes.VS2010.dll
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\Xceed.Wpf.Toolkit.dll
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\cs-CZ\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\de\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\es\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\fr\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\hu\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\it\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\ja-JP\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\nl-BE\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\pt-BR\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\ro\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\ru\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll

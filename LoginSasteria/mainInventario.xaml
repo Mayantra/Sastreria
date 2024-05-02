@@ -161,7 +161,7 @@
             </Label.Resources>
             <TextBlock x:Name="txblockHora" TextAlignment="Left" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Height="77" Width="105" FontWeight="Normal" FontSize="22"/>
         </Label>
-        <Button HorizontalAlignment="Left" Height="153" Background="#590959" Margin="750,320,0,0" VerticalAlignment="Top" Width="480" BorderBrush="{x:Null}" Foreground="{x:Null}">
+        <Button x:Name="btnClientes" HorizontalAlignment="Left" Height="153" Background="#590959" Margin="750,320,0,0" VerticalAlignment="Top" Width="480" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="AbrirClientes">
             <Grid Width="460" Height="130">
                 <Rectangle Margin="25,0,305,0">
                     <Rectangle.Fill>
