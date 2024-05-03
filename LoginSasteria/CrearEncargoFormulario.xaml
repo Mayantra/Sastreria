@@ -141,22 +141,27 @@
         </Button>
 
         <Rectangle HorizontalAlignment="Left" Height="700" VerticalAlignment="Center" Width="15" Fill="#FFEDE4A4"/>
-        <TextBox  HorizontalAlignment="Left" 
-                 Height="67" Margin="78,78,0,0" TextWrapping="Wrap" 
+        <TextBox  HorizontalAlignment="Left" Text="53545660"
+                 Height="70" Margin="45,78,0,0" TextWrapping="Wrap" 
                  FontSize="25" Padding="15" TextAlignment="Right"
-                 VerticalAlignment="Top" Width="300"/>
-        <Button Content="Agregar Cliente" Background="#FF580000" Foreground="White" FontSize="25" BorderBrush="Transparent"
-                HorizontalAlignment="Left" Height="67" Margin="415,78,0,0" VerticalAlignment="Top" Width="250"/>
-        <Rectangle HorizontalAlignment="Left" Height="67" Margin="695,78,0,0" 
+                 VerticalAlignment="Top" Width="333"/>
+        <Button Background="#FF580000" Foreground="White" FontSize="25" BorderBrush="Transparent"
+                HorizontalAlignment="Left" Height="178" Margin="385,78,0,0" VerticalAlignment="Top" Width="175">
+            <Grid Height="168" Width="145">
+                <TextBlock Text="Agregar Cliente" TextWrapping="WrapWithOverflow" TextAlignment="Center" VerticalAlignment="Center"></TextBlock>
+            </Grid>
+        </Button>
+        <Rectangle HorizontalAlignment="Left" Height="100" Margin="45,156,0,0" 
                    Fill="White" Opacity="0.2"
-                   Stroke="Transparent" VerticalAlignment="Top" Width="585"/>
+                   Stroke="Transparent" VerticalAlignment="Top" Width="333"/>
         <TextBlock HorizontalAlignment="Left" Background="Transparent" Foreground="White" FontSize="30"
-                   Padding="10"
-                   Height="67" Margin="695,78,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="585"/>
+                   Padding="10" Text="Edwin Isaac Bautista Vásquez"
+                   Height="100" Margin="45,156,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="333"/>
+
         <DataGrid ItemsSource="{Binding}" ColumnWidth="Auto" IsReadOnly="True" GridLinesVisibility="None" 
             CanUserDeleteRows="False" Padding="10"
             CanUserResizeColumns="False" CanUserResizeRows="False"
-            x:Name="DataDatos" HorizontalAlignment="Left" Height="340" Margin="78,350,0,0" VerticalAlignment="Top" Width="670" FontSize="15" BorderBrush="{x:Null}" Background="White" AreRowDetailsFrozen="True" RowBackground="#FFF1F1F1" AlternatingRowBackground="White" Foreground="Black" FontFamily="Arial">
+            x:Name="DataDatos" HorizontalAlignment="Left" Height="325" Margin="635,320,0,0" VerticalAlignment="Top" Width="630" FontSize="15" BorderBrush="{x:Null}" Background="White" AreRowDetailsFrozen="True" RowBackground="#FFF1F1F1" AlternatingRowBackground="White" Foreground="Black" FontFamily="Arial">
             <DataGrid.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -185,7 +190,7 @@
                 </Style>
             </DataGrid.CellStyle>
         </DataGrid>
-        <ComboBox HorizontalAlignment="Left" Height="60" Margin="78,247,0,0" VerticalAlignment="Top" Width="335">
+        <ComboBox x:Name="CbTipo" HorizontalAlignment="Left" Height="60" Margin="635,196,0,0" VerticalAlignment="Top" Width="383">
             <ComboBox.Resources>
                 <Style TargetType="{x:Type ComboBoxItem}">
                     <Setter Property="Background" Value="#F1F1F1"/>
@@ -196,8 +201,8 @@
 
             </ComboBox.Resources>
         </ComboBox>
-        <Button HorizontalAlignment="Left" Height="84" Margin="650,235,0,0" VerticalAlignment="Top" Width="98" 
-                BorderBrush="Transparent" Background="#FF255909">
+        <Button x:Name="btnAgregar" HorizontalAlignment="Left" Height="60" Margin="1175,196,0,0" VerticalAlignment="Top" Width="93" 
+                BorderBrush="Transparent" Background="#FF255909" Click="AgregarProducto">
             <Grid Height="50" Width="86">
                 <Rectangle Margin="14,0,14,0">
                     <Rectangle.Fill>
@@ -208,13 +213,37 @@
         </Button>
 
 
-
-
-        <xctk:IntegerUpDown x:Name="Nuevo" TextAlignment="Center"
-                            HorizontalAlignment="Left" Height="84" Value="0"  Margin="452,235,0,0" VerticalAlignment="Top" Width="176"
-                            FontSize="40" Padding="5" Minimum="0" Maximum="100" ButtonSpinnerWidth="40" BorderBrush="{x:Null}">
+        <xctk:IntegerUpDown x:Name="NumberData" TextAlignment="Center"
+                            HorizontalAlignment="Left" Height="60" Value="1"  Margin="1040,196,0,0" VerticalAlignment="Top" Width="120"
+                            FontSize="40" Minimum="1" Maximum="100" ButtonSpinnerWidth="40" BorderBrush="{x:Null}">
 
         </xctk:IntegerUpDown>
+        <Rectangle HorizontalAlignment="Left" Stroke="White" StrokeThickness="5"
+   Height="385" Margin="45,290,0,0"  VerticalAlignment="Top" Width="515"/>
+        <Label Content="Abono" Foreground="White" Background="Transparent" FontSize="35" VerticalContentAlignment="Center"  HorizontalContentAlignment="Right"
+       HorizontalAlignment="Left" Height="60" Margin="76,0,0,0" VerticalAlignment="Center" Width="126"/>
+        <TextBox  HorizontalAlignment="Left" Text="" VerticalContentAlignment="Center"
+            Height="60" Margin="217,0,0,0" TextWrapping="Wrap" 
+            FontSize="25"  TextAlignment="Center" 
+            VerticalAlignment="Center" Width="318"/>
+        <Label Content="Total" Foreground="White" Background="Transparent" FontSize="35" VerticalContentAlignment="Center" HorizontalContentAlignment="Right"
+            HorizontalAlignment="Left" Height="60" Margin="76,422,0,0" VerticalAlignment="Top" Width="126"/>
+        <TextBox  HorizontalAlignment="Left" Text="" VerticalContentAlignment="Center"
+            Height="60" Margin="217,422,0,0" TextWrapping="Wrap" 
+            FontSize="25"  TextAlignment="Center" 
+            VerticalAlignment="Top" Width="318"/>
+        <Button Background="#A0D982" Foreground="Black" FontSize="35" BorderBrush="Transparent"
+            HorizontalAlignment="Left" Height="110" Margin="76,520,0,0" VerticalAlignment="Top" Width="459">
+            <Grid Height="100" Width="369">
+                <TextBlock Text="Encargar" TextWrapping="WrapWithOverflow" TextAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+        </Button>
+        <Label Content="Producto" Foreground="White" Background="Transparent" FontSize="35" VerticalContentAlignment="Center"  HorizontalContentAlignment="Center"
+            HorizontalAlignment="Left" Height="60" Margin="635,113,0,0" VerticalAlignment="Top" Width="383"/>
+        <Label Content="Cantidad" Foreground="White" Background="Transparent" FontSize="35" VerticalContentAlignment="Center"  HorizontalContentAlignment="Center"
+            HorizontalAlignment="Left" Height="60" Margin="1040,113,0,0" VerticalAlignment="Top" Width="225"/>
+
+
 
 
 
