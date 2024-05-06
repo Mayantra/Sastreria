@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,7 @@ namespace LoginSasteria
     /// </summary>
     public partial class CrearEncargoInventario : Window
     {
+        ConexionDB cn = new ConexionDB();
         public CrearEncargoInventario()
         {
             InitializeComponent();
@@ -34,11 +36,58 @@ namespace LoginSasteria
         }
 
         private void LeerCodigoBarras(object sender, KeyEventArgs e)
-        {
+        {            
             if (e.Key == Key.Enter)
             {
-                
+                buscarEncargo(txVerificar.Text);
             }
+        }
+
+        private Boolean buscarEncargo(string codigo)
+        {
+            
+            string query = "SELECT count(producto_idproducto) FROM dbleonv2.inventario where producto_idproducto = '"+codigo+"';";
+
+            try
+            {
+                cn.cerrarCN();
+                MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
+                MySqlDataReader myread;
+
+                myread = comando.ExecuteReader();
+                int dato = 0;
+                while (myread.Read())
+                {
+
+                    dato = myread.GetInt32(0);
+
+                }
+                myread.Close();
+                cn.cerrarCN();
+                if (dato > 0)
+                {
+                    txEstados.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#09594D"));
+                    txEstados.Text = "El producto se encuentra en el inventario";
+                    return true;             
+
+                }
+                else
+                {
+                    txEstados.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#590E09"));
+                    txEstados.Text = "El producto aún NO está listo";
+                    return false;
+                }
+                       
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+
+            }
+
+
         }
 
         private void AbrirCrearEncargo(object sender, RoutedEventArgs e)

@@ -175,8 +175,12 @@ BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
             </Grid>
         </Button>
         <TextBox x:Name="txVerificar" Template="{DynamicResource TextBoxBaseControlTemplate}" HorizontalAlignment="Left" Height="66" Margin="735,206,0,0" 
-                 TextWrapping="Wrap" VerticalAlignment="Top" Width="485" KeyDown="LeerCodigoBarras"/>
-        <TextBlock HorizontalAlignment="Left" Height="320" Margin="735,320,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="485"/>
+                 TextWrapping="Wrap" VerticalAlignment="Top" Width="485" KeyDown="LeerCodigoBarras"
+                 FontSize="25" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        <TextBlock x:Name="txEstados" HorizontalAlignment="Left" Height="320" Margin="735,320,0,0" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Background="#590E09" Width="485" Foreground="White" Text="Estado del Encargo" TextAlignment="Center" 
+                   FontSize="60" FontWeight="Bold" Padding="0,50,0,0" />
+
         <Label Content="Verificar estado del producto" HorizontalAlignment="Left" Height="70" Margin="735,95,0,0" VerticalAlignment="Top" 
                Width="485" Foreground="White" FontSize="35" HorizontalContentAlignment="Center"/>
     </Grid>
