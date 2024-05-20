@@ -43,7 +43,19 @@ namespace LoginSasteria
         }
         void primeraCon()
         {
-            string query = "SELECT idproducto AS 'Código', \r\nalmacen.nombre AS Sucursal, \r\nnombreproducto.Nombre AS Producto,\r\ncolor.nombre As Color,\r\nproducto.precio AS Precio, \r\ntipoproducto.nombreTipo AS 'Tipo Producto', \r\ntalla.nombreTalla As Talla\r\nFROM dbleonv2.inventario \r\nINNER JOIN dbleonv2.producto \r\nON inventario.producto_idproducto = producto.idproducto\r\nINNER JOIN dbleonv2.nombreproducto \r\nON producto.nombreProducto_idnombreProducto = nombreproducto.idnombreProducto \r\nINNER JOIN dbleonv2.almacen\r\nON inventario.almacen_idalmacen = almacen.idalmacen\r\nINNER JOIN dbleonv2.color\r\nON producto.color_idcolor = color.idcolor\r\nINNER JOIN dbleonv2.tipotall\r\nON producto.talla_idtalla = tipotall.idtalla\r\nINNER JOIN dbleonv2.tipoproducto\r\nON tipotall.tipoProducto_idtipoProducto = tipoproducto.idtipoProducto\r\nINNER JOIN  dbleonv2.talla\r\nON tipotall.talla_idtalla = talla.idtalla;";
+            string query = "SELECT idproducto AS 'Código', \r\nalmacen.nombre AS Sucursal, " +
+                "\r\nnombreProducto.Nombre AS Producto,\r\ncolor.nombre As Color,\r\nproducto.precio AS Precio, " +
+                "\r\ntipoProducto.nombreTipo AS 'Tipo Producto', " +
+                "\r\ntalla.nombreTalla As Talla\r\nFROM "+objConection.namedb()+".inventario " +
+                "\r\nINNER JOIN "+objConection.namedb()+".producto \r\nON inventario.producto_idproducto = producto.idproducto" +
+                "\r\nINNER JOIN "+objConection.namedb()+".nombreProducto " +
+                "\r\nON producto.nombreProducto_idnombreProducto = nombreProducto.idnombreProducto " +
+                "\r\nINNER JOIN "+objConection.namedb()+".almacen\r\nON inventario.almacen_idalmacen = almacen.idalmacen" +
+                "\r\nINNER JOIN "+objConection.namedb()+".color\r\nON producto.color_idcolor = color.idcolor" +
+                "\r\nINNER JOIN "+objConection.namedb()+".tipoTall\r\nON producto.talla_idtalla = tipoTall.idtalla" +
+                "\r\nINNER JOIN "+objConection.namedb()+".tipoProducto" +
+                "\r\nON tipoTall.tipoProducto_idtipoProducto = tipoProducto.idtipoProducto" +
+                "\r\nINNER JOIN  "+objConection.namedb()+".talla\r\nON tipoTall.talla_idtalla = talla.idtalla;";
             try
             {
                 MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN());
@@ -83,7 +95,7 @@ namespace LoginSasteria
         }
         void tipoCon()
         {
-            string query = "SELECT * FROM dbleonv2.tipoproducto;";
+            string query = "SELECT * FROM "+objConection.namedb()+".tipoProducto;";
             try
             {
                 MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN());
@@ -99,7 +111,7 @@ namespace LoginSasteria
 
                 }
                 objConection.cerrarCN();
-                query = "SELECT * FROM dbleonv2.color;";
+                query = "SELECT * FROM "+objConection.namedb()+".color;";
                 MySqlCommand comando2 = new MySqlCommand(query, objConection.establecerCN());
                 MySqlDataReader myread2;
 
@@ -111,7 +123,7 @@ namespace LoginSasteria
                 }
                 objConection.cerrarCN();
 
-                query = "SELECT * FROM dbleonv2.talla;";
+                query = "SELECT * FROM "+objConection.namedb()+".talla;";
                 MySqlCommand comando3 = new MySqlCommand(query, objConection.establecerCN());
                 MySqlDataReader myread3;
 
@@ -178,14 +190,14 @@ namespace LoginSasteria
                     if (color == null)// pero si el color esta vacio
                     {
                         //generar query solamente de los tipos
-                        query = "SELECT idproducto AS 'Código', \r\nalmacen.nombre AS Sucursal, \r\nnombreproducto.Nombre AS Producto,\r\ncolor.nombre As Color,\r\nproducto.precio AS Precio, \r\ntipoproducto.nombreTipo AS 'Tipo Producto', \r\ntalla.nombreTalla As Talla\r\nFROM dbleonv2.inventario \r\nINNER JOIN dbleonv2.producto \r\nON inventario.producto_idproducto = producto.idproducto\r\nINNER JOIN dbleonv2.nombreproducto \r\nON producto.nombreProducto_idnombreProducto = nombreproducto.idnombreProducto \r\nINNER JOIN dbleonv2.almacen\r\nON inventario.almacen_idalmacen = almacen.idalmacen\r\nINNER JOIN dbleonv2.color\r\nON producto.color_idcolor = color.idcolor\r\nINNER JOIN dbleonv2.tipotall\r\nON producto.talla_idtalla = tipotall.idtalla\r\nINNER JOIN dbleonv2.tipoproducto\r\nON tipotall.tipoProducto_idtipoProducto = tipoproducto.idtipoProducto\r\nINNER JOIN  dbleonv2.talla\r\nON tipotall.talla_idtalla = talla.idtalla\r\n" +
+                        query = "SELECT idproducto AS 'Código', \r\nalmacen.nombre AS Sucursal, \r\nnombreproducto.Nombre AS Producto,\r\ncolor.nombre As Color,\r\nproducto.precio AS Precio, \r\ntipoproducto.nombreTipo AS 'Tipo Producto', \r\ntalla.nombreTalla As Talla\r\nFROM "+objConection.namedb()+".inventario \r\nINNER JOIN "+objConection.namedb()+".producto \r\nON inventario.producto_idproducto = producto.idproducto\r\nINNER JOIN "+objConection.namedb()+".nombreproducto \r\nON producto.nombreProducto_idnombreProducto = nombreproducto.idnombreProducto \r\nINNER JOIN "+objConection.namedb()+".almacen\r\nON inventario.almacen_idalmacen = almacen.idalmacen\r\nINNER JOIN "+objConection.namedb()+".color\r\nON producto.color_idcolor = color.idcolor\r\nINNER JOIN "+objConection.namedb()+".tipotall\r\nON producto.talla_idtalla = tipotall.idtalla\r\nINNER JOIN "+objConection.namedb()+".tipoproducto\r\nON tipotall.tipoProducto_idtipoProducto = tipoproducto.idtipoProducto\r\nINNER JOIN  "+objConection.namedb()+".talla\r\nON tipotall.talla_idtalla = talla.idtalla\r\n" +
                             "WHERE tipoproducto.nombreTipo ='"+ idTipo +"';";
                         consultaFiltro(query);
                     }
                     else//si hay un color sellecionado
                     {
                         color.ToString();
-                        query = "SELECT idproducto AS 'Código', \r\nalmacen.nombre AS Sucursal, \r\nnombreproducto.Nombre AS Producto,\r\ncolor.nombre As Color,\r\nproducto.precio AS Precio, \r\ntipoproducto.nombreTipo AS 'Tipo Producto', \r\ntalla.nombreTalla As Talla\r\nFROM dbleonv2.inventario \r\nINNER JOIN dbleonv2.producto \r\nON inventario.producto_idproducto = producto.idproducto\r\nINNER JOIN dbleonv2.nombreproducto \r\nON producto.nombreProducto_idnombreProducto = nombreproducto.idnombreProducto \r\nINNER JOIN dbleonv2.almacen\r\nON inventario.almacen_idalmacen = almacen.idalmacen\r\nINNER JOIN dbleonv2.color\r\nON producto.color_idcolor = color.idcolor\r\nINNER JOIN dbleonv2.tipotall\r\nON producto.talla_idtalla = tipotall.idtalla\r\nINNER JOIN dbleonv2.tipoproducto\r\nON tipotall.tipoProducto_idtipoProducto = tipoproducto.idtipoProducto\r\nINNER JOIN  dbleonv2.talla\r\nON tipotall.talla_idtalla = talla.idtalla\r\n" +
+                        query = "SELECT idproducto AS 'Código', \r\nalmacen.nombre AS Sucursal, \r\nnombreproducto.Nombre AS Producto,\r\ncolor.nombre As Color,\r\nproducto.precio AS Precio, \r\ntipoproducto.nombreTipo AS 'Tipo Producto', \r\ntalla.nombreTalla As Talla\r\nFROM "+objConection.namedb()+".inventario \r\nINNER JOIN "+objConection.namedb()+".producto \r\nON inventario.producto_idproducto = producto.idproducto\r\nINNER JOIN "+objConection.namedb()+".nombreproducto \r\nON producto.nombreProducto_idnombreProducto = nombreproducto.idnombreProducto \r\nINNER JOIN "+objConection.namedb()+".almacen\r\nON inventario.almacen_idalmacen = almacen.idalmacen\r\nINNER JOIN "+objConection.namedb()+".color\r\nON producto.color_idcolor = color.idcolor\r\nINNER JOIN "+objConection.namedb()+".tipotall\r\nON producto.talla_idtalla = tipotall.idtalla\r\nINNER JOIN "+objConection.namedb()+".tipoproducto\r\nON tipotall.tipoProducto_idtipoProducto = tipoproducto.idtipoProducto\r\nINNER JOIN  "+objConection.namedb()+".talla\r\nON tipotall.talla_idtalla = talla.idtalla\r\n" +
                             "WHERE tipoproducto.nombreTipo ='" + idTipo +"'"+
                             "\r\nAND color.nombre = '"+color+ "';";
                         consultaFiltro(query);
@@ -198,7 +210,7 @@ namespace LoginSasteria
                     if(color == null)//pero no hay nada en color
                     {
                         talla.ToString();
-                        query = "SELECT idproducto AS 'Código', \r\nalmacen.nombre AS Sucursal, \r\nnombreproducto.Nombre AS Producto,\r\ncolor.nombre As Color,\r\nproducto.precio AS Precio, \r\ntipoproducto.nombreTipo AS 'Tipo Producto', \r\ntalla.nombreTalla As Talla\r\nFROM dbleonv2.inventario \r\nINNER JOIN dbleonv2.producto \r\nON inventario.producto_idproducto = producto.idproducto\r\nINNER JOIN dbleonv2.nombreproducto \r\nON producto.nombreProducto_idnombreProducto = nombreproducto.idnombreProducto \r\nINNER JOIN dbleonv2.almacen\r\nON inventario.almacen_idalmacen = almacen.idalmacen\r\nINNER JOIN dbleonv2.color\r\nON producto.color_idcolor = color.idcolor\r\nINNER JOIN dbleonv2.tipotall\r\nON producto.talla_idtalla = tipotall.idtalla\r\nINNER JOIN dbleonv2.tipoproducto\r\nON tipotall.tipoProducto_idtipoProducto = tipoproducto.idtipoProducto\r\nINNER JOIN  dbleonv2.talla\r\nON tipotall.talla_idtalla = talla.idtalla\r\n" +
+                        query = "SELECT idproducto AS 'Código', \r\nalmacen.nombre AS Sucursal, \r\nnombreproducto.Nombre AS Producto,\r\ncolor.nombre As Color,\r\nproducto.precio AS Precio, \r\ntipoproducto.nombreTipo AS 'Tipo Producto', \r\ntalla.nombreTalla As Talla\r\nFROM "+objConection.namedb()+".inventario \r\nINNER JOIN "+objConection.namedb()+".producto \r\nON inventario.producto_idproducto = producto.idproducto\r\nINNER JOIN "+objConection.namedb()+".nombreproducto \r\nON producto.nombreProducto_idnombreProducto = nombreproducto.idnombreProducto \r\nINNER JOIN "+objConection.namedb()+".almacen\r\nON inventario.almacen_idalmacen = almacen.idalmacen\r\nINNER JOIN "+objConection.namedb()+".color\r\nON producto.color_idcolor = color.idcolor\r\nINNER JOIN "+objConection.namedb()+".tipotall\r\nON producto.talla_idtalla = tipotall.idtalla\r\nINNER JOIN "+objConection.namedb()+".tipoproducto\r\nON tipotall.tipoProducto_idtipoProducto = tipoproducto.idtipoProducto\r\nINNER JOIN  "+objConection.namedb()+".talla\r\nON tipotall.talla_idtalla = talla.idtalla\r\n" +
                             "WHERE tipoproducto.nombreTipo ='" + idTipo + "'" +
                             "\r\nAND talla.nombreTalla = '" + talla + "';";
                         consultaFiltro(query);
@@ -208,7 +220,7 @@ namespace LoginSasteria
                     {
                         talla.ToString();
                         color.ToString();
-                        query = "SELECT idproducto AS 'Código', \r\nalmacen.nombre AS Sucursal, \r\nnombreproducto.Nombre AS Producto,\r\ncolor.nombre As Color,\r\nproducto.precio AS Precio, \r\ntipoproducto.nombreTipo AS 'Tipo Producto', \r\ntalla.nombreTalla As Talla\r\nFROM dbleonv2.inventario \r\nINNER JOIN dbleonv2.producto \r\nON inventario.producto_idproducto = producto.idproducto\r\nINNER JOIN dbleonv2.nombreproducto \r\nON producto.nombreProducto_idnombreProducto = nombreproducto.idnombreProducto \r\nINNER JOIN dbleonv2.almacen\r\nON inventario.almacen_idalmacen = almacen.idalmacen\r\nINNER JOIN dbleonv2.color\r\nON producto.color_idcolor = color.idcolor\r\nINNER JOIN dbleonv2.tipotall\r\nON producto.talla_idtalla = tipotall.idtalla\r\nINNER JOIN dbleonv2.tipoproducto\r\nON tipotall.tipoProducto_idtipoProducto = tipoproducto.idtipoProducto\r\nINNER JOIN  dbleonv2.talla\r\nON tipotall.talla_idtalla = talla.idtalla\r\n" +
+                        query = "SELECT idproducto AS 'Código', \r\nalmacen.nombre AS Sucursal, \r\nnombreproducto.Nombre AS Producto,\r\ncolor.nombre As Color,\r\nproducto.precio AS Precio, \r\ntipoproducto.nombreTipo AS 'Tipo Producto', \r\ntalla.nombreTalla As Talla\r\nFROM "+objConection.namedb()+".inventario \r\nINNER JOIN "+objConection.namedb()+".producto \r\nON inventario.producto_idproducto = producto.idproducto\r\nINNER JOIN "+objConection.namedb()+".nombreproducto \r\nON producto.nombreProducto_idnombreProducto = nombreproducto.idnombreProducto \r\nINNER JOIN "+objConection.namedb()+".almacen\r\nON inventario.almacen_idalmacen = almacen.idalmacen\r\nINNER JOIN "+objConection.namedb()+".color\r\nON producto.color_idcolor = color.idcolor\r\nINNER JOIN "+objConection.namedb()+".tipotall\r\nON producto.talla_idtalla = tipotall.idtalla\r\nINNER JOIN "+objConection.namedb()+".tipoproducto\r\nON tipotall.tipoProducto_idtipoProducto = tipoproducto.idtipoProducto\r\nINNER JOIN  "+objConection.namedb()+".talla\r\nON tipotall.talla_idtalla = talla.idtalla\r\n" +
                             "WHERE tipoproducto.nombreTipo ='" + idTipo + "'" +
                             "\r\nAND talla.nombreTalla = '" + talla + "'" +
                             "\r\nAND color.nombre = '" + color + "';";
@@ -230,7 +242,7 @@ namespace LoginSasteria
                     else // solo color Seleccionado
                     {
                         color.ToString();
-                        query = "SELECT idproducto AS 'Código', \r\nalmacen.nombre AS Sucursal, \r\nnombreproducto.Nombre AS Producto,\r\ncolor.nombre As Color,\r\nproducto.precio AS Precio, \r\ntipoproducto.nombreTipo AS 'Tipo Producto', \r\ntalla.nombreTalla As Talla\r\nFROM dbleonv2.inventario \r\nINNER JOIN dbleonv2.producto \r\nON inventario.producto_idproducto = producto.idproducto\r\nINNER JOIN dbleonv2.nombreproducto \r\nON producto.nombreProducto_idnombreProducto = nombreproducto.idnombreProducto \r\nINNER JOIN dbleonv2.almacen\r\nON inventario.almacen_idalmacen = almacen.idalmacen\r\nINNER JOIN dbleonv2.color\r\nON producto.color_idcolor = color.idcolor\r\nINNER JOIN dbleonv2.tipotall\r\nON producto.talla_idtalla = tipotall.idtalla\r\nINNER JOIN dbleonv2.tipoproducto\r\nON tipotall.tipoProducto_idtipoProducto = tipoproducto.idtipoProducto\r\nINNER JOIN  dbleonv2.talla\r\nON tipotall.talla_idtalla = talla.idtalla\r\n" +
+                        query = "SELECT idproducto AS 'Código', \r\nalmacen.nombre AS Sucursal, \r\nnombreproducto.Nombre AS Producto,\r\ncolor.nombre As Color,\r\nproducto.precio AS Precio, \r\ntipoproducto.nombreTipo AS 'Tipo Producto', \r\ntalla.nombreTalla As Talla\r\nFROM "+objConection.namedb()+".inventario \r\nINNER JOIN "+objConection.namedb()+".producto \r\nON inventario.producto_idproducto = producto.idproducto\r\nINNER JOIN "+objConection.namedb()+".nombreproducto \r\nON producto.nombreProducto_idnombreProducto = nombreproducto.idnombreProducto \r\nINNER JOIN "+objConection.namedb()+".almacen\r\nON inventario.almacen_idalmacen = almacen.idalmacen\r\nINNER JOIN "+objConection.namedb()+".color\r\nON producto.color_idcolor = color.idcolor\r\nINNER JOIN "+objConection.namedb()+".tipotall\r\nON producto.talla_idtalla = tipotall.idtalla\r\nINNER JOIN "+objConection.namedb()+".tipoproducto\r\nON tipotall.tipoProducto_idtipoProducto = tipoproducto.idtipoProducto\r\nINNER JOIN  "+objConection.namedb()+".talla\r\nON tipotall.talla_idtalla = talla.idtalla\r\n" +
                             "WHERE color.nombre = '" + color + "';";
                         consultaFiltro(query);
                     }
@@ -241,7 +253,7 @@ namespace LoginSasteria
                     if(color == null) //color no seleccionado osea solo la talla seleccionada
                     {
                         talla.ToString();
-                        query = "SELECT idproducto AS 'Código', \r\nalmacen.nombre AS Sucursal, \r\nnombreproducto.Nombre AS Producto,\r\ncolor.nombre As Color,\r\nproducto.precio AS Precio, \r\ntipoproducto.nombreTipo AS 'Tipo Producto', \r\ntalla.nombreTalla As Talla\r\nFROM dbleonv2.inventario \r\nINNER JOIN dbleonv2.producto \r\nON inventario.producto_idproducto = producto.idproducto\r\nINNER JOIN dbleonv2.nombreproducto \r\nON producto.nombreProducto_idnombreProducto = nombreproducto.idnombreProducto \r\nINNER JOIN dbleonv2.almacen\r\nON inventario.almacen_idalmacen = almacen.idalmacen\r\nINNER JOIN dbleonv2.color\r\nON producto.color_idcolor = color.idcolor\r\nINNER JOIN dbleonv2.tipotall\r\nON producto.talla_idtalla = tipotall.idtalla\r\nINNER JOIN dbleonv2.tipoproducto\r\nON tipotall.tipoProducto_idtipoProducto = tipoproducto.idtipoProducto\r\nINNER JOIN  dbleonv2.talla\r\nON tipotall.talla_idtalla = talla.idtalla\r\n" +
+                        query = "SELECT idproducto AS 'Código', \r\nalmacen.nombre AS Sucursal, \r\nnombreproducto.Nombre AS Producto,\r\ncolor.nombre As Color,\r\nproducto.precio AS Precio, \r\ntipoproducto.nombreTipo AS 'Tipo Producto', \r\ntalla.nombreTalla As Talla\r\nFROM "+objConection.namedb()+".inventario \r\nINNER JOIN "+objConection.namedb()+".producto \r\nON inventario.producto_idproducto = producto.idproducto\r\nINNER JOIN "+objConection.namedb()+".nombreproducto \r\nON producto.nombreProducto_idnombreProducto = nombreproducto.idnombreProducto \r\nINNER JOIN "+objConection.namedb()+".almacen\r\nON inventario.almacen_idalmacen = almacen.idalmacen\r\nINNER JOIN "+objConection.namedb()+".color\r\nON producto.color_idcolor = color.idcolor\r\nINNER JOIN "+objConection.namedb()+".tipotall\r\nON producto.talla_idtalla = tipotall.idtalla\r\nINNER JOIN "+objConection.namedb()+".tipoproducto\r\nON tipotall.tipoProducto_idtipoProducto = tipoproducto.idtipoProducto\r\nINNER JOIN  "+objConection.namedb()+".talla\r\nON tipotall.talla_idtalla = talla.idtalla\r\n" +
                             "WHERE talla.nombreTalla = '" + talla + "';";
                         consultaFiltro(query);
                     }
@@ -249,7 +261,7 @@ namespace LoginSasteria
                     {
                         talla.ToString();
                         color.ToString();
-                        query = "SELECT idproducto AS 'Código', \r\nalmacen.nombre AS Sucursal, \r\nnombreproducto.Nombre AS Producto,\r\ncolor.nombre As Color,\r\nproducto.precio AS Precio, \r\ntipoproducto.nombreTipo AS 'Tipo Producto', \r\ntalla.nombreTalla As Talla\r\nFROM dbleonv2.inventario \r\nINNER JOIN dbleonv2.producto \r\nON inventario.producto_idproducto = producto.idproducto\r\nINNER JOIN dbleonv2.nombreproducto \r\nON producto.nombreProducto_idnombreProducto = nombreproducto.idnombreProducto \r\nINNER JOIN dbleonv2.almacen\r\nON inventario.almacen_idalmacen = almacen.idalmacen\r\nINNER JOIN dbleonv2.color\r\nON producto.color_idcolor = color.idcolor\r\nINNER JOIN dbleonv2.tipotall\r\nON producto.talla_idtalla = tipotall.idtalla\r\nINNER JOIN dbleonv2.tipoproducto\r\nON tipotall.tipoProducto_idtipoProducto = tipoproducto.idtipoProducto\r\nINNER JOIN  dbleonv2.talla\r\nON tipotall.talla_idtalla = talla.idtalla\r\n" +
+                        query = "SELECT idproducto AS 'Código', \r\nalmacen.nombre AS Sucursal, \r\nnombreproducto.Nombre AS Producto,\r\ncolor.nombre As Color,\r\nproducto.precio AS Precio, \r\ntipoproducto.nombreTipo AS 'Tipo Producto', \r\ntalla.nombreTalla As Talla\r\nFROM "+objConection.namedb()+".inventario \r\nINNER JOIN "+objConection.namedb()+".producto \r\nON inventario.producto_idproducto = producto.idproducto\r\nINNER JOIN "+objConection.namedb()+".nombreproducto \r\nON producto.nombreProducto_idnombreProducto = nombreproducto.idnombreProducto \r\nINNER JOIN "+objConection.namedb()+".almacen\r\nON inventario.almacen_idalmacen = almacen.idalmacen\r\nINNER JOIN "+objConection.namedb()+".color\r\nON producto.color_idcolor = color.idcolor\r\nINNER JOIN "+objConection.namedb()+".tipotall\r\nON producto.talla_idtalla = tipotall.idtalla\r\nINNER JOIN "+objConection.namedb()+".tipoproducto\r\nON tipotall.tipoProducto_idtipoProducto = tipoproducto.idtipoProducto\r\nINNER JOIN  "+objConection.namedb()+".talla\r\nON tipotall.talla_idtalla = talla.idtalla\r\n" +
                             "WHERE color.nombre = '" + color + "'" +
                             "\r\nAND talla.nombreTalla = '" + talla + "';";
                         consultaFiltro(query);

@@ -14,12 +14,14 @@ namespace LoginSasteria
     {
         public static string usuario;
         
+        
         public int setPass(string user, string pass)
         {
+            ConexionDB cn = new ConexionDB();
             int estado = 0;
             string contrasena="";
-            string query = "SELECT pin FROM dbleonv2.empleado where Usuario ='"+user+"';";
-            ConexionDB cn = new ConexionDB();
+            string query = "SELECT pin FROM "+cn.namedb()+".Empleado where Usuario ='"+user+"';";
+            
             MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
             MySqlDataReader dr = comando.ExecuteReader();
             while (dr.Read()) {
@@ -44,8 +46,9 @@ namespace LoginSasteria
         public string getUser()
         {
             string nombreUser ="";
-            string query = "SELECT Nombre FROM dbleonv2.empleado where Usuario ='" + usuario + "';";
             ConexionDB cn = new ConexionDB();
+            string query = "SELECT Nombre FROM "+cn.namedb()+".Empleado where Usuario ='" + usuario + "';";
+            
             MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
             MySqlDataReader dr = comando.ExecuteReader();
             
@@ -59,8 +62,9 @@ namespace LoginSasteria
         public int getIDuser()
         {
             int IDUser = 0;
-            string query = "SELECT idEmpleado FROM dbleonv2.empleado where Usuario ='" + usuario + "';";
             ConexionDB cn = new ConexionDB();
+            string query = "SELECT idEmpleado FROM "+cn.namedb()+".Empleado where Usuario ='" + usuario + "';";
+            
             MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
             MySqlDataReader dr = comando.ExecuteReader();
 
@@ -76,8 +80,9 @@ namespace LoginSasteria
         {
             Boolean estado= false;
             string contrasena = "";
-            string query = "SELECT pin FROM dbleonv2.empleado where Usuario ='" + user + "';";
             ConexionDB cn = new ConexionDB();
+            string query = "SELECT pin FROM "+cn.namedb()+".Empleado where Usuario ='" + user + "';";
+            
             MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
             MySqlDataReader dr = comando.ExecuteReader();
             while (dr.Read())
@@ -101,8 +106,9 @@ namespace LoginSasteria
         public int getIdLogUser(string users)
         {
             int IDUser = 0;
-            string query = "SELECT idEmpleado FROM dbleonv2.empleado where Usuario ='" + users + "';";
             ConexionDB cn = new ConexionDB();
+            string query = "SELECT idEmpleado FROM "+cn.namedb()+".Empleado where Usuario ='" + users + "';";
+            
             MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
             MySqlDataReader dr = comando.ExecuteReader();
 

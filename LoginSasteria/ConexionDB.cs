@@ -4,16 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using Microsoft.Expression.Interactivity.Media;
 using MySql.Data.MySqlClient;
 namespace LoginSasteria
 {
     internal class ConexionDB
     {
         //MySqlConnection con = new MySqlConnection();
-        public static string servidor = "localhost";
-        public static string db = "dbLeonV2";
-        public static string username = "root";
-        public static string password = "Admin";
+        public static string servidor = "94.130.216.164";
+        public static string db = "hismanreina_PruebasDBLeon";
+        public static string username = "hismanreina_isa";
+        public static string password = "Isaac@17Isaac@17";
         public static string port = "3306";
 
         /*string conexion = "server=" + servidor + ";" + "port=" + port+";" + "user id=" + username + ";"
@@ -63,6 +64,11 @@ namespace LoginSasteria
 
             con.Close();
             return con;
+        }
+
+        public string namedb()
+        {
+            return db;
         }
 
     }
