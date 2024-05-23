@@ -46,7 +46,7 @@ namespace LoginSasteria
         private Boolean buscarEncargo(string codigo)
         {
             
-            string query = "SELECT count(producto_idproducto) FROM dbleonv2.inventario where producto_idproducto = '"+codigo+"';";
+            string query = "SELECT count(producto_idproducto) FROM "+cn.namedb()+".inventario where producto_idproducto = '"+codigo+"';";
 
             try
             {

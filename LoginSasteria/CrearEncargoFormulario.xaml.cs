@@ -40,7 +40,7 @@ namespace LoginSasteria
         }
         void tipoCon()
         {
-            string query = "SELECT * FROM dbleonv2.tipoproducto;";
+            string query = "SELECT * FROM "+objConection.namedb()+".tipoProducto;";
             try
             {
                 MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN());
