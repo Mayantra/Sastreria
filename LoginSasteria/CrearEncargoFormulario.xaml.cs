@@ -76,14 +76,15 @@ namespace LoginSasteria
             if (valorSeleccionadoCompleto != null)
             {
                 // Divide la cadena en palabras
-                string[] palabras = Regex.Split(valorSeleccionadoCompleto, @"\W+");
-
-                // Toma las primeras dos palabras
-                string primerasDosPalabras = "";
-               
-                primerasDosPalabras = palabras[0] + palabras[1];
-                
-                return primerasDosPalabras;
+                if (valorSeleccionadoCompleto.Length >= 2)
+                {
+                    string firstTwoLetters = valorSeleccionadoCompleto.Substring(0, 2);
+                    return firstTwoLetters;
+                }
+                else
+                {
+                    return "";
+                }
             }
             else
             {
@@ -98,6 +99,13 @@ namespace LoginSasteria
             string tipo = ObtenerValorComboBox();
             MessageBox.Show("Elegiste "+tipo+" "+cantidad.ToString());
 
+        }
+
+        private void CancelarFormulario(object sender, RoutedEventArgs e)
+        {
+            mainInventario abrir = new mainInventario();
+            abrir.Show();
+            this.Close();
         }
     }
 }
