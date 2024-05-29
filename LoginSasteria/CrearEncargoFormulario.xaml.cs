@@ -24,11 +24,14 @@ namespace LoginSasteria
     public partial class CrearEncargoFormulario : Window
     {
         ConexionDB objConection = new ConexionDB();
+
+        List <string> codigosProductos = new List <string> ();//Alamecenar todos los codigos
         public CrearEncargoFormulario()
         {
             InitializeComponent();
             tipoCon();
         }
+        private static readonly Random rng = new Random();
         private void btnSalir(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -37,6 +40,15 @@ namespace LoginSasteria
         private void Minimizar(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
+        }
+
+        public static long GenerarNumeroAleatorio()
+        {
+            byte[] buf = new byte[8];
+            rng.NextBytes(buf); // Llenamos el buffer con bytes aleatorios
+            long longRand = BitConverter.ToInt64(buf, 0);
+
+            return Math.Abs(longRand % 999999999999999999) + 1;
         }
         void tipoCon()
         {
@@ -98,6 +110,21 @@ namespace LoginSasteria
             int  cantidad = ObtenerCantidad();
             string tipo = ObtenerValorComboBox();
             MessageBox.Show("Elegiste "+tipo+" "+cantidad.ToString());
+            AgregarCodigosLista(tipo, cantidad);
+            for (int i = 0; i < cantidad; i++)
+            {
+                Console.WriteLine(codigosProductos[i]);
+            }
+
+
+        }
+        public void AgregarCodigosLista(string tipo, int cantidad)
+        {
+            for (int i = 0; i < cantidad; i++)
+            {
+                long numeroAleatorio = GenerarNumeroAleatorio();
+                codigosProductos.Add(tipo + numeroAleatorio);
+            }
 
         }
 
@@ -106,6 +133,21 @@ namespace LoginSasteria
             mainInventario abrir = new mainInventario();
             abrir.Show();
             this.Close();
+        }
+
+        //Generar Encargo,
+        public void GenerarEncargo()
+        {
+            string CodigoEncargo = "";
+
+            CodigoEncargo= "EN"+GenerarNumeroAleatorio();
+
+            MessageBox.Show(CodigoEncargo);
+        }
+
+        private void CrearEncargo(object sender, RoutedEventArgs e)
+        {
+            GenerarEncargo();
         }
     }
 }

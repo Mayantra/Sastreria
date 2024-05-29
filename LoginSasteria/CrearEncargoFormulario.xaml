@@ -255,8 +255,8 @@
         </RichTextBox>
         <Label Content="Detalles" Foreground="White" Background="Transparent" FontSize="20" VerticalContentAlignment="Center"  HorizontalContentAlignment="Right"
             HorizontalAlignment="Left" Height="35" Margin="45,235,0,0" VerticalAlignment="Top" Width="85"/>
-        <Button Background="#A0D982" Foreground="Black" FontSize="35" BorderBrush="Transparent"
-            HorizontalAlignment="Left" Height="122" Margin="640,508,0,0" VerticalAlignment="Top" Width="320">
+        <Button x:Name="btnCrearEncargo" Background="#A0D982" Foreground="Black" FontSize="35" BorderBrush="Transparent"
+            HorizontalAlignment="Left" Height="122" Margin="640,508,0,0" VerticalAlignment="Top" Width="320" Click="CrearEncargo">
             <Grid Height="100" Width="270">
                 <TextBlock Text="Encargar" TextWrapping="WrapWithOverflow" TextAlignment="Center" VerticalAlignment="Center"/>
             </Grid>
