@@ -223,13 +223,13 @@
         <TextBox x:Name="txabono"  HorizontalAlignment="Left" Text="" VerticalContentAlignment="Center"
             Height="50" Margin="242,508,0,0" TextWrapping="Wrap" 
             FontSize="25"  TextAlignment="Center" 
-            VerticalAlignment="Top" Width="318"/>
+            VerticalAlignment="Top" Width="318" PreviewTextInput="LeerSoloNumeros"/>
         <Label Content="Total" Foreground="White" Background="Transparent" FontSize="35" VerticalContentAlignment="Center" HorizontalContentAlignment="Right"
             HorizontalAlignment="Left" Height="50" Margin="86,580,0,0" VerticalAlignment="Top" Width="126"/>
         <TextBox x:Name="txtotal"  HorizontalAlignment="Left" Text="" VerticalContentAlignment="Center"
             Height="50" Margin="242,580,0,0" TextWrapping="Wrap" 
             FontSize="25"  TextAlignment="Center" 
-            VerticalAlignment="Top" Width="318"/>
+            VerticalAlignment="Top" Width="318" PreviewTextInput="LeerSoloNumeros"/>
         <Button Background="#A0D982" Foreground="Black" FontSize="35" BorderBrush="Transparent"
             HorizontalAlignment="Left" Height="122" Margin="640,508,0,0" VerticalAlignment="Top" Width="260">
             <Grid Height="100" Width="240">
@@ -277,6 +277,24 @@
                 </Rectangle>
             </Grid>
         </Button>
+
+        <Grid>
+            <ProgressBar Name="progressBar" Width="400" Margin="0,316,0,280" HorizontalAlignment="Center" Visibility="Hidden"
+             Background="#FF580000" Foreground="#FF255909" BorderBrush="#A0D982" BorderThickness="10">
+
+                <ProgressBar.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="50"/>
+
+                    </Style>
+                </ProgressBar.Resources>
+            </ProgressBar>
+
+            <TextBlock x:Name="txtCargando" Text="Cargando" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="50" Margin="0,335,0,0" Foreground="White" 
+                       Visibility="Hidden"/>
+        </Grid>
+
+
 
 
 
