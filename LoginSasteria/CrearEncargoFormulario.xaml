@@ -141,21 +141,21 @@
         </Button>
 
         <Rectangle HorizontalAlignment="Left" Height="700" VerticalAlignment="Center" Width="15" Fill="#FFEDE4A4"/>
-        <TextBox  HorizontalAlignment="Left" Text="53545660"
+        <TextBox x:Name="txBTelClient"  HorizontalAlignment="Left"
                  Height="60" Margin="45,78,0,0" TextWrapping="Wrap" 
                  FontSize="25" Padding="10" TextAlignment="Right"
-                 VerticalAlignment="Top" Width="333"/>
-        <Button Background="#FF580000" Foreground="White" FontSize="25" BorderBrush="Transparent"
-                HorizontalAlignment="Left" Height="152" Margin="385,78,0,0" VerticalAlignment="Top" Width="175">
-            <Grid Height="142" Width="145">
-                <TextBlock Text="Agregar Cliente" TextWrapping="WrapWithOverflow" TextAlignment="Center" VerticalAlignment="Top" Margin="0,40,0,0"></TextBlock>
+                 VerticalAlignment="Top" Width="333" PreviewTextInput="LeerSoloNumeros"/>
+        <Button x:Name="btnBuscarClient" Background="#FF580000" Foreground="White" FontSize="20" BorderBrush="Transparent"
+                HorizontalAlignment="Left" Height="60" Margin="385,78,0,0" VerticalAlignment="Top" Width="175" Click="BuscarCliente">
+            <Grid Height="50" Width="145">
+                <TextBlock Text="Buscar Cliente" TextWrapping="WrapWithOverflow" TextAlignment="Center" VerticalAlignment="Center" Height="34"/>
             </Grid>
         </Button>
         <Rectangle HorizontalAlignment="Left" Height="89" Margin="45,141,0,0" 
                    Fill="White" Opacity="0.2"
                    Stroke="Transparent" VerticalAlignment="Top" Width="333"/>
-        <TextBlock HorizontalAlignment="Left" Background="Transparent" Foreground="White" FontSize="25"
-                   Padding="10" Text="Edwin Isaac Bautista Vásquez"
+        <TextBlock x:Name="txNombreCliente" HorizontalAlignment="Left" Background="Transparent" Foreground="White" FontSize="25"
+                   Padding="10"
                    Height="85" Margin="45,143,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="333"/>
 
         <DataGrid ItemsSource="{Binding}" ColumnWidth="Auto" IsReadOnly="True" GridLinesVisibility="None" 
@@ -293,6 +293,17 @@
             <TextBlock x:Name="txtCargando" Text="Cargando" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="50" Margin="0,335,0,0" Foreground="White" 
                        Visibility="Hidden"/>
         </Grid>
+
+        <Button x:Name="btnAddClient" HorizontalAlignment="Left" Height="89" Margin="468,141,0,0" VerticalAlignment="Top" Width="92" 
+        BorderBrush="Transparent" Background="#FF255909" Click="AgregarProducto">
+            <Grid Height="50" Width="86">
+                <Rectangle Margin="14,0,14,0">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="/plusWhite.png" Stretch="Uniform"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Grid>
+        </Button>
 
 
 

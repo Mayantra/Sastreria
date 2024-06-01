@@ -1,9 +1,11 @@
 ﻿using iText.IO.Util;
 using MySql.Data.MySqlClient;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Numerics;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Security.AccessControl;
 using System.Text;
@@ -243,6 +245,7 @@ namespace LoginSasteria
                 cn.cerrarCN();
             }
             await Task.Delay(500);
+
             progressBar.Value = 100;
 
             progressBar.Visibility = Visibility.Collapsed; // Ocultar ProgressBar
@@ -251,6 +254,11 @@ namespace LoginSasteria
             
         }
         //Verificaar Existencia del ID Encargo
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="codigo">Codigo para verificar si los codigo se encuentran</param>
+        /// <returns></returns>
         public Boolean VerificarExistenciaEncargo(string codigo)
         {
             string query = "SELECT idproducto FROM "+cn.namedb()+".producto where idproducto='"+codigo+"';";
@@ -355,6 +363,38 @@ namespace LoginSasteria
         private static bool OnlyNumeros(string text)
         {
             return !_regex.IsMatch(text);
+        }
+
+        public void SerachClientDB(BigInteger numtel)
+        {
+            string query = "SELECT Nombres, Apellidos FROM "+cn.namedb()+".Cliente where telefono='" + numtel + "';";
+            MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
+            MySqlDataReader reader = comando.ExecuteReader();
+
+            string lectura = "";
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    for (int i = 0; i < reader.FieldCount; i++)
+                    {
+                        lectura += reader.GetValue(i).ToString()+" ";
+                    }
+                }
+                txNombreCliente.Text = lectura;
+            }
+            else
+            {
+                MessageBox.Show("No se encontro un cliente con la información proporcionada");
+
+            }
+            reader.Close();
+            cn.cerrarCN();
+        }
+        private void BuscarCliente(object sender, RoutedEventArgs e)
+        {
+            BigInteger numTel = BigInteger.Parse(txBTelClient.Text);
+            SerachClientDB(numTel);
         }
     }
 }
