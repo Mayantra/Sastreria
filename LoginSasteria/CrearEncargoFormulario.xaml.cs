@@ -31,6 +31,7 @@ namespace LoginSasteria
         ConexionDB cn = new ConexionDB();
 
         List <string> codigosProductos = new List <string> ();//Alamecenar todos los codigos
+        Boolean EstadoCliente = false;
         public CrearEncargoFormulario()
         {
             InitializeComponent();
@@ -336,8 +337,17 @@ namespace LoginSasteria
                     }
                     else
                     {
-                        GenerarEncargo();
-                        rtxDeatalles.Document = new FlowDocument();
+                        if(EstadoCliente == true)
+                        {
+
+                            GenerarEncargo();
+                            rtxDeatalles.Document = new FlowDocument();
+                        }
+                        else
+                        {
+                            MessageBox.Show("DEBE DE AGREGAR UN CLIENTE AL ENCARGO");
+                        }
+                        
                     }
                     
                 }
@@ -365,7 +375,7 @@ namespace LoginSasteria
             return !_regex.IsMatch(text);
         }
 
-        public void SerachClientDB(BigInteger numtel)
+        public Boolean SerachClientDB(BigInteger numtel)
         {
             string query = "SELECT Nombres, Apellidos FROM "+cn.namedb()+".Cliente where telefono='" + numtel + "';";
             MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
@@ -382,14 +392,18 @@ namespace LoginSasteria
                     }
                 }
                 txNombreCliente.Text = lectura;
+                reader.Close();
+                cn.cerrarCN();
+                return EstadoCliente = true;
             }
             else
             {
                 MessageBox.Show("No se encontro un cliente con la información proporcionada");
-
+                reader.Close();
+                cn.cerrarCN();
+                return EstadoCliente = false;
             }
-            reader.Close();
-            cn.cerrarCN();
+            
         }
         private void BuscarCliente(object sender, RoutedEventArgs e)
         {
