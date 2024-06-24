@@ -168,8 +168,6 @@ BorderThickness="{TemplateBinding BorderThickness}">
 
                 <DataGridTextColumn Header="Talla" Binding="{Binding Talla}" Width="85"/>
 
-                <DataGridTextColumn Header="Tela" Binding="{Binding Tela}" Width="90"/>
-
                 <DataGridTextColumn Header="Almacén" Binding="{Binding Almacen}" Width="150"/>
 
                 <DataGridTextColumn Header="Empleado" Binding="{Binding Empleado}" Width="120"/>

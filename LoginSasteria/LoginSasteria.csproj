@@ -218,6 +218,9 @@
     <Compile Include="consultaInventario.xaml.cs">
       <DependentUpon>consultaInventario.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ConversionTraje.xaml.cs">
+      <DependentUpon>ConversionTraje.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CrearBarras.xaml.cs">
       <DependentUpon>CrearBarras.xaml</DependentUpon>
     </Compile>
@@ -288,6 +291,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="consultaInventario.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ConversionTraje.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

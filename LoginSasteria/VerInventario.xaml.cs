@@ -41,16 +41,15 @@ namespace LoginSasteria
         void CargarInventario()
         {
             string query = "SELECT p.idproducto AS codigo, p.precio, np.idnombreProducto, np.Nombre AS Producto, c.nombre AS Color, t.nombreTalla AS Talla,  " +
-                            "te.nombreTela AS Tela, a.nombre AS Almacen, e.Nombre AS Empleado, pr.Nombre AS Proveedor " +
-                            "FROM dbleonv2.producto AS p " +
-                            "JOIN dbleonv2.nombreproducto AS np ON p.nombreProducto_idnombreProducto = np.idnombreProducto " +
-                            "JOIN dbleonv2.color AS c ON p.color_idcolor = c.idcolor " +
-                            "JOIN dbleonv2.talla AS t ON p.talla_idtalla = t.idtalla " +
-                            "JOIN dbleonv2.tela AS te ON p.tela_idtela = te.idtela " +
-                            "JOIN dbleonv2.inventario AS i ON i.producto_idproducto = p.idproducto " +
-                            "JOIN dbleonv2.almacen AS a ON i.almacen_idalmacen = a.idalmacen " +
-                            "JOIN dbleonv2.empleado AS e ON i.Empleado_idEmpleado = e.idEmpleado " +
-                            "JOIN dbleonv2.proveedor AS pr ON i.Proveedor_idProveedor = pr.idProveedor";
+                            "a.nombre AS Almacen, e.Nombre AS Empleado, pr.Nombre AS Proveedor " +
+                            "FROM " + objConection.namedb() + ".producto AS p " +
+                            "JOIN " + objConection.namedb() + ".nombreProducto AS np ON p.nombreProducto_idnombreProducto = np.idnombreProducto " +
+                            "JOIN " + objConection.namedb() + ".color AS c ON p.color_idcolor = c.idcolor " +
+                            "JOIN " + objConection.namedb() + ".talla AS t ON p.talla_idtalla = t.idtalla " +
+                            "JOIN " + objConection.namedb() + ".inventario AS i ON i.producto_idproducto = p.idproducto " +
+                            "JOIN " + objConection.namedb() + ".almacen AS a ON i.almacen_idalmacen = a.idalmacen " +
+                            "JOIN " + objConection.namedb() + ".Empleado AS e ON i.Empleado_idEmpleado = e.idEmpleado " +
+                            "JOIN " + objConection.namedb() + ".Proveedor AS pr ON i.Proveedor_idProveedor = pr.idProveedor";
 
             using (MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN()))
             {

@@ -313,3 +313,37 @@ C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\ro\Xceed.Wpf.A
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\ru\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\bin\Debug\JetBrains.Annotations.dll
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\bin\Debug\Microsoft.Expression.Interactions.dll
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\bin\Debug\Scar.Common.WPF.Controls.Behaviors.dll
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\bin\Debug\System.Windows.Interactivity.dll
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\bin\Debug\Xceed.Wpf.AvalonDock.dll
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Aero.dll
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Metro.dll
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\bin\Debug\Xceed.Wpf.AvalonDock.Themes.VS2010.dll
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\bin\Debug\Xceed.Wpf.Toolkit.dll
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\bin\Debug\JetBrains.Annotations.xml
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\bin\Debug\Microsoft.Expression.Interactions.xml
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\bin\Debug\Scar.Common.WPF.Controls.Behaviors.pdb
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\bin\Debug\System.Windows.Interactivity.xml
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\bin\Debug\cs-CZ\Xceed.Wpf.AvalonDock.resources.dll
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\bin\Debug\de\Xceed.Wpf.AvalonDock.resources.dll
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\bin\Debug\es\Xceed.Wpf.AvalonDock.resources.dll
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\bin\Debug\fr\Xceed.Wpf.AvalonDock.resources.dll
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\bin\Debug\hu\Xceed.Wpf.AvalonDock.resources.dll
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\bin\Debug\it\Xceed.Wpf.AvalonDock.resources.dll
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\bin\Debug\ja-JP\Xceed.Wpf.AvalonDock.resources.dll
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\bin\Debug\nl-BE\Xceed.Wpf.AvalonDock.resources.dll
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\bin\Debug\pt-BR\Xceed.Wpf.AvalonDock.resources.dll
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\bin\Debug\ro\Xceed.Wpf.AvalonDock.resources.dll
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\bin\Debug\ru\Xceed.Wpf.AvalonDock.resources.dll
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\ConversionTraje.g.cs
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\CrearEncargoFormulario.g.cs
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\CrearEncargoInventario.g.cs
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\verPrecioProducto.g.cs
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\CrearEncargoFormulario.baml
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\CrearEncargoInventario.baml
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\verPrecioProducto.baml
+E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\ConversionTraje.baml

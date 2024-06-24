@@ -80,9 +80,9 @@ namespace LoginSasteria
             fechaHoraFin = fechaHoraFin.AddMinutes(minutosSegundaFecha);
 
             string query = "SELECT p.idproducto AS codigo, p.precio, np.Nombre AS Producto, c.nombre AS Color, t.nombreTalla AS Talla, " +
-                "te.nombreTela AS Tela, p.detalles, p.fechaCodigo AS `Fecha_Creacion` FROM dbleonv2.producto AS p JOIN dbleonv2.nombreproducto AS np " +
-                "ON p.nombreProducto_idnombreProducto = np.idnombreProducto JOIN dbleonv2.color AS c ON p.color_idcolor = c.idcolor JOIN dbleonv2.talla AS t " +
-                "ON p.talla_idtalla = t.idtalla JOIN dbleonv2.tela AS te ON p.tela_idtela = te.idtela WHERE p.fechaCodigo BETWEEN @FechaInicio AND @FechaFin";
+                "p.detalles, p.fechaCodigo AS `Fecha_Creacion` FROM " + objConection.namedb() + ".producto AS p JOIN " + objConection.namedb() + ".nombreProducto AS np " +
+                "ON p.nombreProducto_idnombreProducto = np.idnombreProducto JOIN " + objConection.namedb() + ".color AS c ON p.color_idcolor = c.idcolor JOIN " + objConection.namedb() + ".talla AS t " +
+                "ON p.talla_idtalla = t.idtalla WHERE p.fechaCodigo BETWEEN @FechaInicio AND @FechaFin";
 
             using (MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN()))
             {
@@ -173,7 +173,7 @@ namespace LoginSasteria
         }
 
         //Permite generar el codigo de barras
-        public  byte[] GenerateBarcode(string data)
+        public byte[] GenerateBarcode(string data)
         {
             var writer = new BarcodeWriterPixelData
             {

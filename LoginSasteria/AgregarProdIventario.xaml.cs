@@ -58,7 +58,7 @@ namespace LoginSasteria
             try
             {
                 //Vamos a traer todo de la tabla almacen
-                string query = "SELECT * FROM dbleonv2.almacen";
+                string query = "SELECT * FROM " + objConection.namedb() + ".almacen";
                 MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN());
                 MySqlDataReader myReader = comando.ExecuteReader();
                 while (myReader.Read())
@@ -71,7 +71,7 @@ namespace LoginSasteria
                 objConection.cerrarCN();
 
                 //Vamos a traer todo de la tabla proveedor
-                string query2 = "SELECT * FROM dbleonv2.proveedor";
+                string query2 = "SELECT * FROM " + objConection.namedb() + ".Proveedor";
                 MySqlCommand comando2 = new MySqlCommand(query2, objConection.establecerCN());
                 MySqlDataReader myReader2 = comando2.ExecuteReader();
                 while (myReader2.Read())
@@ -124,7 +124,7 @@ namespace LoginSasteria
 
         private bool VerificarProductoExistente(string codigoProducto)
         {
-            string queryVerificacion = "SELECT COUNT(*) FROM `dbleonv2`.`inventario` WHERE `producto_idproducto` = @productoId";
+            string queryVerificacion = "SELECT COUNT(*) FROM " + objConection.namedb() + ".inventario WHERE `producto_idproducto` = @productoId";
             using (MySqlCommand comandoVerificacion = new MySqlCommand(queryVerificacion, objConection.establecerCN()))
             {
                 comandoVerificacion.Parameters.AddWithValue("@productoId", codigoProducto);
@@ -165,7 +165,7 @@ namespace LoginSasteria
             }
 
             // Procede a insertar el producto si no existe
-            string query = "INSERT INTO `dbleonv2`.`inventario` (`fechaIngreso`, `almacen_idalmacen`, `Empleado_idEmpleado`, `Proveedor_idProveedor`, `producto_idproducto`) " +
+            string query = "INSERT INTO " + objConection.namedb() + ".inventario (`fechaIngreso`, `almacen_idalmacen`, `Empleado_idEmpleado`, `Proveedor_idProveedor`, `producto_idproducto`) " +
                 "VALUES (@fechaIngreso, @almacen, @empleado, @proveedor, @producto)";
             using (MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN()))
             {

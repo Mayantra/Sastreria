@@ -237,8 +237,6 @@ Icon="/tshirt_120689.ico">
 
                 <DataGridTextColumn Header="Talla" Binding="{Binding Talla}" Width="85"/>
 
-                <DataGridTextColumn Header="Tela" Binding="{Binding Tela}" Width="90"/>
-
                 <DataGridTextColumn Header="Detalles" Binding="{Binding detalles}" Width="110"/>
 
                 <DataGridTextColumn Header="Fecha Creación" Binding="{Binding Fecha_Creacion}" Width="200"/>

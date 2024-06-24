@@ -101,5 +101,12 @@ namespace LoginSasteria
             abrir.Show();
             this.Close();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ConversionTraje abrir = new ConversionTraje();
+            abrir.Show();
+            this.Close();
+        }
     }
 }

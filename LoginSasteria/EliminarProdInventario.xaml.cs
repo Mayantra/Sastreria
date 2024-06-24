@@ -63,7 +63,7 @@ namespace LoginSasteria
             if (e.Key == Key.Enter)
             {
                 //Se verifica que el codigo exista en el inventario
-                string Query = "SELECT COUNT(*) FROM dbleonv2.inventario WHERE producto_idproducto = @codigo";
+                string Query = "SELECT COUNT(*) FROM "+objConection.namedb()+".inventario WHERE producto_idproducto = @codigo";
 
                 using (MySqlCommand comando2 = new MySqlCommand(Query, objConection.establecerCN()))
                 {
@@ -86,7 +86,7 @@ namespace LoginSasteria
 
                         if (result == MessageBoxResult.Yes)
                         {
-                            string query = "DELETE FROM dbleonv2.inventario WHERE producto_idproducto = @codigo";
+                            string query = "DELETE FROM "+objConection.namedb()+".inventario WHERE producto_idproducto = @codigo";
 
                             using (MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN()))
                             {

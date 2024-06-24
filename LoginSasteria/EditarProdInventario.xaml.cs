@@ -85,7 +85,7 @@ namespace LoginSasteria
             try
             {
                 //Vamos a traer todo de la tabla tipoproducto
-                string query = "SELECT * FROM dbleonv2.tipoproducto;";
+                string query = "SELECT * FROM " + objConection.namedb() + ".tipoProducto;";
                 MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN());
                 MySqlDataReader myReader = comando.ExecuteReader();
                 while (myReader.Read())
@@ -98,7 +98,7 @@ namespace LoginSasteria
                 objConection.cerrarCN();
 
                 //Vamos a traer todo de la tabla almacen
-                string query5 = "SELECT * FROM dbleonv2.almacen;";
+                string query5 = "SELECT * FROM " + objConection.namedb() + ".almacen;";
                 MySqlCommand comando5 = new MySqlCommand(query5, objConection.establecerCN());
                 MySqlDataReader myReader5 = comando5.ExecuteReader();
                 while (myReader5.Read())
@@ -122,7 +122,7 @@ namespace LoginSasteria
             if (e.Key == Key.Enter)
             {
                 //Antes de llenar el DataGrid con los datos del codigo a buscar, se verifica que el codigo exista en el inventario
-                string Query = "SELECT COUNT(*) FROM dbleonv2.inventario WHERE producto_idproducto = @codigo";
+                string Query = "SELECT COUNT(*) FROM " + objConection.namedb() + ".inventario WHERE producto_idproducto = @codigo";
 
                 using (MySqlCommand comando2 = new MySqlCommand(Query, objConection.establecerCN()))
                 {
@@ -144,16 +144,15 @@ namespace LoginSasteria
                     {
                         // Si el código existe, ejecuta la consulta principal
                         string query = "SELECT p.idproducto AS codigo, p.precio, np.idnombreProducto, np.Nombre AS Producto, c.nombre AS Color, t.nombreTalla AS Talla,  " +
-                            "te.nombreTela AS Tela, a.nombre AS Almacen, e.Nombre AS Empleado, pr.Nombre AS Proveedor " +
-                            "FROM dbleonv2.producto AS p " +
-                            "JOIN dbleonv2.nombreproducto AS np ON p.nombreProducto_idnombreProducto = np.idnombreProducto " +
-                            "JOIN dbleonv2.color AS c ON p.color_idcolor = c.idcolor " +
-                            "JOIN dbleonv2.talla AS t ON p.talla_idtalla = t.idtalla " +
-                            "JOIN dbleonv2.tela AS te ON p.tela_idtela = te.idtela " +
-                            "JOIN dbleonv2.inventario AS i ON i.producto_idproducto = p.idproducto " +
-                            "JOIN dbleonv2.almacen AS a ON i.almacen_idalmacen = a.idalmacen " +
-                            "JOIN dbleonv2.empleado AS e ON i.Empleado_idEmpleado = e.idEmpleado " +
-                            "JOIN dbleonv2.proveedor AS pr ON i.Proveedor_idProveedor = pr.idProveedor WHERE p.idproducto = @codigo";
+                            "a.nombre AS Almacen, e.Nombre AS Empleado, pr.Nombre AS Proveedor " +
+                            "FROM " + objConection.namedb() + ".producto AS p " +
+                            "JOIN " + objConection.namedb() + ".nombreProducto AS np ON p.nombreProducto_idnombreProducto = np.idnombreProducto " +
+                            "JOIN " + objConection.namedb() + ".color AS c ON p.color_idcolor = c.idcolor " +
+                            "JOIN " + objConection.namedb() + ".talla AS t ON p.talla_idtalla = t.idtalla " +
+                            "JOIN " + objConection.namedb() + ".inventario AS i ON i.producto_idproducto = p.idproducto " +
+                            "JOIN " + objConection.namedb() + ".almacen AS a ON i.almacen_idalmacen = a.idalmacen " +
+                            "JOIN " + objConection.namedb() + ".Empleado AS e ON i.Empleado_idEmpleado = e.idEmpleado " +
+                            "JOIN " + objConection.namedb() + ".Proveedor AS pr ON i.Proveedor_idProveedor = pr.idProveedor WHERE p.idproducto = @codigo";
 
                         using (MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN()))
                         {
@@ -206,8 +205,8 @@ namespace LoginSasteria
                 if (idTipoProducto == 1)
                 {
                     //Vamos a traer las tallas pertenecientes a las camisas
-                    string query1 = "SELECT tt.idtalla, t.nombreTalla FROM dbleonv2.tipotall AS tt " +
-                        "JOIN dbleonv2.talla AS t ON tt.talla_idtalla = t.idtalla WHERE tt.tipoProducto_idtipoProducto = '1'";
+                    string query1 = "SELECT tt.idtalla, t.nombreTalla FROM " + objConection.namedb() + ".tipoTall AS tt " +
+                        "JOIN " + objConection.namedb() + ".talla AS t ON tt.talla_idtalla = t.idtalla WHERE tt.tipoProducto_idtipoProducto = '1'";
                     MySqlCommand comando1 = new MySqlCommand(query1, objConection.establecerCN());
                     MySqlDataReader myReader1 = comando1.ExecuteReader();
                     while (myReader1.Read())
@@ -222,8 +221,8 @@ namespace LoginSasteria
                 else if (idTipoProducto == 2)
                 {
                     //Vamos a traer las tallas pertenecientes a los pantalones
-                    string query2 = "SELECT tt.idtalla, t.nombreTalla FROM dbleonv2.tipotall AS tt " +
-                        "JOIN dbleonv2.talla AS t ON tt.talla_idtalla = t.idtalla WHERE tt.tipoProducto_idtipoProducto = '2'";
+                    string query2 = "SELECT tt.idtalla, t.nombreTalla FROM " + objConection.namedb() + ".tipoTall AS tt " +
+                        "JOIN " + objConection.namedb() + ".talla AS t ON tt.talla_idtalla = t.idtalla WHERE tt.tipoProducto_idtipoProducto = '2'";
                     MySqlCommand comando2 = new MySqlCommand(query2, objConection.establecerCN());
                     MySqlDataReader myReader2 = comando2.ExecuteReader();
                     while (myReader2.Read())
@@ -238,8 +237,8 @@ namespace LoginSasteria
                 else if (idTipoProducto == 3)
                 {
                     //Vamos a traer las tallas pertenecientes a los sacos
-                    string query3 = "SELECT tt.idtalla, t.nombreTalla FROM dbleonv2.tipotall AS tt " +
-                         "JOIN dbleonv2.talla AS t ON tt.talla_idtalla = t.idtalla WHERE tt.tipoProducto_idtipoProducto = '3'";
+                    string query3 = "SELECT tt.idtalla, t.nombreTalla FROM " + objConection.namedb() + ".tipoTall AS tt " +
+                         "JOIN " + objConection.namedb() + ".talla AS t ON tt.talla_idtalla = t.idtalla WHERE tt.tipoProducto_idtipoProducto = '3'";
                     MySqlCommand comando3 = new MySqlCommand(query3, objConection.establecerCN());
                     MySqlDataReader myReader3 = comando3.ExecuteReader();
                     while (myReader3.Read())
@@ -254,8 +253,8 @@ namespace LoginSasteria
                 else if (idTipoProducto == 5)
                 {
                     //Vamos a traer las tallas pertenecientes a los chalecos
-                    string query4 = "SELECT tt.idtalla, t.nombreTalla FROM dbleonv2.tipotall AS tt " +
-                        "JOIN dbleonv2.talla AS t ON tt.talla_idtalla = t.idtalla WHERE tt.tipoProducto_idtipoProducto = '5'";
+                    string query4 = "SELECT tt.idtalla, t.nombreTalla FROM " + objConection.namedb() + ".tipoTall AS tt " +
+                        "JOIN " + objConection.namedb() + ".talla AS t ON tt.talla_idtalla = t.idtalla WHERE tt.tipoProducto_idtipoProducto = '5'";
                     MySqlCommand comando4 = new MySqlCommand(query4, objConection.establecerCN());
                     MySqlDataReader myReader4 = comando4.ExecuteReader();
                     while (myReader4.Read())
@@ -289,9 +288,9 @@ namespace LoginSasteria
 
             try
             {
-                string ActualizarDatos = "UPDATE dbleonv2.nombreproducto SET Nombre = @NombreProducto WHERE idnombreProducto = @IdProducto; " +
-                    "UPDATE dbleonv2.producto SET precio = @precio, talla_idtalla = @talla WHERE idproducto = @codigo; " +
-                    "UPDATE dbleonv2.inventario SET almacen_idalmacen = @Almacen WHERE producto_idproducto = @codigo;";
+                string ActualizarDatos = "UPDATE " + objConection.namedb() + ".nombreProducto SET Nombre = @NombreProducto WHERE idnombreProducto = @IdProducto; " +
+                    "UPDATE " + objConection.namedb() + ".producto SET precio = @precio, talla_idtalla = @talla WHERE idproducto = @codigo; " +
+                    "UPDATE " + objConection.namedb() + ".inventario SET almacen_idalmacen = @Almacen WHERE producto_idproducto = @codigo;";
 
                 using (MySqlCommand comando = new MySqlCommand(ActualizarDatos, objConection.establecerCN()))
                 {
