@@ -32,6 +32,10 @@ namespace LoginSasteria
 
         List <string> codigosProductos = new List <string> ();//Alamecenar todos los codigos
         Boolean EstadoCliente = false;
+        string user="";
+        string pass="";
+        int iduser=0;
+        int idCliente = 0;
         public CrearEncargoFormulario()
         {
             InitializeComponent();
@@ -115,7 +119,7 @@ namespace LoginSasteria
         {
             int  cantidad = ObtenerCantidad();
             string tipo = ObtenerValorComboBox();
-            MessageBox.Show("Elegiste "+tipo+" "+cantidad.ToString());
+            MessageBox.Show("Agregaste "+cantidad.ToString()+" "+ tipo);
             progressBar.Visibility = Visibility.Visible;
             txtCargando.Visibility = Visibility.Visible;
             progressBar.Value = 50;
@@ -143,7 +147,7 @@ namespace LoginSasteria
         public void AgregarCodigosLista(string tipo, int cantidad)
         {
             
-            string CodigoProducto="";
+            string CodigoProducto="";//variable que guarda los codigos temporalmente
             for (int i = 0; i < cantidad; i++)
             {              
                 progressBar.Value = Math.Round((i / (double)cantidad * 100), 2);
@@ -233,8 +237,20 @@ namespace LoginSasteria
 
                 MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
                 MySqlDataReader dr = comando.ExecuteReader();
+                dr.Close();
+                
+                cn.cerrarCN();
+                string query2 = "INSERT INTO "+ cn.namedb() + ".`Encargo` " +
+                    "(`idEncargo`, `Detalles`, `Empleado_idEmpleado`, `Cliente_idCliente`) " +
+                    "VALUES ('"+CodigoEncargo+"', '"+GetTextFromRichTextBox(rtxDeatalles)+"', '"+iduser+"', '"+idCliente+"');";
+
+                MySqlCommand comando2 = new MySqlCommand(query2, cn.establecerCN());
+                MySqlDataReader dr2 = comando2.ExecuteReader();
+                dr2.Close();
+                cn.cerrarCN();
                 await Task.Delay(500);
                 progressBar.Value = 80;
+                
 
             }
             catch (MySqlException e)
@@ -251,7 +267,7 @@ namespace LoginSasteria
 
             progressBar.Visibility = Visibility.Collapsed; // Ocultar ProgressBar
             txtCargando.Visibility = Visibility.Collapsed;
-            MessageBox.Show(CodigoEncargo);
+            //MessageBox.Show(CodigoEncargo);
             
         }
         //Verificaar Existencia del ID Encargo
@@ -339,9 +355,7 @@ namespace LoginSasteria
                     {
                         if(EstadoCliente == true)
                         {
-
-                            GenerarEncargo();
-                            rtxDeatalles.Document = new FlowDocument();
+                            GridLogueo.Visibility = Visibility.Visible;//que se vea el logue si todo se cumple
                         }
                         else
                         {
@@ -377,7 +391,7 @@ namespace LoginSasteria
 
         public Boolean SerachClientDB(BigInteger numtel)
         {
-            string query = "SELECT Nombres, Apellidos FROM "+cn.namedb()+".Cliente where telefono='" + numtel + "';";
+            string query = "SELECT idCliente, Nombres, Apellidos FROM " + cn.namedb()+".Cliente where telefono='" + numtel + "';";
             MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
             MySqlDataReader reader = comando.ExecuteReader();
 
@@ -388,6 +402,7 @@ namespace LoginSasteria
                 {
                     for (int i = 0; i < reader.FieldCount; i++)
                     {
+                        idCliente = reader.GetUInt16(0);
                         lectura += reader.GetValue(i).ToString()+" ";
                     }
                 }
@@ -409,6 +424,49 @@ namespace LoginSasteria
         {
             BigInteger numTel = BigInteger.Parse(txBTelClient.Text);
             SerachClientDB(numTel);
+        }
+
+        private void getAcceso()
+        {
+            leerPass read = new leerPass();
+            for (int i = 0; i <= PassBox.Password.Length; i++)
+            {
+                if (i == 5)
+                {
+                    user = txUser.Text;
+                    pass = PassBox.Password;
+                    if (read.getAcceso(user, pass) != false)
+                    {
+                        iduser = read.getIdLogUser(user);
+                        cargarDatos();
+                        txUser.Text = "";
+                        PassBox.Password = "";
+                        
+                    }  
+                }
+            }
+            
+        }
+
+        private void CancelarLogueo(object sender, RoutedEventArgs e)
+        {
+            GridLogueo.Visibility = Visibility.Collapsed;
+            CrearEncargoFormulario abrir = new CrearEncargoFormulario();
+            abrir.Show();
+            this.Close();
+
+        }
+        private void lecturapass(object sender, RoutedEventArgs e)
+        {
+            getAcceso();
+        }
+        
+        
+        private void cargarDatos()
+        {   
+            GenerarEncargo();
+
+            GridLogueo.Visibility = Visibility.Collapsed;
         }
     }
 }

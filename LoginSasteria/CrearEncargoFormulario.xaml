@@ -119,6 +119,24 @@
             </Setter>
         </Style>
 
+        <ControlTemplate x:Key="PasswordBoxTemplate" TargetType="{x:Type PasswordBox}">
+            <Border Background="{TemplateBinding Background}" x:Name="Bd" BorderBrush="Black" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="20">
+                <ScrollViewer x:Name="PART_ContentHost"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" TargetName="Bd"/>
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="Width" Value="Auto">
+                    <Setter Property="MinWidth" Value="100"/>
+                </Trigger>
+                <Trigger Property="Height" Value="Auto">
+                    <Setter Property="MinHeight" Value="20"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
 
 
     </Window.Resources>
@@ -264,7 +282,7 @@
         <Button x:Name="btnCancelar" Background="#FFE50000" Foreground="White" FontSize="35" BorderBrush="Transparent"
             HorizontalAlignment="Left" Height="122" Margin="975,508,0,0" VerticalAlignment="Top" Width="185" Click="CancelarFormulario">
             <Grid Height="100" Width="150">
-                <TextBlock Text="Canelar" TextWrapping="WrapWithOverflow" TextAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="Cancelar" TextWrapping="WrapWithOverflow" TextAlignment="Center" VerticalAlignment="Center"/>
             </Grid>
         </Button>
         <Button x:Name="btnQuitar" HorizontalAlignment="Left" Height="60" Margin="1174,285,0,0" VerticalAlignment="Top" Width="92" 
@@ -294,16 +312,44 @@
                        Visibility="Hidden"/>
         </Grid>
 
-        <Button x:Name="btnAddClient" HorizontalAlignment="Left" Height="89" Margin="468,141,0,0" VerticalAlignment="Top" Width="92" 
-        BorderBrush="Transparent" Background="#FF255909" Click="AgregarProducto">
-            <Grid Height="50" Width="86">
-                <Rectangle Margin="14,0,14,0">
+        <Button x:Name="btnAddClient" HorizontalAlignment="Left" Height="89" Margin="385,141,0,0" VerticalAlignment="Top" Width="175" 
+        BorderBrush="Transparent" Background="#FF255909">
+            <Grid Height="69" Width="145">
+                <Rectangle Margin="80,10,0,14">
                     <Rectangle.Fill>
                         <ImageBrush ImageSource="/plusWhite.png" Stretch="Uniform"/>
                     </Rectangle.Fill>
                 </Rectangle>
+                <TextBlock Text="Nuevo Cliente" FontSize="22" TextWrapping="Wrap" Margin="0,0,65,0" TextAlignment="Center"
+                           Foreground="White">
+
+                </TextBlock>
             </Grid>
         </Button>
+
+        <Grid x:Name="GridLogueo" Background="#FF150000" Visibility="Hidden">
+
+
+            <Rectangle HorizontalAlignment="Center" Height="500" Stroke="Black" VerticalAlignment="Top" Width="470" Fill="Black" Margin="0,48,0,0"/>
+
+
+            <TextBox x:Name="txUser" Template="{StaticResource TextBoxBaseControlTemplate}"  HorizontalAlignment="Center" Height="50" Margin="0,216,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Padding="10"  Width="300" FontFamily="MingLiU_HKSCS-ExtB" FontSize="20" SelectionOpacity="0.9" RenderTransformOrigin="0.5,0.5" FontWeight="Light"/>
+            <PasswordBox x:Name="PassBox" Template="{StaticResource PasswordBoxTemplate}" HorizontalAlignment="Center" Height="50" Margin="0,308,0,0" VerticalAlignment="Top" Width="300" PasswordChanged="lecturapass" Padding="10" FontSize="16"/>
+            <Rectangle HorizontalAlignment="Left" Height="500" VerticalAlignment="Top" Width="25" Fill="#FFEDE4A4" Margin="415,48,0,0"/>
+            <Rectangle HorizontalAlignment="Center" Height="98" Margin="0,65,0,0" Stroke="Black" VerticalAlignment="Top" Width="214">
+                <Rectangle.Fill>
+                    <ImageBrush ImageSource="/Imagen_de_WhatsApp_2024-01-17_a_las_20.09.20_1e6cb21b-removebg-preview.png" Stretch="Uniform"/>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Label Content="Usuario" HorizontalAlignment="Left" Height="30" Margin="510,181,0,0" VerticalAlignment="Top" Width="100" FontSize="16" Foreground="White" HorizontalContentAlignment="left" VerticalContentAlignment="Center" RenderTransformOrigin="0.55,0.533"/>
+            <Label Content="Contraseña" HorizontalAlignment="Left" Height="30" Margin="510,273,0,0" VerticalAlignment="Top" Width="100" FontSize="16" Foreground="White" HorizontalContentAlignment="left" VerticalContentAlignment="Center" RenderTransformOrigin="0.55,0.533"/>
+            <Button x:Name="btnCancelarLogueo" Background="#FF580000" Foreground="White" FontSize="35" BorderBrush="Transparent"
+    HorizontalAlignment="Center" Height="80" Margin="0,410,0,0" VerticalAlignment="Top" Width="184" Click="CancelarLogueo">
+                <Grid Height="70" Width="150">
+                    <TextBlock Text="Cancelar" TextWrapping="WrapWithOverflow" TextAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+            </Button>
+        </Grid>
 
 
 
