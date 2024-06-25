@@ -36,6 +36,7 @@ namespace LoginSasteria
         string pass="";
         int iduser=0;
         int idCliente = 0;
+        string idEncargo = "";
         public CrearEncargoFormulario()
         {
             InitializeComponent();
@@ -135,6 +136,7 @@ namespace LoginSasteria
             await Task.Delay(500);
             progressBar.Visibility = Visibility.Collapsed;
             txtCargando.Visibility = Visibility.Collapsed;
+            NumberData.Value =1;
 
 
         }
@@ -200,6 +202,8 @@ namespace LoginSasteria
         //Generar Encargo
         public async void GenerarEncargo()
         {
+            GridLogueo.Visibility = Visibility.Collapsed;
+            await Task.Delay(500);
             progressBar.Visibility = Visibility.Visible;
             txtCargando.Visibility = Visibility.Visible;
             progressBar.Value = 10;
@@ -211,6 +215,7 @@ namespace LoginSasteria
                 CodigoEncargo = "EN" + GenerarNumeroAleatorio();
 
             } while (VerificarExistenciaEncargo(CodigoEncargo) == false);
+
 
             int idNombreProducto = getIDsTables("SELECT idnombreProducto FROM "+cn.namedb()+".nombreProducto " +
                 "where Nombre ='Sin Especificar';");
@@ -248,6 +253,7 @@ namespace LoginSasteria
                 MySqlDataReader dr2 = comando2.ExecuteReader();
                 dr2.Close();
                 cn.cerrarCN();
+                idEncargo = CodigoEncargo;
                 await Task.Delay(500);
                 progressBar.Value = 80;
                 
@@ -260,6 +266,8 @@ namespace LoginSasteria
             finally
             {
                 cn.cerrarCN();
+                asignarProductos(codigosProductos);
+                
             }
             await Task.Delay(500);
 
@@ -437,12 +445,15 @@ namespace LoginSasteria
                     pass = PassBox.Password;
                     if (read.getAcceso(user, pass) != false)
                     {
+                        
                         iduser = read.getIdLogUser(user);
                         cargarDatos();
                         txUser.Text = "";
                         PassBox.Password = "";
                         
-                    }  
+                    }
+                    txUser.Text = "";
+                    PassBox.Password = "";
                 }
             }
             
@@ -461,12 +472,72 @@ namespace LoginSasteria
             getAcceso();
         }
         
-        
-        private void cargarDatos()
-        {   
-            GenerarEncargo();
+        private void asignarProductos(List<string> totalProductos)
+        {
+         
+            for (int i = 0; i < totalProductos.Count(); i++)
+            {
+                int idNombreProducto = getIDsTables("SELECT idnombreProducto FROM " + cn.namedb() + ".nombreProducto " +
+                    "where Nombre ='Sin Especificar';");
+                //-------------------------------------
+                int idColor = getIDsTables("SELECT idcolor FROM " + cn.namedb() + ".color where nombre='Sin Especificar';");
+                //--------------------------------------
+                int idtipoTalla = getIDsTables("SELECT idtalla FROM " + cn.namedb() + ".tipoTall" +
+                    "\nINNER JOIN " + cn.namedb() + ".tipoProducto " +
+                    "\nON tipoProducto_idtipoProducto = idtipoProducto" +
+                    "\nwhere nombreTipo ='Encargo';");
 
-            GridLogueo.Visibility = Visibility.Collapsed;
+                DateTime now = DateTime.Now;
+                string fechahora = now.ToString("yyyy-MM-dd HH:mm:ss");
+
+                
+                try
+                {
+                    cn.cerrarCN();
+                    string query = "INSERT INTO `" + cn.namedb() + "`.`producto` " +
+                        "(`idproducto`, `abono`, `precio`, `nombreProducto_idnombreProducto`, `color_idcolor`, `talla_idtalla`, `detalles`, `fechaCodigo`) " +
+                        "VALUES ('" + totalProductos[i] + "', '" + 0 + "', '" + 0 + "', " +
+                        "'" + idNombreProducto + "', '" + idColor + "', '" + idtipoTalla + "', '" + GetTextFromRichTextBox(rtxDeatalles) + "', '" + fechahora + "');";
+
+                    MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
+                    MySqlDataReader dr = comando.ExecuteReader();
+                    dr.Close();
+
+                    cn.cerrarCN();
+                    string query2 = "INSERT INTO `"+cn.namedb()+"`.`EncargoProducto` " +
+                        "(`Encargo_idEncargo`, `producto_idproducto`) " +
+                        "VALUES ('"+idEncargo+"', '" + totalProductos[i] +"');";
+
+                    MySqlCommand comando2 = new MySqlCommand(query2, cn.establecerCN());
+                    MySqlDataReader dr2 = comando2.ExecuteReader();
+                    dr2.Close();
+                    cn.cerrarCN();
+                    
+
+
+                }
+                catch (MySqlException e)
+                {
+                    MessageBox.Show(e.ToString());
+                }
+                finally
+                {
+                    cn.cerrarCN();
+                }                
+            }
+            
+        }
+        private void cargarDatos()
+        {
+            
+            GenerarEncargo();
+            
+            CrearEncargoFormulario abrir = new CrearEncargoFormulario();
+            
+            abrir.Show();
+            this.Close();
+            MessageBox.Show("EL ENCARGO Y LOS PRODUCTOS ESTÁN INGRESADOS");
+            
         }
     }
 }

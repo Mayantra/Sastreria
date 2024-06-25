@@ -236,18 +236,19 @@
                             FontSize="40" Minimum="1" Maximum="100" ButtonSpinnerWidth="40" BorderBrush="{x:Null}">
 
         </xctk:IntegerUpDown>
-        <Label Content="Abono" Foreground="White" Background="Transparent" FontSize="35" VerticalContentAlignment="Center"  HorizontalContentAlignment="Right"
-       HorizontalAlignment="Left" Height="50" Margin="86,508,0,0" VerticalAlignment="Top" Width="126"/>
-        <TextBox x:Name="txabono"  HorizontalAlignment="Left" Text="" VerticalContentAlignment="Center"
-            Height="50" Margin="242,508,0,0" TextWrapping="Wrap" 
-            FontSize="25"  TextAlignment="Center" 
-            VerticalAlignment="Top" Width="318" PreviewTextInput="LeerSoloNumeros"/>
         <Label Content="Total" Foreground="White" Background="Transparent" FontSize="35" VerticalContentAlignment="Center" HorizontalContentAlignment="Right"
-            HorizontalAlignment="Left" Height="50" Margin="86,580,0,0" VerticalAlignment="Top" Width="126"/>
+    HorizontalAlignment="Left" Height="50" Margin="88,508,0,0" VerticalAlignment="Top" Width="126"/>
         <TextBox x:Name="txtotal"  HorizontalAlignment="Left" Text="" VerticalContentAlignment="Center"
+    Height="50" Margin="244,508,0,0" TextWrapping="Wrap" 
+    FontSize="25"  TextAlignment="Center" 
+    VerticalAlignment="Top" Width="318" PreviewTextInput="LeerSoloNumeros"/>
+        <Label Content="Abono" Foreground="White" Background="Transparent" FontSize="35" VerticalContentAlignment="Center"  HorizontalContentAlignment="Right"
+       HorizontalAlignment="Left" Height="50" Margin="86,580,0,0" VerticalAlignment="Top" Width="126"/>
+        <TextBox x:Name="txabono"  HorizontalAlignment="Left" Text="" VerticalContentAlignment="Center"
             Height="50" Margin="242,580,0,0" TextWrapping="Wrap" 
             FontSize="25"  TextAlignment="Center" 
             VerticalAlignment="Top" Width="318" PreviewTextInput="LeerSoloNumeros"/>
+        
         <Button Background="#A0D982" Foreground="Black" FontSize="35" BorderBrush="Transparent"
             HorizontalAlignment="Left" Height="122" Margin="640,508,0,0" VerticalAlignment="Top" Width="260">
             <Grid Height="100" Width="240">
@@ -286,7 +287,7 @@
             </Grid>
         </Button>
         <Button x:Name="btnQuitar" HorizontalAlignment="Left" Height="60" Margin="1174,285,0,0" VerticalAlignment="Top" Width="92" 
-        BorderBrush="Transparent" Background="#FF580000" Click="AgregarProducto">
+        BorderBrush="Transparent" Background="#FF580000">
             <Grid Height="50" Width="86">
                 <Rectangle Margin="14,0,14,0">
                     <Rectangle.Fill>
@@ -295,25 +296,8 @@
                 </Rectangle>
             </Grid>
         </Button>
-
-        <Grid>
-            <ProgressBar Name="progressBar" Width="400" Margin="0,316,0,280" HorizontalAlignment="Center" Visibility="Hidden"
-             Background="#FF580000" Foreground="#FF255909" BorderBrush="#A0D982" BorderThickness="10">
-
-                <ProgressBar.Resources>
-                    <Style TargetType="{x:Type Border}">
-                        <Setter Property="CornerRadius" Value="50"/>
-
-                    </Style>
-                </ProgressBar.Resources>
-            </ProgressBar>
-
-            <TextBlock x:Name="txtCargando" Text="Cargando" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="50" Margin="0,335,0,0" Foreground="White" 
-                       Visibility="Hidden"/>
-        </Grid>
-
         <Button x:Name="btnAddClient" HorizontalAlignment="Left" Height="89" Margin="385,141,0,0" VerticalAlignment="Top" Width="175" 
-        BorderBrush="Transparent" Background="#FF255909">
+BorderBrush="Transparent" Background="#FF255909">
             <Grid Height="69" Width="145">
                 <Rectangle Margin="80,10,0,14">
                     <Rectangle.Fill>
@@ -321,13 +305,13 @@
                     </Rectangle.Fill>
                 </Rectangle>
                 <TextBlock Text="Nuevo Cliente" FontSize="22" TextWrapping="Wrap" Margin="0,0,65,0" TextAlignment="Center"
-                           Foreground="White">
+                   Foreground="White">
 
                 </TextBlock>
             </Grid>
         </Button>
 
-        <Grid x:Name="GridLogueo" Background="#FF150000" Visibility="Hidden">
+        <Grid x:Name="GridLogueo" Background="#FF150000" Visibility="Collapsed">
 
 
             <Rectangle HorizontalAlignment="Center" Height="500" Stroke="Black" VerticalAlignment="Top" Width="470" Fill="Black" Margin="0,48,0,0"/>
@@ -344,12 +328,31 @@
             <Label Content="Usuario" HorizontalAlignment="Left" Height="30" Margin="510,181,0,0" VerticalAlignment="Top" Width="100" FontSize="16" Foreground="White" HorizontalContentAlignment="left" VerticalContentAlignment="Center" RenderTransformOrigin="0.55,0.533"/>
             <Label Content="Contraseña" HorizontalAlignment="Left" Height="30" Margin="510,273,0,0" VerticalAlignment="Top" Width="100" FontSize="16" Foreground="White" HorizontalContentAlignment="left" VerticalContentAlignment="Center" RenderTransformOrigin="0.55,0.533"/>
             <Button x:Name="btnCancelarLogueo" Background="#FF580000" Foreground="White" FontSize="35" BorderBrush="Transparent"
-    HorizontalAlignment="Center" Height="80" Margin="0,410,0,0" VerticalAlignment="Top" Width="184" Click="CancelarLogueo">
+HorizontalAlignment="Center" Height="80" Margin="0,410,0,0" VerticalAlignment="Top" Width="184" Click="CancelarLogueo">
                 <Grid Height="70" Width="150">
                     <TextBlock Text="Cancelar" TextWrapping="WrapWithOverflow" TextAlignment="Center" VerticalAlignment="Center"/>
                 </Grid>
             </Button>
         </Grid>
+        <Grid>
+            <ProgressBar Name="progressBar" Width="400" Margin="0,316,0,280" HorizontalAlignment="Center" Visibility="Hidden"
+             Background="#FF580000" Foreground="#FF255909" BorderBrush="#A0D982" BorderThickness="10">
+
+                <ProgressBar.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="50"/>
+
+                    </Style>
+                </ProgressBar.Resources>
+            </ProgressBar>
+
+            <TextBlock x:Name="txtCargando" Text="Cargando" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="50" Margin="0,335,0,0" Foreground="White" 
+                       Visibility="Hidden"/>
+        </Grid>
+
+        
+
+        
 
 
 

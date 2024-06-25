@@ -3,7 +3,7 @@
   "WorkspaceRootPath": "C:\\Users\\isaac\\source\\repos\\LoginSasteria\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|c:\\users\\isaac\\source\\repos\\loginsasteria\\loginsasteria\\crearencargoformulario.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|C:\\Users\\isaac\\source\\repos\\LoginSasteria\\loginsasteria\\crearencargoformulario.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\crearencargoformulario.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -13,14 +13,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|c:\\users\\isaac\\source\\repos\\loginsasteria\\loginsasteria\\crearencargoformulario.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\crearencargoformulario.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|c:\\users\\isaac\\source\\repos\\loginsasteria\\loginsasteria\\logeo.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\logeo.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|c:\\users\\isaac\\source\\repos\\loginsasteria\\loginsasteria\\logeo.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\logeo.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,36 +22,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Logeo.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\isaac\\source\\repos\\LoginSasteria\\LoginSasteria\\Logeo.xaml.cs",
-              "RelativeDocumentMoniker": "LoginSasteria\\Logeo.xaml.cs",
-              "ToolTip": "C:\\Users\\isaac\\source\\repos\\LoginSasteria\\LoginSasteria\\Logeo.xaml.cs",
-              "RelativeToolTip": "LoginSasteria\\Logeo.xaml.cs",
-              "ViewState": "AQIAACcAAAAAAAAAAAAowDQAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-25T04:11:30.964Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Logeo.xaml",
-              "DocumentMoniker": "C:\\Users\\isaac\\source\\repos\\LoginSasteria\\LoginSasteria\\Logeo.xaml",
-              "RelativeDocumentMoniker": "LoginSasteria\\Logeo.xaml",
-              "ToolTip": "C:\\Users\\isaac\\source\\repos\\LoginSasteria\\LoginSasteria\\Logeo.xaml",
-              "RelativeToolTip": "LoginSasteria\\Logeo.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-06-25T04:10:49.824Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -81,7 +48,7 @@
               "RelativeDocumentMoniker": "LoginSasteria\\CrearEncargoFormulario.xaml.cs",
               "ToolTip": "C:\\Users\\isaac\\source\\repos\\LoginSasteria\\LoginSasteria\\CrearEncargoFormulario.xaml.cs",
               "RelativeToolTip": "LoginSasteria\\CrearEncargoFormulario.xaml.cs",
-              "ViewState": "AQIAAOgAAAAAAAAAAAAUwPMAAAA8AAAA",
+              "ViewState": "AQIAAAwCAAAAAAAAAAAWwBoCAAA9AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-25T00:24:17.821Z",
               "EditorCaption": ""
@@ -115,7 +82,7 @@
               "RelativeDocumentMoniker": "LoginSasteria\\CrearEncargoFormulario.xaml",
               "ToolTip": "C:\\Users\\isaac\\source\\repos\\LoginSasteria\\LoginSasteria\\CrearEncargoFormulario.xaml",
               "RelativeToolTip": "LoginSasteria\\CrearEncargoFormulario.xaml",
-              "ViewState": "AQIAADwBAAAAAAAAAAAAwFABAAATAAAA",
+              "ViewState": "AQIAABoBAAAAAAAAAAAAwDMBAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2024-06-25T00:21:49.992Z",
               "EditorCaption": ""
