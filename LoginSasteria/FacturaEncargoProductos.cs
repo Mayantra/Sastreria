@@ -24,80 +24,13 @@ using ZXing;
 using iText.Commons.Datastructures;
 using iText.Kernel.Colors;
 using System.Data;
-using MySql.Data.MySqlClient;
+
 
 namespace LoginSasteria
 {
-    internal class GenerarFactura
+    internal class FacturaEncargoProductos
     {
-        string TextoDetalles = "Av xxx Zona xx \n San Pedro Sac.\n Tel: 55887766";
-        string textoEmpleado = "Atendido por:\nJorge Medrano";
-        string textoCliente = "Cliente:Josue Fuentes\nNIT:264987K\nPuntos:5";
-        ConexionDB cn = new ConexionDB();
-        public void GenerarDatosFactura(string codigo, int idEmpleado, Int32 Cliente, DataTable datos, double total)
-        {
-            DataEmpleados(idEmpleado);
-            DataCliente(Cliente);
-            string Ttotal = "Q " +total.ToString();
-            CrearFactura(codigo,textoEmpleado,textoCliente,TextoDetalles,Ttotal,datos);
-        }
-        public void DataEmpleados(int idEmpleado)
-        {
-            string nombre = "";
-            try
-            {
-
-                string query = "SELECT Nombre FROM dbleonv2.empleado where idEmpleado = '"+idEmpleado+"';";
-
-                MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
-                MySqlDataReader dr = comando.ExecuteReader();
-
-                while (dr.Read())
-                {
-                    nombre = dr.GetString(0).ToString();
-                }
-            }
-            catch (MySqlException e)
-            {
-                MessageBox.Show(e.ToString());
-            }
-            textoEmpleado = "Atendido por:\n"+nombre;
-            cn.cerrarCN();
-        }
-        public void DataCliente(int telefono)
-        {
-            string nombre = "";
-            string apellido = "";
-            int puntos = 0;
-            string nit="";
-            try
-            {
-
-                string query = "SELECT Nombres, Apellidos, puntos, NIT " +
-                    "FROM "+cn.namedb()+".Cliente where telefono='"+telefono+"';";
-
-                MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
-                MySqlDataReader dr = comando.ExecuteReader();
-
-                while (dr.Read())
-                {
-                    
-                    nombre = dr.GetString(0).ToString();
-                    apellido = dr.GetString(1).ToString();
-                    puntos = dr.GetInt16(2);
-                    nit = dr.GetString(3).ToString();
-
-                }
-            }
-            catch (MySqlException e)
-            {
-                MessageBox.Show(e.ToString());
-            }
-            textoCliente = "Cliente:" + nombre+" "+apellido+"\nNIT: "+nit+"\nPuntos: "+puntos;
-            cn.cerrarCN();
-        }
-
-        public void CrearFactura(string codigo, String DataEmpleado, String DataCliente, String DataDetalles, String Total, DataTable DataProductos)
+        public void CrearFactura(string codigo, String DataEmpleado, String DataCliente, String DataDetalles, String Total, DataTable DataProductos, List<string> codigosBarras, string Abono, string DetallesPedido)
         {
             // Crear un MemoryStream para mantener los datos del PDF en la memoria
             DateTime fechaHoy = DateTime.Now;
@@ -112,7 +45,7 @@ namespace LoginSasteria
 
                 //DeviceRgb customColor = new DeviceRgb(139, 100, 75);//para agregar color
 
-                
+
                 //-------------------------------------------------------------------------------------------
                 //Encabezado
                 iText.Layout.Element.Table table = new iText.Layout.Element.Table(3).UseAllAvailableWidth();
@@ -126,6 +59,9 @@ namespace LoginSasteria
                 detallesCell.SetWidth(175);
                 detallesCell.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
                 imagenCell.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
+
+
+
                 codigos.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
 
 
@@ -147,6 +83,7 @@ namespace LoginSasteria
 
                 // Agregar la imagen del código de barras a la celda derecha
                 codigos.Add(barcodeImage);
+                codigos.SetBorder(new DottedBorder(ColorConstants.BLACK, 1));
 
                 //arreglar detalles visuales
 
@@ -154,6 +91,16 @@ namespace LoginSasteria
                 detallesCell.SetHorizontalAlignment(iText.Layout.Properties.HorizontalAlignment.CENTER);
                 codigos.SetVerticalAlignment(iText.Layout.Properties.VerticalAlignment.MIDDLE);
                 codigos.SetHorizontalAlignment(iText.Layout.Properties.HorizontalAlignment.RIGHT);
+
+                iText.Layout.Element.Paragraph paCodigo = new iText.Layout.Element.Paragraph(codigo);
+                paCodigo.SetPaddingTop(-15);
+                codigos.SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER);
+                codigos.Add(paCodigo);
+
+
+
+
+
                 // Agregar celdas a la tabla
                 table.AddCell(detallesCell);
                 table.AddCell(imagenCell);
@@ -202,19 +149,55 @@ namespace LoginSasteria
                     }
                 }
 
-                EmpleadoCliente.SetMargin(25);
+                EmpleadoCliente.SetMargin(10);
                 //------------------------------------------------------------------------------------
-
+                iText.Layout.Element.Paragraph PDetallesEncargo = new iText.Layout.Element.Paragraph(DetallesPedido);
                 //------------------------------------------------------------------------------------
                 //Agregar Total
                 iText.Layout.Element.Paragraph TotalP = new iText.Layout.Element.Paragraph(Total);
+                iText.Layout.Element.Paragraph AbonoP = new iText.Layout.Element.Paragraph(Abono);
+
                 TotalP.SetBackgroundColor(ColorConstants.LIGHT_GRAY);
+                AbonoP.SetFontSize(18);
+                AbonoP.SetBorderBottom(new DottedBorder(ColorConstants.BLACK, 1));
+                AbonoP.SetMarginBottom(5);
                 Cell celdaTotal = new Cell();
                 celdaTotal.SetPaddingLeft(300);
-                celdaTotal.SetPaddingTop(50);
+                celdaTotal.SetPaddingTop(20);
+                celdaTotal.Add(AbonoP);
                 celdaTotal.Add(TotalP);
                 celdaTotal.SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER);
-                celdaTotal.SetFontSize(22);
+                celdaTotal.SetFontSize(20);
+
+
+                //-----------------------------------------------------------------------------------------------
+                //agregar codigos barras
+                iText.Layout.Element.Table BarrasCodigos = new iText.Layout.Element.Table(2).UseAllAvailableWidth();
+
+                iText.Layout.Element.Paragraph PaNocodigos = new iText.Layout.Element.Paragraph(
+                    "SE HAN ENCARGADO " + codigosBarras.Count + " PRENDAS"
+                    );
+                PaNocodigos.SetFontSize(24);
+                PaNocodigos.SetBorderBottom(new DottedBorder(ColorConstants.BLACK, 1));
+
+                foreach (string barras in codigosBarras)
+                {
+                    Cell BarrasCelda = new Cell();
+                    BitmapSource barcodeProductos = GenerateBarcode(barras);
+                    var barraConvertidas = ConvertToByteArray(barcodeProductos);
+                    iText.Layout.Element.Image barrasImagenes = new iText.Layout.Element.Image(ImageDataFactory.Create(barraConvertidas));
+                    iText.Layout.Element.Paragraph dataBarras = new iText.Layout.Element.Paragraph(barras);
+                    BarrasCelda.SetPadding(5);
+                    barrasImagenes.SetHorizontalAlignment(iText.Layout.Properties.HorizontalAlignment.CENTER);
+                    dataBarras.SetPaddingTop(-15);
+                    BarrasCelda.SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER);
+                    BarrasCelda.SetBorder(new DottedBorder(ColorConstants.BLACK, 2));
+                    BarrasCelda.Add(barrasImagenes);
+                    BarrasCelda.Add(dataBarras);
+                    BarrasCodigos.AddCell(BarrasCelda);
+
+                }
+                BarrasCodigos.SetMarginTop(20);
 
 
 
@@ -222,7 +205,10 @@ namespace LoginSasteria
                 document.Add(table);
                 document.Add(EmpleadoCliente);
                 document.Add(productos);
+                document.Add(PDetallesEncargo);
                 document.Add(celdaTotal);
+                document.Add(PaNocodigos);
+                document.Add(BarrasCodigos);
 
 
 
@@ -254,7 +240,7 @@ namespace LoginSasteria
             BarcodeWriter writer = new BarcodeWriter
             {
                 Format = BarcodeFormat.CODE_128,
-                Options = new ZXing.Common.EncodingOptions { Width = 150, Height = 50 }
+                Options = new ZXing.Common.EncodingOptions { Width = 150, Height = 60 }
             };
 
             return writer.WriteAsWriteableBitmap(content);

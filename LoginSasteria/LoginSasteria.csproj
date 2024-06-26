@@ -251,6 +251,7 @@
     <Compile Include="EstadoPorFechas.xaml.cs">
       <DependentUpon>EstadoPorFechas.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FacturaEncargoProductos.cs" />
     <Compile Include="GenerarFactura.cs" />
     <Compile Include="ImprimirBarras.xaml.cs">
       <DependentUpon>ImprimirBarras.xaml</DependentUpon>

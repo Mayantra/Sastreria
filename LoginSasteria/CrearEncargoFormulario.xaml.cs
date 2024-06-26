@@ -20,6 +20,8 @@ using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ZXing;
+using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 
 namespace LoginSasteria
 {
@@ -32,6 +34,7 @@ namespace LoginSasteria
 
         List <string> codigosProductos = new List <string> ();//Alamecenar todos los codigos
         Boolean EstadoCliente = false;
+        DataTable auxData = new DataTable ();
         string user="";
         string pass="";
         int iduser=0;
@@ -168,7 +171,6 @@ namespace LoginSasteria
         public void AgregarDataGrid(List<string> ListaCodigos)
         {
             DataTable dataTable = new DataTable();
-
             // Agrega una columna al DataTable
             dataTable.Columns.Add("Codigos de Productos", typeof(string));
 
@@ -179,8 +181,9 @@ namespace LoginSasteria
                 row["Codigos de Productos"] = item;
                 dataTable.Rows.Add(row);
             }
-
+            
             DataDatos.DataContext = dataTable;
+            auxData = dataTable;
         }
         
 
@@ -267,16 +270,83 @@ namespace LoginSasteria
             {
                 cn.cerrarCN();
                 asignarProductos(codigosProductos);
-                
+                await Task.Delay(500);
+
+                progressBar.Value = 100;
+
+                progressBar.Visibility = Visibility.Collapsed; // Ocultar ProgressBar
+                txtCargando.Visibility = Visibility.Collapsed;
+                FacturaEncargoProductos factura = new FacturaEncargoProductos();
+                //datos necesarios para factura
+                string infoEmpleado = "Atendido por:\n" + getDataConsultas("SELECT Nombre " +
+                    "FROM " + cn.namedb() + ".Empleado where idEmpleado='" + iduser + "';");
+                string infoCliente = DataCliente(int.Parse(txBTelClient.Text));
+                string TextoDetalles = "Av 12 Zona 1 \n San Pedro Sac.\n Tel: 55887766";
+
+                factura.CrearFactura(idEncargo, infoEmpleado, infoCliente, TextoDetalles,
+                    "Total: " + txtotal.Text, auxData, codigosProductos, "Abono: " + txabono.Text, GetTextFromRichTextBox(rtxDeatalles));
+
             }
-            await Task.Delay(500);
-
-            progressBar.Value = 100;
-
-            progressBar.Visibility = Visibility.Collapsed; // Ocultar ProgressBar
-            txtCargando.Visibility = Visibility.Collapsed;
+            
             //MessageBox.Show(CodigoEncargo);
             
+        }
+        public string DataCliente(int telefono)
+        {
+            string nombre = "";
+            string apellido = "";
+            int puntos = 0;
+            string nit = "";
+            try
+            {
+
+                string query = "SELECT Nombres, Apellidos, puntos, NIT " +
+                    "FROM "+cn.namedb()+".Cliente where telefono='"+telefono+"';";
+
+                MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
+                MySqlDataReader dr = comando.ExecuteReader();
+
+                while (dr.Read())
+                {
+
+                    nombre = dr.GetString(0).ToString();
+                    apellido = dr.GetString(1).ToString();
+                    puntos = dr.GetInt16(2);
+                    nit = dr.GetString(3).ToString();
+
+                }
+            }
+            catch (MySqlException e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+            cn.cerrarCN();
+            return "Cliente:" + nombre + " " + apellido + "\nNIT: " + nit + "\nPuntos: " + puntos;
+            
+        }
+        public string getDataConsultas(string query)
+        {
+            string Datos = "";
+            try
+            {
+
+                MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
+                MySqlDataReader dr = comando.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    for (int i = 0; i < dr.FieldCount; i++)
+                    {                       
+                        Datos += dr.GetValue(i).ToString() + " ";
+                    }
+                }
+            }
+            catch (MySqlException e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+            cn.cerrarCN();
+            return Datos;
         }
         //Verificaar Existencia del ID Encargo
         /// <summary>
@@ -445,8 +515,10 @@ namespace LoginSasteria
                     pass = PassBox.Password;
                     if (read.getAcceso(user, pass) != false)
                     {
+
                         
                         iduser = read.getIdLogUser(user);
+                        GridLogueo.Visibility = Visibility.Collapsed;
                         cargarDatos();
                         txUser.Text = "";
                         PassBox.Password = "";
@@ -471,7 +543,10 @@ namespace LoginSasteria
         {
             getAcceso();
         }
-        
+        /// <summary>
+        /// la funcion es para agregar los prudctos de la lista
+        /// </summary>
+        /// <param name="totalProductos">es la lista donde estan todos los productos que se generaron</param>
         private void asignarProductos(List<string> totalProductos)
         {
          
@@ -502,7 +577,7 @@ namespace LoginSasteria
                     MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
                     MySqlDataReader dr = comando.ExecuteReader();
                     dr.Close();
-
+                    //lo siguiente es para relacionar el encargo con los productos
                     cn.cerrarCN();
                     string query2 = "INSERT INTO `"+cn.namedb()+"`.`EncargoProducto` " +
                         "(`Encargo_idEncargo`, `producto_idproducto`) " +
@@ -531,6 +606,8 @@ namespace LoginSasteria
         {
             
             GenerarEncargo();
+
+            
             
             CrearEncargoFormulario abrir = new CrearEncargoFormulario();
             
