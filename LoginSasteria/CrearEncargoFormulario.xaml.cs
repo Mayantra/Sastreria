@@ -62,7 +62,7 @@ namespace LoginSasteria
             rng.NextBytes(buf); // Llenamos el buffer con bytes aleatorios
             long longRand = BitConverter.ToInt64(buf, 0);
 
-            return Math.Abs(longRand % 999999999999999999) + 1;
+            return Math.Abs(longRand % 99999999999999999) + 1;
         }
         void tipoCon()
         {
@@ -104,7 +104,7 @@ namespace LoginSasteria
                 // Divide la cadena en palabras
                 if (valorSeleccionadoCompleto.Length >= 2)
                 {
-                    string firstTwoLetters = valorSeleccionadoCompleto.Substring(0, 2);
+                    string firstTwoLetters = valorSeleccionadoCompleto.Substring(0, 3);
                     return firstTwoLetters;
                 }
                 else
@@ -212,10 +212,10 @@ namespace LoginSasteria
             progressBar.Value = 10;
             string CodigoEncargo = "";
             await Task.Delay(500);
-            progressBar.Value = 40;
+            progressBar.Value = 20;
             do
             {
-                CodigoEncargo = "EN" + GenerarNumeroAleatorio();
+                CodigoEncargo = "ENC" + GenerarNumeroAleatorio();
 
             } while (VerificarExistenciaEncargo(CodigoEncargo) == false);
 
@@ -234,7 +234,7 @@ namespace LoginSasteria
             string fechahora = now.ToString("yyyy-MM-dd HH:mm:ss");
 
             await Task.Delay(500);
-            progressBar.Value = 60;
+            progressBar.Value = 40;
             try
             {
                 cn.cerrarCN();
@@ -246,7 +246,9 @@ namespace LoginSasteria
                 MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
                 MySqlDataReader dr = comando.ExecuteReader();
                 dr.Close();
-                
+                await Task.Delay(500);
+
+                progressBar.Value = 60;
                 cn.cerrarCN();
                 string query2 = "INSERT INTO "+ cn.namedb() + ".`Encargo` " +
                     "(`idEncargo`, `Detalles`, `Empleado_idEmpleado`, `Cliente_idCliente`) " +
@@ -285,6 +287,13 @@ namespace LoginSasteria
 
                 factura.CrearFactura(idEncargo, infoEmpleado, infoCliente, TextoDetalles,
                     "Total: " + txtotal.Text, auxData, codigosProductos, "Abono: " + txabono.Text, GetTextFromRichTextBox(rtxDeatalles));
+
+                if (int.Parse(txtotal.Text)==int.Parse(txabono.Text))
+                {
+                    GenerarFactura compraCompleta = new GenerarFactura();
+
+
+                }
 
             }
             
@@ -433,7 +442,15 @@ namespace LoginSasteria
                     {
                         if(EstadoCliente == true)
                         {
-                            GridLogueo.Visibility = Visibility.Visible;//que se vea el logue si todo se cumple
+                            if ( int.Parse(txtotal.Text)>= int.Parse(txabono.Text))
+                            {
+                                GridLogueo.Visibility = Visibility.Visible;//que se vea el logue si todo se cumple
+                            }
+                            else
+                            {
+                                MessageBox.Show("EL ABONO NO PUEDE SER MAYOR AL TOTAL");
+                            }
+
                         }
                         else
                         {
@@ -615,6 +632,19 @@ namespace LoginSasteria
             this.Close();
             MessageBox.Show("EL ENCARGO Y LOS PRODUCTOS ESTÁN INGRESADOS");
             
+        }
+        private void EliminarFila(object sender, RoutedEventArgs e)
+        {
+            int indice = -1;
+            indice = DataDatos.SelectedIndex;
+
+            if (indice > -1)
+            {
+                auxData.Rows.RemoveAt(indice);
+                DataDatos.DataContext = auxData;
+                codigosProductos.RemoveAt(indice);
+            }
+
         }
     }
 }

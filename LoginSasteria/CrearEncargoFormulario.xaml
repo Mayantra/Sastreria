@@ -287,7 +287,7 @@
             </Grid>
         </Button>
         <Button x:Name="btnQuitar" HorizontalAlignment="Left" Height="60" Margin="1174,285,0,0" VerticalAlignment="Top" Width="92" 
-        BorderBrush="Transparent" Background="#FF580000">
+        BorderBrush="Transparent" Background="#FF580000" Click="EliminarFila">
             <Grid Height="50" Width="86">
                 <Rectangle Margin="14,0,14,0">
                     <Rectangle.Fill>
