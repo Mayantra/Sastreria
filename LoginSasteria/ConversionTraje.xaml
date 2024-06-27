@@ -148,72 +148,8 @@ TargetType="Button">
                 </Style>
             </Button.Resources>
         </Button>
-        <Rectangle HorizontalAlignment="Left" Height="700" VerticalAlignment="Center" Width="185" Fill="#FF580000" >
-        </Rectangle>
 
         <Rectangle HorizontalAlignment="Left" Height="700" VerticalAlignment="Center" Width="15" Fill="#FFEDE4A4"/>
-
-        <Button x:Name="btnInicio" HorizontalAlignment="Left" Height="60" Margin="15,353,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB">
-            <Grid Height="60" Width="170">
-                <Label Content="Inicio" Foreground="#FFEDE4A4" Margin="14,14,81,10"></Label>
-                <Rectangle Margin="119,14,10,10">
-                    <Rectangle.Fill>
-                        <ImageBrush ImageSource="/CasaA.png" Stretch="Uniform"/>
-                    </Rectangle.Fill>
-                </Rectangle>
-            </Grid>
-
-            <Button.Template>
-                <StaticResource ResourceKey="NoMouseOverButtonTemplate"/>
-            </Button.Template>
-        </Button>
-        <Button HorizontalAlignment="Left" Height="60" Margin="15,413,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB">
-            <Grid Height="60" Width="170">
-                <Label Content="Venta" Foreground="#FFEDE4A4" Margin="10,14,70,10"></Label>
-                <Rectangle Margin="119,14,10,10">
-                    <Rectangle.Fill>
-                        <ImageBrush ImageSource="/1.png" Stretch="Uniform"/>
-                    </Rectangle.Fill>
-                </Rectangle>
-            </Grid>
-
-            <Button.Template>
-                <StaticResource ResourceKey="NoMouseOverButtonTemplate"/>
-            </Button.Template>
-        </Button>
-        <Button HorizontalAlignment="Left" Height="60" Margin="0,473,0,0" VerticalAlignment="Top" Width="185" BorderBrush="{x:Null}" Background="#FFEDE4A4" Foreground="{x:Null}" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB" Template="{StaticResource NoMouseOverButtonTemplate}">
-            <Grid Height="60" Width="170">
-                <Label Content="Consulta" Foreground="Black" Margin="10,14,70,10" FontSize="20"/>
-                <Rectangle Margin="119,14,10,10">
-                    <Rectangle.Fill>
-                        <ImageBrush ImageSource="/consB.png" Stretch="Uniform"/>
-                    </Rectangle.Fill>
-                </Rectangle>
-            </Grid>
-
-        </Button>
-        <Button HorizontalAlignment="Left" Height="60" Margin="15,533,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB" Template="{StaticResource NoMouseOverButtonTemplate}">
-            <Grid Height="60" Width="170">
-                <Label Content="Inventario" Foreground="#FFEDE4A4" Margin="5,14,56,10" FontSize="20"/>
-                <Rectangle Margin="119,14,10,10">
-                    <Rectangle.Fill>
-                        <ImageBrush ImageSource="/hanger_114789.png" Stretch="Uniform"/>
-                    </Rectangle.Fill>
-                </Rectangle>
-            </Grid>
-
-        </Button>
-        <Button HorizontalAlignment="Left" Height="60" Margin="15,593,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB" Template="{StaticResource NoMouseOverButtonTemplate}">
-            <Grid Height="60" Width="170">
-                <Label Content="Barras" Foreground="#FFEDE4A4" Margin="10,14,70,10"/>
-                <Rectangle Margin="119,14,10,10">
-                    <Rectangle.Fill>
-                        <ImageBrush ImageSource="/barcode_icon-icons.com_73665.png" Stretch="Uniform"/>
-                    </Rectangle.Fill>
-                </Rectangle>
-            </Grid>
-
-        </Button>
 
 
         <Label x:Name="lbH" Height="85" Margin="40,10,1145,0" VerticalAlignment="Top" FontSize="20" FontFamily="MingLiU_HKSCS-ExtB" FontWeight="Bold" Foreground="White">
@@ -234,25 +170,7 @@ TargetType="Button">
       Height="50" Margin="362,363,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="312" 
       SelectionBrush="{x:Null}" BorderBrush="{x:Null}" Background="White" FontSize="24" KeyDown="ActivartxtArtiCambio"/>
 
-
-        <Button x:Name="btnCancelar" HorizontalAlignment="Left" Height="60" Margin="805,563,0,0" VerticalAlignment="Top" Width="245" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FF580000" Click="btnCancelar_Click_1">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="10"/>
-                </Style>
-            </Button.Resources>
-            <Grid Height="60" Width="200">
-                <Label Content="Cancelar" Margin="100,10,10,10" FontSize="20" Foreground="White" FontFamily="MingLiU_HKSCS-ExtB" >
-                </Label>
-                <Rectangle Margin="8,10,122,15">
-                    <Rectangle.Fill>
-                        <ImageBrush ImageSource="/deleteWhite.png" Stretch="Uniform"/>
-                    </Rectangle.Fill>
-                </Rectangle>
-            </Grid>
-        </Button>
-
-        <Button x:Name="btnIntercambiar" HorizontalAlignment="Left" Height="60" Margin="368,563,0,0" VerticalAlignment="Top" Width="282" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FF255909" Click="btnIntercambiar_Click">
+        <Button x:Name="btnIntercambiar" HorizontalAlignment="Left" Height="60" Margin="574,562,0,0" VerticalAlignment="Top" Width="282" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FF255909" Click="btnIntercambiar_Click">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -268,6 +186,31 @@ TargetType="Button">
             </Grid>
         </Button>
 
+        <Button x:Name="btncancelar" HorizontalAlignment="Left" Height="700" VerticalAlignment="Center" Width="165" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FF580000" Click="btnCancelar_Click_1" Margin="15,0,0,0">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+            <Grid Height="655" Width="155">
+                <Label Content="Cancelar" Margin="-231,256,0,283" FontSize="80" HorizontalContentAlignment="Left" Foreground="White" FontFamily="MingLiU_HKSCS-ExtB" HorizontalAlignment="Left" RenderTransformOrigin="0.5,0.5" Width="628" >
+                    <Label.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-90"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Label.RenderTransform>
+                </Label>
+                <Rectangle Margin="34,-26,10,443">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="/cancelWhite.png" Stretch="Uniform"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Grid>
+        </Button>
+        
         <TextBox x:Name="txtArtiCambio" Template="{StaticResource TextBoxBaseControlTemplate}" HorizontalAlignment="Left" Padding="7,7,7,7" IsEnabled="False"
          Height="50" Margin="771,363,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="312" 
          SelectionBrush="{x:Null}" BorderBrush="{x:Null}" Background="White" FontSize="24"/>

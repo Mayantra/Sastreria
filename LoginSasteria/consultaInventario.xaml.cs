@@ -76,16 +76,36 @@ namespace LoginSasteria
 
         private void abrirBarras(object sender, RoutedEventArgs e)
         {
-            crearBarrasMenu abrir = new crearBarrasMenu();
-            abrir.Show();
-            this.Close();
+            verificarSuperUser verificar = new verificarSuperUser();
+            if (verificar.superUser() == true)
+            {
+                crearBarrasMenu abrir = new crearBarrasMenu();
+                abrir.Show();
+                this.Close();
+            }
+            else
+            {
+                AccesoNoAutorizado abrir = new AccesoNoAutorizado();
+                abrir.Show();
+                this.Close();
+            }
         }
 
         private void abrirInventario(object sender, RoutedEventArgs e)
         {
-            InventarioInventario abrir = new InventarioInventario();
-            abrir.Show();
-            this.Close();
+            verificarSuperUser verificar = new verificarSuperUser();
+            if (verificar.superUser() == true)
+            {
+                InventarioInventario abrir = new InventarioInventario();
+                abrir.Show();
+                this.Close();
+            }
+            else
+            {
+                AccesoNoAutorizado abrir = new AccesoNoAutorizado();
+                abrir.Show();
+                this.Close();
+            }
         }
 
         private void abrirEstadoCuenta(object sender, RoutedEventArgs e)

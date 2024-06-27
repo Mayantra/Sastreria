@@ -94,7 +94,7 @@ BorderThickness="{TemplateBinding BorderThickness}">
             </Grid>
 
         </Button>
-        <Button HorizontalAlignment="Left" Height="60" Margin="0,533,0,0" VerticalAlignment="Top" Width="185" BorderBrush="{x:Null}" Background="#FFEDE4A4" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB" Template="{StaticResource NoMouseOverButtonTemplate}" Click="abrirInventario">
+        <Button HorizontalAlignment="Left" Height="60" Margin="0,533,0,0" VerticalAlignment="Top" Width="185" BorderBrush="{x:Null}" Background="#FFEDE4A4" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB" Template="{StaticResource NoMouseOverButtonTemplate}">
             <Grid Height="60" Width="170">
                 <Label Content="Inventario" Foreground="Black" Margin="5,14,56,10" FontSize="20"/>
                 <Rectangle Margin="119,14,10,10">

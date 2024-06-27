@@ -135,7 +135,7 @@ BorderThickness="{TemplateBinding BorderThickness}">
 
 
     <Grid Background="#FF150000" Width="1300">
-        <Button x:Name="btnCancelar" HorizontalAlignment="Left" Height="700" VerticalAlignment="Center" Width="165" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FF580000" Click="btnCancelar_Click_1">
+        <Button x:Name="btnCancelar" HorizontalAlignment="Left" Height="700" VerticalAlignment="Center" Width="165" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FF580000" Click="btnCancelar_Click_1" Margin="15,0,0,0">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>

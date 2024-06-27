@@ -115,13 +115,6 @@ namespace LoginSasteria
             this.WindowState = WindowState.Minimized;
         }
 
-        private void btnCancelar_Click(object sender, RoutedEventArgs e)
-        {
-            InventarioInventario abrirMenuInventario = new InventarioInventario();
-            abrirMenuInventario.Show();
-            this.Close();
-        }
-
         private bool VerificarProductoExistente(string codigoProducto)
         {
             string queryVerificacion = "SELECT COUNT(*) FROM " + objConection.namedb() + ".inventario WHERE `producto_idproducto` = @productoId";
@@ -201,6 +194,13 @@ namespace LoginSasteria
                 }
             }
             return true;
+        }
+
+        private void btnCancelar_Click_1(object sender, RoutedEventArgs e)
+        {
+            InventarioInventario abrirMenuInventario = new InventarioInventario();
+            abrirMenuInventario.Show();
+            this.Close();
         }
     }
 }

@@ -77,9 +77,19 @@ namespace LoginSasteria
 
         private void btnBarras_Click_1(object sender, RoutedEventArgs e)
         {
-            crearBarrasMenu abrirMenuCrearBarras = new crearBarrasMenu();
-            abrirMenuCrearBarras.Show();
-            this.Close();
+            verificarSuperUser verificar = new verificarSuperUser();
+            if (verificar.superUser() == true)
+            {
+                crearBarrasMenu abrir = new crearBarrasMenu();
+                abrir.Show();
+                this.Close();
+            }
+            else
+            {
+                AccesoNoAutorizado abrir = new AccesoNoAutorizado();
+                abrir.Show();
+                this.Close();
+            }
         }
 
         private void btnInicio_Click_1(object sender, RoutedEventArgs e)
@@ -98,14 +108,6 @@ namespace LoginSasteria
         private void abrirVenta(object sender, RoutedEventArgs e)
         {
             ventaInventario abrir = new ventaInventario();
-            abrir.Show();
-            this.Close();
-        }
-
-        
-        private void abrirInventario(object sender, RoutedEventArgs e)
-        {
-            InventarioInventario abrir = new InventarioInventario();
             abrir.Show();
             this.Close();
         }

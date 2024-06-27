@@ -150,92 +150,12 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <Rectangle HorizontalAlignment="Left" Height="700" VerticalAlignment="Center" Width="185" Fill="#FF580000" >
-        </Rectangle>
 
         <Rectangle HorizontalAlignment="Left" Height="700" VerticalAlignment="Center" Width="15" Fill="#FFEDE4A4"/>
 
-        <Button x:Name="btnInicio" HorizontalAlignment="Left" Height="60" Margin="15,353,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB">
-            <Grid Height="60" Width="170">
-                <Label Content="Inicio" Foreground="#FFEDE4A4" Margin="14,14,81,10"></Label>
-                <Rectangle Margin="119,14,10,10">
-                    <Rectangle.Fill>
-                        <ImageBrush ImageSource="/CasaA.png" Stretch="Uniform"/>
-                    </Rectangle.Fill>
-                </Rectangle>
-            </Grid>
-
-            <Button.Template>
-                <StaticResource ResourceKey="NoMouseOverButtonTemplate"/>
-            </Button.Template>
-        </Button>
-        <Button x:Name="btnVenta" HorizontalAlignment="Left" Height="60" Margin="15,413,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB">
-            <Grid Height="60" Width="170">
-                <Label Content="Venta" Foreground="#FFEDE4A4" Margin="14,14,81,10"></Label>
-                <Rectangle Margin="119,14,10,10">
-                    <Rectangle.Fill>
-                        <ImageBrush ImageSource="/1.png" Stretch="Uniform"/>
-                    </Rectangle.Fill>
-                </Rectangle>
-            </Grid>
-
-            <Button.Template>
-                <StaticResource ResourceKey="NoMouseOverButtonTemplate"/>
-            </Button.Template>
-        </Button>
-        <Button x:Name="btnConsulta" HorizontalAlignment="Left" Height="60" Margin="15,473,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="{x:Null}" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB" Template="{StaticResource NoMouseOverButtonTemplate}">
-            <Grid Height="60" Width="170">
-                <Label Content="Consulta" Foreground="#FFEDE4A4" Margin="10,14,70,10" FontSize="20"/>
-                <Rectangle Margin="119,14,10,10">
-                    <Rectangle.Fill>
-                        <ImageBrush ImageSource="/ConsultaA.png" Stretch="Uniform"/>
-                    </Rectangle.Fill>
-                </Rectangle>
-            </Grid>
-
-        </Button>
-        <Button HorizontalAlignment="Left" Height="60" Margin="0,533,0,0" VerticalAlignment="Top" Width="185" BorderBrush="{x:Null}" Background="#FFEDE4A4" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB" Template="{StaticResource NoMouseOverButtonTemplate}">
-            <Grid Height="60" Width="170">
-                <Label Content="Inventario" Foreground="Black" Margin="5,14,56,10" FontSize="20"/>
-                <Rectangle Margin="119,14,10,10">
-                    <Rectangle.Fill>
-                        <ImageBrush ImageSource="/invB.png" Stretch="Uniform"/>
-                    </Rectangle.Fill>
-                </Rectangle>
-            </Grid>
-
-        </Button>
-        <Button x:Name="btnBarras" HorizontalAlignment="Left" Height="60" Margin="15,593,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB" Template="{StaticResource NoMouseOverButtonTemplate}">
-            <Grid Height="60" Width="170">
-                <Label Content="Barras" Foreground="#FFEDE4A4" Margin="10,14,70,10"/>
-                <Rectangle Margin="119,14,10,10">
-                    <Rectangle.Fill>
-                        <ImageBrush ImageSource="/barcode_icon-icons.com_73665.png" Stretch="Uniform"/>
-                    </Rectangle.Fill>
-                </Rectangle>
-            </Grid>
-
-        </Button>
-
         <!-- Formulario para ingreso de datos -->
-        <TextBlock Text="Agregar Productos al Inventario" FontSize="50" Margin="388,107,196,517" Foreground="#FFFBFBFB"
+        <TextBlock Text="Agregar Productos al Inventario" FontSize="50" Margin="361,143,223,481" Foreground="#FFFBFBFB"
         TextWrapping="WrapWithOverflow" TextAlignment="Center" Background="#FF09594D"/>
-        <Button x:Name="btnCancelar" HorizontalAlignment="Left" Height="60" Margin="620,598,0,0" VerticalAlignment="Top" Width="246" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FF580000" Click="btnCancelar_Click">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="10"/>
-                </Style>
-            </Button.Resources>
-            <Grid Height="60" Width="200">
-                <Label Content="Cancelar" Margin="100,10,10,10" FontSize="20" Foreground="White" FontFamily="MingLiU_HKSCS-ExtB" >
-                </Label>
-                <Rectangle Margin="8,10,122,15">
-                    <Rectangle.Fill>
-                        <ImageBrush ImageSource="/deleteWhite.png" Stretch="Uniform"/>
-                    </Rectangle.Fill>
-                </Rectangle>
-            </Grid>
-        </Button>
 
         <Label x:Name="lbH" Height="85" Margin="40,10,1145,0" VerticalAlignment="Top" FontSize="20" FontFamily="MingLiU_HKSCS-ExtB" FontWeight="Bold" Foreground="White">
             <Label.Resources>
@@ -245,23 +165,47 @@
             </Label.Resources>
             <TextBlock x:Name="txblockHora" TextAlignment="Left" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Height="77" Width="105" FontWeight="Normal" FontSize="22"/>
         </Label>
-        <Label Content="Almacen donde se encuentra el producto" HorizontalAlignment="Left" Height="50" Margin="353,240,0,0" VerticalAlignment="Top" Width="449" FontSize="24" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.533"/>
+        <Label Content="Almacen donde se encuentra el producto" HorizontalAlignment="Left" Height="50" Margin="326,276,0,0" VerticalAlignment="Top" Width="449" FontSize="24" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.533"/>
 
         <TextBox x:Name="txtEmpleado" Template="{StaticResource  TextBoxBaseControlTemplate}" HorizontalAlignment="Left" 
          Padding="7,7,7,7"
-         Height="50" Margin="825,322,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="312" 
+         Height="50" Margin="798,358,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="312" 
          SelectionBrush="{x:Null}" BorderBrush="{x:Null}" Background="White" FontSize="24" IsReadOnly="True"/>
 
 
-        <ComboBox x:Name="cbAlmacen" HorizontalAlignment="Left" Margin="825,240,0,0" VerticalAlignment="Top" Width="312" Height="50" FontSize="24" Padding="1,1,1,1"/>
-        <Label Content="Colaborador que agrega el producto" HorizontalAlignment="Left" Height="50" Margin="353,322,0,0" VerticalAlignment="Top" Width="449" FontSize="24" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.533"/>
-        <ComboBox x:Name="cbProveedor" HorizontalAlignment="Left" Margin="825,404,0,0" VerticalAlignment="Top" Width="312" Height="50" FontSize="24" Padding="1,1,1,1"/>
-        <Label Content="Proveedor del producto" HorizontalAlignment="Left" Height="50" Margin="353,404,0,0" VerticalAlignment="Top" Width="449" FontSize="24" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.533"/>
+        <ComboBox x:Name="cbAlmacen" HorizontalAlignment="Left" Margin="798,276,0,0" VerticalAlignment="Top" Width="312" Height="50" FontSize="24" Padding="1,1,1,1"/>
+        <Label Content="Colaborador que agrega el producto" HorizontalAlignment="Left" Height="50" Margin="326,358,0,0" VerticalAlignment="Top" Width="449" FontSize="24" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.533"/>
+        <ComboBox x:Name="cbProveedor" HorizontalAlignment="Left" Margin="798,440,0,0" VerticalAlignment="Top" Width="312" Height="50" FontSize="24" Padding="1,1,1,1"/>
+        <Label Content="Proveedor del producto" HorizontalAlignment="Left" Height="50" Margin="326,440,0,0" VerticalAlignment="Top" Width="449" FontSize="24" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.533"/>
         <TextBox x:Name="txtCodBarras" Template="{StaticResource TextBoxBaseControlTemplate}" HorizontalAlignment="Left" 
             Padding="7,7,7,7"
-            Height="50" Margin="825,489,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="312" 
+            Height="50" Margin="798,525,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="312" 
             SelectionBrush="{x:Null}" BorderBrush="{x:Null}" Background="White" FontSize="24" KeyDown="EscanerEinsertarProductos"/>
-        <Label Content="Codigo de barras del producto" HorizontalAlignment="Left" Height="50" Margin="353,489,0,0" VerticalAlignment="Top" Width="449" FontSize="24" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.533"/>
+        <Label Content="Codigo de barras del producto" HorizontalAlignment="Left" Height="50" Margin="326,525,0,0" VerticalAlignment="Top" Width="449" FontSize="24" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.533"/>
 
+        <Button x:Name="btncancelar" HorizontalAlignment="Left" Height="700" VerticalAlignment="Center" Width="165" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FF580000" Click="btnCancelar_Click_1" Margin="15,0,0,0">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+            <Grid Height="655" Width="155">
+                <Label Content="Cancelar" Margin="-231,256,0,283" FontSize="80" HorizontalContentAlignment="Left" Foreground="White" FontFamily="MingLiU_HKSCS-ExtB" HorizontalAlignment="Left" RenderTransformOrigin="0.5,0.5" Width="628" >
+                    <Label.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-90"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Label.RenderTransform>
+                </Label>
+                <Rectangle Margin="34,-26,10,443">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="/cancelWhite.png" Stretch="Uniform"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Grid>
+        </Button>
     </Grid>
 </Window>

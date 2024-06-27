@@ -82,5 +82,12 @@ namespace LoginSasteria
             abrir.Show();
             this.Close();
         }
+
+        private void btnCancelar_Click_1(object sender, RoutedEventArgs e)
+        {
+            consultaInventario abrir = new consultaInventario();
+            abrir.Show();
+            this.Close();
+        }
     }
 }

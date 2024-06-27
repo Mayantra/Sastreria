@@ -36,6 +36,51 @@
 
 
     <Grid Background="#FF150000" Width="1300">
+        <Button x:Name="btnCerrarSesion" HorizontalAlignment="Left" Height="162" VerticalAlignment="Top" Width="36" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FF580000" RenderTransformOrigin="0.5,0.5" Margin="269,-54,0,0" Click="btnCerrarSesion_Click">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+            <Grid Height="149" Width="24">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="303*"/>
+                    <RowDefinition Height="25*"/>
+                </Grid.RowDefinitions>
+                <Label Content="Cerrar Sesión" Margin="-79,42,0,71" FontSize="15" HorizontalContentAlignment="Left" Foreground="White" FontFamily="MingLiU_HKSCS-ExtB" HorizontalAlignment="Left" RenderTransformOrigin="0.5,0.5" Width="177" >
+                    <Label.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-90"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Label.RenderTransform>
+                </Label>
+                <Rectangle Margin="3,8,3,106" RenderTransformOrigin="0.5,0.5" RadiusX="0" RadiusY="0">
+                    <Rectangle.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="0.999"/>
+                            <SkewTransform AngleX="1.428" AngleY="-2.207"/>
+                            <RotateTransform Angle="2.676"/>
+                            <TranslateTransform X="0.234" Y="0.946"/>
+                        </TransformGroup>
+                    </Rectangle.RenderTransform>
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="/cancelWhite.png" Stretch="Uniform"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Grid>
+        </Button>
+
         <Button x:Name="btnExit" HorizontalAlignment="Left" Height="30" Margin="1250,20,0,0" VerticalAlignment="Top" Width="30" Background="#FFE50000" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="btnSalir" AutomationProperties.Name="btnSalir" RenderTransformOrigin="-13363.5,4.2">
             <Button.Resources>
                 <Style TargetType="Border">
@@ -50,7 +95,7 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <Rectangle HorizontalAlignment="Left" Height="700" VerticalAlignment="Center" Width="185" Fill="#FF580000" >
+        <Rectangle HorizontalAlignment="Left" Height="700" VerticalAlignment="Center" Width="185" Fill="#FF580000" Margin="15,0,0,0" >
         </Rectangle>
         <Rectangle HorizontalAlignment="Left" Height="700" VerticalAlignment="Center" Width="15" Fill="#FFEDE4A4"/>
 

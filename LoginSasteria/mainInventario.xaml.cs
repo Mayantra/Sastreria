@@ -110,9 +110,19 @@ namespace LoginSasteria
 
         private void abrirInventario(object sender, RoutedEventArgs e)
         {
-            InventarioInventario abrir = new InventarioInventario();
-            abrir.Show();
-            this.Close();
+            verificarSuperUser verificar = new verificarSuperUser();
+            if (verificar.superUser() == true)
+            {
+                InventarioInventario abrir = new InventarioInventario();
+                abrir.Show();
+                this.Close();
+            }
+            else
+            {
+                AccesoNoAutorizado abrir = new AccesoNoAutorizado();
+                abrir.Show();
+                this.Close();
+            }
         }
 
         private void abrirInicio(object sender, RoutedEventArgs e)
@@ -125,6 +135,14 @@ namespace LoginSasteria
         private void AbrirClientes(object sender, RoutedEventArgs e)
         {
             CrearEncargoInventario abrir = new CrearEncargoInventario();
+            abrir.Show();
+            this.Close();
+        }
+
+        private void btnCerrarSesion_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow abrir = new MainWindow();
+            MessageBox.Show("Carrando sesion...");
             abrir.Show();
             this.Close();
         }
