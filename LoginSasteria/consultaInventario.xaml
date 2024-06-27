@@ -126,18 +126,7 @@ BorderThickness="{TemplateBinding BorderThickness}">
             </Label.Resources>
             <TextBlock x:Name="txblockHora" TextAlignment="Left" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Height="77" Width="105" FontWeight="Normal" FontSize="22"/>
         </Label>
-        <Button  HorizontalContentAlignment="Left" VerticalContentAlignment="Bottom" HorizontalAlignment="Left" Height="260" Margin="380,75,0,0" VerticalAlignment="Top" Width="320" Background="#FFE6C8B8" BorderBrush="{x:Null}" Foreground="{x:Null}">
-            <Grid Height="260" Width="320">
-                <Rectangle HorizontalAlignment="Left" Height="145" VerticalAlignment="Top" Width="145" Margin="18,98,0,0">
-                    <Rectangle.Fill>
-                        <ImageBrush ImageSource="/pencilblack.png" Stretch="Uniform"/>
-                    </Rectangle.Fill>
-                </Rectangle>
-                <Label Content="Editar" HorizontalAlignment="Left" Height="60" Margin="160,10,0,0" VerticalAlignment="Top" Width="140" Foreground="Black" Background="{x:Null}" FontFamily="MingLiU_HKSCS-ExtB" FontSize="45"/>
-
-            </Grid>
-        </Button>
-        <Button HorizontalAlignment="Left" Height="260" Margin="740,75,0,0" VerticalAlignment="Top" Width="320" Background="#FF336653" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="Button_Click">
+        <Button HorizontalAlignment="Left" Height="260" Margin="382,375,0,0" VerticalAlignment="Top" Width="320" Background="#FF336653" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="Button_Click">
             <Grid Height="260" Width="320">
                 <Rectangle HorizontalAlignment="Left" Height="145" VerticalAlignment="Top" Width="145" Margin="0,115,0,0">
                     <Rectangle.Fill>
@@ -148,15 +137,15 @@ BorderThickness="{TemplateBinding BorderThickness}">
 
             </Grid>
         </Button>
-        <Button x:Name="btnAbrirRegalo" HorizontalAlignment="Left" Height="260" Margin="380,375,0,0" VerticalAlignment="Top" Width="320" Background="#FFB8E6D5" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="AbrirProcesoRegalo">
-            <Grid Height="260" Width="320">
-                <Rectangle HorizontalAlignment="Left" Height="113" VerticalAlignment="Top" Width="115" Margin="18,130,0,0">
+        <Button x:Name="btnAbrirRegalo" HorizontalAlignment="Left" Height="260" Margin="382,90,0,0" VerticalAlignment="Top" Width="678" Background="#FFB8E6D5" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="AbrirProcesoRegalo">
+            <Grid Height="260" Width="454">
+                <Rectangle HorizontalAlignment="Left" Height="113" VerticalAlignment="Top" Width="115" Margin="112,121,0,0">
                     <Rectangle.Fill>
                         <ImageBrush ImageSource="/RegaloBlack.png" Stretch="Uniform"/>
                     </Rectangle.Fill>
                 </Rectangle>
-                <Label HorizontalAlignment="Left" Height="138" Margin="63,32,0,0" VerticalAlignment="Top" Width="300" Foreground="Black" Background="{x:Null}" FontFamily="MingLiU_HKSCS-ExtB" FontSize="45">
-                    <TextBlock HorizontalAlignment="Center" TextAlignment="Right" Height="124" TextWrapping="Wrap" Text="Proceso de Regalo" VerticalAlignment="Center" Width="225" FontSize="35"/>
+                <Label HorizontalAlignment="Left" Height="138" Margin="144,52,0,0" VerticalAlignment="Top" Width="300" Foreground="Black" Background="{x:Null}" FontFamily="MingLiU_HKSCS-ExtB" FontSize="45">
+                    <TextBlock HorizontalAlignment="Left" TextAlignment="Right" Height="124" TextWrapping="Wrap" Text="Proceso de Regalo" VerticalAlignment="Top" Width="225" FontSize="35"/>
                 </Label>
             </Grid>
         </Button>
@@ -172,7 +161,7 @@ BorderThickness="{TemplateBinding BorderThickness}">
                 </Label>
             </Grid>
         </Button>
-        
+
 
 
     </Grid>

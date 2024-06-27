@@ -349,6 +349,22 @@ BorderThickness="{TemplateBinding BorderThickness}">
             </Grid>
         </Button>
 
+        <Button x:Name="btnCancelar" HorizontalAlignment="Left" Height="60" Margin="718,622,0,0" VerticalAlignment="Top" Width="244" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FF580000" Click="btnCancelar_Click_1">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+            <Grid Height="60" Width="200">
+                <Label Content="Cancelar" Margin="100,10,10,10" FontSize="20" Foreground="White" FontFamily="MingLiU_HKSCS-ExtB" >
+                </Label>
+                <Rectangle Margin="8,10,122,15">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="/deleteWhite.png" Stretch="Uniform"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Grid>
+        </Button>
 
 
 

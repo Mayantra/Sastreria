@@ -20,7 +20,7 @@ namespace LoginSasteria
     /// </summary>
     public partial class verPrecioProducto : Window
     {
-        ConexionDB cn = new ConexionDB();
+        ConexionDB objConection = new ConexionDB();
         public verPrecioProducto()
         {
             InitializeComponent();
@@ -50,8 +50,8 @@ namespace LoginSasteria
         {
 
             cn.cerrarCN();
-            string query = "SELECT precio FROM dbleonv2.inventario" +
-                "\r\ninner join dbleonv2.producto\r\non producto_idproducto = idproducto" +
+            string query = "SELECT precio FROM " + objConection.namedb() + ".inventario" +
+                "\r\ninner join " + objConection.namedb() + ".producto\r\non producto_idproducto = idproducto" +
                 "\r\nwhere idproducto='"+codigo+"';";
             try
             {

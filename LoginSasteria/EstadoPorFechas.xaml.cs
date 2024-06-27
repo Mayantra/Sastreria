@@ -196,5 +196,12 @@ namespace LoginSasteria
             }
             
         }
+
+        private void btnCancelar_Click_1(object sender, RoutedEventArgs e)
+        {
+            estadoCuentaInventario abrir = new estadoCuentaInventario();
+            abrir.Show();
+            this.Close();
+        }
     }
 }

@@ -75,7 +75,7 @@ BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
 
         <Rectangle HorizontalAlignment="Left" Height="700" VerticalAlignment="Center" Width="15" Fill="#FFEDE4A4"/>
 
-        <Button HorizontalAlignment="Left" Height="60" Margin="15,353,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB">
+        <Button HorizontalAlignment="Left" Height="60" Margin="15,353,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB" Click="Button_Click">
             <Grid Height="60" Width="170">
                 <Label Content="Inicio" Foreground="#FFEDE4A4" Margin="14,14,81,10"></Label>
                 <Rectangle Margin="119,14,10,10">
@@ -89,7 +89,7 @@ BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
                 <StaticResource ResourceKey="NoMouseOverButtonTemplate"/>
             </Button.Template>
         </Button>
-        <Button HorizontalAlignment="Left" Height="60" Margin="15,413,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB">
+        <Button HorizontalAlignment="Left" Height="60" Margin="15,413,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB" Click="Button_Click_1">
             <Grid Height="60" Width="170">
                 <Label Content="Venta" Foreground="#FFEDE4A4" Margin="14,14,81,10"></Label>
                 <Rectangle Margin="119,14,10,10">
@@ -103,7 +103,7 @@ BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
                 <StaticResource ResourceKey="NoMouseOverButtonTemplate"/>
             </Button.Template>
         </Button>
-        <Button HorizontalAlignment="Left" Height="60" Margin="15,473,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="{x:Null}" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB" Template="{StaticResource NoMouseOverButtonTemplate}">
+        <Button HorizontalAlignment="Left" Height="60" Margin="15,473,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="{x:Null}" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB" Template="{StaticResource NoMouseOverButtonTemplate}" Click="Button_Click_2">
             <Grid Height="60" Width="170">
                 <Label Content="Consulta" Foreground="#FFEDE4A4" Margin="10,14,70,10" FontSize="20"/>
                 <Rectangle Margin="119,14,10,10">
@@ -114,7 +114,7 @@ BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
             </Grid>
 
         </Button>
-        <Button HorizontalAlignment="Left" Height="60" Margin="0,533,0,0" VerticalAlignment="Top" Width="185" BorderBrush="{x:Null}" Background="Transparent" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB" Template="{StaticResource NoMouseOverButtonTemplate}">
+        <Button HorizontalAlignment="Left" Height="60" Margin="0,533,0,0" VerticalAlignment="Top" Width="185" BorderBrush="{x:Null}" Background="Transparent" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB" Template="{StaticResource NoMouseOverButtonTemplate}" Click="Button_Click_3">
             <Grid Height="60" Width="170">
                 <Label Content="Inventario" Foreground="#FFEDE4A4" Margin="5,14,56,10" FontSize="20"/>
                 <Rectangle Margin="119,14,10,10">
@@ -125,7 +125,7 @@ BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
             </Grid>
 
         </Button>
-        <Button HorizontalAlignment="Left" Height="60" Margin="15,593,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB" Template="{StaticResource NoMouseOverButtonTemplate}">
+        <Button HorizontalAlignment="Left" Height="60" Margin="15,593,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB" Template="{StaticResource NoMouseOverButtonTemplate}" Click="Button_Click_4">
             <Grid Height="60" Width="170">
                 <Label Content="Barras" Foreground="#FFEDE4A4" Margin="10,14,70,10"/>
                 <Rectangle Margin="119,14,10,10">

@@ -461,6 +461,13 @@ namespace LoginSasteria
                 AgregarCodigo(null,null);
             }
         }
+
+        private void btnConversion_Click(object sender, RoutedEventArgs e)
+        {
+            ConversionTraje abrir = new ConversionTraje();
+            abrir.Show();
+            this.Close();
+        }
     }
 }
 

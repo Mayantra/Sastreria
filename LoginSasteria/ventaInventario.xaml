@@ -236,9 +236,9 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <Button HorizontalAlignment="Left" Height="60" Margin="1019,601,0,0" 
+        <Button x:Name="btnConversion" HorizontalAlignment="Left" Height="60" Margin="1019,601,0,0" 
                 VerticalAlignment="Top" Width="246" BorderBrush="{x:Null}" 
-                Foreground="{x:Null}" Background="#213E61">
+                Foreground="{x:Null}" Background="#213E61" Click="btnConversion_Click">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
