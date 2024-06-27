@@ -275,6 +275,7 @@
     <Compile Include="ventanaInicio.xaml.cs">
       <DependentUpon>ventanaInicio.xaml</DependentUpon>
     </Compile>
+    <Compile Include="verificarSuperUser.cs" />
     <Compile Include="VerificarUsuario.xaml.cs">
       <DependentUpon>VerificarUsuario.xaml</DependentUpon>
     </Compile>

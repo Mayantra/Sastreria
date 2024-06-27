@@ -135,9 +135,33 @@ BorderThickness="{TemplateBinding BorderThickness}">
 
 
     <Grid Background="#FF150000" Width="1300">
+        <Button x:Name="btnCancelar" HorizontalAlignment="Left" Height="700" VerticalAlignment="Center" Width="165" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FF580000" Click="btnCancelar_Click_1">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+            <Grid Height="655" Width="155">
+                <Label Content="Cancelar" Margin="-231,256,0,283" FontSize="80" HorizontalContentAlignment="Left" Foreground="White" FontFamily="MingLiU_HKSCS-ExtB" HorizontalAlignment="Left" RenderTransformOrigin="0.5,0.5" Width="628" >
+                    <Label.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-90"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Label.RenderTransform>
+                </Label>
+                <Rectangle Margin="34,-26,10,443">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="/cancelWhite.png" Stretch="Uniform"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Grid>
+        </Button>
         <Button x:Name="btnExit" HorizontalAlignment="Left" Height="30" Margin="1250,20,0,0" VerticalAlignment="Top" Width="30" Background="#FFE50000" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="btnSalir" AutomationProperties.Name="btnSalir" RenderTransformOrigin="-13363.5,4.2">
             <Button.Resources>
-                <Style TargetType="Border">
+                <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="100"/>
                 </Style>
             </Button.Resources>
@@ -149,91 +173,20 @@ BorderThickness="{TemplateBinding BorderThickness}">
                 </Style>
             </Button.Resources>
         </Button>
-        <Rectangle HorizontalAlignment="Left" Height="700" VerticalAlignment="Center" Width="185" Fill="#FF580000" >
-        </Rectangle>
 
         <Rectangle HorizontalAlignment="Left" Height="700" VerticalAlignment="Center" Width="15" Fill="#FFEDE4A4"/>
-
-        <Button x:Name="btnInicio" HorizontalAlignment="Left" Height="60" Margin="15,353,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB">
-            <Grid Height="60" Width="170">
-                <Label Content="Inicio" Foreground="#FFEDE4A4" Margin="14,14,81,10"></Label>
-                <Rectangle Margin="119,14,10,10">
-                    <Rectangle.Fill>
-                        <ImageBrush ImageSource="/CasaA.png" Stretch="Uniform"/>
-                    </Rectangle.Fill>
-                </Rectangle>
-            </Grid>
-
-            <Button.Template>
-                <StaticResource ResourceKey="NoMouseOverButtonTemplate"/>
-            </Button.Template>
-        </Button>
-        <Button x:Name="btnVenta" HorizontalAlignment="Left" Height="60" Margin="15,413,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB">
-            <Grid Height="60" Width="170">
-                <Label Content="Venta" Foreground="#FFEDE4A4" Margin="14,14,81,10"></Label>
-                <Rectangle Margin="119,14,10,10">
-                    <Rectangle.Fill>
-                        <ImageBrush ImageSource="/1.png" Stretch="Uniform"/>
-                    </Rectangle.Fill>
-                </Rectangle>
-            </Grid>
-
-            <Button.Template>
-                <StaticResource ResourceKey="NoMouseOverButtonTemplate"/>
-            </Button.Template>
-        </Button>
-        <Button x:Name="btnConsulta" HorizontalAlignment="Left" Height="60" Margin="15,473,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="{x:Null}" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB" Template="{StaticResource NoMouseOverButtonTemplate}">
-            <Grid Height="60" Width="170">
-                <Label Content="Consulta" Foreground="#FFEDE4A4" Margin="10,14,70,10" FontSize="20"/>
-                <Rectangle Margin="119,14,10,10">
-                    <Rectangle.Fill>
-                        <ImageBrush ImageSource="/ConsultaA.png" Stretch="Uniform"/>
-                    </Rectangle.Fill>
-                </Rectangle>
-            </Grid>
-
-        </Button>
-        <Button HorizontalAlignment="Left" Height="60" Margin="0,533,0,0" VerticalAlignment="Top" Width="185" BorderBrush="{x:Null}" Background="Transparent" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB" Template="{StaticResource NoMouseOverButtonTemplate}">
-            <Grid Height="60" Width="170">
-                <Label Content="Inventario" Foreground="#FFEDE4A4" Margin="10,14,51,10" FontSize="20"/>
-                <Rectangle Margin="129,14,0,10">
-                    <Rectangle.Fill>
-                        <ImageBrush ImageSource="/hanger_114789.png" Stretch="Uniform"/>
-                    </Rectangle.Fill>
-                </Rectangle>
-            </Grid>
-
-        </Button>
-        <Button x:Name="btnBarras" HorizontalAlignment="Left" Height="60" Margin="15,593,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFEDE4A4" FontSize="22" FontFamily="MingLiU_HKSCS-ExtB" Template="{StaticResource NoMouseOverButtonTemplate}">
-            <Grid Height="60" Width="170">
-                <Label Content="Barras" Foreground="#FFEDE4A4" Margin="10,14,70,10"/>
-                <Rectangle Margin="119,14,10,10">
-                    <Rectangle.Fill>
-                        <ImageBrush ImageSource="/barcode_icon-icons.com_73665.png" Stretch="Uniform"/>
-                    </Rectangle.Fill>
-                </Rectangle>
-            </Grid>
-
-        </Button>
-
-
-
-
-        <Label x:Name="lbH" Height="85" Margin="40,10,1145,0" VerticalAlignment="Top" FontSize="20" FontFamily="MingLiU_HKSCS-ExtB" FontWeight="Bold" Foreground="White">
-            <Label.Resources>
-                <Style TargetType="{x:Type AccessText}">
-                    <Setter Property="TextWrapping" Value="Wrap"/>
-                </Style>
-            </Label.Resources>
-            <TextBlock x:Name="txblockHora" TextAlignment="Left" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Height="77" Width="105" FontWeight="Normal" FontSize="22"/>
-        </Label>
 
         <DataGrid ItemsSource="{Binding}" ColumnWidth="Auto" IsReadOnly="True" GridLinesVisibility="None" CanUserAddRows="False" 
            CanUserDeleteRows="False" Padding="10"
            CanUserResizeColumns="False" CanUserResizeRows="False"
            x:Name="DataConsulta" HorizontalAlignment="Left" Height="325" Margin="240,75,0,0" VerticalAlignment="Top" Width="960" FontSize="15" BorderBrush="{x:Null}" Background="White" AreRowDetailsFrozen="True" RowBackground="#FFF1F1F1" AlternatingRowBackground="White" Foreground="Black" FontFamily="Arial">
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </DataGrid.Resources>
             <DataGrid.ColumnHeaderStyle>
-                <Style TargetType="DataGridColumnHeader">
+                <Style TargetType="{x:Type DataGridColumnHeader}">
                     <Setter Property="Background" Value="#580000"/>
                     <Setter Property="Foreground" Value="White"/>
                     <Setter Property="Padding" Value="5"/>
@@ -241,7 +194,7 @@ BorderThickness="{TemplateBinding BorderThickness}">
             </DataGrid.ColumnHeaderStyle>
 
             <DataGrid.CellStyle>
-                <Style TargetType="DataGridCell">
+                <Style TargetType="{x:Type DataGridCell}">
                     <Setter Property="Padding" Value="5"/>
                     <Setter Property="Template">
                         <Setter.Value>
@@ -254,24 +207,19 @@ BorderThickness="{TemplateBinding BorderThickness}">
                     </Setter>
                 </Style>
             </DataGrid.CellStyle>
-            <DataGrid.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="10"/>
-                </Style>
-            </DataGrid.Resources>
         </DataGrid>
         <DatePicker x:Name="Date1" HorizontalAlignment="Left" Margin="240,443,0,0" VerticalAlignment="Top" Height="60" Width="300" VerticalContentAlignment="Center"
                      BorderBrush="Transparent">
             <DatePicker.Resources>
 
-                <Style TargetType="Button">
+                <Style TargetType="{x:Type Button}">
                     <Setter Property="Width" Value="50"/>
 
                 </Style>
-                <Style TargetType="DatePicker">
+                <Style TargetType="{x:Type DatePicker}">
                     <Setter Property="Template">
                         <Setter.Value>
-                            <ControlTemplate TargetType="DatePicker">
+                            <ControlTemplate TargetType="{x:Type DatePicker}">
                                 <StackPanel>
                                     <Grid Margin="5">
                                         <Grid.ColumnDefinitions>
@@ -283,7 +231,7 @@ BorderThickness="{TemplateBinding BorderThickness}">
                                                  Height="50" Padding="10" FontSize="20"  Margin="0,0,20,0"/>
                                         <Button Grid.Column="1" Click="AbrirCalendario" BorderBrush="Transparent" Background="#580000">
                                             <Button.Resources>
-                                                <Style TargetType="Border">
+                                                <Style TargetType="{x:Type Border}">
                                                     <Setter Property="CornerRadius" Value="100"/>
                                                 </Style>
                                             </Button.Resources>
@@ -296,7 +244,7 @@ BorderThickness="{TemplateBinding BorderThickness}">
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
-                    <Setter Property="DatePicker.CalendarStyle">
+                    <Setter Property="CalendarStyle">
                         <Setter.Value>
                             <Style TargetType="{x:Type Calendar}">
                                 <Setter Property="Template">
@@ -328,14 +276,14 @@ BorderThickness="{TemplateBinding BorderThickness}">
              BorderBrush="Transparent">
             <DatePicker.Resources>
 
-                <Style TargetType="Button">
+                <Style TargetType="{x:Type Button}">
                     <Setter Property="Width" Value="50"/>
 
                 </Style>
-                <Style TargetType="DatePicker">
+                <Style TargetType="{x:Type DatePicker}">
                     <Setter Property="Template">
                         <Setter.Value>
-                            <ControlTemplate TargetType="DatePicker">
+                            <ControlTemplate TargetType="{x:Type DatePicker}">
                                 <StackPanel>
                                     <Grid Margin="5">
                                         <Grid.ColumnDefinitions>
@@ -347,7 +295,7 @@ BorderThickness="{TemplateBinding BorderThickness}">
                                          Height="50" Padding="10" FontSize="20" Margin="0,0,20,0"/>
                                         <Button Grid.Column="1" Click="AbrirCalendario" BorderBrush="Transparent" Background="#580000">
                                             <Button.Resources>
-                                                <Style TargetType="Border">
+                                                <Style TargetType="{x:Type Border}">
                                                     <Setter Property="CornerRadius" Value="100"/>
                                                 </Style>
                                             </Button.Resources>
@@ -361,7 +309,7 @@ BorderThickness="{TemplateBinding BorderThickness}">
                         </Setter.Value>
                     </Setter>
 
-                    <Setter Property="DatePicker.CalendarStyle">
+                    <Setter Property="CalendarStyle">
                         <Setter.Value>
                             <Style TargetType="{x:Type Calendar}">
                                 <Setter Property="Template">
@@ -396,7 +344,7 @@ BorderThickness="{TemplateBinding BorderThickness}">
                 BorderBrush="Transparent" Background="#FFEDE4A4"
                 Margin="720,554,0,0" VerticalAlignment="Top" Width="300" Click="ObtenerFechas">
             <Button.Resources>
-                <Style TargetType="Border">
+                <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
                 </Style>
             </Button.Resources>
@@ -424,23 +372,6 @@ BorderThickness="{TemplateBinding BorderThickness}">
                 <Rectangle Margin="0,51,0,0">
                     <Rectangle.Fill>
                         <ImageBrush ImageSource="/printing.png" Stretch="Uniform"/>
-                    </Rectangle.Fill>
-                </Rectangle>
-            </Grid>
-        </Button>
-
-        <Button x:Name="btnCancelar" HorizontalAlignment="Left" Height="60" Margin="750,622,0,0" VerticalAlignment="Top" Width="244" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FF580000" Click="btnCancelar_Click_1">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="10"/>
-                </Style>
-            </Button.Resources>
-            <Grid Height="60" Width="200">
-                <Label Content="Cancelar" Margin="100,10,10,10" FontSize="20" Foreground="White" FontFamily="MingLiU_HKSCS-ExtB" >
-                </Label>
-                <Rectangle Margin="8,10,122,15">
-                    <Rectangle.Fill>
-                        <ImageBrush ImageSource="/deleteWhite.png" Stretch="Uniform"/>
                     </Rectangle.Fill>
                 </Rectangle>
             </Grid>

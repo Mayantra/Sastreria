@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using Microsoft.Expression.Interactivity.Media;
 using MySql.Data.MySqlClient;
+using Mysqlx.Connection;
 namespace LoginSasteria
 {
     internal class ConexionDB
@@ -16,7 +17,10 @@ namespace LoginSasteria
         public static string username = "hismanreina_isa";
         public static string password = "Isaac@17Isaac@17";
         public static string port = "3306";
+        public static string conexion = "server=" + servidor + ";" + "port=" + port + ";" + "user id=" + username + ";"
+            + "password=" + password + ";" + "database=" + db + ";";
 
+        MySqlConnection con = new MySqlConnection(conexion);
         /*string conexion = "server=" + servidor + ";" + "port=" + port+";" + "user id=" + username + ";"
             + "password="+password+";"+"database="+db+";";
         
@@ -39,13 +43,12 @@ namespace LoginSasteria
             return con;
         }*/
 
-        string conexion = "server=" + servidor + ";" + "port=" + port + ";" + "user id=" + username + ";"
-            + "password=" + password + ";" + "database=" + db + ";";
+        
 
         public MySqlConnection establecerCN()
         {
             // Crea una nueva instancia de conexión cada vez.
-            var con = new MySqlConnection(conexion);
+            
             try
             {
                 con.Open();
@@ -60,8 +63,6 @@ namespace LoginSasteria
         }
         public MySqlConnection cerrarCN()
         {
-            var con = new MySqlConnection(conexion);
-
             con.Close();
             return con;
         }

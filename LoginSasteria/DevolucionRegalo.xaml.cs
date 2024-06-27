@@ -76,7 +76,7 @@ namespace LoginSasteria
                     fechaFactura = reader.GetDateTime(0);
                 }
                 reader.Close();
-                objConection.cerrarobjConection();
+                objConection.cerrarCN();
             }
             catch (MySqlException x)
             {
