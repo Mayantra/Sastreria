@@ -143,7 +143,23 @@ namespace LoginSasteria
                 }
                 if (existe == false)
                 {
-                    string query = "SELECT idproducto AS 'Código', \r\nnombreproducto.Nombre AS Producto,\r\ncolor.nombre As Color,\r\nproducto.precio AS Precio, \r\ntipoproducto.nombreTipo AS 'Tipo Producto', \r\ntalla.nombreTalla As Talla\r\nFROM "+objConection.namedb()+".inventario \r\nINNER JOIN "+objConection.namedb()+".producto \r\nON inventario.producto_idproducto = producto.idproducto\r\nINNER JOIN "+objConection.namedb()+".nombreproducto \r\nON producto.nombreProducto_idnombreProducto = nombreproducto.idnombreProducto \r\nINNER JOIN "+objConection.namedb()+".color\r\nON producto.color_idcolor = color.idcolor\r\nINNER JOIN "+objConection.namedb()+".tipotall\r\nON producto.talla_idtalla = tipotall.idtalla\r\nINNER JOIN "+objConection.namedb()+".tipoproducto\r\nON tipotall.tipoProducto_idtipoProducto = tipoproducto.idtipoProducto\r\nINNER JOIN  "+objConection.namedb()+".talla\r\nON tipotall.talla_idtalla = talla.idtalla\r\n" +
+                    string query = "SELECT idproducto AS 'Código', " +
+                        "\r\nnombreProducto.Nombre AS Producto," +
+                        "\r\ncolor.nombre As Color,\r\nproducto.precio AS Precio, " +
+                        "\r\ntipoProducto.nombreTipo AS 'Tipo Producto', " +
+                        "\r\ntalla.nombreTalla As Talla\r\nFROM "+objConection.namedb()+".inventario " +
+                        "\r\nINNER JOIN "+objConection.namedb()+".producto " +
+                        "\r\nON inventario.producto_idproducto = producto.idproducto" +
+                        "\r\nINNER JOIN "+objConection.namedb()+".nombreProducto " +
+                        "\r\nON producto.nombreProducto_idnombreProducto = nombreProducto.idnombreProducto " +
+                        "\r\nINNER JOIN "+objConection.namedb()+".color" +
+                        "\r\nON producto.color_idcolor = color.idcolor" +
+                        "\r\nINNER JOIN "+objConection.namedb()+".tipoTall" +
+                        "\r\nON producto.talla_idtalla = tipoTall.idtalla" +
+                        "\r\nINNER JOIN "+objConection.namedb()+".tipoProducto" +
+                        "\r\nON tipoTall.tipoProducto_idtipoProducto = tipoProducto.idtipoProducto" +
+                        "\r\nINNER JOIN  "+objConection.namedb()+".talla" +
+                        "\r\nON tipoTall.talla_idtalla = talla.idtalla\r\n" +
                 "where idproducto='" + code + "'\r\n;";
                     try
                     {
@@ -293,10 +309,10 @@ namespace LoginSasteria
             string query="";
             if(busqueda == true)
             {
-                query = "SELECT idCliente FROM "+objConection.namedb()+".cliente where NIT = '"+dato+"';";
+                query = "SELECT idCliente FROM "+objConection.namedb()+".Cliente where NIT = '"+dato+"';";
             }
             else {
-                query = "SELECT idCliente FROM "+objConection.namedb()+".cliente where telefono = '" + dato + "';";
+                query = "SELECT idCliente FROM "+objConection.namedb()+".Cliente where telefono = '" + dato + "';";
             }
             MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN());
             MySqlDataReader reader = comando.ExecuteReader();
@@ -316,7 +332,7 @@ namespace LoginSasteria
             if (txNit.Text.Length > 0)
             {
                 string NIT = txNit.Text;
-                string query = "SELECT Nombres, Apellidos FROM "+objConection.namedb()+".cliente where NIT ='" + NIT + "';";
+                string query = "SELECT Nombres, Apellidos FROM "+objConection.namedb()+".Cliente where NIT ='" + NIT + "';";
                 buscarCliente(query);
                 if (existeCliente == true)
                 {
@@ -328,7 +344,7 @@ namespace LoginSasteria
             else if (txTelefono.Text.Length>0)
             {
                 string cel = txTelefono.Text;
-                string query = "SELECT Nombres, Apellidos FROM "+objConection.namedb()+".cliente where telefono ='" + cel + "';";
+                string query = "SELECT Nombres, Apellidos FROM "+objConection.namedb()+".Cliente where telefono ='" + cel + "';";
                 buscarCliente(query);
                 if (existeCliente == true)
                 {

@@ -82,7 +82,7 @@ namespace LoginSasteria
                 for (int i = 0; i < codigos.Count; i++)
                 {
                     cn.cerrarCN();
-                    string query = "SELECT precio FROM dbleonv2.producto where idproducto='" + codigos[i] + "';";
+                    string query = "SELECT precio FROM "+cn.namedb()+".producto where idproducto='" + codigos[i] + "';";
 
                     MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
                     MySqlDataReader dr = comando.ExecuteReader();
@@ -112,7 +112,7 @@ namespace LoginSasteria
             {
                 try
                 {
-                    string query = "SELECT * FROM dbleonv2.cliente where idCliente='" + IDCliente + "';";
+                    string query = "SELECT * FROM "+cn.namedb()+".Cliente where idCliente='" + IDCliente + "';";
 
                     MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
                     MySqlDataReader dr = comando.ExecuteReader();
@@ -178,14 +178,21 @@ namespace LoginSasteria
             try
             {
 
-                string query = "SELECT max(idCliente) FROM dbleonv2.cliente;";
+                string query = "SELECT max(idCliente) FROM "+cn.namedb()+".Cliente;";
 
                 MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
                 MySqlDataReader dr = comando.ExecuteReader();
 
                 while (dr.Read())
                 {
-                    maxid = dr.GetInt32(0);
+                    if (dr.IsDBNull(0)) // Verifica si el valor en la columna 0 es NULL
+                    {
+                        maxid = 1; // Asigna 1 si es NULL
+                    }
+                    else
+                    {
+                        maxid = dr.GetInt32(0); // Asigna el valor real si no es NULL
+                    }
                 }
             }
             catch (MySqlException e)
@@ -231,7 +238,7 @@ namespace LoginSasteria
             try
             {
                 cn.cerrarCN();
-                string query = "INSERT INTO `dbleonv2`.`cliente` (`idCliente`, `Nombres`, `Apellidos`, `telefono`, `puntos`, `NIT`) " +
+                string query = "INSERT INTO `"+cn.namedb()+"`.`Cliente` (`idCliente`, `Nombres`, `Apellidos`, `telefono`, `puntos`, `NIT`) " +
                     "VALUES ('" + maxid + "', '" + nombres + "', '" + apellidos + "', '" + telefono + "', '1', '" + nit + "');";
 
                 MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
@@ -258,14 +265,21 @@ namespace LoginSasteria
             try
             {
 
-                string query = "SELECT max(idDetallesVenta) FROM dbleonv2.detallesventa;";
+                string query = "SELECT max(idDetallesVenta) FROM "+cn.namedb()+".DetallesVenta;";
 
                 MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
                 MySqlDataReader dr = comando.ExecuteReader();
 
                 while (dr.Read())
                 {
-                    maxid = dr.GetInt32(0);
+                    if (dr.IsDBNull(0)) // Verifica si el valor en la columna 0 es NULL
+                    {
+                        maxid = 1; // Asigna 1 si es NULL
+                    }
+                    else
+                    {
+                        maxid = dr.GetInt32(0); // Asigna el valor real si no es NULL
+                    }
                 }
             }
             catch (MySqlException e)
@@ -284,7 +298,7 @@ namespace LoginSasteria
             try
             {
                 cn.cerrarCN();
-                string query = "INSERT INTO `dbleonv2`.`detallesventa` (`idDetallesVenta`, `FechaHora`, `Cliente_idCliente`, `Empleado_idEmpleado`, `regalo`) " +
+                string query = "INSERT INTO `"+cn.namedb()+"`.`DetallesVenta` (`idDetallesVenta`, `FechaHora`, `Cliente_idCliente`, `Empleado_idEmpleado`, `regalo`) " +
                     "VALUES ('" + idDetalles + "', '" + fechahora + "', '" + idClient + "', '" + idEmpleado + "', '" + regalo + "');";
 
                 MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
@@ -306,14 +320,21 @@ namespace LoginSasteria
             try
             {
 
-                string query = "SELECT max(idRegistroVenta) FROM dbleonv2.registroventa;";
+                string query = "SELECT max(idRegistroVenta) FROM "+cn.namedb()+".RegistroVenta;";
 
                 MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
                 MySqlDataReader dr = comando.ExecuteReader();
 
                 while (dr.Read())
                 {
-                    maxid = dr.GetInt32(0);
+                    if (dr.IsDBNull(0)) // Verifica si el valor en la columna 0 es NULL
+                    {
+                        maxid = 1; // Asigna 1 si es NULL
+                    }
+                    else
+                    {
+                        maxid = dr.GetInt32(0); // Asigna el valor real si no es NULL
+                    }
                 }
             }
             catch (MySqlException e)
@@ -337,7 +358,7 @@ namespace LoginSasteria
                 try
                 {
                     cn.cerrarCN();
-                    string query = "INSERT INTO `dbleonv2`.`registroventa` (`idRegistroVenta`, `DetallesVenta_idDetallesVenta`, `producto_idproducto`) " +
+                    string query = "INSERT INTO `"+cn.namedb()+"`.`RegistroVenta` (`idRegistroVenta`, `DetallesVenta_idDetallesVenta`, `producto_idproducto`) " +
                         "VALUES ('"+idVenta+"', '"+Detalles+"', '" + productos[i] +"');";
 
                     MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
@@ -376,7 +397,7 @@ namespace LoginSasteria
                     try
                     {
                         cn.cerrarCN();
-                        string query = "DELETE FROM `dbleonv2`.`inventario` " +
+                        string query = "DELETE FROM `"+cn.namedb()+"`.`inventario` " +
                             "WHERE (`producto_idproducto` = '" + productos[i] +"');";
 
                         MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());

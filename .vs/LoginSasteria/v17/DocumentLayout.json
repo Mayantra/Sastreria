@@ -1,32 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\isaac\\source\\repos\\LoginSasteria\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|c:\\users\\isaac\\source\\repos\\loginsasteria\\loginsasteria\\crearencargoformulario.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\crearencargoformulario.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|C:\\Users\\isaac\\source\\repos\\LoginSasteria\\loginsasteria\\crearencargoformulario.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\crearencargoformulario.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|c:\\users\\isaac\\source\\repos\\loginsasteria\\loginsasteria\\crearencargoformulario.xaml||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\crearencargoformulario.xaml||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|c:\\users\\isaac\\source\\repos\\loginsasteria\\loginsasteria\\ventainventario.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\ventainventario.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|C:\\Users\\isaac\\source\\repos\\LoginSasteria\\loginsasteria\\facturaencargoproductos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\facturaencargoproductos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|c:\\users\\isaac\\source\\repos\\loginsasteria\\loginsasteria\\ventainventario.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\ventainventario.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -34,108 +9,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ventaInventario.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\isaac\\source\\repos\\LoginSasteria\\LoginSasteria\\ventaInventario.xaml.cs",
-              "RelativeDocumentMoniker": "LoginSasteria\\ventaInventario.xaml.cs",
-              "ToolTip": "C:\\Users\\isaac\\source\\repos\\LoginSasteria\\LoginSasteria\\ventaInventario.xaml.cs",
-              "RelativeToolTip": "LoginSasteria\\ventaInventario.xaml.cs",
-              "ViewState": "AQIAAOYAAAAAAAAAAAAkwPAAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-27T01:50:48.292Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ventaInventario.xaml",
-              "DocumentMoniker": "C:\\Users\\isaac\\source\\repos\\LoginSasteria\\LoginSasteria\\ventaInventario.xaml",
-              "RelativeDocumentMoniker": "LoginSasteria\\ventaInventario.xaml",
-              "ToolTip": "C:\\Users\\isaac\\source\\repos\\LoginSasteria\\LoginSasteria\\ventaInventario.xaml",
-              "RelativeToolTip": "LoginSasteria\\ventaInventario.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-06-27T01:50:23.791Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "FacturaEncargoProductos.cs",
-              "DocumentMoniker": "C:\\Users\\isaac\\source\\repos\\LoginSasteria\\LoginSasteria\\FacturaEncargoProductos.cs",
-              "RelativeDocumentMoniker": "LoginSasteria\\FacturaEncargoProductos.cs",
-              "ToolTip": "C:\\Users\\isaac\\source\\repos\\LoginSasteria\\LoginSasteria\\FacturaEncargoProductos.cs",
-              "RelativeToolTip": "LoginSasteria\\FacturaEncargoProductos.cs",
-              "ViewState": "AQIAAPAAAAAAAAAAAAAWwPUAAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-26T00:39:53.704Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CrearEncargoFormulario.xaml",
-              "DocumentMoniker": "C:\\Users\\isaac\\source\\repos\\LoginSasteria\\LoginSasteria\\CrearEncargoFormulario.xaml",
-              "RelativeDocumentMoniker": "LoginSasteria\\CrearEncargoFormulario.xaml",
-              "ToolTip": "C:\\Users\\isaac\\source\\repos\\LoginSasteria\\LoginSasteria\\CrearEncargoFormulario.xaml",
-              "RelativeToolTip": "LoginSasteria\\CrearEncargoFormulario.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-06-25T00:20:30.094Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CrearEncargoFormulario.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\isaac\\source\\repos\\LoginSasteria\\LoginSasteria\\CrearEncargoFormulario.xaml.cs",
-              "RelativeDocumentMoniker": "LoginSasteria\\CrearEncargoFormulario.xaml.cs",
-              "ToolTip": "C:\\Users\\isaac\\source\\repos\\LoginSasteria\\LoginSasteria\\CrearEncargoFormulario.xaml.cs",
-              "RelativeToolTip": "LoginSasteria\\CrearEncargoFormulario.xaml.cs",
-              "ViewState": "AQIAAA8BAAAAAAAAAAAUwCUBAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-25T00:24:17.821Z",
-              "EditorCaption": ""
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "Orientation": 0,
-      "VerticalTabListWidth": 256,
-      "FloatingWindowState": {
-        "Id": "4f28d456-5cfe-424a-afc5-49cc672c9eac",
-        "Display": 1,
-        "X": 143,
-        "Y": 223,
-        "Width": 800,
-        "Height": 600,
-        "WindowState": 2
-      },
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CrearEncargoFormulario.xaml",
-              "DocumentMoniker": "C:\\Users\\isaac\\source\\repos\\LoginSasteria\\LoginSasteria\\CrearEncargoFormulario.xaml",
-              "RelativeDocumentMoniker": "LoginSasteria\\CrearEncargoFormulario.xaml",
-              "ToolTip": "C:\\Users\\isaac\\source\\repos\\LoginSasteria\\LoginSasteria\\CrearEncargoFormulario.xaml",
-              "RelativeToolTip": "LoginSasteria\\CrearEncargoFormulario.xaml",
-              "ViewState": "AQIAACQBAAAAAAAAAAAAwDMBAAAmAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-06-25T00:21:49.992Z",
-              "EditorCaption": ""
             }
           ]
         }

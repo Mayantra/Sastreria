@@ -47,7 +47,7 @@ namespace LoginSasteria
             try
             {
 
-                string query = "SELECT Nombre FROM dbleonv2.empleado where idEmpleado = '"+idEmpleado+"';";
+                string query = "SELECT Nombre FROM "+cn.namedb()+".Empleado where idEmpleado = '"+idEmpleado+"';";
 
                 MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
                 MySqlDataReader dr = comando.ExecuteReader();

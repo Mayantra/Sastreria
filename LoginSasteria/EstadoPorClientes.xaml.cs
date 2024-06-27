@@ -24,6 +24,7 @@ namespace LoginSasteria
     public partial class EstadoPorClientes : Window
     {
         ConexionDB cn = new ConexionDB();
+        DataTable auxTable = new DataTable();
         public EstadoPorClientes()
         {
             InitializeComponent();
@@ -141,16 +142,15 @@ namespace LoginSasteria
         }
         public void ConsultaRango(string fecha1, string fecha2, string nombre)
         {
-            string query = "SELECT idRegistroVenta As 'Registro'," +
+            string query = "SELECT idRegistroVenta as 'Registro'," +
                 "\r\nproducto_idproducto As 'Código Producto'," +
-                "\r\nFechaHora As 'Fecha',\r\nNombre As 'Nombre'," +
-                "\r\nprecio AS 'Monto'\r\nFROM dbleonv2.registroventa " +
-                "\r\ninner join dbleonv2.detallesventa " +
-                "\r\nON DetallesVenta_idDetallesVenta = idDetallesVenta" +
-                "\r\ninner join dbleonv2.producto\r\nON producto_idproducto = idproducto" +
-                "\r\ninner join dbleonv2.empleado\r\non Empleado_idEmpleado = idEmpleado" +
-                "\r\nwhere FechaHora BETWEEN '"+fecha1+"' and '"+fecha2+" 23:59:59'" +
-                "\r\nand Nombre ='"+nombre+"';";
+                "\r\nFechaHora As 'Fecha'," +
+                "\r\nNombre As 'Nombre'," +
+                "\r\nprecio AS 'Monto' FROM "+cn.namedb()+".RegistroVenta " +
+                "\r\ninner join "+ cn.namedb() + ".DetallesVenta ON DetallesVenta_idDetallesVenta = idDetallesVenta" +
+                "\r\ninner join "+ cn.namedb() + ".producto ON producto_idproducto = idproducto" +
+                "\r\ninner join "+ cn.namedb() + ".Empleado ON Empleado_idEmpleado = idEmpleado" +
+                "\r\nwhere FechaHora BETWEEN '"+fecha1+"' and '"+fecha2+" 23:59:59' and Nombre ='"+nombre+"';";
             try
             {
                 MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
@@ -158,7 +158,7 @@ namespace LoginSasteria
                 DataTable tabla = new DataTable();
 
                 data.Fill(tabla);
-
+                auxTable = tabla;
                 DataConsulta.DataContext = tabla;
                 cn.cerrarCN();
             }
@@ -170,13 +170,11 @@ namespace LoginSasteria
         }
         public void consultaTotalFechas(string fecha1, string fecha2, string nombre)
         {
-            string query = "SELECT sum(precio) AS 'Monto' FROM dbleonv2.registroventa " +
-                "\r\ninner join dbleonv2.detallesventa " +
-                "\r\nON DetallesVenta_idDetallesVenta = idDetallesVenta" +
-                "\r\ninner join dbleonv2.producto\r\nON producto_idproducto = idproducto" +
-                "\r\ninner join dbleonv2.empleado\r\non Empleado_idEmpleado = idEmpleado" +
-                "\r\nwhere FechaHora BETWEEN '" + fecha1 + "' and '" + fecha2 + " 23:59:59'" +
-                "\r\nand Nombre ='" + nombre + "';";
+            string query = "SELECT sum(precio) as Monto FROM hismanreina_PruebasDBLeon.RegistroVenta " +
+                "\r\ninner join hismanreina_PruebasDBLeon.DetallesVenta ON DetallesVenta_idDetallesVenta = idDetallesVenta" +
+                "\r\ninner join hismanreina_PruebasDBLeon.producto ON producto_idproducto = idproducto" +
+                "\r\ninner join hismanreina_PruebasDBLeon.Empleado ON Empleado_idEmpleado = idEmpleado" +
+                "\r\nwhere FechaHora BETWEEN '"+fecha1+"' and '"+fecha2+" 23:59:59' and Nombre ='"+nombre+"';";
             try
             {
                 MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
@@ -199,7 +197,7 @@ namespace LoginSasteria
         public void getNombres()
         {
             cn.cerrarCN();
-            string query = "SELECT * FROM dbleonv2.empleado;";
+            string query = "SELECT * FROM "+cn.namedb()+".Empleado;";
             try
             {
                 MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
@@ -220,6 +218,19 @@ namespace LoginSasteria
             {
                 MessageBox.Show(e.ToString());
             }
+        }
+        private void ImprimirCuentas(object sender, RoutedEventArgs e)
+        {
+            if (DataConsulta.Items.Count == 0)
+            {
+                MessageBox.Show("No hay nada que imprimir");
+            }
+            else
+            {
+                ImprimirEstados imprimir = new ImprimirEstados();
+                imprimir.ImprimirEstadoCuentas(auxTable, txTotalFecha.Text);
+            }
+
         }
     }
 }

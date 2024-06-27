@@ -191,7 +191,7 @@ BorderThickness="{TemplateBinding BorderThickness}">
                 </Style>
             </DataGrid.Resources>
         </DataGrid>
-        <DatePicker x:Name="Date1" HorizontalAlignment="Left" Margin="400,443,0,0" VerticalAlignment="Top" Height="60" Width="300" VerticalContentAlignment="Center"
+        <DatePicker x:Name="Date1" HorizontalAlignment="Left" Margin="350,443,0,0" VerticalAlignment="Top" Height="60" Width="300" VerticalContentAlignment="Center"
                      BorderBrush="Transparent">
             <DatePicker.Resources>
 
@@ -254,7 +254,7 @@ BorderThickness="{TemplateBinding BorderThickness}">
 
             </DatePicker.Resources>
         </DatePicker>
-        <DatePicker x:Name="Date2" HorizontalAlignment="Left" Margin="740,443,0,0" VerticalAlignment="Top" 
+        <DatePicker x:Name="Date2" HorizontalAlignment="Left" Margin="690,443,0,0" VerticalAlignment="Top" 
                     Height="60" Width="300" VerticalContentAlignment="Center"
              BorderBrush="Transparent">
             <DatePicker.Resources>
@@ -304,28 +304,28 @@ BorderThickness="{TemplateBinding BorderThickness}">
                                                               BorderBrush="Transparent"
                                                               BorderThickness="{TemplateBinding BorderThickness}" 
                                                               
-                                                              Width="auto"/>                                                
+                                                              Width="auto"/>
                                             </Viewbox>
                                         </ControlTemplate>
-                                        
+
                                     </Setter.Value>
                                 </Setter>
                                 <Setter Property="Width" Value="230"/>
                             </Style>
-                            
+
                         </Setter.Value>
                     </Setter>
-                    
+
                 </Style>
-                
-                
+
+
             </DatePicker.Resources>
-            
-            
+
+
         </DatePicker>
         <Button x:Name="btnEstado" Content="Ver Estado" HorizontalAlignment="Left" Height="60" FontSize="20"
                 BorderBrush="Transparent" Background="#FFEDE4A4"
-                Margin="740,554,0,0" VerticalAlignment="Top" Width="300" Click="ObtenerFechas">
+                Margin="690,554,0,0" VerticalAlignment="Top" Width="300" Click="ObtenerFechas">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -334,7 +334,20 @@ BorderThickness="{TemplateBinding BorderThickness}">
         </Button>
         <TextBlock x:Name="txTotalFecha" HorizontalAlignment="Left" Margin="240,545,0,0" TextWrapping="Wrap"
                    Foreground="White" FontSize="30" TextAlignment="Right" Padding="15" 
-                   VerticalAlignment="Top" Height="78" Width="460"/>
+                   VerticalAlignment="Top" Height="78" Width="410"/>
+        <Button x:Name="btnImprimir" HorizontalAlignment="Left" Height="171" Margin="1040,443,0,0" 
+                VerticalAlignment="Top" Width="160" Click="ImprimirCuentas"
+                Background="#580000" BorderBrush="Transparent">
+            <Grid Height="139" Width="120">
+                <Label Content="Imprimir" Margin="0,10,0,93" FontSize="20" HorizontalContentAlignment="Center"
+                       Foreground="White"/>
+                <Rectangle Margin="0,51,0,0">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="/printing.png" Stretch="Uniform"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Grid>
+        </Button>
 
 
 

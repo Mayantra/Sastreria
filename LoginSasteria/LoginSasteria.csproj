@@ -256,6 +256,7 @@
     <Compile Include="ImprimirBarras.xaml.cs">
       <DependentUpon>ImprimirBarras.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ImprimirEstados.cs" />
     <Compile Include="InventarioInventario.xaml.cs">
       <DependentUpon>InventarioInventario.xaml</DependentUpon>
     </Compile>

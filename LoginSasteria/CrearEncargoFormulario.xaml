@@ -248,7 +248,7 @@
             Height="50" Margin="242,580,0,0" TextWrapping="Wrap" 
             FontSize="25"  TextAlignment="Center" 
             VerticalAlignment="Top" Width="318" PreviewTextInput="LeerSoloNumeros"/>
-        
+
         <Button Background="#A0D982" Foreground="Black" FontSize="35" BorderBrush="Transparent"
             HorizontalAlignment="Left" Height="122" Margin="640,508,0,0" VerticalAlignment="Top" Width="260">
             <Grid Height="100" Width="240">
@@ -297,7 +297,7 @@
             </Grid>
         </Button>
         <Button x:Name="btnAddClient" HorizontalAlignment="Left" Height="89" Margin="385,141,0,0" VerticalAlignment="Top" Width="175" 
-BorderBrush="Transparent" Background="#FF255909">
+BorderBrush="Transparent" Background="#FF255909" Click="AbrirCliente">
             <Grid Height="69" Width="145">
                 <Rectangle Margin="80,10,0,14">
                     <Rectangle.Fill>
@@ -310,6 +310,31 @@ BorderBrush="Transparent" Background="#FF255909">
                 </TextBlock>
             </Grid>
         </Button>
+
+        
+        <Grid x:Name="gridClientes" Background="Black" Visibility="Collapsed">
+            <Label Content="Nombres" Foreground="White" Margin="268,103,907,540" FontSize="25"/>
+            <TextBox x:Name="txNameClient" Margin="398,103,398,540" Padding="10" Foreground="Black" FontSize="25"/>
+            <Label Content="Apellidos"  Foreground="White" Margin="268,180,907,463" FontSize="25"/>
+            <TextBox x:Name="txLastNameClient" Margin="398,180,398,463" Padding="10" Foreground="Black" FontSize="25"/>
+            <Label Content="Telefono" Foreground="White" Margin="268,260,907,383" FontSize="25"/>
+            <TextBox x:Name="txPhoneClient" Margin="398,260,398,383" Padding="10" Foreground="Black" FontSize="25" PreviewTextInput="LeerSoloNumeros"/>
+            <Label Content="NIT" Foreground="White" Margin="268,338,907,305" FontSize="25"/>
+            <TextBox x:Name="txNIT" Margin="398,338,398,305" Padding="10" Foreground="Black" FontSize="25"/>
+
+            <Button x:Name="btnCancelarCliente" Background="#FF580000" Foreground="White" FontSize="35" BorderBrush="Transparent"
+HorizontalAlignment="Left" Height="80" Margin="398,430,0,0" VerticalAlignment="Top" Width="184" Click="CancelarLogueo">
+                <Grid Height="70" Width="150">
+                    <TextBlock Text="Cancelar" TextWrapping="WrapWithOverflow" TextAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+            </Button>
+            <Button x:Name="nuevocliente" Background="#FF255909" Foreground="White" FontSize="35" BorderBrush="Transparent"
+HorizontalAlignment="Left" Height="80" Margin="610,430,0,0" VerticalAlignment="Top" Width="292" Click="AddNewClient">
+                <Grid Height="70" Width="150">
+                    <TextBlock Text="Agregar" TextWrapping="WrapWithOverflow" TextAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+            </Button>
+        </Grid>
 
         <Grid x:Name="GridLogueo" Background="#FF150000" Visibility="Collapsed">
 
@@ -333,10 +358,16 @@ HorizontalAlignment="Center" Height="80" Margin="0,410,0,0" VerticalAlignment="T
                     <TextBlock Text="Cancelar" TextWrapping="WrapWithOverflow" TextAlignment="Center" VerticalAlignment="Center"/>
                 </Grid>
             </Button>
+            
         </Grid>
+
+
+
+
+
         <Grid>
             <ProgressBar Name="progressBar" Width="400" Margin="0,316,0,280" HorizontalAlignment="Center" Visibility="Hidden"
-             Background="#FF580000" Foreground="#FF255909" BorderBrush="#A0D982" BorderThickness="10">
+Background="#FF580000" Foreground="#FF255909" BorderBrush="#A0D982" BorderThickness="10">
 
                 <ProgressBar.Resources>
                     <Style TargetType="{x:Type Border}">
@@ -347,19 +378,8 @@ HorizontalAlignment="Center" Height="80" Margin="0,410,0,0" VerticalAlignment="T
             </ProgressBar>
 
             <TextBlock x:Name="txtCargando" Text="Cargando" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="50" Margin="0,335,0,0" Foreground="White" 
-                       Visibility="Hidden"/>
+          Visibility="Hidden"/>
         </Grid>
-
-        
-
-        
-
-
-
-
-
-
-
 
 
     </Grid>

@@ -288,13 +288,6 @@ namespace LoginSasteria
                 factura.CrearFactura(idEncargo, infoEmpleado, infoCliente, TextoDetalles,
                     "Total: " + txtotal.Text, auxData, codigosProductos, "Abono: " + txabono.Text, GetTextFromRichTextBox(rtxDeatalles));
 
-                if (int.Parse(txtotal.Text)==int.Parse(txabono.Text))
-                {
-                    GenerarFactura compraCompleta = new GenerarFactura();
-
-
-                }
-
             }
             
             //MessageBox.Show(CodigoEncargo);
@@ -645,6 +638,61 @@ namespace LoginSasteria
                 codigosProductos.RemoveAt(indice);
             }
 
+        }
+
+        private void AbrirCliente(object sender, RoutedEventArgs e)
+        {
+            gridClientes.Visibility = Visibility.Visible;
+        }
+
+        private async void AddNewClient(object sender, RoutedEventArgs e)
+        {
+            if (txPhoneClient.Text != "" & txNameClient.Text !="" & txLastNameClient.Text !="")
+            {
+                GridLogueo.Visibility = Visibility.Collapsed;
+                await Task.Delay(500);
+                progressBar.Visibility = Visibility.Visible;
+                txtCargando.Visibility = Visibility.Visible;
+                progressBar.Value = 10;
+
+                try
+                {
+                    cn.cerrarCN();
+                    string query = "INSERT INTO `" + cn.namedb() + "`.`Cliente` (`Nombres`, `Apellidos`, `telefono`, `puntos`, `NIT`) " +
+                        "VALUES ('" + txNameClient.Text + "', '" + txLastNameClient.Text + "'," +
+                        " '" + BigInteger.Parse(txPhoneClient.Text) + "', '0', '" + txNIT.Text + "');";
+
+                    MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
+                    MySqlDataReader dr = comando.ExecuteReader();
+                    
+                    dr.Close();
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+                finally
+                {
+                    cn.cerrarCN();
+                    txBTelClient.Text = txPhoneClient.Text;
+                    BuscarCliente(null,null);
+                    await Task.Delay(500);
+                    progressBar.Value = 100;
+                    progressBar.Visibility = Visibility.Collapsed;
+                    txtCargando.Visibility = Visibility.Collapsed;
+                    gridClientes.Visibility = Visibility.Collapsed;
+                    txNameClient.Clear();
+                    txLastNameClient.Clear();
+                    txPhoneClient.Clear();
+                    txNIT.Clear();
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Debe de Agregar obligatoriamente el NOMBRE, APELLIDO Y TELEFONO del cliente");
+            }
+            
         }
     }
 }

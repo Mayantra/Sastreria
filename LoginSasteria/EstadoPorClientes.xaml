@@ -394,7 +394,7 @@ BorderThickness="{TemplateBinding BorderThickness}">
         </DatePicker>
         <Button x:Name="btnEstado" Content="Ver Estado" HorizontalAlignment="Left" Height="60" FontSize="20"
                 BorderBrush="Transparent" Background="#FFEDE4A4"
-                Margin="900,554,0,0" VerticalAlignment="Top" Width="300" Click="ObtenerFechas">
+                Margin="720,554,0,0" VerticalAlignment="Top" Width="300" Click="ObtenerFechas">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -415,6 +415,19 @@ BorderThickness="{TemplateBinding BorderThickness}">
 
             </ComboBox.Resources>
         </ComboBox>
+        <Button x:Name="btnImprimir" HorizontalAlignment="Left" Height="146" Margin="1140,554,0,0" 
+        VerticalAlignment="Top" Width="160" Click="ImprimirCuentas"
+        Background="#580000" BorderBrush="Transparent">
+            <Grid Height="139" Width="120">
+                <Label Content="Imprimir" Margin="0,10,0,93" FontSize="20" HorizontalContentAlignment="Center"
+               Foreground="White"/>
+                <Rectangle Margin="0,51,0,0">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="/printing.png" Stretch="Uniform"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Grid>
+        </Button>
 
 
 
