@@ -348,3 +348,5 @@ E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSaster
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\ConversionTraje.g.cs
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\ConversionTraje.baml
 C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\LoginSas.CC62B47E.Up2Date
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\CrearEncargoAbonos.g.cs
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\CrearEncargoAbonos.baml

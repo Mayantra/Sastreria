@@ -131,6 +131,25 @@ BorderThickness="{TemplateBinding BorderThickness}">
             </Setter>
         </Style>
 
+        <ControlTemplate x:Key="PasswordBoxTemplate" TargetType="{x:Type PasswordBox}">
+            <Border Background="{TemplateBinding Background}" x:Name="Bd" BorderBrush="Black" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="20">
+                <ScrollViewer x:Name="PART_ContentHost"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" TargetName="Bd"/>
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="Width" Value="Auto">
+                    <Setter Property="MinWidth" Value="100"/>
+                </Trigger>
+                <Trigger Property="Height" Value="Auto">
+                    <Setter Property="MinHeight" Value="20"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+
     </Window.Resources>
 
 
@@ -189,10 +208,10 @@ BorderThickness="{TemplateBinding BorderThickness}">
             <TextBlock x:Name="txblockHora" TextAlignment="Left" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Height="77" Width="105" FontWeight="Normal" FontSize="22"/>
         </Label>
 
-        <DataGrid ItemsSource="{Binding}" ColumnWidth="Auto" IsReadOnly="True" GridLinesVisibility="None" CanUserAddRows="False" 
+        <DataGrid ItemsSource="{Binding}" ColumnWidth="Auto" IsReadOnly="True" GridLinesVisibility="None" CanUserAddRows="False"  CanUserReorderColumns="False" CanUserSortColumns="False"
            CanUserDeleteRows="False" Padding="10"
            CanUserResizeColumns="False" CanUserResizeRows="False"
-           x:Name="DataConsulta" HorizontalAlignment="Left" Height="250" Margin="230,50,0,0" VerticalAlignment="Top" Width="750" FontSize="15" BorderBrush="{x:Null}" Background="White" AreRowDetailsFrozen="True" RowBackground="#FFF1F1F1" AlternatingRowBackground="White" Foreground="Black" FontFamily="Arial">
+           x:Name="DataConsulta" HorizontalAlignment="Left" Height="268" Margin="230,112,0,0" VerticalAlignment="Top" Width="845" FontSize="15" BorderBrush="{x:Null}" Background="White" AreRowDetailsFrozen="True" RowBackground="#FFF1F1F1" AlternatingRowBackground="White" Foreground="Black" FontFamily="Arial">
             <DataGrid.ColumnHeaderStyle>
                 <Style TargetType="DataGridColumnHeader">
                     <Setter Property="Background" Value="#580000"/>
@@ -221,91 +240,77 @@ BorderThickness="{TemplateBinding BorderThickness}">
                 </Style>
             </DataGrid.Resources>
         </DataGrid>
-        <DataGrid ItemsSource="{Binding}" ColumnWidth="Auto" IsReadOnly="True" GridLinesVisibility="None" CanUserAddRows="False" 
-            CanUserDeleteRows="False" Padding="10"
-            CanUserResizeColumns="False" CanUserResizeRows="False"
-            x:Name="DataConsultaNueva" HorizontalAlignment="Left" Height="284" Margin="230,386,0,0" VerticalAlignment="Top" Width="750" FontSize="15" BorderBrush="{x:Null}" Background="White" AreRowDetailsFrozen="True" RowBackground="#FFF1F1F1" AlternatingRowBackground="White" Foreground="Black" FontFamily="Arial">
-            <DataGrid.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="10"/>
-                </Style>
-            </DataGrid.Resources>
-            <DataGrid.ColumnHeaderStyle>
-                <Style TargetType="{x:Type DataGridColumnHeader}">
-                    <Setter Property="Background" Value="#580000"/>
-                    <Setter Property="Foreground" Value="White"/>
-                    <Setter Property="Padding" Value="5"/>
-                </Style>
-            </DataGrid.ColumnHeaderStyle>
-
-            <DataGrid.CellStyle>
-                <Style TargetType="{x:Type DataGridCell}">
-                    <Setter Property="Padding" Value="5"/>
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="{x:Type DataGridCell}">
-                                <Border Padding="{TemplateBinding Padding}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
-                                    <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </DataGrid.CellStyle>
-        </DataGrid>
-        <TextBox x:Name="txFactura" HorizontalAlignment="Left" Height="40" Margin="1030,112,0,0" 
+        <TextBox x:Name="txFactura" HorizontalAlignment="Left" Height="47" Margin="425,48,0,0" TextAlignment="Right" 
             Template="{StaticResource TextBoxBaseControlTemplate}"
-            TextWrapping="Wrap"  VerticalAlignment="Top" Width="235" BorderBrush="{x:Null}" SelectionBrush="#FF74EFFF"
-            Padding="6" FontSize="16"/>
-        <TextBox x:Name="txProducto" HorizontalAlignment="Left" Height="40" Margin="1030,386,0,0" 
+            TextWrapping="Wrap"  VerticalAlignment="Top" Width="430" BorderBrush="{x:Null}" SelectionBrush="#FF74EFFF"
+            Padding="10" FontSize="16" KeyDown="LeerCodigoBarras"/>
+        <TextBox x:Name="txProducto" HorizontalAlignment="Left" Height="55" Margin="230,480,0,0" 
             Template="{StaticResource TextBoxBaseControlTemplate}"
-            TextWrapping="Wrap"  VerticalAlignment="Top" Width="235" BorderBrush="{x:Null}" SelectionBrush="#FF74EFFF"
-            Padding="6" FontSize="16"/>
-        <Button x:Name="btnAgregarP" Content="Agregar Producto" HorizontalAlignment="Left" Height="40" Margin="1030,436,0,0" VerticalAlignment="Top" Width="235">
-            <Button.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="15"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-        <Rectangle HorizontalAlignment="Left" Height="12" Margin="230,338,0,0" Stroke="Transparent"
-                   Fill="#FFEDE4A4"
-                   VerticalAlignment="Top" Width="1035"/>
-        <TextBlock x:Name="txTotalFac" HorizontalAlignment="Left" Height="55"
+            TextWrapping="Wrap"  VerticalAlignment="Top" Width="530" BorderBrush="{x:Null}" SelectionBrush="#FF74EFFF"
+            Padding="10" FontSize="16" KeyDown="AgregarProducto" IsEnabled="False"/>
+        <TextBlock x:Name="txTotalFac" HorizontalAlignment="Left" Height="54"
                    Foreground="White"
                    TextAlignment="Right"
                    FontSize="35"
-                   Margin="1030,245,0,0" TextWrapping="Wrap" 
+                   Margin="840,48,0,0" TextWrapping="Wrap" 
                    Text="Q 00.00" VerticalAlignment="Top" Width="235"/>
-        <TextBlock x:Name="txTotalFac_Copiar" HorizontalAlignment="Left" Height="55"
+        <TextBlock x:Name="txTotalNuevo" HorizontalAlignment="Left" Height="78"
             Foreground="White"
             TextAlignment="Right"
-            FontSize="35"
-            Margin="1030,615,0,0" TextWrapping="Wrap" 
-            Text="Q 00.00" VerticalAlignment="Top" Width="235"/>
-        <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Height="40" Margin="1030,486,0,0" VerticalAlignment="Top" Width="235">
-            <Button.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="15"/>
-                </Style>
-            </Button.Resources>
+            FontSize="45"
+            Margin="958,397,0,0" TextWrapping="Wrap" 
+            Text="Q 00.00" VerticalAlignment="Top" Width="307"/>
+        <Button x:Name="btnQuitarProducto" HorizontalAlignment="Left" Height="230" Margin="1103,135,0,0" VerticalAlignment="Top" Width="162" Background="White" Click="QuitarProductoFactura">
+            <Grid Height="170" Width="132">
+                <TextBlock Text="Selecciona Producto a Devolver" TextAlignment="Center" TextWrapping="Wrap" FontSize="20" Margin="0,7,0,85"/>
+                <Rectangle Margin="0,85,0,0">
+                    <Rectangle.Fill>
+                        <ImageBrush Stretch="Uniform" ImageSource="/downarrow_120663.png"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Grid>
         </Button>
-        <Button x:Name="btnAgregarF" Content="Agregar Código" HorizontalAlignment="Left" Height="40" Margin="1030,175,0,0" 
-                VerticalAlignment="Top" Width="235" Click="obtenerFactura">
-            <Button.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="15"/>
-                </Style>
-            </Button.Resources>
+        <Label Content="Código Factura" HorizontalAlignment="Left" Height="40" Margin="240,55,0,0" VerticalAlignment="Top"
+               Foreground="White" FontSize="22"  Width="160"/>
+        <Label Content="Código Nuevo Producto" HorizontalAlignment="Left" Height="40" Margin="240,435,0,0" VerticalAlignment="Top"
+            Foreground="White" FontSize="22"  Width="300"/>
+        <Button x:Name="btnDevolucion" HorizontalAlignment="Left" Height="155" Margin="958,500,0,0" VerticalAlignment="Top" Width="307" Background="#FF255909" Click="getDevolucion">
+            <Grid Height="145" Width="247">
+                <TextBlock Text="Cambiar de Producto" TextAlignment="Center" Foreground="White" TextWrapping="Wrap" FontSize="25" Margin="0,7,0,85"/>
+                <Rectangle Margin="10,60,0,10">
+                    <Rectangle.Fill>
+                        <ImageBrush Stretch="Uniform" ImageSource="/regaloWhite.png"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Grid>
         </Button>
-        <Button x:Name="btnDevolver" Content="Devolución" HorizontalAlignment="Left" Height="40" Margin="1030,538,0,0" 
-        VerticalAlignment="Top" Width="235" Click="obtenerFactura">
-            <Button.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="15"/>
-                </Style>
-            </Button.Resources>
-        </Button>
+        <Label Content="TOTAL:" HorizontalAlignment="Left" Height="78" Margin="812,397,0,0" VerticalAlignment="Top"
+            Foreground="White" FontSize="35"  Width="146"/>
+
+        <Grid x:Name="GridLogueo" Background="#FF150000" Visibility="Collapsed">
+
+
+            <Rectangle HorizontalAlignment="Center" Height="500" Stroke="Black" VerticalAlignment="Top" Width="470" Fill="Black" Margin="0,48,0,0"/>
+
+
+            <TextBox x:Name="txUser" Template="{StaticResource TextBoxBaseControlTemplate}"  HorizontalAlignment="Center" Height="50" Margin="0,216,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Padding="10"  Width="300" FontFamily="MingLiU_HKSCS-ExtB" FontSize="20" SelectionOpacity="0.9" RenderTransformOrigin="0.5,0.5" FontWeight="Light"/>
+            <PasswordBox x:Name="PassBox" Template="{StaticResource PasswordBoxTemplate}" HorizontalAlignment="Center" Height="50" Margin="0,308,0,0" VerticalAlignment="Top" Width="300" PasswordChanged="lecturapass" Padding="10" FontSize="16"/>
+            <Rectangle HorizontalAlignment="Left" Height="500" VerticalAlignment="Top" Width="25" Fill="#FFEDE4A4" Margin="415,48,0,0"/>
+            <Rectangle HorizontalAlignment="Center" Height="98" Margin="0,65,0,0" Stroke="Black" VerticalAlignment="Top" Width="214">
+                <Rectangle.Fill>
+                    <ImageBrush ImageSource="/Imagen_de_WhatsApp_2024-01-17_a_las_20.09.20_1e6cb21b-removebg-preview.png" Stretch="Uniform"/>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Label Content="Usuario" HorizontalAlignment="Left" Height="30" Margin="510,181,0,0" VerticalAlignment="Top" Width="100" FontSize="16" Foreground="White" HorizontalContentAlignment="left" VerticalContentAlignment="Center" RenderTransformOrigin="0.55,0.533"/>
+            <Label Content="Contraseña" HorizontalAlignment="Left" Height="30" Margin="510,273,0,0" VerticalAlignment="Top" Width="100" FontSize="16" Foreground="White" HorizontalContentAlignment="left" VerticalContentAlignment="Center" RenderTransformOrigin="0.55,0.533"/>
+            <Button x:Name="btnCancelarLogueo" Background="#FF580000" Foreground="White" FontSize="35" BorderBrush="Transparent"
+HorizontalAlignment="Center" Height="80" Margin="0,410,0,0" VerticalAlignment="Top" Width="184" Click="CancelarLogueo">
+                <Grid Height="70" Width="150">
+                    <TextBlock Text="Cancelar" TextWrapping="WrapWithOverflow" TextAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+            </Button>
+
+        </Grid>
 
 
 

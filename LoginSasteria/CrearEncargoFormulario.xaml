@@ -176,7 +176,7 @@
                    Padding="10"
                    Height="85" Margin="45,143,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="333"/>
 
-        <DataGrid ItemsSource="{Binding}" ColumnWidth="Auto" IsReadOnly="True" GridLinesVisibility="None" 
+        <DataGrid ItemsSource="{Binding}" ColumnWidth="Auto" IsReadOnly="True" GridLinesVisibility="None" CanUserReorderColumns="False" CanUserSortColumns="False"
             CanUserDeleteRows="False" Padding="10"
             CanUserResizeColumns="False" CanUserResizeRows="False"
             x:Name="DataDatos" HorizontalAlignment="Left" Height="215" Margin="640,260,0,0" VerticalAlignment="Top" Width="520" FontSize="15" BorderBrush="{x:Null}" Background="White" AreRowDetailsFrozen="True" RowBackground="#FFF1F1F1" AlternatingRowBackground="White" Foreground="Black" FontFamily="Arial">

@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\obj\Debug\
 LoginSasteria
 none
 false
 DEBUG;TRACE
-E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\App.xaml
-25941005829
-141003741212
-37-1710202759
-671176241839
-AccesoNoAutorizado.xaml;AgregarProdIventario.xaml;consultaInventario.xaml;ConversionTraje.xaml;CrearBarras.xaml;crearBarrasMenu.xaml;CrearEncargoFormulario.xaml;CrearEncargoInventario.xaml;DevolucionRegalo.xaml;EditarProdInventario.xaml;EliminarProdInventario.xaml;estadoCuentaInventario.xaml;EstadoPorClientes.xaml;EstadoPorFechas.xaml;ImprimirBarras.xaml;InventarioInventario.xaml;Logeo.xaml;mainInventario.xaml;MainWindow.xaml;ProcesoVenta.xaml;ventaInventario.xaml;ventanaInicio.xaml;VerificarUsuario.xaml;VerInventario.xaml;verPrecioProducto.xaml;
+C:\Users\isaac\source\repos\LoginSasteria\LoginSasteria\App.xaml
+261767696963
+141833496081
+38681080307
+67-660453945
+AccesoNoAutorizado.xaml;AgregarProdIventario.xaml;consultaInventario.xaml;ConversionTraje.xaml;CrearBarras.xaml;crearBarrasMenu.xaml;CrearEncargoAbonos.xaml;CrearEncargoFormulario.xaml;CrearEncargoInventario.xaml;DevolucionRegalo.xaml;EditarProdInventario.xaml;EliminarProdInventario.xaml;estadoCuentaInventario.xaml;EstadoPorClientes.xaml;EstadoPorFechas.xaml;ImprimirBarras.xaml;InventarioInventario.xaml;Logeo.xaml;mainInventario.xaml;MainWindow.xaml;ProcesoVenta.xaml;ventaInventario.xaml;ventanaInicio.xaml;VerificarUsuario.xaml;VerInventario.xaml;verPrecioProducto.xaml;
 
 False
 

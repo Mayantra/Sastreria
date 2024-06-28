@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ZXing.Rendering;
 
 namespace LoginSasteria
 {
@@ -135,6 +136,13 @@ namespace LoginSasteria
         private void btnCancelar_Click_1(object sender, RoutedEventArgs e)
         {
             mainInventario abrir = new mainInventario();
+            abrir.Show();
+            this.Close();
+        }
+
+        private void abrirEncargoAbonos(object sender, RoutedEventArgs e)
+        {
+            CrearEncargoAbonos abrir = new CrearEncargoAbonos();
             abrir.Show();
             this.Close();
         }

@@ -149,7 +149,7 @@
             </Label.Resources>
             <TextBlock x:Name="txblockHora" TextAlignment="Left" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Height="77" Width="105" FontWeight="Normal" FontSize="22"/>
         </Label>
-        <DataGrid ItemsSource="{Binding}" ColumnWidth="Auto" IsReadOnly="True" GridLinesVisibility="None" 
+        <DataGrid ItemsSource="{Binding}" ColumnWidth="Auto" IsReadOnly="True" GridLinesVisibility="None" CanUserReorderColumns="False" CanUserSortColumns="False"
                   CanUserDeleteRows="False" Padding="10"
                   CanUserResizeColumns="False" CanUserResizeRows="False"
                   x:Name="DataDatos" HorizontalAlignment="Left" Height="320" Margin="235,80,0,0" VerticalAlignment="Top" Width="720" FontSize="15" BorderBrush="{x:Null}" Background="White" AreRowDetailsFrozen="True" RowBackground="#FFF1F1F1" AlternatingRowBackground="White" Foreground="Black" FontFamily="Arial">

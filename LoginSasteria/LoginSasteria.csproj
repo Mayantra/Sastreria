@@ -227,6 +227,9 @@
     <Compile Include="crearBarrasMenu.xaml.cs">
       <DependentUpon>crearBarrasMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CrearEncargoAbonos.xaml.cs">
+      <DependentUpon>CrearEncargoAbonos.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CrearEncargoFormulario.xaml.cs">
       <DependentUpon>CrearEncargoFormulario.xaml</DependentUpon>
     </Compile>
@@ -306,6 +309,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="crearBarrasMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CrearEncargoAbonos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -470,6 +477,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="about.svg" />
+    <Resource Include="downarrow_120663.png" />
+    <Resource Include="log_out_icon_236671.png" />
     <Resource Include="Qwhite.png" />
     <Resource Include="chalecoWhite.png" />
     <Resource Include="pencilWhite.png" />
