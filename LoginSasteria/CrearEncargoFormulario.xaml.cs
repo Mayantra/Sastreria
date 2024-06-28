@@ -66,7 +66,7 @@ namespace LoginSasteria
         }
         void tipoCon()
         {
-            string query = "SELECT * FROM "+cn.namedb()+".tipoProducto;";
+            string query = "SELECT * FROM "+cn.namedb()+ ".tipoProducto where not nombreTipo ='Encargo';";
             try
             {
                 MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());

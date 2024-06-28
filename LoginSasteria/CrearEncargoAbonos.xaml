@@ -130,13 +130,32 @@ BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
                 </Style>
             </DataGrid.CellStyle>
         </DataGrid>
-        <RichTextBox HorizontalAlignment="Left" Height="190" Margin="235,285,0,0" VerticalAlignment="Top" Width="520">
+        <RichTextBox x:Name="rtxDetalles" HorizontalAlignment="Left" Height="360" Margin="235,285,0,0" VerticalAlignment="Top" Width="520"
+                     FontSize="20">
             <FlowDocument>
                 <Paragraph>
-                    <Run Text="RichTextBox"/>
+
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
+        <TextBox x:Name="txCodigoFactura" HorizontalAlignment="Left" Height="60" Margin="795,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="405" FontSize="25" Padding="10" KeyDown="LeerCodigoBarras"/>
+        <TextBox x:Name="txTotal" IsEnabled="False" HorizontalAlignment="Left" Height="60" Margin="960,0,0,0" TextWrapping="Wrap"  VerticalAlignment="Center" Width="240" FontSize="25" Padding="10"/>
+        <TextBox x:Name="txAbono" HorizontalAlignment="Left" Height="60" Margin="960,405,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="240" FontSize="25" Padding="10"/>
+        <Label Content="Total" HorizontalAlignment="Left" Height="60" Margin="795,0,0,0" VerticalAlignment="Center" Width="160" Foreground="White" FontSize="40" HorizontalContentAlignment="Right"/>
+        <Label Content="Abono" HorizontalAlignment="Left" Height="60" Margin="795,405,0,0" VerticalAlignment="Top" Width="160" Foreground="White" FontSize="40" HorizontalContentAlignment="Right"/>
+        <Button x:Name="btnActualizar" HorizontalAlignment="Left" Background="#FF255909" BorderBrush="Transparent"
+                Height="120" Margin="795,525,0,0" VerticalAlignment="Top" Width="405" Click="ActualizarEncargo">
+            <Grid Height="90" Width="345">
+                <Label Content="Actualizar" Foreground="White" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0,0,173,0"/>
+                <Rectangle Margin="172,0,0,0">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="/converteWhite.png" Stretch="Uniform"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Grid>
+        </Button>
+        <Label Content="Codigo de Encargo" HorizontalAlignment="Left" Height="72" Margin="795,70,0,0" VerticalAlignment="Top" Width="405" Foreground="White" FontSize="40" HorizontalContentAlignment="Right"/>
+        <Label x:Name="lbFechas" Content="Fecha: " HorizontalAlignment="Left" Height="60" Margin="795,237,0,0" VerticalAlignment="Top" Width="405" Foreground="White" FontSize="30" HorizontalContentAlignment="Right"/>
 
 
 
