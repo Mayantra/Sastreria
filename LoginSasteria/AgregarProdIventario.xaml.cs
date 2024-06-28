@@ -115,6 +115,19 @@ namespace LoginSasteria
             this.WindowState = WindowState.Minimized;
         }
 
+        private bool VerificarProductoEnRegistroVenta(string codigoProducto)
+        {
+            string queryVerificacion = "SELECT COUNT(*) FROM " + objConection.namedb() + ".RegistroVenta WHERE `producto_idproducto` = @productoId";
+            using (MySqlCommand comandoVerificacion = new MySqlCommand(queryVerificacion, objConection.establecerCN()))
+            {
+                comandoVerificacion.Parameters.AddWithValue("@productoId", codigoProducto);
+                int count = Convert.ToInt32(comandoVerificacion.ExecuteScalar());
+                objConection.cerrarCN();
+
+                return count > 0;
+            }
+        }
+
         private bool VerificarProductoExistente(string codigoProducto)
         {
             string queryVerificacion = "SELECT COUNT(*) FROM " + objConection.namedb() + ".inventario WHERE `producto_idproducto` = @productoId";
@@ -148,6 +161,14 @@ namespace LoginSasteria
         {
             string codigoProducto = txtCodBarras.Text;
             objConection.cerrarCN();
+            // Verificar si el producto ya existe en el RegistroVenta
+            if (VerificarProductoEnRegistroVenta(codigoProducto))
+            {
+                MessageBox.Show("El producto ya fue vendido, por favor ingrese un código valido");
+                txtCodBarras.Clear();
+                txtCodBarras.Focus();
+                return false;
+            }
             // Verificar si el producto ya existe en el inventario
             if (VerificarProductoExistente(codigoProducto))
             {

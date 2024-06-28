@@ -110,9 +110,19 @@ namespace LoginSasteria
 
         private void abrirEstadoCuenta(object sender, RoutedEventArgs e)
         {
-            estadoCuentaInventario abrir = new estadoCuentaInventario();
-            abrir.Show();
-            this.Close();
+            verificarSuperUser verificar = new verificarSuperUser();
+            if (verificar.superUser() == true)
+            {
+                estadoCuentaInventario abrir = new estadoCuentaInventario();
+                abrir.Show();
+                this.Close();
+            }
+            else
+            {
+                AccesoNoAutorizado abrir = new AccesoNoAutorizado();
+                abrir.Show();
+                this.Close();
+            }
         }
 
         private void AbrirProcesoRegalo(object sender, RoutedEventArgs e)
