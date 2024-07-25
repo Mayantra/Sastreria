@@ -160,11 +160,38 @@ namespace LoginSasteria
         }
 
 
+        private int GetMaxProductoEstadoID()
+        {
+            int maxId = 0;
+            string query = "SELECT MAX(idProductoEstado) FROM " + objConection.namedb() + ".ProductoEstado;";
+            objConection.cerrarCN();
+            using (MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN()))
+            {
+                try
+                {
+                    object result = comando.ExecuteScalar();
+                    if (result != DBNull.Value)
+                    {
+                        maxId = Convert.ToInt32(result);
+                    }
+                    objConection.cerrarCN();
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show("Error al obtener el máximo ID de ProductoEstado: " + ex.Message);
+                }
+                finally
+                {
+                    objConection.cerrarCN();
+                }
+            }
+            return maxId;
+        }
+
         private void btnRegistrar_Click(object sender, RoutedEventArgs e)
         {
             objConection.cerrarCN();
 
-            // Validar que los campos de texto y los ComboBox no estén vacíos
             if (string.IsNullOrWhiteSpace(txtPrecio.Text) ||
                 cbTalla.SelectedItem == null ||
                 string.IsNullOrWhiteSpace(txtDetalles.Text) ||
@@ -172,24 +199,21 @@ namespace LoginSasteria
                 (string.IsNullOrWhiteSpace(cbColor.Text) && string.IsNullOrWhiteSpace(txtNuevColor.Text)))
             {
                 MessageBox.Show("Por favor, completa todos los campos antes de registrar.");
-                return; // Salir del método para evitar ejecutar el resto del código
+                return;
             }
 
-            // Si cbNombre y txtOtroNombre están vacíos, no permitir insertar
             if (string.IsNullOrWhiteSpace(cbNombre.Text) && string.IsNullOrWhiteSpace(txtOtroNombre.Text))
             {
                 MessageBox.Show("Por favor, selecciona un nombre o ingresa el nombre del nuevo artículo.");
-                return; // Salir del método para evitar ejecutar el resto del código
+                return;
             }
 
-            // Si cbColor y txtNuevoColor están vacíos, no permitir insertar
             if (string.IsNullOrWhiteSpace(cbColor.Text) && string.IsNullOrWhiteSpace(txtNuevColor.Text))
             {
                 MessageBox.Show("Por favor, selecciona un color o ingresa el nuevo color.");
-                return; // Salir del método para evitar ejecutar el resto del código
+                return;
             }
 
-            //Permite verificar que el txtCantidad contenga un dato mayor a 0
             int cantidad = 0;
             if (!int.TryParse(txtCantidad.Text, out cantidad) || cantidad <= 0)
             {
@@ -199,17 +223,15 @@ namespace LoginSasteria
 
             try
             {
-                // Verificar si necesitamos insertar un nuevo nombre de producto
                 if (string.IsNullOrWhiteSpace(cbNombre.Text) && !string.IsNullOrWhiteSpace(txtOtroNombre.Text))
                 {
                     objConection.cerrarCN();
 
-                    // Ingresamos primero el nuevo nombre del producto dentro de la tabla 'nombreProducto'
                     int maxid = MaxID() + 1;
                     IdnombreProducto = maxid;
                     string nombreProducto = txtOtroNombre.Text;
                     string query = "INSERT INTO " + objConection.namedb() + ".nombreProducto (`idnombreProducto`, `Nombre`) VALUES (@idnombreProducto, @nombreProducto);";
-
+                    objConection.cerrarCN();
                     using (MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN()))
                     {
                         comando.Parameters.AddWithValue("@idnombreProducto", maxid);
@@ -218,33 +240,31 @@ namespace LoginSasteria
                         try
                         {
                             comando.ExecuteNonQuery();
-                            //MessageBox.Show("NombreProducto insertado correctamente.");
+                            objConection.cerrarCN();
                         }
                         catch (MySqlException ex)
                         {
                             MessageBox.Show("Error al insertar el producto: " + ex.Message);
-                            return; // Salir del método para evitar ejecutar el resto del código
+                            return;
                         }
                         finally
                         {
-                            // Cerrar la conexión
                             objConection.cerrarCN();
                         }
                     }
+                    objConection.cerrarCN();
                 }
 
-                // Verificar si necesitamos insertar un nuevo color
                 int idColor;
                 if (string.IsNullOrWhiteSpace(cbColor.Text) && !string.IsNullOrWhiteSpace(txtNuevColor.Text))
                 {
                     objConection.cerrarCN();
 
-                    // Ingresamos primero el nuevo color dentro de la tabla 'color'
                     int maxColorId = MaxColorID() + 1;
                     idColor = maxColorId;
                     string nuevoColor = txtNuevColor.Text;
                     string queryColor = "INSERT INTO " + objConection.namedb() + ".color (`idcolor`, `Nombre`) VALUES (@idcolor, @nuevoColor);";
-
+                    objConection.cerrarCN();
                     using (MySqlCommand comandoColor = new MySqlCommand(queryColor, objConection.establecerCN()))
                     {
                         comandoColor.Parameters.AddWithValue("@idcolor", maxColorId);
@@ -253,45 +273,63 @@ namespace LoginSasteria
                         try
                         {
                             comandoColor.ExecuteNonQuery();
-                            //MessageBox.Show("Color insertado correctamente.");
+                            objConection.cerrarCN();
                         }
                         catch (MySqlException ex)
                         {
                             MessageBox.Show("Error al insertar el color: " + ex.Message);
-                            return; // Salir del método para evitar ejecutar el resto del código
+                            return;
                         }
                         finally
                         {
-                            // Cerrar la conexión
                             objConection.cerrarCN();
                         }
                     }
+                    objConection.cerrarCN();
                 }
                 else
                 {
                     idColor = ((ComboItem)cbColor.SelectedItem).Id;
                 }
 
-                // Insertamos los datos dentro de la BD
+                int maxProductoEstadoId = GetMaxProductoEstadoID() + 1;
+
+                string queryEstado = "INSERT INTO " + objConection.namedb() + ".ProductoEstado (idProductoEstado) VALUES (@idProductoEstado);";
+                objConection.cerrarCN();
+                using (MySqlCommand comandoEstado = new MySqlCommand(queryEstado, objConection.establecerCN()))
+                {
+                    comandoEstado.Parameters.AddWithValue("@idProductoEstado", maxProductoEstadoId);
+                    try
+                    {
+                        comandoEstado.ExecuteNonQuery();
+                        objConection.cerrarCN();
+                    }
+                    catch (MySqlException ex)
+                    {
+                        MessageBox.Show("Error al insertar ProductoEstado: " + ex.Message);
+                        return;
+                    }
+                    finally
+                    {
+                        objConection.cerrarCN();
+                    }
+                }
+
                 for (int i = 0; i < cantidad; i++)
                 {
                     objConection.cerrarCN();
 
                     string CodBarras = CrearCodigoBarras();
+                    int idTalla = ((ComboItem)cbTalla.SelectedItem).Id;
+                    int idNombreProducto = string.IsNullOrWhiteSpace(cbNombre.Text) ? IdnombreProducto : ((ComboItem)cbNombre.SelectedItem).Id;
+                    DateTime now = DateTime.Now;
+                    string fechahora = now.ToString("yyyy-MM-dd HH:mm:ss");
 
                     string query2 = "INSERT INTO " + objConection.namedb() + ".producto (idproducto, abono, precio, nombreProducto_idnombreProducto, color_idcolor, talla_idtalla, detalles, imagen, fechaCodigo) " +
-                        "VALUES (@codigo, @abono, @precio, @idNombreProducto, @idColor, @idTalla, @detalles, @imagen, @fecha)";
+                                    "VALUES (@codigo, @abono, @precio, @idNombreProducto, @idColor, @idTalla, @detalles, @imagen, @fecha);";
+                    objConection.cerrarCN();
                     using (MySqlCommand comando = new MySqlCommand(query2, objConection.establecerCN()))
                     {
-                        // Obtenemos el ID seleccionado de cada ComboBox
-                        int idTalla = ((ComboItem)cbTalla.SelectedItem).Id;
-                        int idNombreProducto = string.IsNullOrWhiteSpace(cbNombre.Text) ? IdnombreProducto : ((ComboItem)cbNombre.SelectedItem).Id;
-
-                        // Obtiene la fecha y hora actual
-                        DateTime now = DateTime.Now;
-                        string fechahora = now.ToString("yyyy-MM-dd HH:mm:ss");
-
-                        // Agregar los parámetros al comando
                         comando.Parameters.AddWithValue("@codigo", CodBarras);
                         comando.Parameters.AddWithValue("@abono", txtPrecio.Text);
                         comando.Parameters.AddWithValue("@precio", txtPrecio.Text);
@@ -305,20 +343,43 @@ namespace LoginSasteria
                         try
                         {
                             comando.ExecuteNonQuery();
-                            //MessageBox.Show("Producto ingresado correctamente");
+                            objConection.cerrarCN();
+
+                            string queryRelacion = "INSERT INTO " + objConection.namedb() + ".producto_has_ProductoEstado (producto_idproducto, ProductoEstado_idProductoEstado) VALUES (@idProducto, @idProductoEstado);";
+                            objConection.cerrarCN();
+                            using (MySqlCommand comandoRelacion = new MySqlCommand(queryRelacion, objConection.establecerCN()))
+                            {
+                                comandoRelacion.Parameters.AddWithValue("@idProducto", CodBarras); // Usar el CodBarras generado como idProducto
+                                comandoRelacion.Parameters.AddWithValue("@idProductoEstado", maxProductoEstadoId);
+
+                                try
+                                {
+                                    comandoRelacion.ExecuteNonQuery();
+                                    objConection.cerrarCN();
+                                }
+                                catch (MySqlException ex)
+                                {
+                                    MessageBox.Show("Error al insertar la relación producto_has_ProductoEstado: " + ex.Message);
+                                    return;
+                                }
+                                finally
+                                {
+                                    objConection.cerrarCN();
+                                }
+                            }
                         }
                         catch (Exception ex)
                         {
-                            // Manejar cualquier error aquí
                             MessageBox.Show("Error al ingresar los datos" + ex);
                         }
                         finally
                         {
-                            // Cerrar la conexión
                             objConection.cerrarCN();
                         }
                     }
+                    objConection.cerrarCN();
                 }
+
                 MessageBox.Show("Se han creado exitosamente " + txtCantidad.Text + " códigos de barras únicos para el producto ingresado");
                 objConection.cerrarCN();
             }
@@ -329,6 +390,7 @@ namespace LoginSasteria
 
             Limpiar();
             CargarDatos();
+
         }
 
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
