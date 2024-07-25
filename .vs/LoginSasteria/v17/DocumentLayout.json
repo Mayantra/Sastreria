@@ -3,15 +3,19 @@
   "WorkspaceRootPath": "C:\\Users\\isaac\\source\\repos\\LoginSasteria\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|c:\\users\\isaac\\source\\repos\\loginsasteria\\loginsasteria\\conexiondb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\conexiondb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|c:\\users\\isaac\\source\\repos\\loginsasteria\\loginsasteria\\crearencargoinventario.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\crearencargoinventario.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|c:\\users\\isaac\\source\\repos\\loginsasteria\\loginsasteria\\crearencargoabonos.xaml||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\crearencargoabonos.xaml||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|c:\\users\\isaac\\source\\repos\\loginsasteria\\loginsasteria\\crearencargoabonos.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|c:\\users\\isaac\\source\\repos\\loginsasteria\\loginsasteria\\crearencargoinventario.xaml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\crearencargoinventario.xaml||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|C:\\Users\\isaac\\source\\repos\\LoginSasteria\\loginsasteria\\crearencargoabonos.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\crearencargoabonos.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -26,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -35,19 +39,18 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ConexionDB.cs",
-              "DocumentMoniker": "C:\\Users\\isaac\\source\\repos\\LoginSasteria\\LoginSasteria\\ConexionDB.cs",
-              "RelativeDocumentMoniker": "LoginSasteria\\ConexionDB.cs",
-              "ToolTip": "C:\\Users\\isaac\\source\\repos\\LoginSasteria\\LoginSasteria\\ConexionDB.cs",
-              "RelativeToolTip": "LoginSasteria\\ConexionDB.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAgAAAAYAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-23T01:35:48.492Z",
+              "Title": "CrearEncargoInventario.xaml",
+              "DocumentMoniker": "C:\\Users\\isaac\\source\\repos\\LoginSasteria\\LoginSasteria\\CrearEncargoInventario.xaml",
+              "RelativeDocumentMoniker": "LoginSasteria\\CrearEncargoInventario.xaml",
+              "ToolTip": "C:\\Users\\isaac\\source\\repos\\LoginSasteria\\LoginSasteria\\CrearEncargoInventario.xaml",
+              "RelativeToolTip": "LoginSasteria\\CrearEncargoInventario.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-07-25T01:41:36.237Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "CrearEncargoAbonos.xaml.cs",
               "DocumentMoniker": "C:\\Users\\isaac\\source\\repos\\LoginSasteria\\LoginSasteria\\CrearEncargoAbonos.xaml.cs",
               "RelativeDocumentMoniker": "LoginSasteria\\CrearEncargoAbonos.xaml.cs",
@@ -60,7 +63,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "CrearEncargoAbonos.xaml",
               "DocumentMoniker": "C:\\Users\\isaac\\source\\repos\\LoginSasteria\\LoginSasteria\\CrearEncargoAbonos.xaml",
               "RelativeDocumentMoniker": "LoginSasteria\\CrearEncargoAbonos.xaml",
@@ -102,6 +105,40 @@
               "ViewState": "AQIAAH4AAAAAAAAAAAAAwJEAAAALAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2024-06-28T07:17:05.269Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "FloatingWindowState": {
+        "Id": "9967a5ae-c3e9-4467-829e-f710bd8a1fc9",
+        "Display": 1,
+        "X": 452,
+        "Y": 180,
+        "Width": 800,
+        "Height": 600,
+        "WindowState": 0
+      },
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CrearEncargoInventario.xaml",
+              "DocumentMoniker": "C:\\Users\\isaac\\source\\repos\\LoginSasteria\\LoginSasteria\\CrearEncargoInventario.xaml",
+              "RelativeDocumentMoniker": "LoginSasteria\\CrearEncargoInventario.xaml",
+              "ToolTip": "C:\\Users\\isaac\\source\\repos\\LoginSasteria\\LoginSasteria\\CrearEncargoInventario.xaml",
+              "RelativeToolTip": "LoginSasteria\\CrearEncargoInventario.xaml",
+              "ViewState": "AQIAAIcAAAAAAAAAAAAAwJgAAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-07-25T01:45:10.151Z",
               "EditorCaption": ""
             }
           ]
