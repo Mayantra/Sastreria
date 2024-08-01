@@ -22,6 +22,7 @@ namespace LoginSasteria
     public partial class CrearEncargoInventario : Window
     {
         ConexionDB cn = new ConexionDB();
+        List<string> productoIds = new List<string>();
         public CrearEncargoInventario()
         {
             InitializeComponent();
@@ -37,56 +38,88 @@ namespace LoginSasteria
         }
 
         private void LeerCodigoBarras(object sender, KeyEventArgs e)
-        {            
+        {
             if (e.Key == Key.Enter)
             {
                 buscarEncargo(txVerificar.Text);
+                txVerificar.Clear();
             }
         }
 
-        private Boolean buscarEncargo(string codigo)
+        private void buscarEncargo(string codigo)
         {
-            
-            string query = "SELECT count(producto_idproducto) FROM "+cn.namedb()+".inventario where producto_idproducto = '"+codigo+"';";
+
+
+            string query = "SELECT producto_idproducto FROM " + cn.namedb() + ".EncargoProducto " +
+                "where Encargo_idEncargo='" + codigo + "' and estadoEncargo = '0';";
+            string queryCheck = "SELECT * FROM " + cn.namedb() + ".EncargoProducto " +
+                "WHERE Encargo_idEncargo='" + codigo + "';";
 
             try
             {
                 cn.cerrarCN();
-                MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
-                MySqlDataReader myread;
-
-                myread = comando.ExecuteReader();
-                int dato = 0;
-                while (myread.Read())
+                MySqlCommand comandoCheck = new MySqlCommand(queryCheck, cn.establecerCN());
+                MySqlDataReader readerCheak = comandoCheck.ExecuteReader();
+                if (!readerCheak.HasRows)
                 {
-
-                    dato = myread.GetInt32(0);
-
-                }
-                myread.Close();
-                cn.cerrarCN();
-                if (dato > 0)
-                {
-                    txEstados.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#09594D"));
-                    txEstados.Text = "El producto se encuentra en el inventario";
-                    return true;             
-
+                    MessageBox.Show("El código no existe o es incorrecto");
                 }
                 else
                 {
-                    txEstados.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#590E09"));
-                    txEstados.Text = "El producto aún NO está listo";
-                    return false;
+                    cn.cerrarCN();
+                    MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
+                    MySqlDataReader reader = comando.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            string productoId = reader.GetString("producto_idproducto");
+                            productoIds.Add(productoId);
+
+
+                        }
+                        string products = "";
+
+                        foreach (string id in productoIds)
+                        {
+                            products += "\n" + id;
+                        }
+                        RichEstados.Document.Blocks.Clear();
+                        RichEstados.AppendText("El encargo aún no está listo, faltan " + productoIds.Count + " códigos:" +
+                            products);
+
+
+                    }
+                    else
+                    {
+                        RichEstados.Document.Blocks.Clear();
+                        RichEstados.Background = new SolidColorBrush(Colors.LightGreen);
+                        RichEstados.Foreground = new SolidColorBrush(Colors.Black);
+                        RichEstados.FontSize = 45;
+                        RichEstados.AppendText("EL ENCARGO ESTÁ LISTO");
+                    }
+
+
+
+
                 }
-                       
+
+
+
 
             }
-            catch (Exception ex)
+            catch (MySqlException ex)
             {
                 MessageBox.Show(ex.Message);
-                return false;
+
 
             }
+            finally
+            {
+                cn.cerrarCN();
+
+            }
+
 
 
         }
@@ -143,6 +176,13 @@ namespace LoginSasteria
         private void abrirEncargoAbonos(object sender, RoutedEventArgs e)
         {
             CrearEncargoAbonos abrir = new CrearEncargoAbonos();
+            abrir.Show();
+            this.Close();
+        }
+
+        private void AbrirRecepcion(object sender, RoutedEventArgs e)
+        {
+            rebibirEncargoInv abrir = new rebibirEncargoInv();
             abrir.Show();
             this.Close();
         }
