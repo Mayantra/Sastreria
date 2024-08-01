@@ -53,6 +53,7 @@ namespace LoginSasteria
                 table.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
                 //table.SetBackgroundColor(customColor);//agregamos color con este
                 // Crear celdas para los elementos
+                Cell noContableCell = new Cell();
                 Cell detallesCell = new Cell();
                 Cell imagenCell = new Cell();
                 Cell codigos = new Cell();
@@ -64,6 +65,10 @@ namespace LoginSasteria
 
                 codigos.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
 
+                iText.Layout.Element.Paragraph noContable = new iText.Layout.Element.Paragraph("ESTE DOCUMENTO NO CONSTITUYE A UN COMPROBANTE CONTABLE OFICIAL");
+                noContableCell.Add(noContable);
+                noContableCell.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
+                noContableCell.SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER);
 
                 iText.Layout.Element.Paragraph detalles = new iText.Layout.Element.Paragraph(DataDetalles);
                 detallesCell.Add(detalles);
@@ -202,6 +207,7 @@ namespace LoginSasteria
 
 
                 // Agregar las tabla al documento
+                document.Add(noContableCell);
                 document.Add(table);
                 document.Add(EmpleadoCliente);
                 document.Add(productos);

@@ -17,32 +17,10 @@ namespace LoginSasteria
         public static string username = "hismanreina_isa";
         public static string password = "Isaac@17Isaac@17";
         public static string port = "3306";
-        public static string conexion = "server=" + servidor + ";" + "port=" + port + ";" + "user id=" + username + ";"
-            + "password=" + password + ";" + "database=" + db + ";";
+        public static string conexion = $"server={servidor};port={port};user id={username};password={password};database={db};";
 
-        MySqlConnection con = new MySqlConnection(conexion);
-        /*string conexion = "server=" + servidor + ";" + "port=" + port+";" + "user id=" + username + ";"
-            + "password="+password+";"+"database="+db+";";
+        private static MySqlConnection con = new MySqlConnection(conexion);
         
-        public MySqlConnection establecerCN()
-        {
-            try
-            {
-                con.ConnectionString = conexion;
-                con.Open();
-                //MessageBox.Show("Data Base Conection Already");
-            }
-            catch (MySqlException e){
-                MessageBox.Show("Error al conectarse a la base de datos"+e.ToString());
-            }
-            return con;
-        }
-        public MySqlConnection cerrarCN()
-        {
-            con.Close();
-            return con;
-        }*/
-
         
 
         public MySqlConnection establecerCN()
@@ -74,3 +52,29 @@ namespace LoginSasteria
 
     }
 }
+
+
+
+
+
+/*string conexion = "server=" + servidor + ";" + "port=" + port+";" + "user id=" + username + ";"
+            + "password="+password+";"+"database="+db+";";
+        
+        public MySqlConnection establecerCN()
+        {
+            try
+            {
+                con.ConnectionString = conexion;
+                con.Open();
+                //MessageBox.Show("Data Base Conection Already");
+            }
+            catch (MySqlException e){
+                MessageBox.Show("Error al conectarse a la base de datos"+e.ToString());
+            }
+            return con;
+        }
+        public MySqlConnection cerrarCN()
+        {
+            con.Close();
+            return con;
+        }*/

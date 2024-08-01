@@ -233,9 +233,10 @@ namespace LoginSasteria
         private void GenerarActualizacion(string code, double abonoNuevo)
         {
             DateTime now = DateTime.Now;
-            string fechahora = now.ToString("yyyy-MM-dd HH:mm:ss");
-            string DetallesNuevos = (Detalles + " Se hizo un abono de Q "+ abonoNuevo+ " Sobre el total Q " + TotalEncargo+
-                " El día "+ fechahora);
+            string fechahora = now.ToString("dddd-MMMM-yyyy HH:mm:ss");
+            string totalresiduo = (TotalEncargo-abonoNuevo).ToString();
+            string DetallesNuevos = (Detalles + " El día " + fechahora +" Se hace un abono de Q " + abonoNuevo+ " Sobre el total Q " + TotalEncargo+
+                " Faltan "+totalresiduo+" por abonar");
 
             string queryEncargo = "UPDATE `"+cn.namedb()+"`.`Encargo` SET `Detalles` = '"+DetallesNuevos+"' " +
                 "WHERE (`idEncargo` = '"+code+"');";

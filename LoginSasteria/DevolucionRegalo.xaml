@@ -246,7 +246,7 @@ BorderThickness="{TemplateBinding BorderThickness}">
             Padding="10" FontSize="16" KeyDown="LeerCodigoBarras"/>
         <TextBox x:Name="txProducto" HorizontalAlignment="Left" Height="55" Margin="230,480,0,0" 
             Template="{StaticResource TextBoxBaseControlTemplate}"
-            TextWrapping="Wrap"  VerticalAlignment="Top" Width="530" BorderBrush="{x:Null}" SelectionBrush="#FF74EFFF"
+            VerticalAlignment="Top" Width="530" BorderBrush="{x:Null}" SelectionBrush="#FF74EFFF" HorizontalContentAlignment="Center"
             Padding="10" FontSize="16" KeyDown="AgregarProducto" IsEnabled="False"/>
         <TextBlock x:Name="txTotalFac" HorizontalAlignment="Left" Height="54"
                    Foreground="White"
