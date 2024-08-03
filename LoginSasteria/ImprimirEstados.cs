@@ -31,7 +31,7 @@ namespace LoginSasteria
 {
     internal class ImprimirEstados
     {
-        public void ImprimirEstadoCuentas(DataTable DataProductos, string Total)
+        public void ImprimirEstadoCuentas(DataTable DataProductos, string Total, string Detalles)
         {
             
             using (MemoryStream ms = new MemoryStream())
@@ -49,6 +49,7 @@ namespace LoginSasteria
                 table.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
 
                 Cell imagenCell = new Cell();
+                Cell DetalllesCell = new Cell();
                 //imagen
                 iText.Layout.Element.Image img = new iText.Layout.Element.Image(ImageDataFactory.Create("../../LogoBlack.png"));
                 img.ScaleToFit(225f, 225f); // Ajustar el tamaño de la imagen si es necesario
@@ -91,11 +92,49 @@ namespace LoginSasteria
                 celdaTotal.SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER);
                 celdaTotal.SetFontSize(20);
 
+                iText.Layout.Element.Paragraph pDetalles = new iText.Layout.Element.Paragraph(Detalles);
+                DetalllesCell.Add(pDetalles);
+                DetalllesCell.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
+                DetalllesCell.SetFontSize(12);
+                DetalllesCell.SetMargin(25);
 
+                iText.Layout.Element.Table tableFirmas = new iText.Layout.Element.Table(3).UseAllAvailableWidth();
+                Cell cellEmisor = new Cell();
+                Cell Separador = new Cell();
+                Cell cellReceptor = new Cell();
+                iText.Layout.Element.Paragraph pEmisor = new iText.Layout.Element.Paragraph("Firma del Emisor").SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER);
+                cellEmisor.Add(pEmisor);
+                cellEmisor.SetBorderTop(new SolidBorder(ColorConstants.BLACK, 1));
+
+                iText.Layout.Element.Paragraph pSeparador = new iText.Layout.Element.Paragraph("     \t\t      ").SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER);
+                Separador.Add(pSeparador);
+
+
+                iText.Layout.Element.Paragraph pReceptor = new iText.Layout.Element.Paragraph("Firma del Receptor").SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER);
+
+                cellReceptor.Add(pReceptor);
+                cellReceptor.SetBorderTop(new SolidBorder(ColorConstants.BLACK, 1));
+
+                // Agregar las celdas a la tabla
+                tableFirmas.AddCell(cellEmisor);
+                tableFirmas.AddCell(Separador);
+                tableFirmas.AddCell(cellReceptor);
+
+                tableFirmas.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
+                tableFirmas.SetMarginTop(100);
+
+                Separador.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
+                cellEmisor.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
+                cellEmisor.SetMargin(25);
+                cellReceptor.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
+                cellReceptor.SetMargin(25);
                 // Agregar las tabla al documento
                 document.Add(table);
                 document.Add(productos);
                 document.Add(celdaTotal);
+                document.Add(pDetalles);
+                document.Add(tableFirmas);
+
 
 
 

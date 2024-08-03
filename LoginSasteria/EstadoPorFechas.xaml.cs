@@ -143,6 +143,7 @@ namespace LoginSasteria
                 "\r\nwhere FechaHora BETWEEN '"+fecha1+"' and '"+fecha2+" 23:59:59';";
             try
             {
+                cn.cerrarCN();
                 MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
                 MySqlDataAdapter data = new MySqlDataAdapter(comando);
                 DataTable tabla = new DataTable();
@@ -160,13 +161,14 @@ namespace LoginSasteria
         }
         public void consultaTotalFechas(string fecha1, string fecha2)
         {
-            string query = "SELECT sum(precio) as Monto FROM hismanreina_PruebasDBLeon.RegistroVenta " +
-                "\r\ninner join hismanreina_PruebasDBLeon.DetallesVenta ON DetallesVenta_idDetallesVenta = idDetallesVenta" +
-                "\r\ninner join hismanreina_PruebasDBLeon.producto ON producto_idproducto = idproducto" +
-                "\r\ninner join hismanreina_PruebasDBLeon.Empleado ON Empleado_idEmpleado = idEmpleado" +
+            string query = "SELECT sum(precio) as Monto FROM "+cn.namedb()+".RegistroVenta " +
+                "\r\ninner join "+cn.namedb()+".DetallesVenta ON DetallesVenta_idDetallesVenta = idDetallesVenta" +
+                "\r\ninner join "+cn.namedb()+".producto ON producto_idproducto = idproducto" +
+                "\r\ninner join "+cn.namedb()+".Empleado ON Empleado_idEmpleado = idEmpleado" +
                 "\r\nwhere FechaHora BETWEEN '"+fecha1+"' and '"+fecha2+" 23:59:59';";
             try
             {
+                cn.cerrarCN();
                 MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
                 MySqlDataReader reader = comando.ExecuteReader();
                 while (reader.Read())
@@ -192,7 +194,10 @@ namespace LoginSasteria
             }
             else {
                 ImprimirEstados imprimir = new ImprimirEstados();
-                imprimir.ImprimirEstadoCuentas(auxTable, txTotalFecha.Text);
+                imprimir.ImprimirEstadoCuentas(auxTable, txTotalFecha.Text, "");
+                estadoCuentaInventario abrir = new estadoCuentaInventario();
+                abrir.Show();
+                this.Close();
             }
             
         }

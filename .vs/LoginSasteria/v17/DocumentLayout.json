@@ -3,28 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\isaac\\source\\repos\\Sastreria\\Sastreria\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|c:\\users\\isaac\\source\\repos\\sastreria\\sastreria\\loginsasteria\\devolucionregalo.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\devolucionregalo.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|c:\\users\\isaac\\source\\repos\\sastreria\\sastreria\\loginsasteria\\imprimirestados.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\imprimirestados.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|c:\\users\\isaac\\source\\repos\\sastreria\\sastreria\\loginsasteria\\devolucionregalo.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\devolucionregalo.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|c:\\users\\isaac\\source\\repos\\sastreria\\sastreria\\loginsasteria\\estadoporfechas.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\estadoporfechas.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|c:\\users\\isaac\\source\\repos\\sastreria\\sastreria\\loginsasteria\\conexiondb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\conexiondb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|c:\\users\\isaac\\source\\repos\\sastreria\\sastreria\\loginsasteria\\estadoporfechas.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\estadoporfechas.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|c:\\users\\isaac\\source\\repos\\sastreria\\sastreria\\loginsasteria\\devolucionregalo.xaml||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\devolucionregalo.xaml||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|c:\\users\\isaac\\source\\repos\\sastreria\\sastreria\\loginsasteria\\estadoporclientes.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\estadoporclientes.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|c:\\users\\isaac\\source\\repos\\sastreria\\sastreria\\loginsasteria\\rebibirencargoinv.xaml||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\rebibirencargoinv.xaml||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|c:\\users\\isaac\\source\\repos\\sastreria\\sastreria\\loginsasteria\\estadoporclientes.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\estadoporclientes.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|C:\\Users\\isaac\\source\\repos\\Sastreria\\Sastreria\\loginsasteria\\crearencargoinventario.xaml||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\crearencargoinventario.xaml||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|c:\\users\\isaac\\source\\repos\\sastreria\\sastreria\\loginsasteria\\estadocuentainventario.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\estadocuentainventario.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,121 +42,77 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ConexionDB.cs",
-              "DocumentMoniker": "C:\\Users\\isaac\\source\\repos\\Sastreria\\Sastreria\\LoginSasteria\\ConexionDB.cs",
-              "RelativeDocumentMoniker": "LoginSasteria\\ConexionDB.cs",
-              "ToolTip": "C:\\Users\\isaac\\source\\repos\\Sastreria\\Sastreria\\LoginSasteria\\ConexionDB.cs",
-              "RelativeToolTip": "LoginSasteria\\ConexionDB.cs",
-              "ViewState": "AQIAABEAAAAAAAAAAAAQwCgAAAAJAAAA",
+              "DocumentIndex": 0,
+              "Title": "ImprimirEstados.cs",
+              "DocumentMoniker": "C:\\Users\\isaac\\source\\repos\\Sastreria\\Sastreria\\LoginSasteria\\ImprimirEstados.cs",
+              "RelativeDocumentMoniker": "LoginSasteria\\ImprimirEstados.cs",
+              "ToolTip": "C:\\Users\\isaac\\source\\repos\\Sastreria\\Sastreria\\LoginSasteria\\ImprimirEstados.cs",
+              "RelativeToolTip": "LoginSasteria\\ImprimirEstados.cs",
+              "ViewState": "AQIAAGAAAAAAAAAAAAAwwGwAAABpAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-01T04:59:22.026Z",
+              "WhenOpened": "2024-08-03T02:22:21.698Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "DevolucionRegalo.xaml",
-              "DocumentMoniker": "C:\\Users\\isaac\\source\\repos\\Sastreria\\Sastreria\\LoginSasteria\\DevolucionRegalo.xaml",
-              "RelativeDocumentMoniker": "LoginSasteria\\DevolucionRegalo.xaml",
-              "ToolTip": "C:\\Users\\isaac\\source\\repos\\Sastreria\\Sastreria\\LoginSasteria\\DevolucionRegalo.xaml",
-              "RelativeToolTip": "LoginSasteria\\DevolucionRegalo.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-08-01T04:17:55.354Z",
+              "Title": "EstadoPorFechas.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\isaac\\source\\repos\\Sastreria\\Sastreria\\LoginSasteria\\EstadoPorFechas.xaml.cs",
+              "RelativeDocumentMoniker": "LoginSasteria\\EstadoPorFechas.xaml.cs",
+              "ToolTip": "C:\\Users\\isaac\\source\\repos\\Sastreria\\Sastreria\\LoginSasteria\\EstadoPorFechas.xaml.cs",
+              "RelativeToolTip": "LoginSasteria\\EstadoPorFechas.xaml.cs",
+              "ViewState": "AQIAAKQAAAAAzMzMzMwowKoAAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-03T02:19:33.864Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "DevolucionRegalo.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\isaac\\source\\repos\\Sastreria\\Sastreria\\LoginSasteria\\DevolucionRegalo.xaml.cs",
-              "RelativeDocumentMoniker": "LoginSasteria\\DevolucionRegalo.xaml.cs",
-              "ToolTip": "C:\\Users\\isaac\\source\\repos\\Sastreria\\Sastreria\\LoginSasteria\\DevolucionRegalo.xaml.cs",
-              "RelativeToolTip": "LoginSasteria\\DevolucionRegalo.xaml.cs",
-              "ViewState": "AQIAADcBAAAAAAAAAADwv0MBAAARAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-01T04:18:00.366Z",
+              "DocumentIndex": 2,
+              "Title": "EstadoPorFechas.xaml",
+              "DocumentMoniker": "C:\\Users\\isaac\\source\\repos\\Sastreria\\Sastreria\\LoginSasteria\\EstadoPorFechas.xaml",
+              "RelativeDocumentMoniker": "LoginSasteria\\EstadoPorFechas.xaml",
+              "ToolTip": "C:\\Users\\isaac\\source\\repos\\Sastreria\\Sastreria\\LoginSasteria\\EstadoPorFechas.xaml",
+              "RelativeToolTip": "LoginSasteria\\EstadoPorFechas.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-08-03T02:19:28.937Z",
               "EditorCaption": ""
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "Orientation": 0,
-      "VerticalTabListWidth": 256,
-      "FloatingWindowState": {
-        "Id": "71375407-6c90-4018-9dcb-692b1289e541",
-        "Display": 1,
-        "X": 320,
-        "Y": 132,
-        "Width": 800,
-        "Height": 600,
-        "WindowState": 2
-      },
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
+            },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "rebibirEncargoInv.xaml",
-              "DocumentMoniker": "C:\\Users\\isaac\\source\\repos\\Sastreria\\Sastreria\\LoginSasteria\\rebibirEncargoInv.xaml",
-              "RelativeDocumentMoniker": "LoginSasteria\\rebibirEncargoInv.xaml",
-              "ToolTip": "C:\\Users\\isaac\\source\\repos\\Sastreria\\Sastreria\\LoginSasteria\\rebibirEncargoInv.xaml",
-              "RelativeToolTip": "LoginSasteria\\rebibirEncargoInv.xaml",
-              "ViewState": "AQIAAOEAAAAAAAAAAAAAwPEAAAAMAAAA",
+              "Title": "EstadoPorClientes.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\isaac\\source\\repos\\Sastreria\\Sastreria\\LoginSasteria\\EstadoPorClientes.xaml.cs",
+              "RelativeDocumentMoniker": "LoginSasteria\\EstadoPorClientes.xaml.cs",
+              "ToolTip": "C:\\Users\\isaac\\source\\repos\\Sastreria\\Sastreria\\LoginSasteria\\EstadoPorClientes.xaml.cs",
+              "RelativeToolTip": "LoginSasteria\\EstadoPorClientes.xaml.cs",
+              "ViewState": "AQIAADsBAAAAmJmZmZkZwEQBAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-02T19:37:27.201Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "EstadoPorClientes.xaml",
+              "DocumentMoniker": "C:\\Users\\isaac\\source\\repos\\Sastreria\\Sastreria\\LoginSasteria\\EstadoPorClientes.xaml",
+              "RelativeDocumentMoniker": "LoginSasteria\\EstadoPorClientes.xaml",
+              "ToolTip": "C:\\Users\\isaac\\source\\repos\\Sastreria\\Sastreria\\LoginSasteria\\EstadoPorClientes.xaml",
+              "RelativeToolTip": "LoginSasteria\\EstadoPorClientes.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-08-01T01:47:42.739Z",
+              "WhenOpened": "2024-08-02T19:37:18.238Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "CrearEncargoInventario.xaml",
-              "DocumentMoniker": "C:\\Users\\isaac\\source\\repos\\Sastreria\\Sastreria\\LoginSasteria\\CrearEncargoInventario.xaml",
-              "RelativeDocumentMoniker": "LoginSasteria\\CrearEncargoInventario.xaml",
-              "ToolTip": "C:\\Users\\isaac\\source\\repos\\Sastreria\\Sastreria\\LoginSasteria\\CrearEncargoInventario.xaml",
-              "RelativeToolTip": "LoginSasteria\\CrearEncargoInventario.xaml",
-              "ViewState": "AQIAACYAAAAAAAAAAAAAwDkAAAAJAAAA",
+              "Title": "estadoCuentaInventario.xaml",
+              "DocumentMoniker": "C:\\Users\\isaac\\source\\repos\\Sastreria\\Sastreria\\LoginSasteria\\estadoCuentaInventario.xaml",
+              "RelativeDocumentMoniker": "LoginSasteria\\estadoCuentaInventario.xaml",
+              "ToolTip": "C:\\Users\\isaac\\source\\repos\\Sastreria\\Sastreria\\LoginSasteria\\estadoCuentaInventario.xaml",
+              "RelativeToolTip": "LoginSasteria\\estadoCuentaInventario.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-08-01T01:42:22.917Z",
-              "EditorCaption": ""
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "Orientation": 0,
-      "VerticalTabListWidth": 256,
-      "FloatingWindowState": {
-        "Id": "937532a3-80b6-451a-ab58-a12d14b0a5c8",
-        "Display": 1,
-        "X": 365,
-        "Y": 175,
-        "Width": 800,
-        "Height": 600,
-        "WindowState": 2
-      },
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "DevolucionRegalo.xaml",
-              "DocumentMoniker": "C:\\Users\\isaac\\source\\repos\\Sastreria\\Sastreria\\LoginSasteria\\DevolucionRegalo.xaml",
-              "RelativeDocumentMoniker": "LoginSasteria\\DevolucionRegalo.xaml",
-              "ToolTip": "C:\\Users\\isaac\\source\\repos\\Sastreria\\Sastreria\\LoginSasteria\\DevolucionRegalo.xaml",
-              "RelativeToolTip": "LoginSasteria\\DevolucionRegalo.xaml",
-              "ViewState": "AQIAAOUAAAAAAAAAAAAlwPkAAABUAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-08-01T04:31:34.911Z",
+              "WhenOpened": "2024-08-02T19:31:18.23Z",
               "EditorCaption": ""
             }
           ]
