@@ -20,6 +20,7 @@ namespace LoginSasteria
     /// </summary>
     public partial class mainInventario : Window
     {
+        ConexionDB objConection = new ConexionDB();
         public mainInventario()
         {
             InitializeComponent();
@@ -50,6 +51,7 @@ namespace LoginSasteria
 
         void cargarUser()
         {
+            objConection.cerrarCN();
             leerPass user = new leerPass();
 
             string usuario = user.getUser();
@@ -142,6 +144,7 @@ namespace LoginSasteria
         private void btnCerrarSesion_Click(object sender, RoutedEventArgs e)
         {
             MainWindow abrir = new MainWindow();
+            objConection.cerrarCN();
             MessageBox.Show("Carrando sesion...");
             abrir.Show();
             this.Close();

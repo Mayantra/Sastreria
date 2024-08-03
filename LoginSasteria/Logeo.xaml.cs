@@ -27,7 +27,7 @@ namespace LoginSasteria
         }
         
         void acceso()
-        {                     
+        {
             for (int i = 0; i <= PassBox.Password.Length; i++)
             {
                 if (i == 5)

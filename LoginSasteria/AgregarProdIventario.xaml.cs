@@ -32,6 +32,7 @@ namespace LoginSasteria
 
         public AgregarProdIventario()
         {
+            objConection.cerrarCN();
             InitializeComponent();
             CargarDatos();
             cargarUser();
@@ -65,16 +66,19 @@ namespace LoginSasteria
 
         void cargarUser()
         {
+            objConection.cerrarCN();
             leerPass user = new leerPass();
             string usuario = user.getUser();
             txtEmpleado.Text = usuario;
 
             leerPass iduser = new leerPass();
             _idUsuario = iduser.getIDuser(); // Almacena el ID del usuario en el campo.
+            objConection.cerrarCN();
         }
 
         void CargarDatos()
         {
+            objConection.cerrarCN();
             try
             {
                 //Vamos a traer todo de la tabla almacen
@@ -107,6 +111,7 @@ namespace LoginSasteria
             {
                 MessageBox.Show("Error al cargar los datos: " + x);
             }
+            objConection.cerrarCN();
         }
 
         void timer_Tick(object sender, EventArgs e)
@@ -127,6 +132,7 @@ namespace LoginSasteria
 
         private void btnSalir(object sender, RoutedEventArgs e)
         {
+            objConection.cerrarCN();
             this.Close();
         }
 
@@ -151,6 +157,7 @@ namespace LoginSasteria
         private bool VerificarProductoEnRegistroVenta(string codigoProducto)
         {
             string queryVerificacion = "SELECT COUNT(*) FROM " + objConection.namedb() + ".RegistroVenta WHERE `producto_idproducto` = @productoId";
+            objConection.cerrarCN();
             using (MySqlCommand comandoVerificacion = new MySqlCommand(queryVerificacion, objConection.establecerCN()))
             {
                 comandoVerificacion.Parameters.AddWithValue("@productoId", codigoProducto);
@@ -164,6 +171,7 @@ namespace LoginSasteria
         private bool VerificarProductoExistente(string codigoProducto)
         {
             string queryVerificacion = "SELECT COUNT(*) FROM " + objConection.namedb() + ".inventario WHERE `producto_idproducto` = @productoId";
+            objConection.cerrarCN();
             using (MySqlCommand comandoVerificacion = new MySqlCommand(queryVerificacion, objConection.establecerCN()))
             {
                 comandoVerificacion.Parameters.AddWithValue("@productoId", codigoProducto);
@@ -267,7 +275,7 @@ namespace LoginSasteria
                                 }
                             }
                         }
-
+                        objConection.cerrarCN();
                         // Consulta a la base de datos para obtener datos del producto
                         string queryProducto = "SELECT p.idproducto AS codigo, p.precio, np.Nombre AS Producto, c.nombre AS Color, t.nombreTalla AS Talla, p.detalles " +
                                                "FROM " + objConection.namedb() + ".producto AS p " +
@@ -351,7 +359,6 @@ namespace LoginSasteria
             }
             objConection.cerrarCN();
             txtCodBarras.Clear();
-            objConection.cerrarCN();
         }
 
         private void InsertarInventario(string codigoProducto)
@@ -359,6 +366,7 @@ namespace LoginSasteria
             string query = "INSERT INTO " + objConection.namedb() + ".inventario " +
                            "(`fechaIngreso`, `almacen_idalmacen`, `Empleado_idEmpleado`, `Proveedor_idProveedor`, `producto_idproducto`) " +
                            "VALUES (@fechaIngreso, @almacen, @empleado, @proveedor, @producto)";
+            objConection.cerrarCN();
             using (MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN()))
             {
                 // Obtenemos el ID seleccionado de cada ComboBox
@@ -378,6 +386,7 @@ namespace LoginSasteria
 
                 comando.ExecuteNonQuery();
             }
+            objConection.cerrarCN();
         }
 
         private void btnRegistrar_Click(object sender, RoutedEventArgs e)
@@ -406,8 +415,10 @@ namespace LoginSasteria
             else
             {
                 MessageBox.Show("Todos los productos fueron registrados correctamente.");
+                objConection.cerrarCN();
             }
             Limpiar();
+            objConection.cerrarCN();
         }
 
         private void btnCancelar_Click_1(object sender, RoutedEventArgs e)

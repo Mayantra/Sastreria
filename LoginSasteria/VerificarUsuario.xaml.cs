@@ -19,6 +19,7 @@ namespace LoginSasteria
     /// </summary>
     public partial class VerificarUsuario : Window
     {
+        ConexionDB objConection = new ConexionDB();
         InventarioInventario MenuInventario = new InventarioInventario();
         leerPass read = new leerPass();
 
@@ -29,12 +30,14 @@ namespace LoginSasteria
 
         private void CanelarLog(object sender, RoutedEventArgs e)
         {
+            objConection.cerrarCN();
             this.Close();
             MenuInventario.Show();
         }
 
         private void IniciarSesion(object sender, RoutedEventArgs e)
         {
+            objConection.cerrarCN();
             leerPass read = new leerPass();
             for (int i = 0; i <= PassBox.Password.Length; i++)
             {
@@ -45,6 +48,7 @@ namespace LoginSasteria
                     if (read.setPass(user, pass) != 0)
                     {
                         AgregarProdIventario abrirAgregarProducto = new AgregarProdIventario();
+                        objConection.cerrarCN();
                         abrirAgregarProducto.Show();
                         this.Close();
 
@@ -55,6 +59,7 @@ namespace LoginSasteria
                 }
 
             }
+            objConection.cerrarCN();
         }
     }
 }

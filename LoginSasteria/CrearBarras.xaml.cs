@@ -417,7 +417,7 @@ namespace LoginSasteria
             try
             {
                 //Vamos a traer todo de la tabla tipoproducto
-                string query = "SELECT * FROM " + objConection.namedb() + ".tipoProducto;";
+                string query = "SELECT * FROM " + objConection.namedb() + ".tipoProducto WHERE nombreTipo <> 'Encargo';";
                 MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN());
                 MySqlDataReader myReader = comando.ExecuteReader();
                 while (myReader.Read())
