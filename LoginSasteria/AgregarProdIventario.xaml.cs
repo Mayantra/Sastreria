@@ -337,6 +337,7 @@ namespace LoginSasteria
                                         MessageBox.Show("El código de barras ya ha sido escaneado.");
                                     }
 
+                                    txtCodBarras.Clear();
                                 }
                                 else
                                 {
@@ -358,7 +359,6 @@ namespace LoginSasteria
                 }
             }
             objConection.cerrarCN();
-            txtCodBarras.Clear();
         }
 
         private void InsertarInventario(string codigoProducto)
@@ -394,6 +394,14 @@ namespace LoginSasteria
             objConection.cerrarCN();
             List<string> errores = new List<string>();
             objConection.cerrarCN();
+            bool insercionExitosa = true;
+            // Verificar que los ComboBox no estén vacíos
+            if (cbAlmacen.SelectedItem == null || cbProveedor.SelectedItem == null)
+            {
+                MessageBox.Show("Por favor, selecciones un almacén y un proveedor antes de agregar un producto al inventario", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
+                insercionExitosa = false;
+                return;
+            }
 
             foreach (var codigoProducto in listaCodigosValidos)
             {
@@ -405,6 +413,7 @@ namespace LoginSasteria
                 catch (Exception ex)
                 {
                     errores.Add($"Error con el código {codigoProducto}: {ex.Message}");
+                    insercionExitosa = false;
                 }
             }
 
@@ -412,10 +421,9 @@ namespace LoginSasteria
             {
                 MessageBox.Show(string.Join("\n", errores));
             }
-            else
+            else if (insercionExitosa)
             {
                 MessageBox.Show("Todos los productos fueron registrados correctamente.");
-                objConection.cerrarCN();
             }
             Limpiar();
             objConection.cerrarCN();

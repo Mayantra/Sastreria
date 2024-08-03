@@ -24,6 +24,7 @@ namespace LoginSasteria
         ConexionDB objConection = new ConexionDB();
         public EliminarProdInventario()
         {
+            objConection.cerrarCN();
             InitializeComponent();
         }
 
@@ -34,25 +35,13 @@ namespace LoginSasteria
 
         private void btnSalir(object sender, RoutedEventArgs e)
         {
-            this.Close();
-        }
-
-        private void btnBarras_Click_1(object sender, RoutedEventArgs e)
-        {
-            crearBarrasMenu abrirMenuCrearBarras = new crearBarrasMenu();
-            abrirMenuCrearBarras.Show();
-            this.Close();
-        }
-
-        private void btnInicio_Click_1(object sender, RoutedEventArgs e)
-        {
-            mainInventario abrirmainInventario = new mainInventario();
-            abrirmainInventario.Show();
+            objConection.cerrarCN();
             this.Close();
         }
 
         private void btnCancelar_Click_1(object sender, RoutedEventArgs e)
         {
+            objConection.cerrarCN();
             InventarioInventario abrirMenuInventario = new InventarioInventario();
             abrirMenuInventario.Show();
             this.Close();
@@ -64,7 +53,7 @@ namespace LoginSasteria
             {
                 //Se verifica que el codigo exista en el inventario
                 string Query = "SELECT COUNT(*) FROM "+objConection.namedb()+".inventario WHERE producto_idproducto = @codigo";
-
+                objConection.cerrarCN();
                 using (MySqlCommand comando2 = new MySqlCommand(Query, objConection.establecerCN()))
                 {
                     comando2.Parameters.AddWithValue("@codigo", txtLeerBarras.Text);
@@ -87,7 +76,7 @@ namespace LoginSasteria
                         if (result == MessageBoxResult.Yes)
                         {
                             string query = "DELETE FROM "+objConection.namedb()+".inventario WHERE producto_idproducto = @codigo";
-
+                            objConection.cerrarCN();
                             using (MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN()))
                             {
                                 comando.Parameters.AddWithValue("@codigo", txtLeerBarras.Text);
@@ -107,6 +96,7 @@ namespace LoginSasteria
                                     txtLeerBarras.Clear();
                                 }
                             }
+                            objConection.cerrarCN();
                         }
                         else
                         {
@@ -116,6 +106,7 @@ namespace LoginSasteria
                         }
                     }
                 }
+                objConection.cerrarCN();
             }
         }
     }
