@@ -87,6 +87,7 @@ namespace LoginSasteria
             string query = "SELECT FechaHora FROM " + objConection.namedb() + ".DetallesVenta where idDetallesVenta='" + codigo + "';";
             try
             {
+                objConection.cerrarCN();
                 MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN());
                 MySqlDataReader reader = comando.ExecuteReader();
                 while (reader.Read())
@@ -148,6 +149,7 @@ namespace LoginSasteria
 
             try
             {
+                objConection.cerrarCN();
                 using (MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN()))
                 {
                     comando.Parameters.AddWithValue("@codigoFactura", codigoFactura);
@@ -183,6 +185,8 @@ namespace LoginSasteria
                 "where DetallesVenta_idDetallesVenta='" + codigo + "' order by producto_idproducto asc;";
             try
             {
+                objConection.cerrarCN();
+
                 MySqlCommand cmd = new MySqlCommand(query, objConection.establecerCN());
                 MySqlDataReader reader = cmd.ExecuteReader();
 
@@ -219,6 +223,8 @@ namespace LoginSasteria
 
             try
             {
+                objConection.cerrarCN();
+
                 using (MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN()))
                 {
                     comando.Parameters.AddWithValue("@codigoFactura", codigoFactura);
@@ -365,7 +371,7 @@ namespace LoginSasteria
             int ids = 0;
             try
             {
-
+                objConection.cerrarCN();
                 MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN());
                 MySqlDataReader dr = comando.ExecuteReader();
 
@@ -496,6 +502,7 @@ namespace LoginSasteria
                         "\r\nwhere idproducto = '" + code + "';";
                     try
                     {
+                        objConection.cerrarCN();
                         MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN());
                         MySqlDataAdapter data = new MySqlDataAdapter(comando);
 
@@ -597,7 +604,7 @@ namespace LoginSasteria
             try
             {
 
-
+                objConection.cerrarCN();
                 MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN());
                 MySqlDataReader dr = comando.ExecuteReader();
 
@@ -702,8 +709,9 @@ namespace LoginSasteria
             //creacion de funcion suma puntos
             MessageBox.Show("Devolución Realizada");
             GenerarFactura factura = new GenerarFactura();
+            double totalMenosTotal = totalNuevo -totalFactura;
             //GENERAR la FACTURA -------------------------------------------------------------------------*************
-            factura.GenerarDatosFactura(Detalles.ToString(), iduser, idClientes, tablaNueva, totalNuevo);
+            factura.GenerarDatosFactura(Detalles.ToString(), iduser, idClientes, tablaNueva, totalMenosTotal);
             //------------------------------------------------------------------------------------------------------
 
 
@@ -754,6 +762,7 @@ namespace LoginSasteria
             string query = "SELECT producto_idproducto FROM " + objConection.namedb() + ".inventario where producto_idproducto='" + productoInv + "';";
             try
             {
+                objConection.cerrarCN();
                 MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN());
                 MySqlDataReader myread;
 

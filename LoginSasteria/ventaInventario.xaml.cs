@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using iText.IO.Util;
+using MySql.Data.MySqlClient;
 using Mysqlx.Crud;
 using MySqlX.XDevAPI;
 using MySqlX.XDevAPI.Relational;
@@ -183,82 +184,94 @@ namespace LoginSasteria
                 "where idproducto='" + code + "'\r\n;";
                     try
                     {
-                        MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN());
-                        MySqlDataAdapter data = new MySqlDataAdapter(comando);
-
-                        //la fumanda mas grande del codigo creo XD
-
-                        data.Fill(tabla);
-                        if (tabla.Rows.Count < 1)//si el codigo es incorrecto
+                        if (verificarAbono(code) == true)
                         {
-                            MessageBox.Show("Ingrese un código de producto correcto");
+                            MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN());
+                            MySqlDataAdapter data = new MySqlDataAdapter(comando);
 
-                        }
-                        else
-                        {
-                            if (DataDatos.Items.Count == 0)//verificar si el datagrid tiene algo
+                            //la fumanda mas grande del codigo creo XD
+
+                            data.Fill(tabla);
+                            if (tabla.Rows.Count < 1)//si el codigo es incorrecto
                             {
+                                MessageBox.Show("Ingrese un código de producto correcto");
 
-                                DataDatos.DataContext = tabla;
-                                addlist(code);
                             }
                             else
                             {
 
-                                //obtener datos de filas y columnas de datagrid y datatable
-
-                                List<string> fila = new List<string>();
-                                fila.Clear();
-                                List<string> nombrecolumna = new List<string>();
-                                if (tabla.Columns.Count > 0)
+                                if (DataDatos.Items.Count == 0)//verificar si el datagrid tiene algo
                                 {
-                                    foreach (DataColumn columna in tabla.Columns)
-                                    {
-                                        nombrecolumna.Add(columna.ColumnName);
-                                    }
-                                }
-
-
-                                objConection.cerrarCN();
-                                MySqlCommand comando2 = new MySqlCommand(query, objConection.establecerCN());
-
-                                MySqlDataReader reader = comando2.ExecuteReader();
-
-                                if (reader.HasRows)//leer si query es correcto
-                                {
-
-                                    while (reader.Read())
-                                    {
-                                        int i = 0;
-                                        foreach (string dato in nombrecolumna)
-                                        {
-                                            fila.Add(reader.GetValue(i).ToString());
-                                            i++;
-                                        }
-                                    }
-
-
-                                    DataRow firstRow;
-                                    firstRow = tabla.NewRow();//crear una nueva fila
-
-                                    int j = 0;
-                                    foreach (string dato in nombrecolumna)//Asignar las celdas en cada columna
-                                    {
-                                        firstRow[dato] = fila[j];
-                                        j++;
-                                    }
 
                                     DataDatos.DataContext = tabla;
                                     addlist(code);
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Ingrese un código de producto correcto");
-                                }
-                            }
 
+                                    //obtener datos de filas y columnas de datagrid y datatable
+
+                                    List<string> fila = new List<string>();
+                                    fila.Clear();
+                                    List<string> nombrecolumna = new List<string>();
+                                    if (tabla.Columns.Count > 0)
+                                    {
+                                        foreach (DataColumn columna in tabla.Columns)
+                                        {
+                                            nombrecolumna.Add(columna.ColumnName);
+                                        }
+                                    }
+
+
+                                    objConection.cerrarCN();
+                                    MySqlCommand comando2 = new MySqlCommand(query, objConection.establecerCN());
+
+                                    MySqlDataReader reader = comando2.ExecuteReader();
+
+                                    if (reader.HasRows)//leer si query es correcto
+                                    {
+
+                                        while (reader.Read())
+                                        {
+                                            int i = 0;
+                                            foreach (string dato in nombrecolumna)
+                                            {
+                                                fila.Add(reader.GetValue(i).ToString());
+                                                i++;
+                                            }
+                                        }
+
+
+                                        DataRow firstRow;
+                                        firstRow = tabla.NewRow();//crear una nueva fila
+
+                                        int j = 0;
+                                        foreach (string dato in nombrecolumna)//Asignar las celdas en cada columna
+                                        {
+                                            firstRow[dato] = fila[j];
+                                            j++;
+                                        }
+
+                                        DataDatos.DataContext = tabla;
+                                        addlist(code);
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Ingrese un código de producto correcto");
+                                    }
+                                }
+
+
+
+
+                            }
+                            objConection.cerrarCN();
                         }
-                        objConection.cerrarCN();
+                        else
+                        {
+                            MessageBox.Show("LA VENTA NO SE PUEDE REALIZAR porque no se ha completado el Abono Correspondiente");
+                        }
+
                     }
                     catch (MySqlException x)
                     {
@@ -479,6 +492,41 @@ namespace LoginSasteria
             if (e.Key == Key.Enter)
             {
                 AgregarCodigo(null,null);
+            }
+        }
+        private Boolean verificarAbono(string code)
+        {
+            Boolean estado =false;
+            string query = "SELECT abono, precio FROM "+objConection.namedb()+".producto where idproducto='"+code+"';";
+            try
+            {
+                objConection.cerrarCN();
+                MySqlCommand comando  = new MySqlCommand(query, objConection.establecerCN());
+                MySqlDataReader reader = comando.ExecuteReader();
+                double totalQuery =0;
+                double abonoQuery = 0;
+                while (reader.Read()) {
+                    totalQuery = reader.GetDouble(0);
+                    abonoQuery = reader.GetDouble(1);
+                }
+                if (totalQuery != abonoQuery)
+                {
+                    estado = false;
+                }
+                else
+                {
+                    estado = true;
+                }
+                return estado;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.ToString());
+                return false;
+            }
+            finally
+            {
+                objConection.cerrarCN();
             }
         }
 
