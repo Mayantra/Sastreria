@@ -63,6 +63,18 @@ namespace LoginSasteria
 
         private void btnBuscar_Click(object sender, RoutedEventArgs e)
         {
+            // Verifica que todos los controles estén llenos
+            if (dpPrimeraFecha.SelectedDate == null ||
+                dpSegundaFecha.SelectedDate == null ||
+                string.IsNullOrEmpty(cbHoraInicio.Text) ||
+                string.IsNullOrEmpty(cbMinutosInicio.Text) ||
+                string.IsNullOrEmpty(cbHoraFin.Text) ||
+                string.IsNullOrEmpty(cbMinutosFin.Text))
+            {
+                MessageBox.Show("Por favor, complete todos los campos antes de realizar la búsqueda.", "Campos incompletos", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
             //Vamos a crear un DateTimePicker con los DatePicker y los ComboBox
             int horaPrimeraFecha = int.Parse(cbHoraInicio.Text);
             int minutosPrimeraFecha = int.Parse(cbMinutosInicio.Text);
@@ -83,7 +95,7 @@ namespace LoginSasteria
                 "p.detalles, p.fechaCodigo AS `Fecha_Creacion` FROM " + objConection.namedb() + ".producto AS p JOIN " + objConection.namedb() + ".nombreProducto AS np " +
                 "ON p.nombreProducto_idnombreProducto = np.idnombreProducto JOIN " + objConection.namedb() + ".color AS c ON p.color_idcolor = c.idcolor JOIN " + objConection.namedb() + ".talla AS t " +
                 "ON p.talla_idtalla = t.idtalla WHERE p.fechaCodigo BETWEEN @FechaInicio AND @FechaFin";
-
+            objConection.cerrarCN();
             using (MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN()))
             {
                 comando.Parameters.AddWithValue("@FechaInicio", fechaHoraInicio);
@@ -101,8 +113,46 @@ namespace LoginSasteria
             btnImprimir.IsEnabled = true;
         }
 
+        //Permite generar el codigo de barras
+        public byte[] GenerateBarcode(string data)
+        {
+            var writer = new BarcodeWriterPixelData
+            {
+                Format = BarcodeFormat.CODE_128,
+                Options = new EncodingOptions
+                {
+                    Height = 50, // Ajusta según sea necesario
+                    Width = 100, // Ajusta según sea necesario
+                    PureBarcode = true
+                }
+            };
+            objConection.cerrarCN();
+            var pixelData = writer.Write(data);
+            using (var bitmap = new Bitmap(pixelData.Width, pixelData.Height + 20))
+            using (var graphics = System.Drawing.Graphics.FromImage(bitmap))
+            using (var font = new Font(System.Drawing.FontFamily.GenericMonospace, 10))
+            using (var brush = new SolidBrush(System.Drawing.Color.Black))
+            using (var format = new StringFormat() { Alignment = System.Drawing.StringAlignment.Center })
+            using (var stream = new MemoryStream())
+            {
+                graphics.FillRectangle(System.Drawing.Brushes.White, 0, 0, bitmap.Width, bitmap.Height);
+                var barcodeBitmap = new Bitmap(pixelData.Width, pixelData.Height, PixelFormat.Format32bppArgb);
+                var bitmapData = barcodeBitmap.LockBits(new System.Drawing.Rectangle(0, 0, pixelData.Width, pixelData.Height), ImageLockMode.WriteOnly, PixelFormat.Format32bppArgb);
+                System.Runtime.InteropServices.Marshal.Copy(pixelData.Pixels, 0, bitmapData.Scan0, pixelData.Pixels.Length);
+                barcodeBitmap.UnlockBits(bitmapData);
+
+                graphics.DrawImage(barcodeBitmap, 1, 1);
+
+                graphics.DrawString(data, font, brush, bitmap.Width / 2, pixelData.Height, format);
+
+                bitmap.Save(stream, ImageFormat.Png);
+                return stream.ToArray();
+            }
+        }
+
         private void btnImprimir_Click(object sender, RoutedEventArgs e)
         {
+            objConection.cerrarCN();
             using (MemoryStream memoryStream = new MemoryStream())
             {
                 // Crear un objeto PdfWriter que escribe en el MemoryStream
@@ -116,7 +166,7 @@ namespace LoginSasteria
                 Document document = new Document(pdf);
 
                 // Crear una tabla con 2 columnas para organizar los códigos de barras
-                Table table = new Table(UnitValue.CreatePercentArray(new float[] { 1, 1 })).UseAllAvailableWidth();
+                Table table = new Table(UnitValue.CreatePercentArray(new float[] { 1, 1, 1, 1 })).UseAllAvailableWidth();
 
                 //Logica de la creacion de la tabla de 2 columnas para la colocacion de los codigos
                 foreach (DataRowView row in dgFechas.Items)
@@ -131,6 +181,10 @@ namespace LoginSasteria
                         ImageData imageData = ImageDataFactory.Create(barcodeBytes);
                         Image barcodeImage = new Image(imageData);
 
+                        // Ajustar el tamaño de la imagen a 3 cm x 2 cm
+                        barcodeImage.SetWidth(3 * 28.35f); // 3 cm a puntos
+                        barcodeImage.SetHeight(2 * 28.35f); // 2 cm a puntos
+
                         // Agregar la celda con la imagen del código de barras a la tabla
                         Cell cell = new Cell().Add(barcodeImage);
                         table.AddCell(cell);
@@ -138,9 +192,14 @@ namespace LoginSasteria
                 }
 
                 // Asegurarse de que la última fila se llene completamente
-                if ((dgFechas.Items.Count % 2) != 0)
+                int itemsCount = dgFechas.Items.Count;
+                int cellsToAdd = 4 - (itemsCount % 4);
+                if (cellsToAdd < 4)
                 {
-                    table.AddCell(new Cell().Add(new Paragraph(""))); // Agregar una celda vacía si el número de códigos es impar
+                    for (int i = 0; i < cellsToAdd; i++)
+                    {
+                        table.AddCell(new Cell().Add(new Paragraph("")));
+                    }
                 }
 
                 // Agregar la tabla al documento
@@ -155,66 +214,35 @@ namespace LoginSasteria
                 // Crear una ruta temporal para el archivo PDF
                 string tempFilePath = System.IO.Path.Combine(System.IO.Path.GetTempPath(), "Codigos" + DateTime.Now.ToString("dd-MM-yyyy") + ".pdf");
 
-                // Escribir el MemoryStream a un archivo temporal
-                using (FileStream fileStream = new FileStream(tempFilePath, FileMode.Create, FileAccess.Write))
+                objConection.cerrarCN();
+                try
                 {
-                    memoryStream.CopyTo(fileStream);
+                    // Escribir el MemoryStream a un archivo temporal
+                    using (FileStream fileStream = new FileStream(tempFilePath, FileMode.Create, FileAccess.Write))
+                    {
+                        memoryStream.CopyTo(fileStream);
+                    }
+
+                    // Abrir el archivo PDF temporal con el visor predeterminado
+                    System.Diagnostics.Process.Start(tempFilePath);
+
+                    /*Si no abre el PDF con la línea anterior, usar la siguiente. Esta es la forma recomendada para abrir archivos con 
+                      la aplicación predeterminada en versiones más recientes de .NET.*/
+                    //System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(tempFilePath) { UseShellExecute = true });
                 }
-
-                // Abrir el archivo PDF temporal con el visor predeterminado
-                System.Diagnostics.Process.Start(tempFilePath);
-
-                /*Si no abre el PDF con la linea anterior, usar la siguiente. Esta es la forma recomendada para abrir archivos con 
-                  la aplicación predeterminada en versiones más recientes de .NET.*/
-                //System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(tempFilePath) { UseShellExecute = true });
+                catch (IOException ex)
+                {
+                    // Mostrar un mensaje indicando que el archivo está siendo utilizado
+                    MessageBox.Show("El archivo PDF está siendo utilizado. Por favor, ciérrelo e intente de nuevo.", "Error al generar PDF", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
-
+            objConection.cerrarCN();
             btnImprimir.IsEnabled = false;
-        }
-
-        //Permite generar el codigo de barras
-        public byte[] GenerateBarcode(string data)
-        {
-            var writer = new BarcodeWriterPixelData
-            {
-                Format = BarcodeFormat.CODE_128,
-                Options = new EncodingOptions
-                {
-                    Height = 50,
-                    Width = 100,
-                    PureBarcode = true
-                }
-            };
-
-            var pixelData = writer.Write(data);
-            // Crear un bitmap para el código de barras
-            using (var bitmap = new Bitmap(pixelData.Width, pixelData.Height + 20)) // +20 pixeles para el texto
-            using (var graphics = System.Drawing.Graphics.FromImage(bitmap))
-            using (var font = new Font(System.Drawing.FontFamily.GenericMonospace, 10))
-            using (var brush = new SolidBrush(System.Drawing.Color.Black))
-            using (var format = new StringFormat() { Alignment = System.Drawing.StringAlignment.Center })
-            using (var stream = new MemoryStream())
-            {
-                // Dibujar el código de barras
-                graphics.FillRectangle(System.Drawing.Brushes.White, 0, 0, bitmap.Width, bitmap.Height);
-                var barcodeBitmap = new Bitmap(pixelData.Width, pixelData.Height, PixelFormat.Format32bppArgb);
-                var bitmapData = barcodeBitmap.LockBits(new System.Drawing.Rectangle(0, 0, pixelData.Width, pixelData.Height), ImageLockMode.WriteOnly, PixelFormat.Format32bppArgb);
-                System.Runtime.InteropServices.Marshal.Copy(pixelData.Pixels, 0, bitmapData.Scan0, pixelData.Pixels.Length);
-                barcodeBitmap.UnlockBits(bitmapData);
-
-                graphics.DrawImage(barcodeBitmap, 1, 1);
-
-                // Dibujar el texto del código debajo del código de barras
-                graphics.DrawString(data, font, brush, bitmap.Width / 2, pixelData.Height, format);
-
-                // Guardar la imagen combinada en un stream y retornarlo
-                bitmap.Save(stream, ImageFormat.Png);
-                return stream.ToArray();
-            }
         }
 
         private void btnCancelar_Click_1(object sender, RoutedEventArgs e)
         {
+            objConection.cerrarCN();
             crearBarrasMenu abrirMenu = new crearBarrasMenu();
             abrirMenu.Show();
             this.Close();

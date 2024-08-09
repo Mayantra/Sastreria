@@ -185,34 +185,34 @@
         <!-- Formulario para ingresar los datos del producto -->
         <Grid HorizontalAlignment="Left" Height="584" Margin="285,0,0,0" VerticalAlignment="Center" Width="935" RenderTransformOrigin="0.5,0.5">
             <TextBox x:Name="txtPrecio" Template="{StaticResource  TextBoxBaseControlTemplate}" HorizontalAlignment="Left" 
-         Padding="1,1,1,1" 
-         Height="30" Margin="168,400,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="245" 
-         SelectionBrush="{x:Null}" BorderBrush="{x:Null}" Background="White" FontSize="16"/>
+ Padding="1,1,1,1" 
+ Height="30" Margin="168,400,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="245" 
+ SelectionBrush="{x:Null}" BorderBrush="{x:Null}" Background="White" FontSize="16"/>
 
             <TextBox x:Name="txtCodigo" Template="{StaticResource  TextBoxBaseControlTemplate}" HorizontalAlignment="Left" 
-         Padding="1,1,1,1"
-         Height="30" Margin="634,384,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="245" 
-         SelectionBrush="{x:Null}" BorderBrush="{x:Null}" Background="White" FontSize="16" IsEnabled="False" Visibility="Collapsed"/>
+ Padding="1,1,1,1"
+ Height="30" Margin="634,384,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="245" 
+ SelectionBrush="{x:Null}" BorderBrush="{x:Null}" Background="White" FontSize="16" IsEnabled="False" Visibility="Collapsed"/>
 
             <TextBox x:Name="txtDetalles" Template="{StaticResource  TextBoxBaseControlTemplate}" HorizontalAlignment="Left" 
-         Padding="1,1,1,1"
-         Height="169" Margin="634,261,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="245" 
-         SelectionBrush="{x:Null}" BorderBrush="{x:Null}" Background="White" FontSize="16" Text="Sin detalles"/>
+ Padding="1,1,1,1"
+ Height="169" Margin="634,261,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="245" 
+ SelectionBrush="{x:Null}" BorderBrush="{x:Null}" Background="White" FontSize="16" Text="Sin detalles"/>
 
             <TextBox x:Name="txtOtroNombre" Template="{StaticResource TextBoxBaseControlTemplate}" HorizontalAlignment="Left" Visibility="Collapsed"
-         Padding="1,1,1,1" 
-         Height="30" Margin="634,58,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="245" 
-         SelectionBrush="{x:Null}" BorderBrush="{x:Null}" Background="White" FontSize="16"/>
+ Padding="1,1,1,1" 
+ Height="30" Margin="634,58,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="245" 
+ SelectionBrush="{x:Null}" BorderBrush="{x:Null}" Background="White" FontSize="16"/>
 
             <TextBox x:Name="txtCantidad" Template="{StaticResource TextBoxBaseControlTemplate}" HorizontalAlignment="Left"
-         Padding="1,1,1,1" 
-         Height="30" Margin="168,331,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="245" 
-         SelectionBrush="{x:Null}" BorderBrush="{x:Null}" Background="White" FontSize="16" Text="1"/>
+ Padding="1,1,1,1" 
+ Height="30" Margin="168,331,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="245" 
+ SelectionBrush="{x:Null}" BorderBrush="{x:Null}" Background="White" FontSize="16" Text="1"/>
 
             <TextBox x:Name="txtNuevColor" Template="{StaticResource TextBoxBaseControlTemplate}" HorizontalAlignment="Left" Visibility="Collapsed"
-         Padding="1,1,1,1" 
-         Height="30" Margin="634,193,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="245" 
-         SelectionBrush="{x:Null}" BorderBrush="{x:Null}" Background="White" FontSize="16"/>
+ Padding="1,1,1,1" 
+ Height="30" Margin="634,193,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="245" 
+ SelectionBrush="{x:Null}" BorderBrush="{x:Null}" Background="White" FontSize="16"/>
 
             <ComboBox x:Name="cbNombre" HorizontalAlignment="Left" Margin="168,57,0,0" VerticalAlignment="Top" Width="245" Height="30" FontSize="16" Padding="1,1,1,1"/>
             <ComboBox x:Name="cbColor" HorizontalAlignment="Left" Margin="168,193,0,0" VerticalAlignment="Top" Width="245" Height="30" FontSize="16" Padding="1,1,1,1"/>
@@ -273,6 +273,8 @@
                     </Rectangle>
                 </Grid>
             </Button>
+            <ComboBox x:Name="cbAlmacen" HorizontalAlignment="Left" Margin="635,193,0,0" VerticalAlignment="Top" Width="244" Height="30" FontSize="16" Padding="1,1,1,1" SelectionChanged="CargarDatosTalla"/>
+            <Label Content="¿A donde irá el producto?" HorizontalAlignment="Left" Height="30" Margin="635,151,0,0" VerticalAlignment="Top" Width="244" FontSize="16" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.533"/>
         </Grid>
     </Grid>
 </Window>

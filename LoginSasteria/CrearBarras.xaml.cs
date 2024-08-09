@@ -54,13 +54,14 @@ namespace LoginSasteria
             rng.NextBytes(buf); // Llenamos el buffer con bytes aleatorios
             long longRand = BitConverter.ToInt64(buf, 0);
 
-            return Math.Abs(longRand % 99999999999999999) + 1;
+            return Math.Abs(longRand % 999999999999999) + 1;
         }
 
         public void Limpiar()
         {
             cbTalla.Items.Clear();
             cbColor.Items.Clear();
+            cbAlmacen.Items.Clear();
             cbColor.IsEnabled = true;
             cbNombre.Items.Clear();
             cbNombre.IsEnabled = true;
@@ -101,7 +102,7 @@ namespace LoginSasteria
                     }
                     catch (MySqlException ex)
                     {
-                        MessageBox.Show("Error al insertar el producto: " + ex.Message);
+                        MessageBox.Show("Error al insertar el producto");
                     }
                     finally
                     {
@@ -142,7 +143,7 @@ namespace LoginSasteria
                     }
                     catch (MySqlException ex)
                     {
-                        MessageBox.Show("Error al obtener el máximo ID de color: " + ex.Message);
+                        MessageBox.Show("Error al obtener el máximo ID de color");
                     }
                     finally
                     {
@@ -153,7 +154,7 @@ namespace LoginSasteria
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show("Error al localizar el numero del color");
             }
 
             return id;
@@ -178,7 +179,7 @@ namespace LoginSasteria
                 }
                 catch (MySqlException ex)
                 {
-                    MessageBox.Show("Error al obtener el máximo ID de ProductoEstado: " + ex.Message);
+                    MessageBox.Show("Error al obtener el máximo ID de ProductoEstado");
                 }
                 finally
                 {
@@ -244,7 +245,7 @@ namespace LoginSasteria
                         }
                         catch (MySqlException ex)
                         {
-                            MessageBox.Show("Error al insertar el producto: " + ex.Message);
+                            MessageBox.Show("Error al insertar el producto");
                             return;
                         }
                         finally
@@ -277,7 +278,7 @@ namespace LoginSasteria
                         }
                         catch (MySqlException ex)
                         {
-                            MessageBox.Show("Error al insertar el color: " + ex.Message);
+                            MessageBox.Show("Error al insertar el color");
                             return;
                         }
                         finally
@@ -306,7 +307,7 @@ namespace LoginSasteria
                     }
                     catch (MySqlException ex)
                     {
-                        MessageBox.Show("Error al insertar ProductoEstado: " + ex.Message);
+                        MessageBox.Show("Error al insertar ProductoEstado");
                         return;
                     }
                     finally
@@ -359,7 +360,7 @@ namespace LoginSasteria
                                 }
                                 catch (MySqlException ex)
                                 {
-                                    MessageBox.Show("Error al insertar la relación producto_has_ProductoEstado: " + ex.Message);
+                                    MessageBox.Show("Error al insertar la relación e identificador del código de barras");
                                     return;
                                 }
                                 finally
@@ -370,7 +371,7 @@ namespace LoginSasteria
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show("Error al ingresar los datos" + ex);
+                            MessageBox.Show("Error al ingresar los datos");
                         }
                         finally
                         {
@@ -385,7 +386,7 @@ namespace LoginSasteria
             }
             catch (Exception Er)
             {
-                MessageBox.Show("Error" + Er);
+                MessageBox.Show("Error, algunos campos estan vacios");
             }
 
             Limpiar();
@@ -429,6 +430,19 @@ namespace LoginSasteria
                 }
                 objConection.cerrarCN();
 
+                //Vamos a traer todo de la tabla almacen
+                string query6 = "SELECT * FROM " + objConection.namedb() + ".almacen;";
+                MySqlCommand comando6 = new MySqlCommand(query6, objConection.establecerCN());
+                MySqlDataReader myReader6 = comando6.ExecuteReader();
+                while (myReader6.Read())
+                {
+                    int id = myReader6.GetInt32("idalmacen");
+                    string nombre = myReader6.GetString("nombre");
+                    ComboItem item = new ComboItem() { Id = id, Nombre = nombre };
+                    cbAlmacen.Items.Add(item);
+                }
+                objConection.cerrarCN();
+
                 //Vamos a traer todo de la tabla color
                 string query2 = "SELECT * FROM " + objConection.namedb() + ".color;";
                 MySqlCommand comando2 = new MySqlCommand(query2, objConection.establecerCN());
@@ -467,9 +481,16 @@ namespace LoginSasteria
         {
             if (cbTipoProducto.SelectedItem == null)
             {
-                throw new InvalidOperationException("Debe seleccionar un tipo de producto.");
+                throw new InvalidOperationException("Debe seleccionar un tipo de producto");
             }
 
+            if (cbAlmacen.SelectedItem == null)
+            {
+                throw new InvalidOperationException("Debe seleccionar un lugar para enviar el producto");
+            }
+
+            // Obtener el idalmacen del ComboBox cbAlmacen
+            int idAlmacen = ((ComboItem)cbAlmacen.SelectedItem).Id;
             string tipoProductoTexto = ((ComboItem)cbTipoProducto.SelectedItem).Nombre;
             string prefijo = tipoProductoTexto.Substring(0, Math.Min(3, tipoProductoTexto.Length)).ToUpper();
 
@@ -479,7 +500,7 @@ namespace LoginSasteria
             while (codigoExiste)
             {
                 long numeroAleatorio = GenerarNumeroAleatorio();
-                codigo = prefijo + numeroAleatorio.ToString();
+                codigo = idAlmacen.ToString() + prefijo + numeroAleatorio.ToString();
                 codigoExiste = ExisteCodigoBarras(codigo);
             }
 

@@ -109,7 +109,7 @@ namespace LoginSasteria
             }
             catch (MySqlException x)
             {
-                MessageBox.Show("Error al cargar los datos: " + x);
+                MessageBox.Show("Error al cargar los datos");
             }
             objConection.cerrarCN();
         }
@@ -183,6 +183,43 @@ namespace LoginSasteria
             }
         }
 
+        private bool VerificarBarrasUserAlmacen(string codigoProducto, string empleadoNombre)
+        {
+            try
+            {
+                // Separar el número inicial del resto del código de barras
+                string numeroInicial = new string(codigoProducto.TakeWhile(char.IsDigit).ToArray());
+                string restoCodigo = codigoProducto.Substring(numeroInicial.Length);
+
+                // Comparar el número inicial con almacen_idalmacen en la tabla Empleado
+                string queryEmpleado = "SELECT COUNT(*) FROM " + objConection.namedb() + ".Empleado " +
+                                       "WHERE almacen_idalmacen = @numeroInicial AND Nombre = @empleadoNombre";
+                objConection.cerrarCN();
+                using (MySqlCommand comandoEmpleado = new MySqlCommand(queryEmpleado, objConection.establecerCN()))
+                {
+                    comandoEmpleado.Parameters.AddWithValue("@numeroInicial", numeroInicial);
+                    comandoEmpleado.Parameters.AddWithValue("@empleadoNombre", empleadoNombre.Trim());
+
+                    int count = Convert.ToInt32(comandoEmpleado.ExecuteScalar());
+                    if (count == 0)
+                    {
+                        // El código de barras no pertenece al idalmacen del empleado especificado
+                        return false;
+                    }
+                }
+                return true; // El código de barras pertenece al idalmacen del empleado especificado
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Error al consultar la base de datos");
+                return false;
+            }
+            finally
+            {
+                objConection.cerrarCN();
+            }
+        }
+
         private void EscanerEinsertarProductos(object sender, KeyEventArgs e)
         {
             // Preparar la interfaz para el primer escaneo
@@ -196,6 +233,15 @@ namespace LoginSasteria
                     try
                     {
                         objConection.cerrarCN();
+                        // Verificar si el código de barras pertenece al idalmacen del empleado
+                        if (!VerificarBarrasUserAlmacen(codigoBarras, txtEmpleado.Text))
+                        {
+                            MessageBox.Show("El código de barras no pertenece a este almacen.");
+                            txtCodBarras.Clear();
+                            txtCodBarras.Focus();
+                            return;
+                        }
+
                         // Verificar si el producto ya existe en el RegistroVenta
                         if (VerificarProductoEnRegistroVenta(codigoBarras))
                         {
@@ -350,7 +396,7 @@ namespace LoginSasteria
                     }
                     catch (MySqlException ex)
                     {
-                        MessageBox.Show("Error al consultar la base de datos: " + ex.Message);
+                        MessageBox.Show("Error al consultar la base de datos");
                     }
                     finally
                     {
@@ -412,7 +458,7 @@ namespace LoginSasteria
                 }
                 catch (Exception ex)
                 {
-                    errores.Add($"Error con el código {codigoProducto}: {ex.Message}");
+                    errores.Add($"Error con el código {codigoProducto}");
                     insercionExitosa = false;
                 }
             }

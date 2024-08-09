@@ -145,7 +145,6 @@ namespace LoginSasteria
         {
             MainWindow abrir = new MainWindow();
             objConection.cerrarCN();
-            MessageBox.Show("Carrando sesion...");
             abrir.Show();
             this.Close();
         }
