@@ -259,7 +259,7 @@ namespace LoginSasteria
                 string infoEmpleado = "Atendido por:\n" + getDataConsultas("SELECT Nombre " +
                     "FROM " + cn.namedb() + ".Empleado where idEmpleado='" + idEmpleado + "';");
                 string infoCliente = DataCliente(idcliente);
-                string TextoDetalles = "Av 12 Zona 1 \n San Pedro Sac.\n Tel: 55887766";
+                string TextoDetalles = "5ta calle 4-17 zona 1 \nSan Pedro  Sacatepéquez San Marcos\n Tel: 7760-3249";
                 factura.CrearFactura(code, infoEmpleado, infoCliente, TextoDetalles,
                     "Total: " + txTotal.Text, tabla, ListaProdcutos, "Abono: " + abonoNuevo, DetallesNuevos);
 

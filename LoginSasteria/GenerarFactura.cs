@@ -30,7 +30,7 @@ namespace LoginSasteria
 {
     internal class GenerarFactura
     {
-        string TextoDetalles = "Av xxx Zona xx \n San Pedro Sac.\n Tel: 55887766";
+        string TextoDetalles = "5ta calle 4-17 zona 1 \nSan Pedro  Sacatepéquez San Marcos\n Tel: 7760-3249";
         string textoEmpleado = "Atendido por:\nJorge Medrano";
         string textoCliente = "Cliente:Josue Fuentes\nNIT:264987K\nPuntos:5";
         ConexionDB cn = new ConexionDB();
@@ -109,13 +109,14 @@ namespace LoginSasteria
                 PdfWriter writer = new PdfWriter(ms);
                 PdfDocument pdf = new PdfDocument(writer);
                 Document document = new Document(pdf);
-
+                pdf.SetDefaultPageSize(iText.Kernel.Geom.PageSize.LETTER);
+                document.SetMargins(15, 15, 15, 15);
                 //DeviceRgb customColor = new DeviceRgb(139, 100, 75);//para agregar color
 
-                
+
                 //-------------------------------------------------------------------------------------------
                 //Encabezado
-                iText.Layout.Element.Table table = new iText.Layout.Element.Table(3).UseAllAvailableWidth();
+                iText.Layout.Element.Table table = new iText.Layout.Element.Table(2).UseAllAvailableWidth();
                 table.SetWidth(UnitValue.CreatePercentValue(100));
                 table.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
                 //table.SetBackgroundColor(customColor);//agregamos color con este
@@ -124,7 +125,8 @@ namespace LoginSasteria
                 Cell detallesCell = new Cell();
                 Cell imagenCell = new Cell();
                 Cell codigos = new Cell();
-                detallesCell.SetWidth(175);
+                Cell cellEmpleado = new Cell();
+                Cell cellCliente = new Cell();
                 detallesCell.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
                 imagenCell.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
                 codigos.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
@@ -136,12 +138,12 @@ namespace LoginSasteria
 
                 iText.Layout.Element.Paragraph detalles = new iText.Layout.Element.Paragraph(DataDetalles);
                 detallesCell.Add(detalles);
-
                 //imagen
                 iText.Layout.Element.Image img = new iText.Layout.Element.Image(ImageDataFactory.Create("../../LogoBlack.png"));
-                img.ScaleToFit(225f, 225f); // Ajustar el tamaño de la imagen si es necesario
+                img.ScaleToFit(100f, 150f); // Ajustar el tamaño de la imagen si es necesario
                 // Agregar la imagen a la celda izquierda
                 imagenCell.Add(img);
+                imagenCell.SetHorizontalAlignment(iText.Layout.Properties.HorizontalAlignment.CENTER);
 
 
                 //crear el codigo de barras
@@ -155,23 +157,40 @@ namespace LoginSasteria
 
                 //arreglar detalles visuales
 
-                detallesCell.SetVerticalAlignment(iText.Layout.Properties.VerticalAlignment.MIDDLE);
+
                 detallesCell.SetHorizontalAlignment(iText.Layout.Properties.HorizontalAlignment.CENTER);
                 codigos.SetVerticalAlignment(iText.Layout.Properties.VerticalAlignment.MIDDLE);
-                codigos.SetHorizontalAlignment(iText.Layout.Properties.HorizontalAlignment.RIGHT);
+
+                iText.Layout.Element.Paragraph paCodigo = new iText.Layout.Element.Paragraph(codigo);
+                paCodigo.SetPaddingTop(-15);
+                codigos.SetPaddingTop(10);
+                codigos.SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER);
+                codigos.Add(paCodigo);
+
+
+
+                iText.Layout.Element.Table tableDetalles = new iText.Layout.Element.Table(1).UseAllAvailableWidth();
+
+
+                tableDetalles.AddCell(cellEmpleado);
+                tableDetalles.AddCell(codigos);
                 // Agregar celdas a la tabla
-                table.AddCell(detallesCell);
-                table.AddCell(imagenCell);
-                table.AddCell(codigos);
+                Cell celldaTableDetalles = new Cell();
+                celldaTableDetalles.Add(tableDetalles);
+                celldaTableDetalles.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
+                celldaTableDetalles.SetMaxWidth(75);
+                celldaTableDetalles.SetMinWidth(75);
+                table.AddCell(celldaTableDetalles);
+
+
                 //-----------------------------------------------------------------------------------------------
 
                 //-----------------------------------------------------------------------------------------------------
                 //Cliente y Empleado
-                iText.Layout.Element.Table EmpleadoCliente = new iText.Layout.Element.Table(2).UseAllAvailableWidth();
+                iText.Layout.Element.Table EmpleadoCliente = new iText.Layout.Element.Table(3).UseAllAvailableWidth();
                 EmpleadoCliente.SetWidth(UnitValue.CreatePercentValue(100));
 
-                Cell cellEmpleado = new Cell();
-                Cell cellCliente = new Cell();
+
                 cellEmpleado.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
                 cellCliente.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
 
@@ -181,7 +200,9 @@ namespace LoginSasteria
                 iText.Layout.Element.Paragraph pCliente = new iText.Layout.Element.Paragraph(DataCliente);
                 cellCliente.Add(pCliente).SetTextAlignment(iText.Layout.Properties.TextAlignment.RIGHT);
 
-                EmpleadoCliente.AddCell(cellEmpleado);
+                detallesCell.SetMaxWidth(150);
+                EmpleadoCliente.AddCell(detallesCell);
+                EmpleadoCliente.AddCell(imagenCell);
                 EmpleadoCliente.AddCell(cellCliente);
                 //-----------------------------------------------------------------------------------------------------
 
@@ -206,30 +227,32 @@ namespace LoginSasteria
                         productos.AddCell(cell.SetBorder(iText.Layout.Borders.Border.NO_BORDER));
                     }
                 }
+                productos.SetMaxWidth(400);
+                productos.SetHorizontalAlignment(iText.Layout.Properties.HorizontalAlignment.RIGHT);
 
-                EmpleadoCliente.SetMargin(25);
                 //------------------------------------------------------------------------------------
-
+                document.SetFontSize(9);
                 //------------------------------------------------------------------------------------
                 //Agregar Total
                 iText.Layout.Element.Paragraph TotalP = new iText.Layout.Element.Paragraph(Total);
                 TotalP.SetBackgroundColor(ColorConstants.LIGHT_GRAY);
                 Cell celdaTotal = new Cell();
                 celdaTotal.SetPaddingLeft(300);
-                celdaTotal.SetPaddingTop(50);
                 celdaTotal.Add(TotalP);
-                celdaTotal.SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER);
-                celdaTotal.SetFontSize(22);
+                celdaTotal.SetTextAlignment(iText.Layout.Properties.TextAlignment.RIGHT);
+                TotalP.SetPaddingRight(15);
+                celdaTotal.SetFontSize(12);
 
-
+                Cell celdaProductos = new Cell();
+                celdaProductos.Add(productos);
+                celdaProductos.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
+                table.AddCell(celdaProductos);
 
                 // Agregar las tabla al documento
                 document.Add(noContableCell);
-                document.Add(table);
                 document.Add(EmpleadoCliente);
-                document.Add(productos);
+                document.Add(table);
                 document.Add(celdaTotal);
-
 
 
                 // Cerrar el documento
@@ -260,7 +283,7 @@ namespace LoginSasteria
             BarcodeWriter writer = new BarcodeWriter
             {
                 Format = BarcodeFormat.CODE_128,
-                Options = new ZXing.Common.EncodingOptions { Width = 150, Height = 50 }
+                Options = new ZXing.Common.EncodingOptions { Width = 190, Height = 40 }
             };
 
             return writer.WriteAsWriteableBitmap(content);
