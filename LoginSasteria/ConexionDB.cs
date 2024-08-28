@@ -35,7 +35,8 @@ namespace LoginSasteria
             }
             catch (MySqlException e)
             {
-                MessageBox.Show("Error al conectarse a la base de datos" + e.ToString());
+                //MessageBox.Show("Error al conectarse a la base de datos" + e.ToString());
+                MessageBox.Show("Error, no se puede conectar. Revise su conexion a WIFI","Error de conexión", MessageBoxButton.OK, MessageBoxImage.Error);
                 return null;
             }
             return con;

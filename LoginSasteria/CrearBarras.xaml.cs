@@ -531,85 +531,42 @@ namespace LoginSasteria
         private void CargarDatosTalla(object sender, SelectionChangedEventArgs e)
         {
             objConection.cerrarCN();
-
             cbTalla.Items.Clear();
-
-            int idTipoProducto = 0; // Inicializa con un valor por defecto
 
             if (cbTipoProducto.SelectedItem != null)
             {
-                // Asegúrate de que hay un ítem seleccionado antes de intentar acceder a su propiedad
-                idTipoProducto = ((ComboItem)cbTipoProducto.SelectedItem).Id;
+                int idTipoProducto = ((ComboItem)cbTipoProducto.SelectedItem).Id;
 
-                //Vamos a generar el Codigo de barras segun el TipoProducto
-                if (idTipoProducto == 1)
-                {
-                    //Vamos a traer las tallas pertenecientes a las camisas
-                    string query1 = "SELECT tt.idtalla, t.nombreTalla FROM " + objConection.namedb() + ".tipoTall AS tt " +
-                        "JOIN " + objConection.namedb() + ".talla AS t ON tt.talla_idtalla = t.idtalla WHERE tt.tipoProducto_idtipoProducto = '1'";
-                    MySqlCommand comando1 = new MySqlCommand(query1, objConection.establecerCN());
-                    MySqlDataReader myReader1 = comando1.ExecuteReader();
-                    while (myReader1.Read())
-                    {
-                        int id = myReader1.GetInt32("idtalla"); // Asumiendo que el campo se llama idTalla
-                        string nombre = myReader1.GetString("nombreTalla");
-                        ComboItem item = new ComboItem() { Id = id, Nombre = nombre };
-                        cbTalla.Items.Add(item);
-                    }
-                    objConection.cerrarCN();
-                }
-                else if (idTipoProducto == 2)
-                {
-                    //Vamos a traer las tallas pertenecientes a los pantalones
-                    string query2 = "SELECT tt.idtalla, t.nombreTalla FROM " + objConection.namedb() + ".tipoTall AS tt " +
-                        "JOIN " + objConection.namedb() + ".talla AS t ON tt.talla_idtalla = t.idtalla WHERE tt.tipoProducto_idtipoProducto = '2'";
-                    MySqlCommand comando2 = new MySqlCommand(query2, objConection.establecerCN());
-                    MySqlDataReader myReader2 = comando2.ExecuteReader();
-                    while (myReader2.Read())
-                    {
-                        int id = myReader2.GetInt32("idtalla"); // Asumiendo que el campo se llama idTalla
-                        string nombre = myReader2.GetString("nombreTalla");
-                        ComboItem item = new ComboItem() { Id = id, Nombre = nombre };
-                        cbTalla.Items.Add(item);
-                    }
-                    objConection.cerrarCN();
-                }
-                else if (idTipoProducto == 3)
-                {
-                    //Vamos a traer las tallas pertenecientes a los sacos
-                    string query3 = "SELECT tt.idtalla, t.nombreTalla FROM " + objConection.namedb() + ".tipoTall AS tt " +
-                         "JOIN " + objConection.namedb() + ".talla AS t ON tt.talla_idtalla = t.idtalla WHERE tt.tipoProducto_idtipoProducto = '3'";
-                    MySqlCommand comando3 = new MySqlCommand(query3, objConection.establecerCN());
-                    MySqlDataReader myReader3 = comando3.ExecuteReader();
-                    while (myReader3.Read())
-                    {
-                        int id = myReader3.GetInt32("idtalla"); // Asumiendo que el campo se llama idTalla
-                        string nombre = myReader3.GetString("nombreTalla");
-                        ComboItem item = new ComboItem() { Id = id, Nombre = nombre };
-                        cbTalla.Items.Add(item);
-                    }
-                    objConection.cerrarCN();
-                }
-                else if (idTipoProducto == 5)
-                {
-                    //Vamos a traer las tallas pertenecientes a los chalecos
-                    string query4 = "SELECT tt.idtalla, t.nombreTalla FROM " + objConection.namedb() + ".tipoTall AS tt " +
-                        "JOIN " + objConection.namedb() + ".talla AS t ON tt.talla_idtalla = t.idtalla WHERE tt.tipoProducto_idtipoProducto = '5'";
-                    MySqlCommand comando4 = new MySqlCommand(query4, objConection.establecerCN());
-                    MySqlDataReader myReader4 = comando4.ExecuteReader();
-                    while (myReader4.Read())
-                    {
-                        int id = myReader4.GetInt32("idTalla"); // Asumiendo que el campo se llama idTalla
-                        string nombre = myReader4.GetString("nombreTalla");
-                        ComboItem item = new ComboItem() { Id = id, Nombre = nombre };
-                        cbTalla.Items.Add(item);
-                    }
-                    objConection.cerrarCN();
-                }
-            }
-            else
-            {
+                // Consulta genérica para obtener las tallas según el tipo de producto
+                string query = "SELECT tt.idtalla, t.nombreTalla FROM " + objConection.namedb() + ".tipoTall AS tt " +
+                    "JOIN " + objConection.namedb() + ".talla AS t ON tt.talla_idtalla = t.idtalla " +
+                    "WHERE tt.tipoProducto_idtipoProducto = @idTipoProducto";
 
+                using (MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN()))
+                {
+                    comando.Parameters.AddWithValue("@idTipoProducto", idTipoProducto);
+
+                    try
+                    {
+                        MySqlDataReader myReader = comando.ExecuteReader();
+                        while (myReader.Read())
+                        {
+                            int id = myReader.GetInt32("idtalla"); // Asumiendo que el campo se llama idTalla
+                            string nombre = myReader.GetString("nombreTalla");
+                            ComboItem item = new ComboItem() { Id = id, Nombre = nombre };
+                            cbTalla.Items.Add(item);
+                        }
+                        myReader.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error al cargar las tallas: " + ex.Message);
+                    }
+                    finally
+                    {
+                        objConection.cerrarCN();
+                    }
+                }
             }
         }
 

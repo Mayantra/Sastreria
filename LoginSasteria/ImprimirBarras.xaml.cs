@@ -182,7 +182,7 @@ namespace LoginSasteria
                         Image barcodeImage = new Image(imageData);
 
                         // Ajustar el tamaño de la imagen a 3 cm x 2 cm
-                        barcodeImage.SetWidth(3 * 28.35f); // 3 cm a puntos
+                        barcodeImage.SetWidth(4 * 28.35f); // 3 cm a puntos
                         barcodeImage.SetHeight(2 * 28.35f); // 2 cm a puntos
 
                         // Agregar la celda con la imagen del código de barras a la tabla
