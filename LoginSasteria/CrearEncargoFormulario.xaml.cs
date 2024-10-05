@@ -510,8 +510,15 @@ namespace LoginSasteria
         }
         private void BuscarCliente(object sender, RoutedEventArgs e)
         {
-            BigInteger numTel = BigInteger.Parse(txBTelClient.Text);
-            SerachClientDB(numTel);
+            if (txBTelClient.Text.Length !=0)
+            {
+                BigInteger numTel = BigInteger.Parse(txBTelClient.Text);
+                SerachClientDB(numTel);
+            }
+            else
+            {
+                MessageBox.Show("Debe de ingresar un número de celular");
+            }
         }
 
         private void getAcceso()

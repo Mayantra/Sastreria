@@ -183,6 +183,16 @@ namespace LoginSasteria
                 TotalP.SetPaddingRight(15);
                 celdaTotal.SetFontSize(12);
 
+                iText.Layout.Element.Table tablaDuplicados = new iText.Layout.Element.Table(2).UseAllAvailableWidth();
+                for (int i = 0; i < 4; i++)
+                {
+                    Cell cellDuplicados = new Cell();
+                    cellDuplicados.Add(codigos.SetHorizontalAlignment(iText.Layout.Properties.HorizontalAlignment.CENTER));
+
+                    tablaDuplicados.AddCell(cellDuplicados);
+                }
+                tablaDuplicados.SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER);
+
 
                 //-----------------------------------------------------------------------------------------------
                 //agregar codigos barras
@@ -224,6 +234,7 @@ namespace LoginSasteria
                 document.Add(table);
                 document.Add(PDetallesEncargo);
                 document.Add(celdaTotal);
+                document.Add(tablaDuplicados);
                 document.Add(PaNocodigos);
                 document.Add(BarrasCodigos);
 
