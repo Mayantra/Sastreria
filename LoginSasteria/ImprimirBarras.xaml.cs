@@ -34,6 +34,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.IO;
 using System.Reflection.Emit;
+using System.ComponentModel;
 
 
 namespace LoginSasteria
@@ -108,6 +109,13 @@ namespace LoginSasteria
 
                 // Asigna el DataTable como la fuente de datos del DataGrid
                 dgFechas.ItemsSource = dataTable.DefaultView;
+
+                // Ordena el DataGrid por la columna "Fecha Creación"
+                dgFechas.Items.SortDescriptions.Clear();
+                dgFechas.Items.SortDescriptions.Add(new SortDescription("Fecha_Creacion", ListSortDirection.Ascending));
+
+                // Refresca la vista
+                dgFechas.Items.Refresh();
             }
             objConection.cerrarCN();
             btnImprimir.IsEnabled = true;
@@ -165,28 +173,39 @@ namespace LoginSasteria
                 // Crear un objeto Document
                 Document document = new Document(pdf);
 
-                // Crear una tabla con 2 columnas para organizar los códigos de barras
+                // Crear una tabla con 4 columnas para organizar los códigos de barras
                 Table table = new Table(UnitValue.CreatePercentArray(new float[] { 1, 1, 1, 1 })).UseAllAvailableWidth();
 
-                //Logica de la creacion de la tabla de 2 columnas para la colocacion de los codigos
+                // Lógica de la creación de la tabla para la colocación de los códigos
                 foreach (DataRowView row in dgFechas.Items)
                 {
                     if (row.Row.RowState != DataRowState.Detached)
                     {
-                        // Obtener el valor del "codigo" de la fila actual
+                        // Obtener los valores del "codigo", "Producto" y "precio" de la fila actual
                         string codigo = row["codigo"].ToString();
+                        string producto = row["Producto"].ToString();
+                        string precio = row["precio"].ToString();
 
-                        // Generar la imagen del código de barras con el texto
+                        // Generar la imagen del código de barras con el texto del código
                         byte[] barcodeBytes = GenerateBarcode(codigo);
                         ImageData imageData = ImageDataFactory.Create(barcodeBytes);
                         Image barcodeImage = new Image(imageData);
 
-                        // Ajustar el tamaño de la imagen a 3 cm x 2 cm
-                        barcodeImage.SetWidth(4 * 28.35f); // 3 cm a puntos
+                        // Ajustar el tamaño de la imagen a 4 cm x 2 cm
+                        barcodeImage.SetWidth(4 * 28.35f); // 4 cm a puntos
                         barcodeImage.SetHeight(2 * 28.35f); // 2 cm a puntos
 
-                        // Agregar la celda con la imagen del código de barras a la tabla
-                        Cell cell = new Cell().Add(barcodeImage);
+                        // Crear una celda que contendrá el nombre del producto, el precio y el código de barras
+                        Cell cell = new Cell();
+
+                        // Agregar el nombre del producto y el precio en la parte superior
+                        cell.Add(new Paragraph("Producto: " + producto).SetFontSize(10));
+                        cell.Add(new Paragraph("Precio: Q" + precio).SetFontSize(10));
+
+                        // Agregar la imagen del código de barras debajo
+                        cell.Add(barcodeImage);
+
+                        // Agregar la celda completa a la tabla
                         table.AddCell(cell);
                     }
                 }
@@ -226,8 +245,7 @@ namespace LoginSasteria
                     // Abrir el archivo PDF temporal con el visor predeterminado
                     System.Diagnostics.Process.Start(tempFilePath);
 
-                    /*Si no abre el PDF con la línea anterior, usar la siguiente. Esta es la forma recomendada para abrir archivos con 
-                      la aplicación predeterminada en versiones más recientes de .NET.*/
+                    // Si no abre el PDF con la línea anterior, usar esta línea:
                     //System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(tempFilePath) { UseShellExecute = true });
                 }
                 catch (IOException ex)

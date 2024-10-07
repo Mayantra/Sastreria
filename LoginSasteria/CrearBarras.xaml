@@ -186,7 +186,7 @@
         <Grid HorizontalAlignment="Left" Height="584" Margin="285,0,0,0" VerticalAlignment="Center" Width="935" RenderTransformOrigin="0.5,0.5">
             <TextBox x:Name="txtPrecio" Template="{StaticResource  TextBoxBaseControlTemplate}" HorizontalAlignment="Left" 
  Padding="1,1,1,1" 
- Height="30" Margin="168,400,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="245" 
+ Height="30" Margin="634,247,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="245" 
  SelectionBrush="{x:Null}" BorderBrush="{x:Null}" Background="White" FontSize="16"/>
 
             <TextBox x:Name="txtCodigo" Template="{StaticResource  TextBoxBaseControlTemplate}" HorizontalAlignment="Left" 
@@ -196,7 +196,7 @@
 
             <TextBox x:Name="txtDetalles" Template="{StaticResource  TextBoxBaseControlTemplate}" HorizontalAlignment="Left" 
  Padding="1,1,1,1"
- Height="169" Margin="634,261,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="245" 
+ Height="169" Margin="634,297,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="245" 
  SelectionBrush="{x:Null}" BorderBrush="{x:Null}" Background="White" FontSize="16" Text="Sin detalles"/>
 
             <TextBox x:Name="txtOtroNombre" Template="{StaticResource TextBoxBaseControlTemplate}" HorizontalAlignment="Left" Visibility="Collapsed"
@@ -206,7 +206,7 @@
 
             <TextBox x:Name="txtCantidad" Template="{StaticResource TextBoxBaseControlTemplate}" HorizontalAlignment="Left"
  Padding="1,1,1,1" 
- Height="30" Margin="168,331,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="245" 
+ Height="30" Margin="168,436,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="245" 
  SelectionBrush="{x:Null}" BorderBrush="{x:Null}" Background="White" FontSize="16" Text="1"/>
 
             <TextBox x:Name="txtNuevColor" Template="{StaticResource TextBoxBaseControlTemplate}" HorizontalAlignment="Left" Visibility="Collapsed"
@@ -216,21 +216,21 @@
 
             <ComboBox x:Name="cbNombre" HorizontalAlignment="Left" Margin="168,57,0,0" VerticalAlignment="Top" Width="245" Height="30" FontSize="16" Padding="1,1,1,1"/>
             <ComboBox x:Name="cbColor" HorizontalAlignment="Left" Margin="168,193,0,0" VerticalAlignment="Top" Width="245" Height="30" FontSize="16" Padding="1,1,1,1"/>
-            <ComboBox x:Name="cbTalla" HorizontalAlignment="Left" Margin="168,261,0,0" VerticalAlignment="Top" Width="245" Height="30" FontSize="16" Padding="1,1,1,1"/>
+            <ComboBox x:Name="cbTalla" HorizontalAlignment="Left" Margin="168,366,0,0" VerticalAlignment="Top" Width="245" Height="30" FontSize="16" Padding="1,1,1,1"/>
             <ComboBox x:Name="cbTipoProducto" HorizontalAlignment="Left" Margin="168,125,0,0" VerticalAlignment="Top" Width="245" Height="30" FontSize="16" Padding="1,1,1,1" SelectionChanged="CargarDatosTalla"/>
 
             <Label Content="Articulo" HorizontalAlignment="Left" Height="30" Margin="45,57,0,0" VerticalAlignment="Top" Width="100" FontSize="16" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.533"/>
             <Label Content="Color" HorizontalAlignment="Left" Height="30" Margin="45,193,0,0" VerticalAlignment="Top" Width="100" FontSize="16" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.533"/>
-            <Label Content="Talla" HorizontalAlignment="Left" Height="30" Margin="45,261,0,0" VerticalAlignment="Top" Width="100" FontSize="16" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.533"/>
-            <Label Content="Precio" HorizontalAlignment="Left" Height="30" Margin="45,400,0,0" VerticalAlignment="Top" Width="100" FontSize="16" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.533"/>
-            <Label Content="Detalles" HorizontalAlignment="Left" Height="30" Margin="485,331,0,0" VerticalAlignment="Top" Width="100" FontSize="16" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.533"/>
+            <Label Content="Talla" HorizontalAlignment="Left" Height="30" Margin="45,366,0,0" VerticalAlignment="Top" Width="100" FontSize="16" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.533"/>
+            <Label Content="Precio" HorizontalAlignment="Left" Height="30" Margin="511,247,0,0" VerticalAlignment="Top" Width="100" FontSize="16" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.533"/>
+            <Label Content="Detalles" HorizontalAlignment="Left" Height="30" Margin="511,366,0,0" VerticalAlignment="Top" Width="100" FontSize="16" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.533"/>
             <Label Content="Código" HorizontalAlignment="Left" Height="32" Margin="482,383,0,0" VerticalAlignment="Top" Width="100" FontSize="16" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.533" Visibility="Collapsed"/>
             <Label Content="Producto" HorizontalAlignment="Left" Height="30" Margin="45,125,0,0" VerticalAlignment="Top" Width="100" FontSize="16" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.533"/>
-            <Label Content="Cantidad" HorizontalAlignment="Left" Height="30" Margin="45,331,0,0" VerticalAlignment="Top" Width="100" FontSize="16" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.533"/>
+            <Label Content="Cantidad" HorizontalAlignment="Left" Height="30" Margin="45,436,0,0" VerticalAlignment="Top" Width="100" FontSize="16" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.533"/>
             <Label x:Name="lblNArticulo" Content="Nuevo articulo" HorizontalAlignment="Left" Height="30" Margin="501,58,0,0" VerticalAlignment="Top" Width="115" FontSize="16" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.533" Visibility="Collapsed"/>
             <Label x:Name="lblNcolor" Content="Nuevo color" HorizontalAlignment="Left" Height="30" Margin="501,193,0,0" VerticalAlignment="Top" Width="115" FontSize="16" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.533" Visibility="Collapsed"/>
 
-            <Button x:Name="btnRegistrar" HorizontalAlignment="Center" Height="60" Margin="0,491,0,0" VerticalAlignment="Top" Width="282" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FF255909" Click="btnRegistrar_Click">
+            <Button x:Name="btnRegistrar" HorizontalAlignment="Center" Height="60" Margin="0,506,0,0" VerticalAlignment="Top" Width="282" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FF255909" Click="btnRegistrar_Click">
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="10"/>
@@ -273,8 +273,8 @@
                     </Rectangle>
                 </Grid>
             </Button>
-            <ComboBox x:Name="cbAlmacen" HorizontalAlignment="Left" Margin="635,193,0,0" VerticalAlignment="Top" Width="244" Height="30" FontSize="16" Padding="1,1,1,1" SelectionChanged="CargarDatosTalla"/>
-            <Label Content="¿A donde irá el producto?" HorizontalAlignment="Left" Height="30" Margin="635,151,0,0" VerticalAlignment="Top" Width="244" FontSize="16" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.533"/>
+            <ComboBox x:Name="cbAlmacen" HorizontalAlignment="Left" Margin="168,300,0,0" VerticalAlignment="Top" Width="244" Height="30" FontSize="16" Padding="1,1,1,1" SelectionChanged="CargarDatosTalla"/>
+            <Label Content="¿A donde irá el producto?" HorizontalAlignment="Left" Height="30" Margin="168,258,0,0" VerticalAlignment="Top" Width="244" FontSize="16" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.533"/>
         </Grid>
     </Grid>
 </Window>

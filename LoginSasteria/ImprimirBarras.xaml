@@ -187,7 +187,7 @@ Icon="/tshirt_120689.ico">
                   x:Name="dgFechas" HorizontalAlignment="Left" Height="318" Margin="234,67,0,0" VerticalAlignment="Top" 
                   Width="1014" FontSize="15" BorderBrush="{x:Null}" Background="White" AreRowDetailsFrozen="True" 
                   RowBackground="#FFF1F1F1" AlternatingRowBackground="White" Foreground="Black" FontFamily="Arial" 
-                  AutoGenerateColumns="False">
+                  AutoGenerateColumns="False" CanUserSortColumns="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Código" Binding="{Binding codigo}" Width="200"/>
 
@@ -201,7 +201,7 @@ Icon="/tshirt_120689.ico">
 
                 <DataGridTextColumn Header="Detalles" Binding="{Binding detalles}" Width="110"/>
 
-                <DataGridTextColumn Header="Fecha Creación" Binding="{Binding Fecha_Creacion}" Width="200"/>
+                <DataGridTextColumn Header="Fecha Creación" Binding="{Binding Fecha_Creacion}" Width="200" SortDirection="Ascending"/>
 
             </DataGrid.Columns>
             <DataGrid.Resources>
@@ -276,7 +276,7 @@ Icon="/tshirt_120689.ico">
             </Grid>
         </Button>
 
-        <ComboBox x:Name="cbHoraInicio" HorizontalAlignment="Left" Margin="534,481,0,0" VerticalAlignment="Top" Width="182" Height="30" FontSize="16" Padding="1,1,1,1">
+        <ComboBox x:Name="cbHoraInicio" HorizontalAlignment="Left" Margin="534,481,0,0" VerticalAlignment="Top" Width="182" Height="30" FontSize="16" Padding="1,1,1,1" SelectedIndex="0">
             <ComboBoxItem Content="00" />
             <ComboBoxItem Content="01" />
             <ComboBoxItem Content="02" />
@@ -303,7 +303,7 @@ Icon="/tshirt_120689.ico">
             <ComboBoxItem Content="23" />
         </ComboBox>
 
-        <ComboBox x:Name="cbMinutosInicio" HorizontalAlignment="Left" Margin="533,525,0,0" VerticalAlignment="Top" Width="182" Height="30" FontSize="16" Padding="1,1,1,1">
+        <ComboBox x:Name="cbMinutosInicio" HorizontalAlignment="Left" Margin="533,525,0,0" VerticalAlignment="Top" Width="182" Height="30" FontSize="16" Padding="1,1,1,1" SelectedIndex="0">
             <ComboBoxItem Content="00" />
             <ComboBoxItem Content="01" />
             <ComboBoxItem Content="02" />
@@ -366,7 +366,7 @@ Icon="/tshirt_120689.ico">
             <ComboBoxItem Content="59" />
         </ComboBox>
 
-        <ComboBox x:Name="cbHoraFin" HorizontalAlignment="Left" Margin="914,481,0,0" VerticalAlignment="Top" Width="182" Height="30" FontSize="16" Padding="1,1,1,1">
+        <ComboBox x:Name="cbHoraFin" HorizontalAlignment="Left" Margin="914,481,0,0" VerticalAlignment="Top" Width="182" Height="30" FontSize="16" Padding="1,1,1,1" SelectedIndex="0">
             <ComboBoxItem Content="00" />
             <ComboBoxItem Content="01" />
             <ComboBoxItem Content="02" />
@@ -393,7 +393,7 @@ Icon="/tshirt_120689.ico">
             <ComboBoxItem Content="23" />
         </ComboBox>
 
-        <ComboBox x:Name="cbMinutosFin" HorizontalAlignment="Left" Margin="913,525,0,0" VerticalAlignment="Top" Width="182" Height="30" FontSize="16" Padding="1,1,1,1">
+        <ComboBox x:Name="cbMinutosFin" HorizontalAlignment="Left" Margin="913,525,0,0" VerticalAlignment="Top" Width="182" Height="30" FontSize="16" Padding="1,1,1,1" SelectedIndex="0">
             <ComboBoxItem Content="00" />
             <ComboBoxItem Content="01" />
             <ComboBoxItem Content="02" />

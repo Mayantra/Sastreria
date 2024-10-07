@@ -68,6 +68,7 @@ namespace LoginSasteria
             //cbTipoProducto.SelectedValue = null;
             cbTipoProducto.Items.Clear();
             txtOtroNombre.Clear();
+            txtDetalles.Text = "Sin detalles";
             txtPrecio.Clear();
             txtCantidad.Text = "1";
             txtOtroNombre.Clear();
