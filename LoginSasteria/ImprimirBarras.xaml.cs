@@ -248,7 +248,7 @@ namespace LoginSasteria
                     // Si no abre el PDF con la línea anterior, usar esta línea:
                     //System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(tempFilePath) { UseShellExecute = true });
                 }
-                catch (IOException ex)
+                catch (IOException)
                 {
                     // Mostrar un mensaje indicando que el archivo está siendo utilizado
                     MessageBox.Show("El archivo PDF está siendo utilizado. Por favor, ciérrelo e intente de nuevo.", "Error al generar PDF", MessageBoxButton.OK, MessageBoxImage.Error);
