@@ -434,7 +434,6 @@ C:\Users\isaac\source\repos\Sastreria\Sastreria\LoginSasteria\bin\Debug\Microsof
 C:\Users\isaac\source\repos\Sastreria\Sastreria\LoginSasteria\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
 C:\Users\isaac\source\repos\Sastreria\Sastreria\LoginSasteria\bin\Debug\Microsoft.Extensions.Options.xml
 C:\Users\isaac\source\repos\Sastreria\Sastreria\LoginSasteria\bin\Debug\Microsoft.Extensions.Primitives.xml
-C:\Users\isaac\source\repos\Sastreria\Sastreria\LoginSasteria\bin\Debug\MySql.Data.xml
 C:\Users\isaac\source\repos\Sastreria\Sastreria\LoginSasteria\bin\Debug\Newtonsoft.Json.xml
 C:\Users\isaac\source\repos\Sastreria\Sastreria\LoginSasteria\bin\Debug\Scar.Common.WPF.Controls.Behaviors.pdb
 C:\Users\isaac\source\repos\Sastreria\Sastreria\LoginSasteria\bin\Debug\SkiaSharp.pdb
@@ -714,3 +713,5 @@ C:\Users\xaver\Desktop\Leo\Sastreria\LoginSasteria\obj\Debug\LoginSasteria.cspro
 C:\Users\xaver\Desktop\Leo\Sastreria\LoginSasteria\obj\Debug\LoginSasteria.csproj.CopyComplete
 E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\LoginSasteria.csproj.SuggestedBindingRedirects.cache
 E:\Archivos\Sistema Inventario Leo\Sistema\Sastreria NUEVO\Sastreria\LoginSasteria\obj\Debug\LoginSasteria.exe.config
+C:\Users\isaac\source\repos\Sastreria\Sastreria\LoginSasteria\obj\Debug\LoginSasteria.csproj.SuggestedBindingRedirects.cache
+C:\Users\isaac\source\repos\Sastreria\Sastreria\LoginSasteria\obj\Debug\LoginSasteria.exe.config
