@@ -109,7 +109,7 @@ namespace LoginSasteria
             }
             catch (MySqlException x)
             {
-                MessageBox.Show("Error al cargar los datos");
+                MessageBox.Show("Error al cargar los datos"+x.ToString());
             }
             objConection.cerrarCN();
         }
@@ -211,7 +211,7 @@ namespace LoginSasteria
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show("Error al consultar la base de datos");
+                MessageBox.Show("Error al consultar la base de datos"+ ex.ToString());
                 return false;
             }
             finally
@@ -458,7 +458,7 @@ namespace LoginSasteria
                 }
                 catch (Exception ex)
                 {
-                    errores.Add($"Error con el código {codigoProducto}");
+                    errores.Add($"Error con el código {codigoProducto}"+ex.ToString());
                     insercionExitosa = false;
                 }
             }

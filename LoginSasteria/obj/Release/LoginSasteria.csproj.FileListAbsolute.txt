@@ -1,0 +1,3 @@
+C:\Users\isaac\source\repos\Sastreria\Sastreria\LoginSasteria\obj\Release\LoginSasteria.csproj.AssemblyReference.cache
+C:\Users\isaac\source\repos\Sastreria\Sastreria\LoginSasteria\obj\Release\LoginSasteria.csproj.SuggestedBindingRedirects.cache
+C:\Users\isaac\source\repos\Sastreria\Sastreria\LoginSasteria\obj\Release\LoginSasteria.exe.config
