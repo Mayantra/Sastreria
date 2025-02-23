@@ -366,7 +366,7 @@ Icon="/tshirt_120689.ico">
             <ComboBoxItem Content="59" />
         </ComboBox>
 
-        <ComboBox x:Name="cbHoraFin" HorizontalAlignment="Left" Margin="914,481,0,0" VerticalAlignment="Top" Width="182" Height="30" FontSize="16" Padding="1,1,1,1" SelectedIndex="0">
+        <ComboBox x:Name="cbHoraFin" HorizontalAlignment="Left" Margin="914,481,0,0" VerticalAlignment="Top" Width="182" Height="30" FontSize="16" Padding="1,1,1,1" SelectedIndex="23">
             <ComboBoxItem Content="00" />
             <ComboBoxItem Content="01" />
             <ComboBoxItem Content="02" />
@@ -393,7 +393,7 @@ Icon="/tshirt_120689.ico">
             <ComboBoxItem Content="23" />
         </ComboBox>
 
-        <ComboBox x:Name="cbMinutosFin" HorizontalAlignment="Left" Margin="913,525,0,0" VerticalAlignment="Top" Width="182" Height="30" FontSize="16" Padding="1,1,1,1" SelectedIndex="0">
+        <ComboBox x:Name="cbMinutosFin" HorizontalAlignment="Left" Margin="913,525,0,0" VerticalAlignment="Top" Width="182" Height="30" FontSize="16" Padding="1,1,1,1" SelectedIndex="59">
             <ComboBoxItem Content="00" />
             <ComboBoxItem Content="01" />
             <ComboBoxItem Content="02" />

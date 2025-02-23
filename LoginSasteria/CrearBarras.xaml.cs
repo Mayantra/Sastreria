@@ -532,7 +532,7 @@ namespace LoginSasteria
         private void CargarDatosTalla(object sender, SelectionChangedEventArgs e)
         {
             objConection.cerrarCN();
-            cbTalla.Items.Clear();
+            //cbTalla.Items.Clear();
 
             if (cbTipoProducto.SelectedItem != null)
             {
@@ -594,6 +594,11 @@ namespace LoginSasteria
             cbColor.Items.Clear();
             lblNcolor.Visibility = Visibility.Visible;
             txtNuevColor.Visibility = Visibility.Visible;
+        }
+
+        private void cbTalla_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

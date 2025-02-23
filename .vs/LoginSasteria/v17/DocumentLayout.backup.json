@@ -22,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -36,7 +36,7 @@
               "RelativeDocumentMoniker": "LoginSasteria\\ImprimirBarras.xaml.cs",
               "ToolTip": "E:\\Archivos\\Sistema Inventario Leo\\Sistema\\Sistema 2025\\Sastreria\\LoginSasteria\\ImprimirBarras.xaml.cs",
               "RelativeToolTip": "LoginSasteria\\ImprimirBarras.xaml.cs",
-              "ViewState": "AgIAACkAAAAAAAAAAAAAADMAAAAqAAAAAAAAAA==",
+              "ViewState": "AgIAACkAAAAAAAAAAAAAADUAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-23T18:25:23.296Z",
               "EditorCaption": ""

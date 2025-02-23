@@ -216,7 +216,7 @@
 
             <ComboBox x:Name="cbNombre" HorizontalAlignment="Left" Margin="168,57,0,0" VerticalAlignment="Top" Width="245" Height="30" FontSize="16" Padding="1,1,1,1"/>
             <ComboBox x:Name="cbColor" HorizontalAlignment="Left" Margin="168,193,0,0" VerticalAlignment="Top" Width="245" Height="30" FontSize="16" Padding="1,1,1,1"/>
-            <ComboBox x:Name="cbTalla" HorizontalAlignment="Left" Margin="168,366,0,0" VerticalAlignment="Top" Width="245" Height="30" FontSize="16" Padding="1,1,1,1"/>
+            <ComboBox x:Name="cbTalla" HorizontalAlignment="Left" Margin="168,366,0,0" VerticalAlignment="Top" Width="245" Height="30" FontSize="16" Padding="1,1,1,1" SelectionChanged="cbTalla_SelectionChanged"/>
             <ComboBox x:Name="cbTipoProducto" HorizontalAlignment="Left" Margin="168,125,0,0" VerticalAlignment="Top" Width="245" Height="30" FontSize="16" Padding="1,1,1,1" SelectionChanged="CargarDatosTalla"/>
 
             <Label Content="Articulo" HorizontalAlignment="Left" Height="30" Margin="45,57,0,0" VerticalAlignment="Top" Width="100" FontSize="16" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.533"/>

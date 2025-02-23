@@ -50,6 +50,9 @@ namespace LoginSasteria
         {
             InitializeComponent();
             btnImprimir.IsEnabled = false;
+            //setiamos las fechas en la actual
+            dpPrimeraFecha.SelectedDate = DateTime.Now;
+            dpSegundaFecha.SelectedDate = DateTime.Now;
         }
 
         private void btnSalir(object sender, RoutedEventArgs e)
