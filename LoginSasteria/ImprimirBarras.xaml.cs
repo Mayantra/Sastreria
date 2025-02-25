@@ -95,10 +95,19 @@ namespace LoginSasteria
             fechaHoraFin = fechaHoraFin.AddHours(horaSegundaFecha);
             fechaHoraFin = fechaHoraFin.AddMinutes(minutosSegundaFecha);
 
-            string query = "SELECT p.idproducto AS codigo, p.precio, np.Nombre AS Producto, c.nombre AS Color, t.nombreTalla AS Talla, " +
+            /*string query = "SELECT p.idproducto AS codigo, p.precio, np.Nombre AS Producto, c.nombre AS Color, t.nombreTalla AS Talla, " +
                 "p.detalles, p.fechaCodigo AS `Fecha_Creacion` FROM " + objConection.namedb() + ".producto AS p JOIN " + objConection.namedb() + ".nombreProducto AS np " +
                 "ON p.nombreProducto_idnombreProducto = np.idnombreProducto JOIN " + objConection.namedb() + ".color AS c ON p.color_idcolor = c.idcolor JOIN " + objConection.namedb() + ".talla AS t " +
-                "ON p.talla_idtalla = t.idtalla WHERE p.fechaCodigo BETWEEN @FechaInicio AND @FechaFin";
+                "ON p.talla_idtalla = t.idtalla WHERE p.fechaCodigo BETWEEN @FechaInicio AND @FechaFin";*/
+
+            string query = "SELECT p.idproducto AS codigo, p.precio, np.Nombre AS Producto, c.nombre AS Color, t.nombreTalla AS Talla, " +
+                "p.detalles, p.fechaCodigo AS `Fecha_Creacion` FROM " + objConection.namedb() + ".producto AS p " +
+                "JOIN " + objConection.namedb() + ".nombreProducto AS np ON p.nombreProducto_idnombreProducto = np.idnombreProducto " +
+                "JOIN " + objConection.namedb() + ".color AS c ON p.color_idcolor = c.idcolor " +
+                "JOIN " + objConection.namedb() + ".talla AS t ON p.talla_idtalla = t.idtalla " +
+                "WHERE p.fechaCodigo BETWEEN @FechaInicio AND @FechaFin " +
+                "AND p.idproducto NOT LIKE 'ENC%'";
+
             objConection.cerrarCN();
             using (MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN()))
             {
