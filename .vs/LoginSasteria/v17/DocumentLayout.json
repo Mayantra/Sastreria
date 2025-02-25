@@ -1,20 +1,7 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\Archivos\\Sistema Inventario Leo\\Sistema\\Sistema 2025\\Sastreria\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|e:\\archivos\\sistema inventario leo\\sistema\\sistema 2025\\sastreria\\loginsasteria\\imprimirbarras.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\imprimirbarras.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|e:\\archivos\\sistema inventario leo\\sistema\\sistema 2025\\sastreria\\loginsasteria\\imprimirbarras.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\imprimirbarras.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|e:\\archivos\\sistema inventario leo\\sistema\\sistema 2025\\sastreria\\loginsasteria\\imprimirbarras.xaml||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\imprimirbarras.xaml||{8B382828-6202-11D1-8870-0000F87579D2}"
-    }
-  ],
+  "WorkspaceRootPath": "C:\\Users\\isaac\\source\\repos\\Sastreria\\Sastreria\\",
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -22,70 +9,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ImprimirBarras.xaml.cs",
-              "DocumentMoniker": "E:\\Archivos\\Sistema Inventario Leo\\Sistema\\Sistema 2025\\Sastreria\\LoginSasteria\\ImprimirBarras.xaml.cs",
-              "RelativeDocumentMoniker": "LoginSasteria\\ImprimirBarras.xaml.cs",
-              "ToolTip": "E:\\Archivos\\Sistema Inventario Leo\\Sistema\\Sistema 2025\\Sastreria\\LoginSasteria\\ImprimirBarras.xaml.cs",
-              "RelativeToolTip": "LoginSasteria\\ImprimirBarras.xaml.cs",
-              "ViewState": "AgIAACkAAAAAAAAAAAAAADMAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-23T18:25:23.296Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ImprimirBarras.xaml",
-              "DocumentMoniker": "E:\\Archivos\\Sistema Inventario Leo\\Sistema\\Sistema 2025\\Sastreria\\LoginSasteria\\ImprimirBarras.xaml",
-              "RelativeDocumentMoniker": "LoginSasteria\\ImprimirBarras.xaml",
-              "ToolTip": "E:\\Archivos\\Sistema Inventario Leo\\Sistema\\Sistema 2025\\Sastreria\\LoginSasteria\\ImprimirBarras.xaml",
-              "RelativeToolTip": "LoginSasteria\\ImprimirBarras.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-23T18:18:20.228Z",
-              "EditorCaption": ""
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "Orientation": 0,
-      "VerticalTabListWidth": 256,
-      "FloatingWindowState": {
-        "Id": "770fb752-94e7-4dd9-ae61-ee475c076dc4",
-        "Display": 0,
-        "X": 95,
-        "Y": 281,
-        "Width": 800,
-        "Height": 600,
-        "WindowState": 0
-      },
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ImprimirBarras.xaml",
-              "DocumentMoniker": "E:\\Archivos\\Sistema Inventario Leo\\Sistema\\Sistema 2025\\Sastreria\\LoginSasteria\\ImprimirBarras.xaml",
-              "RelativeDocumentMoniker": "LoginSasteria\\ImprimirBarras.xaml",
-              "ToolTip": "E:\\Archivos\\Sistema Inventario Leo\\Sistema\\Sistema 2025\\Sastreria\\LoginSasteria\\ImprimirBarras.xaml",
-              "RelativeToolTip": "LoginSasteria\\ImprimirBarras.xaml",
-              "ViewState": "AgIAAHAAAAAAAAAAAAAawIgAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-23T18:18:26.087Z",
-              "EditorCaption": ""
             }
           ]
         }
