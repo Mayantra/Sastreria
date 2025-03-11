@@ -20,6 +20,8 @@ namespace LoginSasteria
     /// </summary>
     public partial class InventarioInventario : Window
     {
+        ConexionDB objConection = new ConexionDB();
+
         public InventarioInventario()
         {
             InitializeComponent();
