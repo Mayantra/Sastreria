@@ -80,40 +80,43 @@ namespace LoginSasteria
 
         void CargarDatos()
         {
-            objConection.cerrarCN();
-
             try
             {
-                //Vamos a traer todo de la tabla tipoproducto
-                string query = "SELECT * FROM " + objConection.namedb() + ".tipoProducto;";
-                MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN());
-                MySqlDataReader myReader = comando.ExecuteReader();
-                while (myReader.Read())
+                using (MySqlConnection conexion = objConection.nuevaConexion())
                 {
-                    int id = myReader.GetInt32("idtipoProducto");
-                    string nombre = myReader.GetString("nombreTipo");
-                    ComboItem item = new ComboItem() { Id = id, Nombre = nombre };
-                    cbTipoProducto.Items.Add(item);
+                    //Vamos a traer todo de la tabla tipoproducto
+                    string query = "SELECT * FROM " + objConection.namedb() + ".tipoProducto;";
+                    using (MySqlCommand comando = new MySqlCommand(query, conexion))
+                    using (MySqlDataReader reader = comando.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            cbTipoProducto.Items.Add(new ComboItem
+                            {
+                                Id = reader.GetInt32("idtipoProducto"),
+                                Nombre = reader.GetString("nombreTipo")
+                            });
+                        }
+                    }
+                    //Vamos a traer todo de la tabla almacen
+                    string query2 = "SELECT * FROM " + objConection.namedb() + ".almacen;";
+                    using (MySqlCommand comando2 = new MySqlCommand(query2, conexion))
+                    using (MySqlDataReader reader2 = comando2.ExecuteReader())
+                    {
+                        while (reader2.Read())
+                        {
+                            cbAlmacen.Items.Add(new ComboItem
+                            {
+                                Id = reader2.GetInt32("idalmacen"),
+                                Nombre = reader2.GetString("Nombre")
+                            });
+                        }
+                    }
                 }
-                objConection.cerrarCN();
-
-                //Vamos a traer todo de la tabla almacen
-                string query5 = "SELECT * FROM " + objConection.namedb() + ".almacen;";
-                MySqlCommand comando5 = new MySqlCommand(query5, objConection.establecerCN());
-                MySqlDataReader myReader5 = comando5.ExecuteReader();
-                while (myReader5.Read())
-                {
-                    int id = myReader5.GetInt32("idalmacen"); // Asumiendo que el campo se llama idNombreProducto
-                    string nombre = myReader5.GetString("Nombre");
-                    ComboItem item = new ComboItem() { Id = id, Nombre = nombre };
-                    cbAlmacen.Items.Add(item);
-                }
-                objConection.cerrarCN();
-
             }
-            catch (MySqlException x)
+            catch (Exception ex)
             {
-                MessageBox.Show("Error: " + x);
+                MessageBox.Show("No se pudieron cargar los datos necesarios. Verifique su conexión a internet o intente más tarde.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 
@@ -122,28 +125,31 @@ namespace LoginSasteria
             if (e.Key == Key.Enter)
             {
                 //Antes de llenar el DataGrid con los datos del codigo a buscar, se verifica que el codigo exista en el inventario
-                string Query = "SELECT COUNT(*) FROM " + objConection.namedb() + ".inventario WHERE producto_idproducto = @codigo";
+                string codigo = txtLeerBarras.Text;
 
-                using (MySqlCommand comando2 = new MySqlCommand(Query, objConection.establecerCN()))
+                using (MySqlConnection conexion = objConection.nuevaConexion())
                 {
-                    comando2.Parameters.AddWithValue("@codigo", txtLeerBarras.Text);
-                    int count = Convert.ToInt32(comando2.ExecuteScalar());
-                    objConection.cerrarCN();
+                    if (conexion == null)
+                        return;
 
-                    // Si el conteo es 0, el código no existe
-                    if (count == 0)
+                    string queryCheck = $"SELECT COUNT(*) FROM {objConection.namedb()}.inventario WHERE producto_idproducto = @codigo";
+                    using (MySqlCommand comandoCheck = new MySqlCommand(queryCheck, conexion))
                     {
-                        MessageBox.Show("El código no existe en el inventario, por favor ingrese un código valido");
-                        //Limpia el DataGrid y los TextBox si anteriormente tenían datos
-                        limpiar();
-                        txtLeerBarras.Clear();
-                        txtLeerBarras.Focus();
+                        comandoCheck.Parameters.AddWithValue("@codigo", codigo);
+                        int count = Convert.ToInt32(comandoCheck.ExecuteScalar());
 
+                        if (count == 0)
+                        {
+                            MessageBox.Show("El código no existe en el inventario.");
+                            limpiar();
+                            txtLeerBarras.Clear();
+                            txtLeerBarras.Focus();
+                            return;
+                        }
                     }
-                    else
-                    {
-                        // Si el código existe, ejecuta la consulta principal
-                        string query = "SELECT p.idproducto AS codigo, p.precio, np.idnombreProducto, np.Nombre AS Producto, c.nombre AS Color, t.nombreTalla AS Talla,  " +
+
+                    // Si el código existe, ejecuta la consulta principal
+                    string query = "SELECT p.idproducto AS codigo, p.precio, np.idnombreProducto, np.Nombre AS Producto, c.nombre AS Color, t.nombreTalla AS Talla,  " +
                             "a.nombre AS Almacen, e.Nombre AS Empleado, pr.Nombre AS Proveedor " +
                             "FROM " + objConection.namedb() + ".producto AS p " +
                             "JOIN " + objConection.namedb() + ".nombreProducto AS np ON p.nombreProducto_idnombreProducto = np.idnombreProducto " +
@@ -154,34 +160,23 @@ namespace LoginSasteria
                             "JOIN " + objConection.namedb() + ".Empleado AS e ON i.Empleado_idEmpleado = e.idEmpleado " +
                             "JOIN " + objConection.namedb() + ".Proveedor AS pr ON i.Proveedor_idProveedor = pr.idProveedor WHERE p.idproducto = @codigo";
 
-                        using (MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN()))
+                    using (MySqlCommand comando = new MySqlCommand(query, conexion))
+                    {
+                        comando.Parameters.AddWithValue("@codigo", codigo);
+                        MySqlDataAdapter adapter = new MySqlDataAdapter(comando);
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+                        dgEdiInventario.ItemsSource = dataTable.DefaultView;
+
+                        if (dataTable.Rows.Count > 0)
                         {
-                            comando.Parameters.AddWithValue("@codigo", txtLeerBarras.Text);
-
-                            // Ejecuta la consulta principal
-                            MySqlDataAdapter dataAdapter = new MySqlDataAdapter(comando);
-                            DataTable dataTable = new DataTable();
-                            dataAdapter.Fill(dataTable);
-
-                            // Asigna el DataTable como la fuente de datos del DataGrid
-                            dgEdiInventario.ItemsSource = dataTable.DefaultView;
-
-                            // Comprueba si hay datos para evitar errores
-                            if (dataTable.Rows.Count > 0)
-                            {
-                                // Asigna los valores a los TextBox
-                                txtNombreProducto.Text = dataTable.Rows[0]["Producto"].ToString();
-                                txtPrecio.Text = dataTable.Rows[0]["precio"].ToString();
-                                txtIdProducto.Text = dataTable.Rows[0]["idnombreProducto"].ToString();
-                            }
-
-                            // Bloqueamos el txtLeerBarras para que no se pueda modificar durante el uso del formulario
+                            txtNombreProducto.Text = dataTable.Rows[0]["Producto"].ToString();
+                            txtPrecio.Text = dataTable.Rows[0]["precio"].ToString();
+                            txtIdProducto.Text = dataTable.Rows[0]["idnombreProducto"].ToString();
                             txtLeerBarras.IsReadOnly = true;
-
-                            CargarDatos();
                             activarTextBox();
+                            CargarDatos();
                         }
-                        objConection.cerrarCN();
                     }
                 }
             }
@@ -282,55 +277,42 @@ namespace LoginSasteria
                 cbTipoProducto.SelectedItem == null ||
                 string.IsNullOrWhiteSpace(txtNombreProducto.Text))
             {
-                MessageBox.Show("Por favor, completa todos los campos antes de registrar.");
+                MessageBox.Show("Por favor, completa todos los campos antes de registrar.", "Campos incompletos", MessageBoxButton.OK, MessageBoxImage.Information);
                 return; // Salir del método para evitar ejecutar el resto del código
             }
 
-            try
+            using (MySqlConnection conexion = objConection.nuevaConexion())
             {
-                string ActualizarDatos = "UPDATE " + objConection.namedb() + ".nombreProducto SET Nombre = @NombreProducto WHERE idnombreProducto = @IdProducto; " +
+                if (conexion == null)
+                    return;
+
+                string actualizar = "UPDATE " + objConection.namedb() + ".nombreProducto SET Nombre = @NombreProducto WHERE idnombreProducto = @IdProducto; " +
                     "UPDATE " + objConection.namedb() + ".producto SET precio = @precio, talla_idtalla = @talla WHERE idproducto = @codigo; " +
                     "UPDATE " + objConection.namedb() + ".inventario SET almacen_idalmacen = @Almacen WHERE producto_idproducto = @codigo;";
 
-                using (MySqlCommand comando = new MySqlCommand(ActualizarDatos, objConection.establecerCN()))
+                using (MySqlCommand comando = new MySqlCommand(actualizar, conexion))
                 {
-                    int idAlmacen = ((ComboItem)cbAlmacen.SelectedItem).Id;
-                    int idTalla = ((ComboItem)cbTalla.SelectedItem).Id;
-
-
                     comando.Parameters.AddWithValue("@NombreProducto", txtNombreProducto.Text);
                     comando.Parameters.AddWithValue("@IdProducto", txtIdProducto.Text);
                     comando.Parameters.AddWithValue("@precio", txtPrecio.Text);
-                    comando.Parameters.AddWithValue("@Almacen", idAlmacen);
-                    comando.Parameters.AddWithValue("@talla", idTalla);
+                    comando.Parameters.AddWithValue("@Almacen", ((ComboItem)cbAlmacen.SelectedItem).Id);
+                    comando.Parameters.AddWithValue("@talla", ((ComboItem)cbTalla.SelectedItem).Id);
                     comando.Parameters.AddWithValue("@codigo", txtLeerBarras.Text);
 
                     try
                     {
                         comando.ExecuteNonQuery();
-                        MessageBox.Show("Producto actualizado correctamente");
-                    }
-                    catch (Exception ex)
-                    {
-                        // Manejar cualquier error aquí
-                        MessageBox.Show("Error al actualizar el producto" + ex);
-                    }
-                    finally
-                    {
-                        // Cerrar la conexión
-                        objConection.cerrarCN();
+                        MessageBox.Show("Producto actualizado correctamente.", "Actualización exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
                         DesactivarTextBox();
                         limpiar();
                         txtLeerBarras.Clear();
                         txtLeerBarras.IsReadOnly = false;
                     }
-
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("No se pudo actualizar el producto. Verifique los datos e intente nuevamente.", "Error de actualización", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
                 }
-
-            }
-            catch (Exception Er)
-            {
-                MessageBox.Show("Error" + Er);
             }
         }
     }

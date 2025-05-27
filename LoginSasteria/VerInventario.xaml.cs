@@ -23,6 +23,8 @@ namespace LoginSasteria
     {
         ConexionDB objConection = new ConexionDB();
 
+        //conexion Hisman
+
         public VerInventario()
         {
             InitializeComponent();
@@ -51,17 +53,27 @@ namespace LoginSasteria
                             "JOIN " + objConection.namedb() + ".Empleado AS e ON i.Empleado_idEmpleado = e.idEmpleado " +
                             "JOIN " + objConection.namedb() + ".Proveedor AS pr ON i.Proveedor_idProveedor = pr.idProveedor";
 
-            using (MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN()))
-            {
-                // Ejecuta la consulta principal
-                MySqlDataAdapter dataAdapter = new MySqlDataAdapter(comando);
-                DataTable dataTable = new DataTable();
-                dataAdapter.Fill(dataTable);
+            MySqlConnection conexion = objConection.nuevaConexion();
+            if (conexion == null)
+                return;
 
-                // Asigna el DataTable como la fuente de datos del DataGrid
-                dgEdiInventario.ItemsSource = dataTable.DefaultView;
+            try
+            {
+                using (MySqlCommand comando = new MySqlCommand(query, conexion))
+                {
+                    // Ejecuta la consulta principal
+                    MySqlDataAdapter dataAdapter = new MySqlDataAdapter(comando);
+                    DataTable dataTable = new DataTable();
+                    dataAdapter.Fill(dataTable);
+
+                    // Asigna el DataTable como la fuente de datos del DataGrid
+                    dgEdiInventario.ItemsSource = dataTable.DefaultView;
+                }
             }
-            objConection.cerrarCN();
+            finally
+            {
+                objConection.cerrarConexion(conexion);
+            }
         }
 
         private void btnCancelar_Click_1(object sender, RoutedEventArgs e)

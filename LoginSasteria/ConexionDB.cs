@@ -21,9 +21,36 @@ namespace LoginSasteria
         public static string conexion = $"server={servidor};port={port};user id={username};password={password};database={db};";
 
         private static MySqlConnection con = new MySqlConnection(conexion);
-        
-        
 
+
+        //Prueba de conexion Hisman
+        // Crea y devuelve una NUEVA conexión ya abierta
+        public MySqlConnection nuevaConexion()
+        {
+            MySqlConnection nueva = new MySqlConnection(conexion);
+            try
+            {
+                nueva.Open();
+            }
+            catch (MySqlException)
+            {
+                MessageBox.Show("Error, no se puede conectar. Revise su conexión a WIFI", "Error de conexión", MessageBoxButton.OK, MessageBoxImage.Error);
+                return null;
+            }
+            return nueva;
+        }
+
+        // Cierra y desecha una conexión (si se requiere)
+        public void cerrarConexion(MySqlConnection con)
+        {
+            if (con != null && con.State != ConnectionState.Closed)
+            {
+                con.Close();
+                con.Dispose();
+            }
+        }
+
+        //Conexion de Isaac
         public MySqlConnection establecerCN()
         {
             // Crea una nueva instancia de conexión cada vez.
@@ -59,29 +86,3 @@ namespace LoginSasteria
 
     }
 }
-
-
-
-
-
-/*string conexion = "server=" + servidor + ";" + "port=" + port+";" + "user id=" + username + ";"
-            + "password="+password+";"+"database="+db+";";
-        
-        public MySqlConnection establecerCN()
-        {
-            try
-            {
-                con.ConnectionString = conexion;
-                con.Open();
-                //MessageBox.Show("Data Base Conection Already");
-            }
-            catch (MySqlException e){
-                MessageBox.Show("Error al conectarse a la base de datos"+e.ToString());
-            }
-            return con;
-        }
-        public MySqlConnection cerrarCN()
-        {
-            con.Close();
-            return con;
-        }*/

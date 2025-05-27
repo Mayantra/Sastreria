@@ -1,24 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\xaver\\Desktop\\Sastreria GIT\\Sastreria\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|c:\\users\\xaver\\desktop\\sastreria git\\sastreria\\loginsasteria\\inventarioinventario.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\inventarioinventario.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|c:\\users\\xaver\\desktop\\sastreria git\\sastreria\\loginsasteria\\verinventario.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\verinventario.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|c:\\users\\xaver\\desktop\\sastreria git\\sastreria\\loginsasteria\\verinventario.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\verinventario.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|c:\\users\\xaver\\desktop\\sastreria git\\sastreria\\loginsasteria\\inventarioinventario.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\inventarioinventario.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -26,61 +9,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "InventarioInventario.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\xaver\\Desktop\\Sastreria GIT\\Sastreria\\LoginSasteria\\InventarioInventario.xaml.cs",
-              "RelativeDocumentMoniker": "LoginSasteria\\InventarioInventario.xaml.cs",
-              "ToolTip": "C:\\Users\\xaver\\Desktop\\Sastreria GIT\\Sastreria\\LoginSasteria\\InventarioInventario.xaml.cs",
-              "RelativeToolTip": "LoginSasteria\\InventarioInventario.xaml.cs",
-              "ViewState": "AgIAADoAAAAAAAAAAAA0wEoAAABYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-11T13:47:09.294Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "InventarioInventario.xaml",
-              "DocumentMoniker": "C:\\Users\\xaver\\Desktop\\Sastreria GIT\\Sastreria\\LoginSasteria\\InventarioInventario.xaml",
-              "RelativeDocumentMoniker": "LoginSasteria\\InventarioInventario.xaml",
-              "ToolTip": "C:\\Users\\xaver\\Desktop\\Sastreria GIT\\Sastreria\\LoginSasteria\\InventarioInventario.xaml",
-              "RelativeToolTip": "LoginSasteria\\InventarioInventario.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-11T13:45:02.429Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "VerInventario.xaml",
-              "DocumentMoniker": "C:\\Users\\xaver\\Desktop\\Sastreria GIT\\Sastreria\\LoginSasteria\\VerInventario.xaml",
-              "RelativeDocumentMoniker": "LoginSasteria\\VerInventario.xaml",
-              "ToolTip": "C:\\Users\\xaver\\Desktop\\Sastreria GIT\\Sastreria\\LoginSasteria\\VerInventario.xaml",
-              "RelativeToolTip": "LoginSasteria\\VerInventario.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-11T13:45:27.605Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "VerInventario.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\xaver\\Desktop\\Sastreria GIT\\Sastreria\\LoginSasteria\\VerInventario.xaml.cs",
-              "RelativeDocumentMoniker": "LoginSasteria\\VerInventario.xaml.cs",
-              "ToolTip": "C:\\Users\\xaver\\Desktop\\Sastreria GIT\\Sastreria\\LoginSasteria\\VerInventario.xaml.cs",
-              "RelativeToolTip": "LoginSasteria\\VerInventario.xaml.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAABcAAAAzAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-11T13:45:33.684Z",
-              "EditorCaption": ""
             }
           ]
         }

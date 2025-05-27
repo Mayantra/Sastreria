@@ -30,6 +30,9 @@ namespace LoginSasteria
         private bool productoEstadoObtenido = false;
         private List<string> listaCodigosValidos = new List<string>();
 
+        // 🔐 Control para bloquear ComboBox tras primer escaneo
+        private bool comboBloqueado = false;
+
         public AgregarProdIventario()
         {
             objConection.cerrarCN();
@@ -62,56 +65,56 @@ namespace LoginSasteria
             // Resetear la variable productoEstadoId y productoEstadoObtenido
             productoEstadoId = 0;
             productoEstadoObtenido = false;
+
+            //Volvemos a habilitar los comboBox
+            comboBloqueado = false;
+            cbAlmacen.IsEnabled = true;
+            cbProveedor.IsEnabled = true;
         }
 
         void cargarUser()
         {
-            objConection.cerrarCN();
             leerPass user = new leerPass();
             string usuario = user.getUser();
             txtEmpleado.Text = usuario;
 
             leerPass iduser = new leerPass();
             _idUsuario = iduser.getIDuser(); // Almacena el ID del usuario en el campo.
-            objConection.cerrarCN();
         }
 
         void CargarDatos()
         {
-            objConection.cerrarCN();
             try
             {
-                //Vamos a traer todo de la tabla almacen
-                string query = "SELECT * FROM " + objConection.namedb() + ".almacen";
-                MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN());
-                MySqlDataReader myReader = comando.ExecuteReader();
-                while (myReader.Read())
+                using (var conn = objConection.nuevaConexion())
                 {
-                    int id = myReader.GetInt32("idalmacen");
-                    string nombre = myReader.GetString("nombre");
-                    ComboItem item = new ComboItem() { Id = id, Nombre = nombre };
-                    cbAlmacen.Items.Add(item);
-                }
-                objConection.cerrarCN();
+                    //Vamos a traer todo de la tabla almacen
+                    string query = "SELECT * FROM " + objConection.namedb() + ".almacen";
+                    using (var cmd = new MySqlCommand(query, conn))
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            cbAlmacen.Items.Add(new ComboItem { Id = reader.GetInt32("idalmacen"), Nombre = reader.GetString("nombre") });
+                        }
+                    }
 
-                //Vamos a traer todo de la tabla proveedor
-                string query2 = "SELECT * FROM " + objConection.namedb() + ".Proveedor";
-                MySqlCommand comando2 = new MySqlCommand(query2, objConection.establecerCN());
-                MySqlDataReader myReader2 = comando2.ExecuteReader();
-                while (myReader2.Read())
-                {
-                    int id = myReader2.GetInt32("idProveedor");
-                    string nombre = myReader2.GetString("Nombre");
-                    ComboItem item = new ComboItem() { Id = id, Nombre = nombre };
-                    cbProveedor.Items.Add(item);
+                    //Vamos a traer todo de la tabla proveedor
+                    string query2 = "SELECT * FROM " + objConection.namedb() + ".Proveedor";
+                    using (var cmd2 = new MySqlCommand(query2, conn))
+                    using (var reader2 = cmd2.ExecuteReader())
+                    {
+                        while (reader2.Read())
+                        {
+                            cbProveedor.Items.Add(new ComboItem { Id = reader2.GetInt32("idProveedor"), Nombre = reader2.GetString("Nombre") });
+                        }
+                    }
                 }
-                objConection.cerrarCN();
             }
-            catch (MySqlException x)
+            catch (MySqlException)
             {
-                MessageBox.Show("Error al cargar los datos"+x.ToString());
+                MessageBox.Show("Error al cargar los datos. Verifique la conexión a la base de datos.", "Error de conexión", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            objConection.cerrarCN();
         }
 
         void timer_Tick(object sender, EventArgs e)
@@ -132,7 +135,6 @@ namespace LoginSasteria
 
         private void btnSalir(object sender, RoutedEventArgs e)
         {
-            objConection.cerrarCN();
             this.Close();
         }
 
@@ -143,43 +145,32 @@ namespace LoginSasteria
 
         private void ActualizarEstadoContador()
         {
-            if (int.TryParse(txbContadorCod.Text, out int contador))
+            if (int.TryParse(txbContadorCod.Text, out int contador) && contador == 0)
             {
-                // Verifica si el contador llegó a cero
-                if (contador == 0)
-                {
-                    txtCodBarras.IsEnabled = false;
-                    btnRegistrar.IsEnabled = true;
-                }
+                txtCodBarras.IsEnabled = false;
+                btnRegistrar.IsEnabled = true;
             }
         }
 
         private bool VerificarProductoEnRegistroVenta(string codigoProducto)
         {
-            string queryVerificacion = "SELECT COUNT(*) FROM " + objConection.namedb() + ".RegistroVenta WHERE `producto_idproducto` = @productoId";
-            objConection.cerrarCN();
-            using (MySqlCommand comandoVerificacion = new MySqlCommand(queryVerificacion, objConection.establecerCN()))
+            string query = $"SELECT COUNT(*) FROM {objConection.namedb()}.RegistroVenta WHERE producto_idproducto = @productoId";
+            using (var conn = objConection.nuevaConexion())
+            using (var cmd = new MySqlCommand(query, conn))
             {
-                comandoVerificacion.Parameters.AddWithValue("@productoId", codigoProducto);
-                int count = Convert.ToInt32(comandoVerificacion.ExecuteScalar());
-                objConection.cerrarCN();
-
-                return count > 0;
+                cmd.Parameters.AddWithValue("@productoId", codigoProducto);
+                return Convert.ToInt32(cmd.ExecuteScalar()) > 0;
             }
         }
 
         private bool VerificarProductoExistente(string codigoProducto)
         {
-            string queryVerificacion = "SELECT COUNT(*) FROM " + objConection.namedb() + ".inventario WHERE `producto_idproducto` = @productoId";
-            objConection.cerrarCN();
-            using (MySqlCommand comandoVerificacion = new MySqlCommand(queryVerificacion, objConection.establecerCN()))
+            string query = $"SELECT COUNT(*) FROM {objConection.namedb()}.inventario WHERE producto_idproducto = @productoId";
+            using (var conn = objConection.nuevaConexion())
+            using (var cmd = new MySqlCommand(query, conn))
             {
-                comandoVerificacion.Parameters.AddWithValue("@productoId", codigoProducto);
-                //objConection.establecerCN().Open();
-                int count = Convert.ToInt32(comandoVerificacion.ExecuteScalar());
-                objConection.cerrarCN();
-
-                return count > 0;
+                cmd.Parameters.AddWithValue("@productoId", codigoProducto);
+                return Convert.ToInt32(cmd.ExecuteScalar()) > 0;
             }
         }
 
@@ -187,36 +178,32 @@ namespace LoginSasteria
         {
             try
             {
-                // Separar el número inicial del resto del código de barras
+                // Separar el número inicial (almacén_idalmacen) del código de barras
                 string numeroInicial = new string(codigoProducto.TakeWhile(char.IsDigit).ToArray());
-                string restoCodigo = codigoProducto.Substring(numeroInicial.Length);
+
+                if (string.IsNullOrEmpty(numeroInicial))
+                    return false;
 
                 // Comparar el número inicial con almacen_idalmacen en la tabla Empleado
-                string queryEmpleado = "SELECT COUNT(*) FROM " + objConection.namedb() + ".Empleado " +
-                                       "WHERE almacen_idalmacen = @numeroInicial AND Nombre = @empleadoNombre";
-                objConection.cerrarCN();
-                using (MySqlCommand comandoEmpleado = new MySqlCommand(queryEmpleado, objConection.establecerCN()))
-                {
-                    comandoEmpleado.Parameters.AddWithValue("@numeroInicial", numeroInicial);
-                    comandoEmpleado.Parameters.AddWithValue("@empleadoNombre", empleadoNombre.Trim());
+                string query = $"SELECT COUNT(*) FROM {objConection.namedb()}.Empleado " +
+                               "WHERE almacen_idalmacen = @numeroInicial AND Nombre = @empleadoNombre";
 
-                    int count = Convert.ToInt32(comandoEmpleado.ExecuteScalar());
-                    if (count == 0)
-                    {
-                        // El código de barras no pertenece al idalmacen del empleado especificado
-                        return false;
-                    }
+                using (var conn = objConection.nuevaConexion())
+                using (var cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@numeroInicial", numeroInicial);
+                    cmd.Parameters.AddWithValue("@empleadoNombre", empleadoNombre.Trim());
+
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    return count > 0;
                 }
-                return true; // El código de barras pertenece al idalmacen del empleado especificado
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show("Error al consultar la base de datos"+ ex.ToString());
+                MessageBox.Show("Error al verificar si el código de barras pertenece al almacén del empleado.\n\n" +
+                                "Detalles: " + ex.Message, "Error de conexión", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
-            }
-            finally
-            {
-                objConection.cerrarCN();
             }
         }
 
@@ -225,255 +212,218 @@ namespace LoginSasteria
             // Preparar la interfaz para el primer escaneo
             txtCodBarras.Focus();
 
-            if (e.Key == Key.Enter)
+            if (e.Key != Key.Enter) return;
+
+            string codigoBarras = txtCodBarras.Text.Trim();
+            if (string.IsNullOrEmpty(codigoBarras)) return;
+
+            if (cbAlmacen.SelectedItem == null || cbProveedor.SelectedItem == null)
             {
-                string codigoBarras = txtCodBarras.Text.Trim();
-                if (!string.IsNullOrEmpty(codigoBarras))
+                MessageBox.Show("Seleccione un almacén y un proveedor antes de escanear productos.", "Campos requeridos", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            try
+            {
+                // Verificar si el código de barras pertenece al idalmacen del empleado
+                if (!VerificarBarrasUserAlmacen(codigoBarras, txtEmpleado.Text))
                 {
-                    try
+                    MessageBox.Show("El código de barras no pertenece a este almacén.", "Código inválido", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    txtCodBarras.Clear(); txtCodBarras.Focus(); return;
+                }
+
+                // Verificar si el producto ya existe en el RegistroVenta
+                if (VerificarProductoEnRegistroVenta(codigoBarras))
+                {
+                    MessageBox.Show("El producto ya fue vendido.", "Producto inválido", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    txbContadorCod.Text = "0"; txtCodBarras.Clear(); txtCodBarras.Focus(); return;
+                }
+
+                // Verificar si el producto ya existe en el inventario
+                if (VerificarProductoExistente(codigoBarras))
+                {
+                    MessageBox.Show("El producto ya está en el inventario.", "Producto duplicado", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    txbContadorCod.Text = "0"; txtCodBarras.Clear(); txtCodBarras.Focus(); return;
+                }
+
+                if (!productoEstadoObtenido)
+                {
+                    // Obtener ProductoEstado_idProductoEstado
+                    string queryEstado = $"SELECT ProductoEstado_idProductoEstado FROM {objConection.namedb()}.producto_has_ProductoEstado WHERE producto_idproducto = @codigo";
+                    using (var conn = objConection.nuevaConexion())
+                    using (var cmd = new MySqlCommand(queryEstado, conn))
                     {
-                        objConection.cerrarCN();
-                        // Verificar si el código de barras pertenece al idalmacen del empleado
-                        if (!VerificarBarrasUserAlmacen(codigoBarras, txtEmpleado.Text))
+                        cmd.Parameters.AddWithValue("@codigo", codigoBarras);
+                        using (var reader = cmd.ExecuteReader())
                         {
-                            MessageBox.Show("El código de barras no pertenece a este almacen.");
-                            txtCodBarras.Clear();
-                            txtCodBarras.Focus();
-                            return;
-                        }
-
-                        // Verificar si el producto ya existe en el RegistroVenta
-                        if (VerificarProductoEnRegistroVenta(codigoBarras))
-                        {
-                            MessageBox.Show("El producto ya fue vendido, por favor ingrese un código valido");
-                            txbContadorCod.Text = "0";
-                            txtCodBarras.Clear();
-                            txtCodBarras.Focus();
-                            return;
-                        }
-
-                        // Verificar si el producto ya existe en el inventario
-                        if (VerificarProductoExistente(codigoBarras))
-                        {
-                            MessageBox.Show("El producto ya está registrado en el inventario. Por favor, ingrese un código válido.");
-                            txbContadorCod.Text = "0";
-                            txtCodBarras.Clear();
-                            txtCodBarras.Focus();
-                            return;
-                        }
-
-                        if (!productoEstadoObtenido)
-                        {
-                            // Obtener ProductoEstado_idProductoEstado
-                            string queryEstado = "SELECT ProductoEstado_idProductoEstado " +
-                                                 "FROM " + objConection.namedb() + ".producto_has_ProductoEstado " +
-                                                 "WHERE producto_idproducto = @codigoBarras";
-                            objConection.cerrarCN();
-                            using (MySqlCommand comandoEstado = new MySqlCommand(queryEstado, objConection.establecerCN()))
+                            if (reader.Read())
                             {
-                                comandoEstado.Parameters.AddWithValue("@codigoBarras", codigoBarras);
-                                using (MySqlDataReader reader = comandoEstado.ExecuteReader())
-                                {
-                                    if (reader.Read())
-                                    {
-                                        productoEstadoId = reader.GetInt32("ProductoEstado_idProductoEstado");
-                                        productoEstadoObtenido = true;
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show("Código de barras no encontrado");
-                                        return;
-                                    }
-                                }
+                                productoEstadoId = reader.GetInt32(0);
+                                productoEstadoObtenido = true;
                             }
-                            objConection.cerrarCN();
-                            // Contar repeticiones de ProductoEstado_idProductoEstado
-                            string queryContar = "SELECT COUNT(*) AS Repeticiones " +
-                                                 "FROM " + objConection.namedb() + ".producto_has_ProductoEstado " +
-                                                 "WHERE ProductoEstado_idProductoEstado = @productoEstadoId";
-                            objConection.cerrarCN();
-                            using (MySqlCommand comandoContar = new MySqlCommand(queryContar, objConection.establecerCN()))
+                            else
                             {
-                                comandoContar.Parameters.AddWithValue("@productoEstadoId", productoEstadoId);
-                                estadoRepeticiones = Convert.ToInt32(comandoContar.ExecuteScalar());
-
-                                txbContadorCod.Text = estadoRepeticiones.ToString();
-                            }
-                            objConection.cerrarCN();
-                        }
-
-                        // Verificar si el código de barras pertenece al mismo producto_idproducto
-                        string queryVerificar = "SELECT producto_idproducto " +
-                                                "FROM " + objConection.namedb() + ".producto_has_ProductoEstado " +
-                                                "WHERE producto_idproducto = @codigoBarras AND ProductoEstado_idProductoEstado = @productoEstadoId";
-                        objConection.cerrarCN();
-                        using (MySqlCommand comandoVerificar = new MySqlCommand(queryVerificar, objConection.establecerCN()))
-                        {
-                            comandoVerificar.Parameters.AddWithValue("@codigoBarras", codigoBarras);
-                            comandoVerificar.Parameters.AddWithValue("@productoEstadoId", productoEstadoId);
-                            using (MySqlDataReader reader = comandoVerificar.ExecuteReader())
-                            {
-                                if (!reader.Read())
-                                {
-                                    MessageBox.Show("El código de barras no pertenece al mismo producto");
-                                    txtCodBarras.Clear();
-                                    return;
-                                }
+                                MessageBox.Show("Código no encontrado."); return;
                             }
                         }
-                        objConection.cerrarCN();
-                        // Consulta a la base de datos para obtener datos del producto
-                        string queryProducto = "SELECT p.idproducto AS codigo, p.precio, np.Nombre AS Producto, c.nombre AS Color, t.nombreTalla AS Talla, p.detalles " +
-                                               "FROM " + objConection.namedb() + ".producto AS p " +
-                                               "JOIN " + objConection.namedb() + ".nombreProducto AS np ON p.nombreProducto_idnombreProducto = np.idnombreProducto " +
-                                               "JOIN " + objConection.namedb() + ".color AS c ON p.color_idcolor = c.idcolor " +
-                                               "JOIN " + objConection.namedb() + ".talla AS t ON p.talla_idtalla = t.idtalla " +
-                                               "WHERE p.idproducto = @codigoBarras";
-                        objConection.cerrarCN();
-                        using (MySqlCommand comandoProducto = new MySqlCommand(queryProducto, objConection.establecerCN()))
-                        {
-                            comandoProducto.Parameters.AddWithValue("@codigoBarras", codigoBarras);
-
-                            using (MySqlDataReader reader = comandoProducto.ExecuteReader())
-                            {
-                                if (reader.Read())
-                                {
-                                    // Crear un objeto con los datos obtenidos
-                                    var producto = new
-                                    {
-                                        codigo = reader["codigo"].ToString(),
-                                        precio = reader["precio"].ToString(),
-                                        Producto = reader["Producto"].ToString(),
-                                        Color = reader["Color"].ToString(),
-                                        Talla = reader["Talla"].ToString(),
-                                        detalles = reader["detalles"].ToString()
-                                    };
-
-                                    // Verificar si el código ya ha sido agregado
-                                    objConection.cerrarCN();
-                                    var productos = (List<dynamic>)dgProductos.ItemsSource;
-                                    objConection.cerrarCN();
-                                    if (productos == null)
-                                    {
-                                        objConection.cerrarCN();
-                                        productos = new List<dynamic>();
-                                        objConection.cerrarCN();
-                                        dgProductos.ItemsSource = productos;
-                                    }
-
-                                    if (!productos.Any(p => p.codigo == producto.codigo))
-                                    {
-                                        productos.Add(producto);
-                                        dgProductos.Items.Refresh();
-
-                                        // Agregar el código a la lista de códigos válidos
-                                        listaCodigosValidos.Add(codigoBarras);
-
-                                        if (int.TryParse(txbContadorCod.Text, out int contador))
-                                        {
-                                            // Resta uno al valor y actualiza el TextBlock con el nuevo valor
-                                            contador--;
-                                            txbContadorCod.Text = contador.ToString();
-                                            ActualizarEstadoContador();
-                                        }
-                                        objConection.cerrarCN();
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show("El código de barras ya ha sido escaneado.");
-                                    }
-
-                                    txtCodBarras.Clear();
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Código de barras no encontrado en la tabla producto.");
-                                }
-                            }
-                            objConection.cerrarCN();
-                        }
-                        objConection.cerrarCN();
                     }
-                    catch (MySqlException ex)
+
+                    // Contar repeticiones de ProductoEstado_idProductoEstado
+                    string queryCount = $"SELECT COUNT(*) FROM {objConection.namedb()}.producto_has_ProductoEstado WHERE ProductoEstado_idProductoEstado = @id";
+                    using (var conn = objConection.nuevaConexion())
+                    using (var cmd = new MySqlCommand(queryCount, conn))
                     {
-                        MessageBox.Show("Error al consultar la base de datos");
+                        cmd.Parameters.AddWithValue("@id", productoEstadoId);
+                        estadoRepeticiones = Convert.ToInt32(cmd.ExecuteScalar());
+                        txbContadorCod.Text = estadoRepeticiones.ToString();
                     }
-                    finally
+                }
+
+                // Verificar si el código de barras pertenece al mismo producto_idproducto
+                string queryVerificar = "SELECT producto_idproducto " +
+                                        $"FROM {objConection.namedb()}.producto_has_ProductoEstado " +
+                                        "WHERE producto_idproducto = @codigoBarras AND ProductoEstado_idProductoEstado = @productoEstadoId";
+
+                using (var conn = objConection.nuevaConexion())
+                using (var comandoVerificar = new MySqlCommand(queryVerificar, conn))
+                {
+                    comandoVerificar.Parameters.AddWithValue("@codigoBarras", codigoBarras);
+                    comandoVerificar.Parameters.AddWithValue("@productoEstadoId", productoEstadoId);
+
+                    using (var reader = comandoVerificar.ExecuteReader())
                     {
-                        objConection.cerrarCN();
+                        if (!reader.Read())
+                        {
+                            MessageBox.Show("El código de barras no pertenece al mismo producto.", "Código inválido", MessageBoxButton.OK, MessageBoxImage.Warning);
+                            txtCodBarras.Clear();
+                            return;
+                        }
+                    }
+                }
+
+                // Consulta a la base de datos para obtener datos del producto
+                string queryProducto = $"SELECT p.idproducto AS codigo, p.precio, np.Nombre AS Producto, c.nombre AS Color, t.nombreTalla AS Talla, p.detalles " +
+                    $"FROM {objConection.namedb()}.producto AS p " +
+                    $"JOIN {objConection.namedb()}.nombreProducto AS np ON p.nombreProducto_idnombreProducto = np.idnombreProducto " +
+                    $"JOIN {objConection.namedb()}.color AS c ON p.color_idcolor = c.idcolor " +
+                    $"JOIN {objConection.namedb()}.talla AS t ON p.talla_idtalla = t.idtalla " +
+                    $"WHERE p.idproducto = @codigo";
+
+                using (var conn = objConection.nuevaConexion())
+                using (var cmd = new MySqlCommand(queryProducto, conn))
+                {
+                    cmd.Parameters.AddWithValue("@codigo", codigoBarras);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            var producto = new
+                            {
+                                codigo = reader["codigo"].ToString(),
+                                precio = reader["precio"].ToString(),
+                                Producto = reader["Producto"].ToString(),
+                                Color = reader["Color"].ToString(),
+                                Talla = reader["Talla"].ToString(),
+                                detalles = reader["detalles"].ToString()
+                            };
+
+                            // Verificar si el código ya ha sido agregado
+                            var productos = (List<dynamic>)dgProductos.ItemsSource ?? new List<dynamic>();
+                            if (!productos.Any(p => p.codigo == producto.codigo))
+                            {
+                                productos.Add(producto);
+                                dgProductos.ItemsSource = productos;
+                                dgProductos.Items.Refresh();
+                                // Agregar el código a la lista de códigos válidos
+                                listaCodigosValidos.Add(codigoBarras);
+
+                                // Bloquear los ComboBox tras el primer escaneo
+                                if (!comboBloqueado && cbAlmacen.Items.Count > 0 && cbProveedor.Items.Count > 0)
+                                {
+                                    cbAlmacen.IsEnabled = false;
+                                    cbProveedor.IsEnabled = false;
+                                    comboBloqueado = true;
+                                }
+
+                                if (int.TryParse(txbContadorCod.Text, out int contador))
+                                {
+                                    // Resta uno al valor y actualiza el TextBlock con el nuevo valor
+                                    contador--;
+                                    txbContadorCod.Text = contador.ToString();
+                                    ActualizarEstadoContador();
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("El producto ya fue escaneado.", "Duplicado", MessageBoxButton.OK, MessageBoxImage.Information);
+                            }
+
+                            txtCodBarras.Clear();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Producto no encontrado en la base de datos.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        }
                     }
                 }
             }
-            objConection.cerrarCN();
+            catch (Exception)
+            {
+                MessageBox.Show("Error al consultar los datos del producto. Intente nuevamente.", "Error de conexión", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void InsertarInventario(string codigoProducto)
         {
-            string query = "INSERT INTO " + objConection.namedb() + ".inventario " +
-                           "(`fechaIngreso`, `almacen_idalmacen`, `Empleado_idEmpleado`, `Proveedor_idProveedor`, `producto_idproducto`) " +
-                           "VALUES (@fechaIngreso, @almacen, @empleado, @proveedor, @producto)";
-            objConection.cerrarCN();
-            using (MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN()))
+            string query = $"INSERT INTO {objConection.namedb()}.inventario (fechaIngreso, almacen_idalmacen, Empleado_idEmpleado, Proveedor_idProveedor, producto_idproducto) " +
+                           $"VALUES (@fecha, @almacen, @empleado, @proveedor, @producto)";
+            using (var conn = objConection.nuevaConexion())
+            using (var cmd = new MySqlCommand(query, conn))
             {
-                // Obtenemos el ID seleccionado de cada ComboBox
-                int idAlmacen = ((ComboItem)cbAlmacen.SelectedItem).Id;
-                int idProveedor = ((ComboItem)cbProveedor.SelectedItem).Id;
-
-                // Obtiene la fecha y hora actual
-                DateTime now = DateTime.Now;
-                string fechahora = now.ToString("yyyy-MM-dd HH:mm:ss");
-
-                // Agregar los parámetros al comando
-                comando.Parameters.AddWithValue("@fechaIngreso", fechahora);
-                comando.Parameters.AddWithValue("@almacen", idAlmacen);
-                comando.Parameters.AddWithValue("@empleado", _idUsuario);
-                comando.Parameters.AddWithValue("@proveedor", idProveedor);
-                comando.Parameters.AddWithValue("@producto", codigoProducto);
-
-                comando.ExecuteNonQuery();
+                cmd.Parameters.AddWithValue("@fecha", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                cmd.Parameters.AddWithValue("@almacen", ((ComboItem)cbAlmacen.SelectedItem).Id);
+                cmd.Parameters.AddWithValue("@empleado", _idUsuario);
+                cmd.Parameters.AddWithValue("@proveedor", ((ComboItem)cbProveedor.SelectedItem).Id);
+                cmd.Parameters.AddWithValue("@producto", codigoProducto);
+                cmd.ExecuteNonQuery();
             }
-            objConection.cerrarCN();
         }
 
         private void btnRegistrar_Click(object sender, RoutedEventArgs e)
         {
-            objConection.cerrarCN();
-            List<string> errores = new List<string>();
-            objConection.cerrarCN();
-            bool insercionExitosa = true;
             // Verificar que los ComboBox no estén vacíos
             if (cbAlmacen.SelectedItem == null || cbProveedor.SelectedItem == null)
             {
-                MessageBox.Show("Por favor, selecciones un almacén y un proveedor antes de agregar un producto al inventario", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
-                insercionExitosa = false;
+                MessageBox.Show("Seleccione un almacén y un proveedor antes de registrar.", "Campos requeridos", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
-            foreach (var codigoProducto in listaCodigosValidos)
+            List<string> errores = new List<string>();
+            foreach (var codigo in listaCodigosValidos)
             {
-                objConection.cerrarCN();
                 try
                 {
-                    InsertarInventario(codigoProducto);
+                    InsertarInventario(codigo);
                 }
-                catch (Exception ex)
+                catch
                 {
-                    errores.Add($"Error con el código {codigoProducto}"+ex.ToString());
-                    insercionExitosa = false;
+                    errores.Add($"Error al registrar el código: {codigo}");
                 }
             }
 
             if (errores.Count > 0)
             {
-                MessageBox.Show(string.Join("\n", errores));
+                MessageBox.Show(string.Join("\n", errores), "Errores encontrados", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
-            else if (insercionExitosa)
+            else
             {
-                MessageBox.Show("Todos los productos fueron registrados correctamente.");
+                MessageBox.Show("Todos los productos fueron registrados exitosamente.", "Registro completo", MessageBoxButton.OK, MessageBoxImage.Information);
             }
+
             Limpiar();
-            objConection.cerrarCN();
+            CargarDatos();
         }
+
 
         private void btnCancelar_Click_1(object sender, RoutedEventArgs e)
         {
