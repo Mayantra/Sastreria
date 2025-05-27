@@ -531,9 +531,9 @@ namespace LoginSasteria
         //Se cargan las tallas al objeto cbTalla segun el producto seleccionado
         private void CargarDatosTalla(object sender, SelectionChangedEventArgs e)
         {
+            cbTalla.Items.Clear();
             objConection.cerrarCN();
-            //cbTalla.Items.Clear();
-
+       
             if (cbTipoProducto.SelectedItem != null)
             {
                 int idTipoProducto = ((ComboItem)cbTipoProducto.SelectedItem).Id;
