@@ -533,7 +533,7 @@ namespace LoginSasteria
         {
             cbTalla.Items.Clear();
             objConection.cerrarCN();
-       
+
             if (cbTipoProducto.SelectedItem != null)
             {
                 int idTipoProducto = ((ComboItem)cbTipoProducto.SelectedItem).Id;

@@ -35,6 +35,9 @@ using System.Windows.Shapes;
 using System.IO;
 using System.Reflection.Emit;
 using System.ComponentModel;
+using iTextSharp.text.pdf.parser;
+using Xceed.Wpf.AvalonDock.Themes;
+using System.Globalization;
 
 
 namespace LoginSasteria
@@ -65,72 +68,92 @@ namespace LoginSasteria
             this.WindowState = WindowState.Minimized;
         }
 
+        private Table CrearNuevaTabla()
+        {
+            return new Table(UnitValue.CreatePercentArray(new float[] { 1, 1, 1, 1 })).UseAllAvailableWidth();
+        }
+
+        private void CompletarUltimaFila(Table tabla, int columnas, int contador)
+        {
+            int celdasEnFila = contador % columnas;
+            if (celdasEnFila != 0)
+            {
+                int celdasFaltantes = columnas - celdasEnFila;
+                for (int i = 0; i < celdasFaltantes; i++)
+                {
+                    tabla.AddCell(new Cell().Add(new Paragraph("")));
+                }
+            }
+        }
+
         private void btnBuscar_Click(object sender, RoutedEventArgs e)
         {
-            // Verifica que todos los controles estén llenos
-            if (dpPrimeraFecha.SelectedDate == null ||
-                dpSegundaFecha.SelectedDate == null ||
-                string.IsNullOrEmpty(cbHoraInicio.Text) ||
-                string.IsNullOrEmpty(cbMinutosInicio.Text) ||
-                string.IsNullOrEmpty(cbHoraFin.Text) ||
-                string.IsNullOrEmpty(cbMinutosFin.Text))
+            // Validación de campos
+            if (dpPrimeraFecha.SelectedDate == null || dpSegundaFecha.SelectedDate == null ||
+                cbHoraInicio.SelectedItem == null || cbMinutosInicio.SelectedItem == null ||
+                cbHoraFin.SelectedItem == null || cbMinutosFin.SelectedItem == null)
             {
-                MessageBox.Show("Por favor, complete todos los campos antes de realizar la búsqueda.", "Campos incompletos", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Complete todos los campos antes de buscar.", "Campos incompletos", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
-            //Vamos a crear un DateTimePicker con los DatePicker y los ComboBox
-            int horaPrimeraFecha = int.Parse(cbHoraInicio.Text);
-            int minutosPrimeraFecha = int.Parse(cbMinutosInicio.Text);
-
-            DateTime fechaHoraInicio = dpPrimeraFecha.SelectedDate.Value;
-            fechaHoraInicio = fechaHoraInicio.AddHours(horaPrimeraFecha);
-            fechaHoraInicio = fechaHoraInicio.AddMinutes(minutosPrimeraFecha);
-
-            // Repite para la segunda fecha
-            int horaSegundaFecha = int.Parse(cbHoraFin.Text);
-            int minutosSegundaFecha = int.Parse(cbMinutosFin.Text);
-
-            DateTime fechaHoraFin = dpSegundaFecha.SelectedDate.Value;
-            fechaHoraFin = fechaHoraFin.AddHours(horaSegundaFecha);
-            fechaHoraFin = fechaHoraFin.AddMinutes(minutosSegundaFecha);
-
-            /*string query = "SELECT p.idproducto AS codigo, p.precio, np.Nombre AS Producto, c.nombre AS Color, t.nombreTalla AS Talla, " +
-                "p.detalles, p.fechaCodigo AS `Fecha_Creacion` FROM " + objConection.namedb() + ".producto AS p JOIN " + objConection.namedb() + ".nombreProducto AS np " +
-                "ON p.nombreProducto_idnombreProducto = np.idnombreProducto JOIN " + objConection.namedb() + ".color AS c ON p.color_idcolor = c.idcolor JOIN " + objConection.namedb() + ".talla AS t " +
-                "ON p.talla_idtalla = t.idtalla WHERE p.fechaCodigo BETWEEN @FechaInicio AND @FechaFin";*/
-
-            string query = "SELECT p.idproducto AS codigo, p.precio, np.Nombre AS Producto, c.nombre AS Color, t.nombreTalla AS Talla, " +
-                "p.detalles, p.fechaCodigo AS `Fecha_Creacion` FROM " + objConection.namedb() + ".producto AS p " +
-                "JOIN " + objConection.namedb() + ".nombreProducto AS np ON p.nombreProducto_idnombreProducto = np.idnombreProducto " +
-                "JOIN " + objConection.namedb() + ".color AS c ON p.color_idcolor = c.idcolor " +
-                "JOIN " + objConection.namedb() + ".talla AS t ON p.talla_idtalla = t.idtalla " +
-                "WHERE p.fechaCodigo BETWEEN @FechaInicio AND @FechaFin " +
-                "AND p.idproducto NOT LIKE 'ENC%'";
-
-            objConection.cerrarCN();
-            using (MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN()))
+            try
             {
-                comando.Parameters.AddWithValue("@FechaInicio", fechaHoraInicio);
-                comando.Parameters.AddWithValue("@FechaFin", fechaHoraFin);
+                // Obtener los valores seleccionados de los ComboBox
+                int horaInicio = int.Parse(((ComboBoxItem)cbHoraInicio.SelectedItem).Content.ToString());
+                int minutoInicio = int.Parse(((ComboBoxItem)cbMinutosInicio.SelectedItem).Content.ToString());
+                int horaFin = int.Parse(((ComboBoxItem)cbHoraFin.SelectedItem).Content.ToString());
+                int minutoFin = int.Parse(((ComboBoxItem)cbMinutosFin.SelectedItem).Content.ToString());
 
-                // Ejecuta la consulta
-                MySqlDataAdapter dataAdapter = new MySqlDataAdapter(comando);
-                DataTable dataTable = new DataTable();
-                dataAdapter.Fill(dataTable);
+                // Construir las fechas y horas completas
+                DateTime fechaInicio = dpPrimeraFecha.SelectedDate.Value.Date
+                    .AddHours(horaInicio)
+                    .AddMinutes(minutoInicio);
 
-                // Asigna el DataTable como la fuente de datos del DataGrid
-                dgFechas.ItemsSource = dataTable.DefaultView;
+                DateTime fechaFin = dpSegundaFecha.SelectedDate.Value.Date
+                    .AddHours(horaFin)
+                    .AddMinutes(minutoFin);
 
-                // Ordena el DataGrid por la columna "Fecha Creación"
-                dgFechas.Items.SortDescriptions.Clear();
-                dgFechas.Items.SortDescriptions.Add(new SortDescription("Fecha_Creacion", ListSortDirection.Ascending));
+                // Consulta SQL
+                string query = $@"
+                        SELECT p.idproducto AS codigo, p.precio, np.Nombre AS Producto, 
+                               c.nombre AS Color, t.nombreTalla AS Talla, p.detalles, 
+                               p.fechaCodigo AS Fecha_Creacion
+                        FROM {objConection.namedb()}.producto p
+                        LEFT JOIN {objConection.namedb()}.nombreProducto np ON p.nombreProducto_idnombreProducto = np.idnombreProducto
+                        LEFT JOIN {objConection.namedb()}.color c ON p.color_idcolor = c.idcolor
+                        LEFT JOIN {objConection.namedb()}.talla t ON p.talla_idtalla = t.idtalla
+                        WHERE p.fechaCodigo BETWEEN '2025-05-27 00:00:00' AND '2025-05-27 23:59:59'
+                        AND p.idproducto NOT LIKE 'ENC%'";
 
-                // Refresca la vista
-                dgFechas.Items.Refresh();
+                // Ejecutar consulta
+                using (var conn = objConection.nuevaConexion())
+                using (var cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@FechaInicio", fechaInicio);
+                    cmd.Parameters.AddWithValue("@FechaFin", fechaFin);
+
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    //MessageBox.Show($"Total de registros encontrados: {dataTable.Rows.Count}", "Resultado", MessageBoxButton.OK, MessageBoxImage.Information);
+                    // Mostrar los datos
+                    dgFechas.ItemsSource = dataTable.DefaultView;
+                    dgFechas.Items.SortDescriptions.Clear();
+                    dgFechas.Items.SortDescriptions.Add(new SortDescription("Fecha_Creacion", ListSortDirection.Ascending));
+                    dgFechas.Items.Refresh();
+                }
+
+                btnImprimir.IsEnabled = true;
             }
-            objConection.cerrarCN();
-            btnImprimir.IsEnabled = true;
+            catch (System.FormatException)
+            {
+                MessageBox.Show("Error al interpretar los datos de hora o minutos. Verifique los valores seleccionados.", "Error de formato", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error al buscar los productos:\n" + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         //Permite generar el codigo de barras
@@ -185,89 +208,76 @@ namespace LoginSasteria
                 // Crear un objeto Document
                 Document document = new Document(pdf);
 
-                // Crear una tabla con 4 columnas para organizar los códigos de barras
-                Table table = new Table(UnitValue.CreatePercentArray(new float[] { 1, 1, 1, 1 })).UseAllAvailableWidth();
+                int columnas = 4;
+                int filasPorPagina = 7;
+                int celdasPorPagina = columnas * filasPorPagina;
+                int contador = 0;
+
+                Table tabla = CrearNuevaTabla();
 
                 // Lógica de la creación de la tabla para la colocación de los códigos
                 foreach (DataRowView row in dgFechas.Items)
                 {
                     if (row.Row.RowState != DataRowState.Detached)
                     {
-                        // Obtener los valores del "codigo", "Producto" y "precio" de la fila actual
                         string codigo = row["codigo"].ToString();
                         string producto = row["Producto"].ToString();
                         string precio = row["precio"].ToString();
 
-                        // Generar la imagen del código de barras con el texto del código
                         byte[] barcodeBytes = GenerateBarcode(codigo);
                         ImageData imageData = ImageDataFactory.Create(barcodeBytes);
                         Image barcodeImage = new Image(imageData);
+                        barcodeImage.SetWidth(4 * 28.35f); // 4 cm
+                        barcodeImage.SetHeight(2 * 28.35f); // 2 cm
 
-                        // Ajustar el tamaño de la imagen a 4 cm x 2 cm
-                        barcodeImage.SetWidth(4 * 28.35f); // 4 cm a puntos
-                        barcodeImage.SetHeight(2 * 28.35f); // 2 cm a puntos
-
-                        // Crear una celda que contendrá el nombre del producto, el precio y el código de barras
                         Cell cell = new Cell();
-
-                        // Agregar el nombre del producto y el precio en la parte superior
                         cell.Add(new Paragraph("Producto: " + producto).SetFontSize(10));
                         cell.Add(new Paragraph("Precio: Q" + precio).SetFontSize(10));
-
-                        // Agregar la imagen del código de barras debajo
                         cell.Add(barcodeImage);
 
-                        // Agregar la celda completa a la tabla
-                        table.AddCell(cell);
+                        tabla.AddCell(cell);
+                        contador++;
+
+                        if (contador % celdasPorPagina == 0)
+                        {
+                            CompletarUltimaFila(tabla, columnas, contador);
+                            document.Add(tabla);
+                            document.Add(new iText.Layout.Element.AreaBreak());
+                            tabla = CrearNuevaTabla();
+                        }
                     }
                 }
 
-                // Asegurarse de que la última fila se llene completamente
-                int itemsCount = dgFechas.Items.Count;
-                int cellsToAdd = 4 - (itemsCount % 4);
-                if (cellsToAdd < 4)
+                if (contador % celdasPorPagina != 0)
                 {
-                    for (int i = 0; i < cellsToAdd; i++)
-                    {
-                        table.AddCell(new Cell().Add(new Paragraph("")));
-                    }
+                    CompletarUltimaFila(tabla, columnas, contador);
+                    document.Add(tabla);
                 }
 
-                // Agregar la tabla al documento
-                document.Add(table);
-
-                // Cerrar el documento
                 document.Close();
-
-                // Es necesario rebobinar el MemoryStream antes de leerlo
                 memoryStream.Seek(0, SeekOrigin.Begin);
 
-                // Crear una ruta temporal para el archivo PDF
                 string tempFilePath = System.IO.Path.Combine(System.IO.Path.GetTempPath(), "Codigos" + DateTime.Now.ToString("dd-MM-yyyy") + ".pdf");
 
                 objConection.cerrarCN();
                 try
                 {
-                    // Escribir el MemoryStream a un archivo temporal
                     using (FileStream fileStream = new FileStream(tempFilePath, FileMode.Create, FileAccess.Write))
                     {
                         memoryStream.CopyTo(fileStream);
                     }
 
-                    // Abrir el archivo PDF temporal con el visor predeterminado
-                    System.Diagnostics.Process.Start(tempFilePath);
-
-                    // Si no abre el PDF con la línea anterior, usar esta línea:
-                    //System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(tempFilePath) { UseShellExecute = true });
+                    System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(tempFilePath) { UseShellExecute = true });
                 }
                 catch (IOException)
                 {
-                    // Mostrar un mensaje indicando que el archivo está siendo utilizado
                     MessageBox.Show("El archivo PDF está siendo utilizado. Por favor, ciérrelo e intente de nuevo.", "Error al generar PDF", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
+
             objConection.cerrarCN();
             btnImprimir.IsEnabled = false;
+
         }
 
         private void btnCancelar_Click_1(object sender, RoutedEventArgs e)
