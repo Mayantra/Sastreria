@@ -85,12 +85,14 @@ namespace LoginSasteria
 
         private void abrirInicio(object sender, RoutedEventArgs e)
         {
+            cleanValues();
             mainInventario abrir = new mainInventario();
             abrir.Show();
             this.Close();
         }
         private void abrirCons(object sender, RoutedEventArgs e)
         {
+            cleanValues();
             consultaInventario abrir = new consultaInventario();
             abrir.Show();
             this.Close();
@@ -98,6 +100,7 @@ namespace LoginSasteria
 
         private void abrirVenta(object sender, RoutedEventArgs e)
         {
+            cleanValues();
             ventaInventario abrir = new ventaInventario();
             abrir.Show();
             this.Close();
@@ -105,6 +108,7 @@ namespace LoginSasteria
 
         private void abrirBarras(object sender, RoutedEventArgs e)
         {
+            cleanValues();
             verificarSuperUser verificar = new verificarSuperUser();
             if (verificar.superUser() == true)
             {
@@ -122,6 +126,7 @@ namespace LoginSasteria
 
         private void abrirInventario(object sender, RoutedEventArgs e)
         {
+            cleanValues();
             verificarSuperUser verificar = new verificarSuperUser();
             if (verificar.superUser() == true)
             {
@@ -532,6 +537,7 @@ namespace LoginSasteria
 
         private void btnConversion_Click(object sender, RoutedEventArgs e)
         {
+            cleanValues();
             ConversionTraje abrir = new ConversionTraje();
             abrir.Show();
             this.Close();
