@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using static LoginSasteria.CrearBarras;
 using System.Windows.Threading;
+using Xceed.Wpf.AvalonDock.Themes;
 
 namespace LoginSasteria
 {
@@ -302,12 +303,13 @@ namespace LoginSasteria
                 }
 
                 // Consulta a la base de datos para obtener datos del producto
-                string queryProducto = $"SELECT p.idproducto AS codigo, p.precio, np.Nombre AS Producto, c.nombre AS Color, t.nombreTalla AS Talla, p.detalles " +
-                    $"FROM {objConection.namedb()}.producto AS p " +
-                    $"JOIN {objConection.namedb()}.nombreProducto AS np ON p.nombreProducto_idnombreProducto = np.idnombreProducto " +
-                    $"JOIN {objConection.namedb()}.color AS c ON p.color_idcolor = c.idcolor " +
-                    $"JOIN {objConection.namedb()}.talla AS t ON p.talla_idtalla = t.idtalla " +
-                    $"WHERE p.idproducto = @codigo";
+                string queryProducto = $"SELECT p.idproducto AS codigo, p.precio, np.Nombre AS Producto, c.nombre AS Color,ta.nombreTalla AS Talla, p.detalles " +
+                                        $"FROM {objConection.namedb()}.producto p " +
+                                        $"JOIN {objConection.namedb()}.nombreProducto np ON p.nombreProducto_idnombreProducto = np.idnombreProducto " +
+                                        $"JOIN {objConection.namedb()}.color c ON p.color_idcolor = c.idcolor " +
+                                        $"JOIN {objConection.namedb()}.tipoTall tt ON p.talla_idtalla = tt.idtalla " +
+                                        $"JOIN {objConection.namedb()}.talla ta ON tt.talla_idtalla = ta.idtalla " +
+                                        $"WHERE p.idproducto = @codigo";
 
                 using (var conn = objConection.nuevaConexion())
                 using (var cmd = new MySqlCommand(queryProducto, conn))

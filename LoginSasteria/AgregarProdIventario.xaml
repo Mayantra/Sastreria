@@ -172,13 +172,13 @@
   Height="37" Margin="1038,104,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="245" 
   SelectionBrush="{x:Null}" BorderBrush="{x:Null}" Background="White" FontSize="16" IsReadOnly="True"/>
 
-        <Label HorizontalAlignment="Left" Height="61" Margin="984,340,0,0" VerticalAlignment="Top" Width="280" FontSize="20" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+        <Label HorizontalAlignment="Left" Height="61" Margin="1004,340,0,0" VerticalAlignment="Top" Width="280" FontSize="20" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
             <TextBlock 
          Text="Códigos de barras que faltan&#x0a;por escanear" 
          TextAlignment="Center" 
          VerticalAlignment="Center"/>
         </Label>
-        <Label x:Name="lblContadorCod" HorizontalAlignment="Left" Height="61" Margin="983,429,0,0" VerticalAlignment="Top" Width="280" FontSize="45" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+        <Label x:Name="lblContadorCod" HorizontalAlignment="Left" Height="61" Margin="1003,429,0,0" VerticalAlignment="Top" Width="280" FontSize="45" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
             <TextBlock x:Name="txbContadorCod" 
          Text="0" 
          TextAlignment="Center" 
@@ -219,7 +219,7 @@
                 </Rectangle>
             </Grid>
         </Button>
-        <Button x:Name="btnRegistrar" HorizontalAlignment="Left" Height="60" Margin="983,609,0,0" VerticalAlignment="Top" Width="282" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FF255909" IsEnabled="False" Click="btnRegistrar_Click">
+        <Button x:Name="btnRegistrar" HorizontalAlignment="Left" Height="60" Margin="1003,609,0,0" VerticalAlignment="Top" Width="282" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FF255909" IsEnabled="False" Click="btnRegistrar_Click">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -240,7 +240,7 @@
    CanUserDeleteRows="False" Padding="10"
    CanUserResizeColumns="False" CanUserResizeRows="False"
    x:Name="dgProductos" HorizontalAlignment="Left" Height="428" Margin="198,241,0,0" VerticalAlignment="Top" 
-   Width="749" FontSize="15" BorderBrush="{x:Null}" Background="White" AreRowDetailsFrozen="True" 
+   Width="787" FontSize="15" BorderBrush="{x:Null}" Background="White" AreRowDetailsFrozen="True" 
    RowBackground="#FFF1F1F1" AlternatingRowBackground="White" Foreground="Black" FontFamily="Arial" 
    AutoGenerateColumns="False">
             <DataGrid.Columns>
@@ -250,7 +250,7 @@
 
                 <DataGridTextColumn Header="Producto" Binding="{Binding Producto}" Width="130"/>
 
-                <DataGridTextColumn Header="Color" Binding="{Binding Color}" Width="70"/>
+                <DataGridTextColumn Header="Color" Binding="{Binding Color}" Width="100"/>
 
                 <DataGridTextColumn Header="Talla" Binding="{Binding Talla}" Width="85"/>
 
