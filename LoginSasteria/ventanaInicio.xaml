@@ -67,6 +67,8 @@
                 <ImageBrush ImageSource="/Imagen_de_WhatsApp_2024-01-17_a_las_20.09.20_1e6cb21b-removebg-preview.png" Stretch="Uniform"/>
             </Rectangle.Fill>
         </Rectangle>
+        <Button x:Name="btnRegistro" Content="Registro" HorizontalAlignment="Left" Height="55" Margin="10,10,0,0" VerticalAlignment="Top" Width="130" Click="btnRegitroHuella" Foreground="White"
+                Background="Black" BorderBrush="White" FontSize="20"/>
 
 
     </Grid>

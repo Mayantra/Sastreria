@@ -1,0 +1,125 @@
+﻿<Window x:Class="LoginSasteria.registroHuella"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LoginSasteria"
+                mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="" Height="700" Width="1250"  Foreground="{x:Null}"
+        WindowStyle="None"
+        Background="Transparent"
+        AllowsTransparency="True"
+        Icon="/tshirt_120689.ico">
+    <Window.Resources>
+        <ControlTemplate x:Key="NoMouseOverButtonTemplate"   
+                 TargetType="Button">
+            <Border Background="{TemplateBinding Background}"  
+          BorderBrush="{TemplateBinding BorderBrush}"  
+          BorderThickness="{TemplateBinding BorderThickness}">
+                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"  
+                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+            </Border>
+
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled"  
+             Value="False">
+                    <Setter Property="Background"  
+              Value="{x:Static SystemColors.ControlLightBrush}" />
+                    <Setter Property="Foreground"  
+              Value="{x:Static SystemColors.GrayTextBrush}" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>
+    <Grid Background="#FF150000">
+        <Button x:Name="btnExit" HorizontalAlignment="Left" Height="30" Margin="1190,10,0,0" VerticalAlignment="Top" Width="30" Background="#FFE50000" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="btnSalir" AutomationProperties.Name="btnSalir" RenderTransformOrigin="-13363.5,4.2">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="100"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="btnMin" HorizontalAlignment="Left" Height="30" Margin="1145,10,0,0" VerticalAlignment="Top" Width="30" Background="#FF336653" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="Minimizar">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="100"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Rectangle HorizontalAlignment="Center" Height="200" Margin="0,25,0,0" VerticalAlignment="Top" Width="500" Opacity="0.5">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="/Imagen_de_WhatsApp_2024-01-17_a_las_20.09.20_1e6cb21b-removebg-preview.png" Stretch="Uniform"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <StackPanel Margin="270,175,270,52">
+            <Label Content="Nombre:" Foreground="White" FontSize="25"/>
+            <TextBox Name="txtNombre" Height="30" FontSize="20"/>
+
+            <Label Content="Usuario:" Foreground="White" FontSize="25"/>
+            <TextBox Name="txtUsuario" Height="30" FontSize="20"/>
+
+            <Label Content="PIN:" Foreground="White" FontSize="25"/>
+            <TextBox Name="txtPin" Height="30" FontSize="20"/>
+
+            <CheckBox Name="chkSuper" Content="¿Es SuperUsuario?" FontSize="25" 
+          Background="White" Foreground="White" Margin="20">
+                <CheckBox.Template>
+                    <ControlTemplate TargetType="CheckBox">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Parte visual del CheckBox (caja más grande) -->
+                            <Border x:Name="border" 
+                        Width="30" 
+                        Height="30" 
+                        BorderThickness="2" 
+                        BorderBrush="Black" 
+                        Background="White"
+                        CornerRadius="3"
+                        Margin="0,0,5,0">
+                                <Path x:Name="checkMark" 
+                          Width="30" 
+                          Height="30"
+                          Stretch="Fill"
+                          Fill="Black"
+                          Data="M 0 5 L 5 10 L 15 0"
+                          Visibility="Collapsed"/>
+                            </Border>
+
+                            <!-- Contenido del CheckBox (texto) -->
+                            <ContentPresenter Grid.Column="1" 
+                                  VerticalAlignment="Center" 
+                                  Margin="5,0,0,0"/>
+                        </Grid>
+
+                        <!-- Triggers para cambiar el estado visual -->
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="checkMark" Property="Visibility" Value="Visible"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="Blue"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </CheckBox.Template>
+            </CheckBox>
+
+            <Label Content="Almacen:" Foreground="White" FontSize="25"/>
+            <ComboBox Name="cmbAlmacen" Height="30" FontSize="20" SelectedIndex="-1" Margin="10">
+                <ComboBoxItem Content="San Pedro" Tag="1"/>
+                <ComboBoxItem Content="Huehuetenango" Tag="2"/>
+                <ComboBoxItem Content="Xela" Tag="3"/>
+            </ComboBox>
+
+            <Button Content="Guardar" Click="BtnGuardar_Click" Margin="0,10,0,0" Padding="10" FontSize="25" Background="White"/>
+        </StackPanel>
+        <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Height="53" Margin="1015,574,0,0" VerticalAlignment="Top" Width="160" FontSize="25" Background="DarkRed" Foreground="White" BorderBrush="White" Click="btCancelar"/>
+
+
+    </Grid>
+</Window>

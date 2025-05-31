@@ -36,10 +36,27 @@ namespace LoginSasteria
 
         private void abrirInventario(object sender, RoutedEventArgs e)
         {
-            
+
             mainInventario abrir = new mainInventario();
             abrir.Show();
             this.Close();
+        }
+
+        private void btnRegitroHuella(object sender, RoutedEventArgs e)
+        {
+            verificarSuperUser verificar = new verificarSuperUser();
+            if (verificar.superUser() == true)
+            {
+                registroHuella abrir = new registroHuella();
+                abrir.Show();
+                this.Close();
+            }
+            else
+            {
+                AccesoNoAutorizado abrir = new AccesoNoAutorizado();
+                abrir.Show();
+                this.Close();
+            }
         }
     }
 }
