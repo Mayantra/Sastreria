@@ -87,7 +87,6 @@ namespace LoginSasteria
             string query = "SELECT FechaHora FROM " + objConection.namedb() + ".DetallesVenta where idDetallesVenta='" + codigo + "';";
             try
             {
-                objConection.cerrarCN();
                 MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN());
                 MySqlDataReader reader = comando.ExecuteReader();
                 while (reader.Read())
@@ -119,64 +118,46 @@ namespace LoginSasteria
         public void CargarFactura(string codigoFactura)
         {
             objConection.cerrarCN();
-            string dbName = objConection.namedb();
-            string query = @"
-        SELECT 
-            producto_idproducto AS 'Producto',
-            tipoProducto.nombreTipo AS 'Tipo',
-            talla.nombreTalla AS 'Talla',
-            precio AS 'Precio',
-            FechaHora AS 'Fecha',
-            Empleado.Nombre AS 'Nombre Cajero'
-        FROM 
-            " + dbName + @".RegistroVenta
-        INNER JOIN 
-            " + dbName + @".DetallesVenta ON DetallesVenta_idDetallesVenta = idDetallesVenta
-        INNER JOIN 
-            " + dbName + @".producto ON producto_idproducto = idproducto
-        INNER JOIN 
-            " + dbName + @".tipoTall ON producto.talla_idtalla = tipoTall.idtalla
-        INNER JOIN 
-            " + dbName + @".tipoProducto ON tipoTall.tipoProducto_idtipoProducto = tipoProducto.idtipoProducto
-        INNER JOIN  
-            " + dbName + @".talla ON tipoTall.talla_idtalla = talla.idtalla
-        INNER JOIN 
-            " + dbName + @".Empleado ON Empleado_idEmpleado = idEmpleado
-        WHERE 
-            idDetallesVenta = @codigoFactura
-        ORDER BY 
-            producto_idproducto ASC";
-
+            string query = "SELECT producto_idproducto as 'Producto'," +
+                "\r\ntipoProducto.nombreTipo as 'Tipo'," +
+                "\r\ntalla.nombreTalla As 'Talla',\r\nprecio as 'Precio'," +
+                "\r\nFechaHora as 'Fecha',\r\nEmpleado.Nombre as 'Nombre Cajero'" +
+                "\r\n \r\nFROM " + objConection.namedb() + ".RegistroVenta\r\ninner join " + objConection.namedb() + ".DetallesVenta" +
+                "\r\non DetallesVenta_idDetallesVenta=idDetallesVenta\r\ninner join " + objConection.namedb() + ".producto" +
+                "\r\non producto_idproducto = idproducto\r\nINNER JOIN " + objConection.namedb() + ".tipoTall" +
+                "\r\nON producto.talla_idtalla = tipoTall.idtalla\r\nINNER JOIN " + objConection.namedb() + ".tipoProducto" +
+                "\r\nON tipoTall.tipoProducto_idtipoProducto = tipoProducto.idtipoProducto" +
+                "\r\nINNER JOIN  " + objConection.namedb() + ".talla\r\nON tipoTall.talla_idtalla = talla.idtalla" +
+                "\r\ninner join " + objConection.namedb() + ".Empleado\r\non Empleado_idEmpleado = idEmpleado" +
+                "\r\n\r\nwhere idDetallesVenta ='" + codigoFactura + "';";
             try
             {
-                objConection.cerrarCN();
-                using (MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN()))
+                MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN());
+                MySqlDataAdapter data = new MySqlDataAdapter(comando);
+                DataTable tabla = new DataTable();
+
+                data.Fill(tabla);
+                if (tabla.Rows.Count < 1)//si el codigo es incorrecto
                 {
-                    comando.Parameters.AddWithValue("@codigoFactura", codigoFactura);
+                    MessageBox.Show("Ingrese el código de factura correcto");
 
-                    MySqlDataAdapter data = new MySqlDataAdapter(comando);
-                    DataTable tabla = new DataTable();
+                }
+                else
+                {
 
-                    data.Fill(tabla);
-                    if (tabla.Rows.Count < 1) // Si el código es incorrecto
-                    {
-                        MessageBox.Show("Ingrese el código de factura correcto");
-                    }
-                    else
-                    {
-                        DataConsulta.DataContext = tabla;
-                        objConection.cerrarCN();
-                        tablaNueva = tabla;
-                        AuxcodigoFactura = codigoFactura;
-                        getListaCodigos(codigoFactura);
-                        CargarTotalFacturas(codigoFactura);
-                    }
+                    DataConsulta.DataContext = tabla;
+                    objConection.cerrarCN();
+                    tablaNueva = tabla;
+                    AuxcodigoFactura = codigoFactura;
+                    getListaCodigos(codigoFactura);
+                    CargarTotalFacturas(codigoFactura);
+
                 }
                 objConection.cerrarCN();
             }
             catch (MySqlException x)
             {
-                MessageBox.Show("Error: " + x.Message);
+                MessageBox.Show("Error: " + x);
             }
         }
         public void getListaCodigos(string codigo)
@@ -185,8 +166,6 @@ namespace LoginSasteria
                 "where DetallesVenta_idDetallesVenta='" + codigo + "' order by producto_idproducto asc;";
             try
             {
-                objConection.cerrarCN();
-
                 MySqlCommand cmd = new MySqlCommand(query, objConection.establecerCN());
                 MySqlDataReader reader = cmd.ExecuteReader();
 
@@ -208,44 +187,34 @@ namespace LoginSasteria
 
         public void CargarTotalFacturas(string codigoFactura)
         {
-            objConection.cerrarCN();
-            string dbName = objConection.namedb();
-            string query = @"
-        SELECT SUM(precio) AS Total
-        FROM " + dbName + @".RegistroVenta
-        INNER JOIN " + dbName + @".DetallesVenta ON DetallesVenta_idDetallesVenta = idDetallesVenta
-        INNER JOIN " + dbName + @".producto ON producto_idproducto = idproducto
-        INNER JOIN " + dbName + @".tipoTall ON producto.talla_idtalla = tipoTall.idtalla
-        INNER JOIN " + dbName + @".tipoProducto ON tipoTall.tipoProducto_idtipoProducto = tipoProducto.idtipoProducto
-        INNER JOIN " + dbName + @".talla ON tipoTall.talla_idtalla = talla.idtalla
-        INNER JOIN " + dbName + @".Empleado ON Empleado_idEmpleado = idEmpleado
-        WHERE idDetallesVenta = @codigoFactura";
 
+            objConection.cerrarCN();
+            string query = "SELECT  sum(precio) as Total" +
+                "\r\n \r\nFROM " + objConection.namedb() + ".RegistroVenta\r\ninner join " + objConection.namedb() + ".DetallesVenta" +
+                "\r\non DetallesVenta_idDetallesVenta=idDetallesVenta\r\ninner join " + objConection.namedb() + ".producto" +
+                "\r\non producto_idproducto = idproducto\r\nINNER JOIN " + objConection.namedb() + ".tipoTall" +
+                "\r\nON producto.talla_idtalla = tipoTall.idtalla\r\nINNER JOIN " + objConection.namedb() + ".tipoProducto" +
+                "\r\nON tipoTall.tipoProducto_idtipoProducto = tipoProducto.idtipoProducto" +
+                "\r\nINNER JOIN  " + objConection.namedb() + ".talla\r\nON tipoTall.talla_idtalla = talla.idtalla" +
+                "\r\ninner join " + objConection.namedb() + ".Empleado\r\non Empleado_idEmpleado = idEmpleado" +
+                "\r\n\r\nwhere idDetallesVenta ='" + codigoFactura + "';";
             try
             {
-                objConection.cerrarCN();
-
-                using (MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN()))
+                MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN());
+                MySqlDataReader reader = comando.ExecuteReader();
+                while (reader.Read())
                 {
-                    comando.Parameters.AddWithValue("@codigoFactura", codigoFactura);
-
-                    using (MySqlDataReader reader = comando.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            totalFactura = reader.GetDouble(0);
-                            txTotalFac.Text = "Q " + totalFactura;
-                        }
-                    }
+                    totalFactura = reader.GetDouble(0);
+                    txTotalFac.Text = "Q " + totalFactura;
                 }
+                reader.Close();
                 objConection.cerrarCN();
             }
             catch (MySqlException x)
             {
-                MessageBox.Show("Error: " + x.Message);
+                MessageBox.Show("Error: " + x);
             }
         }
-
 
         private void btnInicio_Click(object sender, RoutedEventArgs e)
         {
@@ -371,7 +340,7 @@ namespace LoginSasteria
             int ids = 0;
             try
             {
-                objConection.cerrarCN();
+
                 MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN());
                 MySqlDataReader dr = comando.ExecuteReader();
 
@@ -451,19 +420,14 @@ namespace LoginSasteria
 
         private void AgregarProducto(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Enter)
+            InsertarProductoData(txProducto.Text);
+
+            txProducto.Clear();
+            sumaDeProductos(ListaCodigosFactura);
+            foreach (var item in ListaCodigosFactura)
             {
-                InsertarProductoData(txProducto.Text);
-
-                txProducto.Clear();
-                sumaDeProductos(ListaCodigosFactura);
-                foreach (var item in ListaCodigosFactura)
-                {
-                    Console.WriteLine(item);
-                }
-
+                Console.WriteLine(item);
             }
-
         }
 
 
@@ -493,16 +457,15 @@ namespace LoginSasteria
                         "\r\nproducto.precio As Precio," +
                         "\r\n'" + fechahora + "' As Fecha," +
                         "\r\n'Devolución' As 'Nombre Cajero'" +
-                        "\r\nFROM " + objConection.namedb() + ".inventario" +
-                        "\r\ninner join " + objConection.namedb() + ".producto on inventario.producto_idproducto = producto.idproducto" +
-                        "\r\ninner join " + objConection.namedb() + ".tipoTall on producto.talla_idtalla = tipoTall.idtalla" +
-                        "\r\ninner join " + objConection.namedb() + ".tipoProducto " +
+                        "\r\nFROM hismanreina_PruebasDBLeon.inventario" +
+                        "\r\ninner join hismanreina_PruebasDBLeon.producto on inventario.producto_idproducto = producto.idproducto" +
+                        "\r\ninner join hismanreina_PruebasDBLeon.tipoTall on producto.talla_idtalla = tipoTall.idtalla" +
+                        "\r\ninner join hismanreina_PruebasDBLeon.tipoProducto " +
                         "\r\non tipoTall.tipoProducto_idtipoProducto = tipoProducto.idtipoProducto" +
-                        "\r\ninner join " + objConection.namedb() + ".talla on tipoTall.talla_idtalla = talla.idtalla" +
+                        "\r\ninner join hismanreina_PruebasDBLeon.talla on tipoTall.talla_idtalla = talla.idtalla" +
                         "\r\nwhere idproducto = '" + code + "';";
                     try
                     {
-                        objConection.cerrarCN();
                         MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN());
                         MySqlDataAdapter data = new MySqlDataAdapter(comando);
 
@@ -604,7 +567,7 @@ namespace LoginSasteria
             try
             {
 
-                objConection.cerrarCN();
+
                 MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN());
                 MySqlDataReader dr = comando.ExecuteReader();
 
@@ -709,9 +672,8 @@ namespace LoginSasteria
             //creacion de funcion suma puntos
             MessageBox.Show("Devolución Realizada");
             GenerarFactura factura = new GenerarFactura();
-            double totalMenosTotal = totalNuevo -totalFactura;
             //GENERAR la FACTURA -------------------------------------------------------------------------*************
-            factura.GenerarDatosFactura(Detalles.ToString(), iduser, idClientes, tablaNueva, totalMenosTotal);
+            factura.GenerarDatosFactura(Detalles.ToString(), iduser, idClientes, tablaNueva, totalNuevo, 1);
             //------------------------------------------------------------------------------------------------------
 
 
@@ -762,7 +724,6 @@ namespace LoginSasteria
             string query = "SELECT producto_idproducto FROM " + objConection.namedb() + ".inventario where producto_idproducto='" + productoInv + "';";
             try
             {
-                objConection.cerrarCN();
                 MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN());
                 MySqlDataReader myread;
 

@@ -31,13 +31,13 @@ namespace LoginSasteria
         public static int Regalo;
         public Boolean existeCliente;
         public static Boolean Log = false;
-        double TotalProdcutos=0.00;
-        Int32 nombreCLientes=0;
+        double TotalProdcutos = 0.00;
+        Int32 nombreCLientes = 0;
 
         ClientesVentas data = new ClientesVentas();
         ventaInventario winVenta = new ventaInventario();
         public ProcesoVenta()
-        {            
+        {
             InitializeComponent();
             getData();
             printTable();
@@ -59,12 +59,12 @@ namespace LoginSasteria
         {
             tabla = data.getTabla();
 
-            listacodigos = data.getLista();            
+            listacodigos = data.getLista();
             Regalo = data.getRegalo();
             IDCliente = data.getIDCliente();
             existeCliente = data.getExistenciaCliente();
             sumaTotal(listacodigos);//llamar a la lista de los cogigos, para obtener el total
-            
+
         }
         public void printTable()
         {
@@ -78,11 +78,11 @@ namespace LoginSasteria
         {
             double total = 0.00;
             try
-            {                  
+            {
                 for (int i = 0; i < codigos.Count; i++)
                 {
                     cn.cerrarCN();
-                    string query = "SELECT precio FROM "+cn.namedb()+".producto where idproducto='" + codigos[i] + "';";
+                    string query = "SELECT precio FROM " + cn.namedb() + ".producto where idproducto='" + codigos[i] + "';";
 
                     MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
                     MySqlDataReader dr = comando.ExecuteReader();
@@ -94,16 +94,16 @@ namespace LoginSasteria
 
                 }
                 cn.cerrarCN();
-                
+
             }
-            catch(MySqlException e)
+            catch (MySqlException e)
             {
                 MessageBox.Show(e.ToString());
             }
-            txTotal.Text = "Q "+total.ToString();
-            TotalProdcutos=total;
+            txTotal.Text = "Q " + total.ToString();
+            TotalProdcutos = total;
         }
-        
+
 
         public void getDatosCliente()
         {
@@ -112,7 +112,7 @@ namespace LoginSasteria
             {
                 try
                 {
-                    string query = "SELECT * FROM "+cn.namedb()+".Cliente where idCliente='" + IDCliente + "';";
+                    string query = "SELECT * FROM " + cn.namedb() + ".Cliente where idCliente='" + IDCliente + "';";
 
                     MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
                     MySqlDataReader dr = comando.ExecuteReader();
@@ -162,7 +162,7 @@ namespace LoginSasteria
                 if (existeCliente == true)//si existe el cliente se procede a agregar datos
                 {
                     detallesVenta(IDCliente, IDVendedor, Regalo);
-                }                
+                }
             }
             else
             {
@@ -178,7 +178,7 @@ namespace LoginSasteria
             try
             {
 
-                string query = "SELECT max(idCliente) FROM "+cn.namedb()+".Cliente;";
+                string query = "SELECT max(idCliente) FROM " + cn.namedb() + ".Cliente;";
 
                 MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
                 MySqlDataReader dr = comando.ExecuteReader();
@@ -227,8 +227,8 @@ namespace LoginSasteria
                 }
 
                 crearcliente(nombreclient, apellidosCliente, telefonoclient, nit);//funcion para crear al cliente
-                
-                
+
+
             }
         }
         void crearcliente(string nombres, string apellidos, Int32 telefono, string nit)//crear cliente en a base de datos
@@ -238,7 +238,7 @@ namespace LoginSasteria
             try
             {
                 cn.cerrarCN();
-                string query = "INSERT INTO `"+cn.namedb()+"`.`Cliente` (`idCliente`, `Nombres`, `Apellidos`, `telefono`, `puntos`, `NIT`) " +
+                string query = "INSERT INTO `" + cn.namedb() + "`.`Cliente` (`idCliente`, `Nombres`, `Apellidos`, `telefono`, `puntos`, `NIT`) " +
                     "VALUES ('" + maxid + "', '" + nombres + "', '" + apellidos + "', '" + telefono + "', '1', '" + nit + "');";
 
                 MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
@@ -248,14 +248,14 @@ namespace LoginSasteria
                 existeCliente = true;
                 data.setExistencia(true);
                 data.setIdcliente(maxid);
-                crearVenta(null,null);
+                crearVenta(null, null);
             }
             catch (MySqlException e)
             {
                 MessageBox.Show(e.ToString());
             }
             cn.cerrarCN();
-            
+
 
 
         }
@@ -265,7 +265,7 @@ namespace LoginSasteria
             try
             {
 
-                string query = "SELECT max(idDetallesVenta) FROM "+cn.namedb()+".DetallesVenta;";
+                string query = "SELECT max(idDetallesVenta) FROM " + cn.namedb() + ".DetallesVenta;";
 
                 MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
                 MySqlDataReader dr = comando.ExecuteReader();
@@ -298,7 +298,7 @@ namespace LoginSasteria
             try
             {
                 cn.cerrarCN();
-                string query = "INSERT INTO `"+cn.namedb()+"`.`DetallesVenta` (`idDetallesVenta`, `FechaHora`, `Cliente_idCliente`, `Empleado_idEmpleado`, `regalo`) " +
+                string query = "INSERT INTO `" + cn.namedb() + "`.`DetallesVenta` (`idDetallesVenta`, `FechaHora`, `Cliente_idCliente`, `Empleado_idEmpleado`, `regalo`) " +
                     "VALUES ('" + idDetalles + "', '" + fechahora + "', '" + idClient + "', '" + idEmpleado + "', '" + regalo + "');";
 
                 MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
@@ -320,7 +320,7 @@ namespace LoginSasteria
             try
             {
 
-                string query = "SELECT max(idRegistroVenta) FROM "+cn.namedb()+".RegistroVenta;";
+                string query = "SELECT max(idRegistroVenta) FROM " + cn.namedb() + ".RegistroVenta;";
 
                 MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
                 MySqlDataReader dr = comando.ExecuteReader();
@@ -349,17 +349,17 @@ namespace LoginSasteria
         void completarVenta(int Detalles, List<string> productos)
         {
             //Completar la venta
-            int idVenta=0;
-            for (int i =0; i < productos.Count;i++)
+            int idVenta = 0;
+            for (int i = 0; i < productos.Count; i++)
             {
                 cn.cerrarCN();
                 idVenta = maxIdVentas() + 1;
-                
+
                 try
                 {
                     cn.cerrarCN();
-                    string query = "INSERT INTO `"+cn.namedb()+"`.`RegistroVenta` (`idRegistroVenta`, `DetallesVenta_idDetallesVenta`, `producto_idproducto`) " +
-                        "VALUES ('"+idVenta+"', '"+Detalles+"', '" + productos[i] +"');";
+                    string query = "INSERT INTO `" + cn.namedb() + "`.`RegistroVenta` (`idRegistroVenta`, `DetallesVenta_idDetallesVenta`, `producto_idproducto`) " +
+                        "VALUES ('" + idVenta + "', '" + Detalles + "', '" + productos[i] + "');";
 
                     MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
                     MySqlDataReader dr = comando.ExecuteReader();
@@ -379,7 +379,7 @@ namespace LoginSasteria
             MessageBox.Show("Venta Realizada");
             GenerarFactura factura = new GenerarFactura();
             //GENERAR la FACTURA -------------------------------------------------------------------------*************
-            factura.GenerarDatosFactura(Detalles.ToString(), IDVendedor, nombreCLientes,tabla, TotalProdcutos);
+            factura.GenerarDatosFactura(Detalles.ToString(), IDVendedor, nombreCLientes, tabla, TotalProdcutos, Regalo);
             //------------------------------------------------------------------------------------------------------
             winVenta.cleanValues();
             winVenta.Show();
@@ -389,7 +389,7 @@ namespace LoginSasteria
         public void DeletFromInventario(List<string> productos)//eliminar los productos del inventario
         {
             try
-            {                
+            {
                 for (int i = 0; i < productos.Count; i++)
                 {
                     cn.cerrarCN();
@@ -397,8 +397,8 @@ namespace LoginSasteria
                     try
                     {
                         cn.cerrarCN();
-                        string query = "DELETE FROM `"+cn.namedb()+"`.`inventario` " +
-                            "WHERE (`producto_idproducto` = '" + productos[i] +"');";
+                        string query = "DELETE FROM `" + cn.namedb() + "`.`inventario` " +
+                            "WHERE (`producto_idproducto` = '" + productos[i] + "');";
 
                         MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());
                         MySqlDataReader dr = comando.ExecuteReader();
@@ -407,20 +407,20 @@ namespace LoginSasteria
                     }
                     catch (MySqlException e)
                     {
-                        MessageBox.Show("Estos productos ya han sido vendidos"+e.ToString());
+                        MessageBox.Show("Estos productos ya han sido vendidos" + e.ToString());
                     }
                 }
                 cn.cerrarCN();
             }
             catch (MySqlException e)
             {
-                MessageBox.Show (e.ToString());
+                MessageBox.Show(e.ToString());
             }
         }
 
         private void crearVenta(object sender, RoutedEventArgs e)//boton de crear venta que desprende todo el proceso
         {
-            if(existeCliente == false)
+            if (existeCliente == false)
             {
                 setDatoscliente();
             }
@@ -432,8 +432,8 @@ namespace LoginSasteria
                 this.Close();
 
             }
-            
-        }        
+
+        }
 
         private void CancelarOp(object sender, RoutedEventArgs e)//Canelar las operaciones
         {
@@ -441,8 +441,8 @@ namespace LoginSasteria
             abrir.cleanValues();
             abrir.Show();
             this.Close();
-                        
-            
+
+
         }
     }
 }
