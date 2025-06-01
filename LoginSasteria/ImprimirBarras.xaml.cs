@@ -123,7 +123,7 @@ namespace LoginSasteria
                         LEFT JOIN {objConection.namedb()}.nombreProducto np ON p.nombreProducto_idnombreProducto = np.idnombreProducto
                         LEFT JOIN {objConection.namedb()}.color c ON p.color_idcolor = c.idcolor
                         LEFT JOIN {objConection.namedb()}.talla t ON p.talla_idtalla = t.idtalla
-                        WHERE p.fechaCodigo BETWEEN '2025-05-27 00:00:00' AND '2025-05-27 23:59:59'
+                        WHERE p.fechaCodigo BETWEEN @FechaInicio AND @FechaFin
                         AND p.idproducto NOT LIKE 'ENC%'";
 
                 // Ejecutar consulta
