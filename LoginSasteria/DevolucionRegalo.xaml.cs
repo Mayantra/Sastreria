@@ -420,14 +420,19 @@ namespace LoginSasteria
 
         private void AgregarProducto(object sender, KeyEventArgs e)
         {
-            InsertarProductoData(txProducto.Text);
-
-            txProducto.Clear();
-            sumaDeProductos(ListaCodigosFactura);
-            foreach (var item in ListaCodigosFactura)
+            if(e.Key == Key.Enter)
             {
-                Console.WriteLine(item);
+                InsertarProductoData(txProducto.Text);
+
+                txProducto.Clear();
+                sumaDeProductos(ListaCodigosFactura);
+                foreach (var item in ListaCodigosFactura)
+                {
+                    Console.WriteLine(item);
+                }
             }
+            e.Handled = true;
+            
         }
 
 
@@ -439,6 +444,7 @@ namespace LoginSasteria
             }
             else
             {
+                
                 Boolean existe = false;
                 for (int z = 0; z < ListaCodigosFactura.Count; z++)
                 {
@@ -457,16 +463,17 @@ namespace LoginSasteria
                         "\r\nproducto.precio As Precio," +
                         "\r\n'" + fechahora + "' As Fecha," +
                         "\r\n'Devolución' As 'Nombre Cajero'" +
-                        "\r\nFROM hismanreina_PruebasDBLeon.inventario" +
-                        "\r\ninner join hismanreina_PruebasDBLeon.producto on inventario.producto_idproducto = producto.idproducto" +
-                        "\r\ninner join hismanreina_PruebasDBLeon.tipoTall on producto.talla_idtalla = tipoTall.idtalla" +
-                        "\r\ninner join hismanreina_PruebasDBLeon.tipoProducto " +
+                        "\r\nFROM " + objConection.namedb() + ".inventario" +
+                        "\r\ninner join "+objConection.namedb()+".producto on inventario.producto_idproducto = producto.idproducto" +
+                        "\r\ninner join " + objConection.namedb() + ".tipoTall on producto.talla_idtalla = tipoTall.idtalla" +
+                        "\r\ninner join " + objConection.namedb() + ".tipoProducto " +
                         "\r\non tipoTall.tipoProducto_idtipoProducto = tipoProducto.idtipoProducto" +
-                        "\r\ninner join hismanreina_PruebasDBLeon.talla on tipoTall.talla_idtalla = talla.idtalla" +
+                        "\r\ninner join " + objConection.namedb() + ".talla on tipoTall.talla_idtalla = talla.idtalla" +
                         "\r\nwhere idproducto = '" + code + "';";
+                    MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN());
                     try
                     {
-                        MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN());
+                        
                         MySqlDataAdapter data = new MySqlDataAdapter(comando);
 
                         //la fumanda mas grande del codigo creo XD

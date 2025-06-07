@@ -14,7 +14,7 @@ namespace LoginSasteria
     {
         //MySqlConnection con = new MySqlConnection();
         public static string servidor = "94.130.216.164";
-        public static string db = "hismanreina_PruebasDBLeonV2";
+        public static string db = "hismanreina_PruebasDBLeon";
         public static string username = "hismanreina_isa";
         public static string password = "Isaac@17Isaac@17";
         public static string port = "3306";

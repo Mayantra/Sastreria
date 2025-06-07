@@ -112,8 +112,8 @@
             <Label Content="Almacen:" Foreground="White" FontSize="25"/>
             <ComboBox Name="cmbAlmacen" Height="30" FontSize="20" SelectedIndex="-1" Margin="10">
                 <ComboBoxItem Content="San Pedro" Tag="1"/>
-                <ComboBoxItem Content="Huehuetenango" Tag="2"/>
-                <ComboBoxItem Content="Xela" Tag="3"/>
+                <ComboBoxItem Content="Bodega" Tag="2"/>
+                <ComboBoxItem Content="Quetzaltenango" Tag="3"/>
             </ComboBox>
 
             <Button Content="Guardar" Click="BtnGuardar_Click" Margin="0,10,0,0" Padding="10" FontSize="25" Background="White"/>

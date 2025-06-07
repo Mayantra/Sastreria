@@ -159,7 +159,7 @@ namespace LoginSasteria
 
             try
             {
-                using (var conn = new MySqlConnection("server=94.130.216.164;database=hismanreina_PruebasDBLeonV2;user=hismanreina_isa;password=Isaac@17Isaac@17;"))
+                using (var conn = new MySqlConnection($"server={ConexionDB.servidor}; database={ConexionDB.db}; uid={ConexionDB.username}; pwd={ConexionDB.password};"))
                 {
                     conn.Open();
 
