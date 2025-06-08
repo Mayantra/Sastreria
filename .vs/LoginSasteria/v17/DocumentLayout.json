@@ -3,20 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\isaac\\source\\repos\\SistemaSastreria\\Sastreria\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|c:\\users\\isaac\\source\\repos\\sistemasastreria\\sastreria\\loginsasteria\\registrohuella.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\registrohuella.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|C:\\Users\\isaac\\source\\repos\\SistemaSastreria\\Sastreria\\loginsasteria\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|C:\\Users\\isaac\\source\\repos\\SistemaSastreria\\Sastreria\\loginsasteria\\logeo.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\logeo.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|C:\\Users\\isaac\\source\\repos\\SistemaSastreria\\Sastreria\\loginsasteria\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|c:\\users\\isaac\\source\\repos\\sistemasastreria\\sastreria\\loginsasteria\\conexiondb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\conexiondb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -39,50 +27,15 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "registroHuella.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\isaac\\source\\repos\\SistemaSastreria\\Sastreria\\LoginSasteria\\registroHuella.xaml.cs",
-              "RelativeDocumentMoniker": "LoginSasteria\\registroHuella.xaml.cs",
-              "ToolTip": "C:\\Users\\isaac\\source\\repos\\SistemaSastreria\\Sastreria\\LoginSasteria\\registroHuella.xaml.cs",
-              "RelativeToolTip": "LoginSasteria\\registroHuella.xaml.cs",
-              "ViewState": "AQIAAC8AAAAAAAAAAAAwwDkAAAARAAAA",
+              "Title": "ConexionDB.cs",
+              "DocumentMoniker": "C:\\Users\\isaac\\source\\repos\\SistemaSastreria\\Sastreria\\LoginSasteria\\ConexionDB.cs",
+              "RelativeDocumentMoniker": "LoginSasteria\\ConexionDB.cs",
+              "ToolTip": "C:\\Users\\isaac\\source\\repos\\SistemaSastreria\\Sastreria\\LoginSasteria\\ConexionDB.cs",
+              "RelativeToolTip": "LoginSasteria\\ConexionDB.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-06T19:39:03.898Z",
+              "WhenOpened": "2025-06-08T07:53:57.424Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\isaac\\source\\repos\\SistemaSastreria\\Sastreria\\LoginSasteria\\MainWindow.xaml.cs",
-              "RelativeDocumentMoniker": "LoginSasteria\\MainWindow.xaml.cs",
-              "ToolTip": "C:\\Users\\isaac\\source\\repos\\SistemaSastreria\\Sastreria\\LoginSasteria\\MainWindow.xaml.cs",
-              "RelativeToolTip": "LoginSasteria\\MainWindow.xaml.cs",
-              "ViewState": "AQIAABsAAAAAAAAAAAAAACEAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-06T19:08:24.721Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "MainWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\isaac\\source\\repos\\SistemaSastreria\\Sastreria\\LoginSasteria\\MainWindow.xaml",
-              "RelativeDocumentMoniker": "LoginSasteria\\MainWindow.xaml",
-              "ToolTip": "C:\\Users\\isaac\\source\\repos\\SistemaSastreria\\Sastreria\\LoginSasteria\\MainWindow.xaml",
-              "RelativeToolTip": "LoginSasteria\\MainWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-06-06T19:08:20.033Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Logeo.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\isaac\\source\\repos\\SistemaSastreria\\Sastreria\\LoginSasteria\\Logeo.xaml.cs",
-              "RelativeDocumentMoniker": "LoginSasteria\\Logeo.xaml.cs",
-              "ToolTip": "C:\\Users\\isaac\\source\\repos\\SistemaSastreria\\Sastreria\\LoginSasteria\\Logeo.xaml.cs",
-              "RelativeToolTip": "LoginSasteria\\Logeo.xaml.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAwAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-06T19:03:21.887Z"
             }
           ]
         }

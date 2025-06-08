@@ -39,7 +39,7 @@ namespace LoginSasteria
 
         private void btnSalir(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Application.Current.Shutdown();
         }
 
         private void Minimizar(object sender, RoutedEventArgs e)
@@ -161,36 +161,45 @@ namespace LoginSasteria
             {
                 using (var conn = new MySqlConnection($"server={ConexionDB.servidor}; database={ConexionDB.db}; uid={ConexionDB.username}; pwd={ConexionDB.password};"))
                 {
+                    // 🛡️ Cierra si por alguna razón ya está abierta
+                    if (conn.State == System.Data.ConnectionState.Open)
+                        conn.Close();
+
                     conn.Open();
 
-                    var cmd = new MySqlCommand("INSERT INTO Empleado (Nombre, Usuario, pin, huella, superUser, almacen_idalmacen) VALUES (@nombre, @usuario, @pin, @huella, @super, @almacen)", conn);
-                    cmd.Parameters.AddWithValue("@nombre", txtNombre.Text);
-                    cmd.Parameters.AddWithValue("@usuario", txtUsuario.Text);
-                    cmd.Parameters.AddWithValue("@pin", txtPin.Text);
-                    cmd.Parameters.AddWithValue("@huella", huellaBytes);
-                    cmd.Parameters.AddWithValue("@super", chkSuper.IsChecked == true ? 1 : 0);
-
-                    if (cmbAlmacen.SelectedItem is ComboBoxItem selectedItem && int.TryParse(selectedItem.Tag?.ToString(), out int almacenId))
+                    using (var cmd = new MySqlCommand("INSERT INTO Empleado (Nombre, Usuario, pin, huella, superUser, almacen_idalmacen) VALUES (@nombre, @usuario, @pin, @huella, @super, @almacen)", conn))
                     {
-                        cmd.Parameters.AddWithValue("@almacen", almacenId);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Por favor seleccione un almacén válido.");
-                        return;
+                        cmd.Parameters.AddWithValue("@nombre", txtNombre.Text);
+                        cmd.Parameters.AddWithValue("@usuario", txtUsuario.Text);
+                        cmd.Parameters.AddWithValue("@pin", txtPin.Text);
+                        cmd.Parameters.AddWithValue("@huella", huellaBytes);
+                        cmd.Parameters.AddWithValue("@super", chkSuper.IsChecked == true ? 1 : 0);
+
+                        if (cmbAlmacen.SelectedItem is ComboBoxItem selectedItem && int.TryParse(selectedItem.Tag?.ToString(), out int almacenId))
+                        {
+                            cmd.Parameters.AddWithValue("@almacen", almacenId);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Por favor seleccione un almacén válido.");
+                            return;
+                        }
+
+                        cmd.ExecuteNonQuery();
                     }
 
-                    cmd.ExecuteNonQuery();
                     MessageBox.Show("Empleado registrado correctamente.");
-                    MainWindow abrir = new MainWindow();
-                    abrir.Show();
-                    this.Close();
+                    conn.Close();
+                    
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al guardar en base de datos: " + ex.Message);
             }
+            MainWindow abrir = new MainWindow();
+            abrir.Show();
+            this.Close();
         }
 
         private void btCancelar(object sender, RoutedEventArgs e)

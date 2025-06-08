@@ -166,7 +166,7 @@ namespace LoginSasteria
 
         private void btnSalir(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Application.Current.Shutdown();
         }
 
         private void Minimizar(object sender, RoutedEventArgs e)

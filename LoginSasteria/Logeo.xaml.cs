@@ -18,6 +18,8 @@ namespace LoginSasteria
         private DPFP.Capture.Capture Capturador;
         private Verification Verificador;
 
+        private bool accesoPorHuella = false; // ✅ Flag para saber si el acceso fue por huella
+
         public Logeo()
         {
             InitializeComponent();
@@ -98,14 +100,16 @@ namespace LoginSasteria
                                 huellaEncontrada = true;
 
                                 string usuario = reader.GetString("Usuario");
-                                string pin = reader.GetString("pin");
+                                // string pin = reader.GetString("pin"); ← ya no se asigna para evitar doble acceso
+
+                                accesoPorHuella = true; // ✅ Activar flag
 
                                 txUser.Text = usuario;
-                                PassBox.Password = pin;
+                                // No asignamos PassBox.Password
 
                                 Capturador?.StopCapture(); // ✋ Detener lectura
 
-                                acceso(); // 👈 Ejecutamos autenticación normal
+                                acceso(); // 👈 Ejecutamos autenticación
 
                                 break;
                             }
@@ -142,14 +146,14 @@ namespace LoginSasteria
             }
         }
 
-        // =============== ACCESO NORMAL POR PIN ===============
+        // =============== ACCESO NORMAL POR PIN O HUELLA ===============
 
         void acceso()
         {
             string user = txUser.Text;
             string pass = PassBox.Password;
 
-            if (read.getAcceso(user, pass))
+            if (accesoPorHuella || read.getAcceso(user, pass))
             {
                 int aux = read.getIdLogUser(user);
                 venta.setVendedor(aux);
@@ -162,6 +166,8 @@ namespace LoginSasteria
                 txUser.Text = "";
                 PassBox.Password = "";
             }
+
+            accesoPorHuella = false; // ✅ Resetear flag para futuros accesos
         }
 
         private void lecturapass(object sender, RoutedEventArgs e)

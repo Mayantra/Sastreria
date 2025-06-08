@@ -14,7 +14,7 @@ namespace LoginSasteria
     {
         //MySqlConnection con = new MySqlConnection();
         public static string servidor = "94.130.216.164";
-        public static string db = "hismanreina_PruebasDBLeon";
+        public static string db = "hismanreina_PruebasDBLeonV2";
         public static string username = "hismanreina_isa";
         public static string password = "Isaac@17Isaac@17";
         public static string port = "3306";
@@ -54,19 +54,25 @@ namespace LoginSasteria
         public MySqlConnection establecerCN()
         {
             // Crea una nueva instancia de conexión cada vez.
-            
+
             try
             {
-                con.Open();
-                // MessageBox.Show("Data Base Connection Already");
+
+                // 🛡️ Si está abierta, la cerramos primero
+                if (con.State == System.Data.ConnectionState.Open)
+                {
+                    con.Close();
+                }
+
+                con.Open(); // Ahora sí la abrimos
+
+                return con;
             }
-            catch (MySqlException e)
+            catch (MySqlException)
             {
-                //MessageBox.Show("Error al conectarse a la base de datos" + e.ToString());
-                MessageBox.Show("Error, no se puede conectar. Revise su conexion a WIFI","Error de conexión", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Error, no se puede conectar. Revise su conexión a WIFI", "Error de conexión", MessageBoxButton.OK, MessageBoxImage.Error);
                 return null;
             }
-            return con;
         }
         public MySqlConnection cerrarCN()
         {

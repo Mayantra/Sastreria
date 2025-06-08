@@ -22,13 +22,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ZXing;
 using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
+using System.IO;
+using DPFP;
+using DPFP.Capture;
+using DPFP.Processing;
+using DPFP.Verification;
 
 namespace LoginSasteria
 {
     /// <summary>
     /// Lógica de interacción para CrearEncargoFormulario.xaml
     /// </summary>
-    public partial class CrearEncargoFormulario : Window
+    public partial class CrearEncargoFormulario : Window, DPFP.Capture.EventHandler
     {
         ConexionDB cn = new ConexionDB();
 
@@ -40,10 +45,138 @@ namespace LoginSasteria
         int iduser=0;
         int idCliente = 0;
         string idEncargo = "";
+        private DPFP.Capture.Capture Capturando;
+        private DPFP.Processing.Enrollment Enrolador;
+        private DPFP.Verification.Verification Verificador;
+        private DPFP.Capture.SampleConversion Convertidor;
+        private DPFP.FeatureSet Caracteristicas;
         public CrearEncargoFormulario()
         {
             InitializeComponent();
             tipoCon();
+            IniciarLector();
+
+            this.Closed += (s, e) =>
+            {
+                try { Capturando?.StopCapture(); } catch { }
+            };
+        }
+        private void IniciarLector()
+        {
+            try
+            {
+                Capturando = new DPFP.Capture.Capture();
+                Verificador = new DPFP.Verification.Verification();
+
+                if (Capturando != null)
+                {
+                    Capturando.EventHandler = this;
+                    Capturando.StartCapture();
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo inicializar el lector de huellas.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al iniciar lector: " + ex.Message);
+            }
+        }
+        public void OnComplete(object Capture, string ReaderSerialNumber, DPFP.Sample sample)
+        {
+            Dispatcher.Invoke(() => ProcesarHuella(sample));
+        }
+
+        public void OnFingerGone(object Capture, string ReaderSerialNumber) { }
+        public void OnFingerTouch(object Capture, string ReaderSerialNumber) { }
+        public void OnReaderConnect(object Capture, string ReaderSerialNumber) { }
+        public void OnReaderDisconnect(object Capture, string ReaderSerialNumber) { }
+        public void OnSampleQuality(object Capture, string ReaderSerialNumber, DPFP.Capture.CaptureFeedback feedback) { }
+
+        private void ProcesarHuella(DPFP.Sample sample)
+        {
+            // ✅ Solo proceder si el grid está visible
+            if (GridLogueo.Visibility != Visibility.Visible)
+                return;
+
+            var features = ExtraerCaracteristicas(sample, DPFP.Processing.DataPurpose.Verification);
+            if (features == null) return;
+
+            bool huellaEncontrada = false;
+
+            try
+            {
+                using (var conn = new MySqlConnection($"server={ConexionDB.servidor}; database={ConexionDB.db}; uid={ConexionDB.username}; pwd={ConexionDB.password};"))
+                {
+                    conn.Open();
+                    var cmd = new MySqlCommand("SELECT idEmpleado, Usuario, huella FROM Empleado", conn);
+                    var reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        if (reader["huella"] == DBNull.Value) continue;
+
+                        var templateData = (byte[])reader["huella"];
+                        if (templateData.Length < 1) continue;
+
+                        using (var ms = new MemoryStream(templateData))
+                        {
+                            var template = new DPFP.Template(ms);
+                            var result = new DPFP.Verification.Verification.Result();
+                            Verificador.Verify(features, template, ref result);
+
+                            if (result.Verified)
+                            {
+                                huellaEncontrada = true;
+
+                                // ✅ Asignar usuario e idEmpleado
+                                txUser.Text = reader.GetString("Usuario");
+                                iduser = reader.GetInt32("idEmpleado"); // 🔥 Este es el dato indispensable
+
+                                Capturando?.StopCapture(); // ✋ Detener captura
+                                GenerarEncargo();          // ✅ Ejecutar proceso
+
+                                CrearEncargoFormulario abrir = new CrearEncargoFormulario();
+
+                                abrir.Show();
+                                this.Close();
+                                MessageBox.Show("EL ENCARGO Y LOS PRODUCTOS ESTÁN INGRESADOS");
+
+                                break;
+                            }
+                        }
+                    }
+
+                    if (!huellaEncontrada)
+                    {
+                        MessageBox.Show("No se encontró una huella coincidente.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al verificar huella: " + ex.Message);
+            }
+        }
+
+
+        private DPFP.FeatureSet ExtraerCaracteristicas(DPFP.Sample sample, DPFP.Processing.DataPurpose purpose)
+        {
+            try
+            {
+                var extractor = new DPFP.Processing.FeatureExtraction();
+                var feedback = DPFP.Capture.CaptureFeedback.None;
+                var features = new DPFP.FeatureSet();
+
+                extractor.CreateFeatureSet(sample, purpose, ref feedback, ref features);
+
+                return feedback == DPFP.Capture.CaptureFeedback.Good ? features : null;
+            }
+            catch
+            {
+                return null;
+            }
         }
         private static readonly Random rng = new Random();
         private void btnSalir(object sender, RoutedEventArgs e)

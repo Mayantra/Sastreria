@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics.CodeAnalysis;
 using System.Dynamic;
+using System.IO;
 using System.Linq;
 using System.Numerics;
 using System.Text;
@@ -18,13 +19,18 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ZXing;
+using DPFP;
+using DPFP.Capture;
+using DPFP.Processing;
+using DPFP.Verification;
+using System.Diagnostics;
 
 namespace LoginSasteria
 {
     /// <summary>
     /// Lógica de interacción para DevolucionRegalo.xaml
     /// </summary>
-    public partial class DevolucionRegalo : Window
+    public partial class DevolucionRegalo : Window, DPFP.Capture.EventHandler
     {
         ConexionDB objConection = new ConexionDB();
         List<string> ListaCodigosFactura = new List<string>();
@@ -39,14 +45,136 @@ namespace LoginSasteria
         string pass = "";
         int iduser = 0;
         DataTable tablaNueva = new DataTable();
+        private DPFP.Capture.Capture Capturando;
+        private DPFP.Processing.Enrollment Enrolador;
+        private DPFP.Verification.Verification Verificador;
+        private DPFP.Capture.SampleConversion Convertidor;
+        private DPFP.FeatureSet Caracteristicas;
 
         public DevolucionRegalo()
         {
             InitializeComponent();
+            IniciarLector();
+
+            this.Closed += (s, e) =>
+            {
+                try { Capturando?.StopCapture(); } catch { }
+            };
+        }
+        private void IniciarLector()
+        {
+            try
+            {
+                Capturando = new DPFP.Capture.Capture();
+                Verificador = new DPFP.Verification.Verification();
+
+                if (Capturando != null)
+                {
+                    Capturando.EventHandler = this;
+                    Capturando.StartCapture();
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo inicializar el lector de huellas.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al iniciar lector: " + ex.Message);
+            }
+        }
+        public void OnComplete(object Capture, string ReaderSerialNumber, DPFP.Sample sample)
+        {
+            Dispatcher.Invoke(() => ProcesarHuella(sample));
+        }
+
+        public void OnFingerGone(object Capture, string ReaderSerialNumber) { }
+        public void OnFingerTouch(object Capture, string ReaderSerialNumber) { }
+        public void OnReaderConnect(object Capture, string ReaderSerialNumber) { }
+        public void OnReaderDisconnect(object Capture, string ReaderSerialNumber) { }
+        public void OnSampleQuality(object Capture, string ReaderSerialNumber, DPFP.Capture.CaptureFeedback feedback) { }
+
+        private void ProcesarHuella(DPFP.Sample sample)
+        {
+            // ✅ Solo proceder si el grid está visible
+            if (GridLogueo.Visibility != Visibility.Visible)
+                return;
+
+            var features = ExtraerCaracteristicas(sample, DPFP.Processing.DataPurpose.Verification);
+            if (features == null) return;
+
+            bool huellaEncontrada = false;
+
+            try
+            {
+                using (var conn = new MySqlConnection($"server={ConexionDB.servidor}; database={ConexionDB.db}; uid={ConexionDB.username}; pwd={ConexionDB.password};"))
+                {
+                    conn.Open();
+                    var cmd = new MySqlCommand("SELECT idEmpleado, Usuario, huella FROM Empleado", conn);
+                    var reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        if (reader["huella"] == DBNull.Value) continue;
+
+                        var templateData = (byte[])reader["huella"];
+                        if (templateData.Length < 1) continue;
+
+                        using (var ms = new MemoryStream(templateData))
+                        {
+                            var template = new DPFP.Template(ms);
+                            var result = new DPFP.Verification.Verification.Result();
+                            Verificador.Verify(features, template, ref result);
+
+                            if (result.Verified)
+                            {
+                                huellaEncontrada = true;
+
+                                // ✅ Asignar usuario e idEmpleado
+                                txUser.Text = reader.GetString("Usuario");
+                                iduser = reader.GetInt32("idEmpleado"); // 🔥 Este es el dato indispensable
+
+                                Capturando?.StopCapture(); // ✋ Detener captura
+                                iniciarProceso();          // ✅ Ejecutar proceso
+
+                                break;
+                            }
+                        }
+                    }
+
+                    if (!huellaEncontrada)
+                    {
+                        MessageBox.Show("No se encontró una huella coincidente.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al verificar huella: " + ex.Message);
+            }
+        }
+
+
+        private DPFP.FeatureSet ExtraerCaracteristicas(DPFP.Sample sample, DPFP.Processing.DataPurpose purpose)
+        {
+            try
+            {
+                var extractor = new DPFP.Processing.FeatureExtraction();
+                var feedback = DPFP.Capture.CaptureFeedback.None;
+                var features = new DPFP.FeatureSet();
+
+                extractor.CreateFeatureSet(sample, purpose, ref feedback, ref features);
+
+                return feedback == DPFP.Capture.CaptureFeedback.Good ? features : null;
+            }
+            catch
+            {
+                return null;
+            }
         }
         private void btnSalir(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Application.Current.Shutdown();
         }
 
         private void Minimizar(object sender, RoutedEventArgs e)
