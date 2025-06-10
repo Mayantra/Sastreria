@@ -124,7 +124,10 @@ namespace LoginSasteria
                         LEFT JOIN {objConection.namedb()}.color c ON p.color_idcolor = c.idcolor
                         LEFT JOIN {objConection.namedb()}.talla t ON p.talla_idtalla = t.idtalla
                         WHERE p.fechaCodigo BETWEEN @FechaInicio AND @FechaFin
-                        AND p.idproducto NOT LIKE 'ENC%'";
+                        AND p.idproducto NOT LIKE 'ENC%'
+                        AND p.nombreProducto_idnombreProducto NOT LIKE 99    
+                        AND p.color_idcolor NOT LIKE 99          
+                        AND p.talla_idtalla NOT LIKE 99";
 
                 // Ejecutar consulta
                 using (var conn = objConection.nuevaConexion())

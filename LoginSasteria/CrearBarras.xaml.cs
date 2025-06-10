@@ -419,7 +419,7 @@ namespace LoginSasteria
             try
             {
                 //Vamos a traer todo de la tabla tipoproducto
-                string query = "SELECT * FROM " + objConection.namedb() + ".tipoProducto WHERE nombreTipo <> 'Encargo';";
+                string query = "SELECT * FROM " + objConection.namedb() + ".tipoProducto WHERE nombreTipo <> 'Encargo' ORDER BY nombreTipo ASC;";
                 MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN());
                 MySqlDataReader myReader = comando.ExecuteReader();
                 while (myReader.Read())
@@ -458,7 +458,7 @@ namespace LoginSasteria
                 objConection.cerrarCN();
 
                 //Vamos a traer todo de la tabla nombreproducto
-                string query5 = "SELECT * FROM " + objConection.namedb() + ".nombreProducto;";
+                string query5 = "SELECT * FROM " + objConection.namedb() + ".nombreProducto ORDER BY Nombre ASC;";
                 MySqlCommand comando5 = new MySqlCommand(query5, objConection.establecerCN());
                 MySqlDataReader myReader5 = comando5.ExecuteReader();
                 while (myReader5.Read())
@@ -493,7 +493,19 @@ namespace LoginSasteria
             // Obtener el idalmacen del ComboBox cbAlmacen
             int idAlmacen = ((ComboItem)cbAlmacen.SelectedItem).Id;
             string tipoProductoTexto = ((ComboItem)cbTipoProducto.SelectedItem).Nombre;
-            string prefijo = tipoProductoTexto.Substring(0, Math.Min(3, tipoProductoTexto.Length)).ToUpper();
+
+            // Caso especial para “Panuelos”
+            string prefijo;
+            if (tipoProductoTexto.Equals("Panuelos", StringComparison.OrdinalIgnoreCase))
+            {
+                prefijo = "NUE";
+            }
+            else
+            {
+                prefijo = tipoProductoTexto
+                    .Substring(0, Math.Min(3, tipoProductoTexto.Length))
+                    .ToUpper();
+            }
 
             bool codigoExiste = true;
             string codigo = "";
