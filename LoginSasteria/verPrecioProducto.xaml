@@ -77,16 +77,16 @@
         </Grid.ColumnDefinitions>
         <Rectangle HorizontalAlignment="Left" Height="500" Stroke="Black" VerticalAlignment="Top" Width="470" Fill="Black" Margin="30,3,0,0"/>
         <Rectangle HorizontalAlignment="Left" Height="500" VerticalAlignment="Center" Width="25" Fill="#FFEDE4A4"/>
-        <Rectangle HorizontalAlignment="Left" Height="98" Margin="148,48,0,0" Stroke="Black" VerticalAlignment="Top" Width="214">
+        <Rectangle HorizontalAlignment="Left" Height="70" Margin="194,3,0,0" Stroke="Black" VerticalAlignment="Top" Width="152">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="/Imagen_de_WhatsApp_2024-01-17_a_las_20.09.20_1e6cb21b-removebg-preview.png" Stretch="Uniform"/>
             </Rectangle.Fill>
         </Rectangle>
         <TextBox x:Name="ctxPrecio" Template="{StaticResource TextBoxBaseControlTemplate}" 
-                 HorizontalAlignment="Left" Height="42" Margin="51,208,0,0" 
+                 HorizontalAlignment="Left" Height="42" Margin="51,88,0,0" 
                  TextWrapping="Wrap" VerticalAlignment="Top" Width="269"
-                 Padding="8" FontSize="15"/>
-        <Button x:Name="btnPrecio" Content="Ver Precio" HorizontalAlignment="Left" Height="45" Margin="340,208,0,0" 
+                 Padding="8" FontSize="15" KeyDown="LeerCodigoBarras"/>
+        <Button x:Name="btnPrecio" Content="Ver Precio" HorizontalAlignment="Left" Height="46" Margin="325,86,0,0" 
                 Background="#09594D" Foreground="White" VerticalAlignment="Top" Width="150" BorderBrush="{x:Null}" Click="consultaPrecio">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
@@ -102,14 +102,14 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <Rectangle HorizontalAlignment="Left" Height="56" Margin="51,312,0,0"  Stroke="Transparent"
+        <Rectangle HorizontalAlignment="Left" Height="226" Margin="51,162,0,0"  Stroke="Transparent"
                    Fill="White" Opacity="0.3"
                    VerticalAlignment="Top" Width="439"/>
-        <TextBlock x:Name="txPrecio" HorizontalAlignment="Left" Height="56" Margin="51,312,0,0" TextWrapping="Wrap" 
-                   Text="Q 00.00" VerticalAlignment="Top" Width="439"
-                   FontSize="25"
+        <TextBlock x:Name="txPrecio" HorizontalAlignment="Left" Height="226" Margin="51,162,0,0" TextWrapping="Wrap" 
+                   Text="Información" VerticalAlignment="Top" Width="439"
+                   FontSize="18"
                    Background="Transparent" Foreground="White" TextAlignment="Center" Padding="0,10,0,0"/>
-        
+
 
 
 
