@@ -53,7 +53,7 @@ namespace LoginSasteria
         {
 
             cn.cerrarCN();
-            string query = "SELECT idproducto as 'Código'," +
+            string query = "SELECT idproducto as 'Codigo'," +
                 "\r\nnombreProducto.nombre as Nombre," +
                 "\r\nprecio as Precio," +
                 "\r\ntalla.nombreTalla as Talla" +
@@ -77,7 +77,7 @@ namespace LoginSasteria
                 {
                     while (reader.Read())
                     {
-                        string resultado = "Código: " + reader["Código"].ToString() + "\r\n" +
+                        string resultado = "Codigo: " + reader["Codigo"].ToString() + "\r\n" +
                                            "Nombre: " + reader["Nombre"].ToString() + "\r\n" +
                                            "Precio: Q " + reader["Precio"].ToString() + "\r\n" +
                                            "Talla: " + reader["Talla"].ToString() + "\r\n" +

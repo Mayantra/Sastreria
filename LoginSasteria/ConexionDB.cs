@@ -13,7 +13,7 @@ namespace LoginSasteria
     internal class ConexionDB
     {
         //MySqlConnection con = new MySqlConnection();
-        public static string servidor = "94.130.216.164";
+        public static string servidor = "148.251.43.156";
         public static string db = "hismanreina_PruebasDBLeonV2";
         public static string username = "hismanreina_isa";
         public static string password = "Isaac@17Isaac@17";
