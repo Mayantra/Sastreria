@@ -3,12 +3,40 @@
   "WorkspaceRootPath": "C:\\Users\\isaac\\source\\repos\\SistemaSastreria\\Sastreria\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|c:\\users\\isaac\\source\\repos\\sistemasastreria\\sastreria\\loginsasteria\\verprecioproducto.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\verprecioproducto.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|C:\\Users\\isaac\\source\\repos\\SistemaSastreria\\Sastreria\\loginsasteria\\historialfacturas.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\historialfacturas.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|c:\\users\\isaac\\source\\repos\\sistemasastreria\\sastreria\\loginsasteria\\conexiondb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\conexiondb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|c:\\users\\isaac\\source\\repos\\sistemasastreria\\sastreria\\loginsasteria\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|C:\\Users\\isaac\\source\\repos\\SistemaSastreria\\Sastreria\\loginsasteria\\historialfacturas.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\historialfacturas.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|C:\\Users\\isaac\\source\\repos\\SistemaSastreria\\Sastreria\\loginsasteria\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|C:\\Users\\isaac\\source\\repos\\SistemaSastreria\\Sastreria\\loginsasteria\\verprecioproducto.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\verprecioproducto.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|c:\\users\\isaac\\source\\repos\\sistemasastreria\\sastreria\\loginsasteria\\procesoventa.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\procesoventa.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|c:\\users\\isaac\\source\\repos\\sistemasastreria\\sastreria\\loginsasteria\\procesoventa.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\procesoventa.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|c:\\users\\isaac\\source\\repos\\sistemasastreria\\sastreria\\loginsasteria\\ventainventario.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\ventainventario.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +46,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,15 +58,14 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "verPrecioProducto.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\isaac\\source\\repos\\SistemaSastreria\\Sastreria\\LoginSasteria\\verPrecioProducto.xaml.cs",
-              "RelativeDocumentMoniker": "LoginSasteria\\verPrecioProducto.xaml.cs",
-              "ToolTip": "C:\\Users\\isaac\\source\\repos\\SistemaSastreria\\Sastreria\\LoginSasteria\\verPrecioProducto.xaml.cs",
-              "RelativeToolTip": "LoginSasteria\\verPrecioProducto.xaml.cs",
-              "ViewState": "AQIAAE0AAAAAAAAAAAAIwFwAAAARAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-12T00:58:26.582Z",
+              "DocumentIndex": 3,
+              "Title": "historialFacturas.xaml",
+              "DocumentMoniker": "C:\\Users\\isaac\\source\\repos\\SistemaSastreria\\Sastreria\\LoginSasteria\\historialFacturas.xaml",
+              "RelativeDocumentMoniker": "LoginSasteria\\historialFacturas.xaml",
+              "ToolTip": "C:\\Users\\isaac\\source\\repos\\SistemaSastreria\\Sastreria\\LoginSasteria\\historialFacturas.xaml",
+              "RelativeToolTip": "LoginSasteria\\historialFacturas.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-08-12T01:56:20.02Z",
               "EditorCaption": ""
             },
             {
@@ -49,9 +76,97 @@
               "RelativeDocumentMoniker": "LoginSasteria\\ConexionDB.cs",
               "ToolTip": "C:\\Users\\isaac\\source\\repos\\SistemaSastreria\\Sastreria\\LoginSasteria\\ConexionDB.cs",
               "RelativeToolTip": "LoginSasteria\\ConexionDB.cs",
-              "ViewState": "AQIAABQAAAAAAAAAAAAQwBIAAAA5AAAA",
+              "ViewState": "AQIAAE0AAAAAAAAAAAAAAEgAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-12T00:56:06.447Z",
+              "WhenOpened": "2025-08-14T01:09:44.2Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ProcesoVenta.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\isaac\\source\\repos\\SistemaSastreria\\Sastreria\\LoginSasteria\\ProcesoVenta.xaml.cs",
+              "RelativeDocumentMoniker": "LoginSasteria\\ProcesoVenta.xaml.cs",
+              "ToolTip": "C:\\Users\\isaac\\source\\repos\\SistemaSastreria\\Sastreria\\LoginSasteria\\ProcesoVenta.xaml.cs",
+              "RelativeToolTip": "LoginSasteria\\ProcesoVenta.xaml.cs",
+              "ViewState": "AQIAAFsBAAAAAAAAAAAqwGcBAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-14T00:10:13.73Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ProcesoVenta.xaml",
+              "DocumentMoniker": "C:\\Users\\isaac\\source\\repos\\SistemaSastreria\\Sastreria\\LoginSasteria\\ProcesoVenta.xaml",
+              "RelativeDocumentMoniker": "LoginSasteria\\ProcesoVenta.xaml",
+              "ToolTip": "C:\\Users\\isaac\\source\\repos\\SistemaSastreria\\Sastreria\\LoginSasteria\\ProcesoVenta.xaml",
+              "RelativeToolTip": "LoginSasteria\\ProcesoVenta.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-08-14T00:10:08.083Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ventaInventario.xaml",
+              "DocumentMoniker": "C:\\Users\\isaac\\source\\repos\\SistemaSastreria\\Sastreria\\LoginSasteria\\ventaInventario.xaml",
+              "RelativeDocumentMoniker": "LoginSasteria\\ventaInventario.xaml",
+              "ToolTip": "C:\\Users\\isaac\\source\\repos\\SistemaSastreria\\Sastreria\\LoginSasteria\\ventaInventario.xaml",
+              "RelativeToolTip": "LoginSasteria\\ventaInventario.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-08-13T23:52:51.293Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\isaac\\source\\repos\\SistemaSastreria\\Sastreria\\LoginSasteria\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "LoginSasteria\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\isaac\\source\\repos\\SistemaSastreria\\Sastreria\\LoginSasteria\\MainWindow.xaml.cs",
+              "RelativeToolTip": "LoginSasteria\\MainWindow.xaml.cs",
+              "ViewState": "AQIAAEkAAAAAAAAAAAArwFUAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-13T05:53:28.156Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\isaac\\source\\repos\\SistemaSastreria\\Sastreria\\LoginSasteria\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "LoginSasteria\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\isaac\\source\\repos\\SistemaSastreria\\Sastreria\\LoginSasteria\\MainWindow.xaml",
+              "RelativeToolTip": "LoginSasteria\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-08-13T05:53:22.994Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "historialFacturas.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\isaac\\source\\repos\\SistemaSastreria\\Sastreria\\LoginSasteria\\historialFacturas.xaml.cs",
+              "RelativeDocumentMoniker": "LoginSasteria\\historialFacturas.xaml.cs",
+              "ToolTip": "C:\\Users\\isaac\\source\\repos\\SistemaSastreria\\Sastreria\\LoginSasteria\\historialFacturas.xaml.cs",
+              "RelativeToolTip": "LoginSasteria\\historialFacturas.xaml.cs",
+              "ViewState": "AQIAAJQAAAAAAAAAAAAQwKIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-13T04:17:52.195Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "verPrecioProducto.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\isaac\\source\\repos\\SistemaSastreria\\Sastreria\\LoginSasteria\\verPrecioProducto.xaml.cs",
+              "RelativeDocumentMoniker": "LoginSasteria\\verPrecioProducto.xaml.cs",
+              "ToolTip": "C:\\Users\\isaac\\source\\repos\\SistemaSastreria\\Sastreria\\LoginSasteria\\verPrecioProducto.xaml.cs",
+              "RelativeToolTip": "LoginSasteria\\verPrecioProducto.xaml.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAAF8AAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-12T00:58:26.582Z",
               "EditorCaption": ""
             }
           ]

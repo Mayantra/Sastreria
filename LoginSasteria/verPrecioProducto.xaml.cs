@@ -53,21 +53,28 @@ namespace LoginSasteria
         {
 
             cn.cerrarCN();
-            string query = "SELECT idproducto as 'Codigo'," +
-                "\r\nnombreProducto.nombre as Nombre," +
-                "\r\nprecio as Precio," +
-                "\r\ntalla.nombreTalla as Talla" +
-                ",\r\ntipoProducto.nombreTipo as 'Tipo Producto'," +
-                "\r\ncolor.nombre as 'Color'" +
-                "\r\nFROM " + cn.namedb() + ".producto " +
-                "\r\ninner join nombreProducto on producto.nombreProducto_idnombreProducto = nombreProducto.idnombreProducto" +
-                "\r\ninner join tipoTall on producto.talla_idtalla = tipoTall.idtalla" +
-                "\r\ninner join talla on tipoTall.talla_idtalla = talla.idtalla" +
-                "\r\ninner join tipoProducto on tipoTall.tipoProducto_idtipoProducto = tipoProducto.idtipoProducto" +
-                "\r\ninner join color on producto.color_idcolor = color.idcolor" +
-                "\r\nwhere idproducto='" + codigo + "';";
+            string query = @"
+            SELECT 
+                p.idproducto as 'Codigo',
+                np.nombre as Nombre,
+                p.precio as Precio,
+                t.nombreTalla as Talla,
+                tp.nombreTipo as 'Tipo Producto',
+                c.nombre as 'Color'
+            FROM " + cn.namedb() + @".producto p
+            INNER JOIN " + cn.namedb() + @".nombreProducto np 
+                ON p.nombreProducto_idnombreProducto = np.idnombreProducto
+            INNER JOIN " + cn.namedb() + @".tipoTall tt 
+                ON p.talla_idtalla = tt.idtalla
+            INNER JOIN " + cn.namedb() + @".talla t 
+                ON tt.talla_idtalla = t.idtalla
+            INNER JOIN " + cn.namedb() + @".tipoProducto tp 
+                ON tt.tipoProducto_idtipoProducto = tp.idtipoProducto
+            INNER JOIN " + cn.namedb() + @".color c 
+                ON p.color_idcolor = c.idcolor
+            WHERE p.idproducto = '" + codigo + "';";
 
-            
+
             try
             {
                 MySqlCommand comando = new MySqlCommand(query, cn.establecerCN());

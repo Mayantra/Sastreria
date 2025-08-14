@@ -291,6 +291,9 @@
     <Compile Include="FacturaEncargoProductos.cs" />
     <Compile Include="FingerprintHandler.cs" />
     <Compile Include="GenerarFactura.cs" />
+    <Compile Include="historialFacturas.xaml.cs">
+      <DependentUpon>historialFacturas.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ImprimirBarras.xaml.cs">
       <DependentUpon>ImprimirBarras.xaml</DependentUpon>
     </Compile>
@@ -386,6 +389,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="EstadoPorFechas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="historialFacturas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -526,6 +533,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="about.svg" />
+    <Resource Include="iconoFactura.png" />
     <Resource Include="downarrow_120663.png" />
     <Resource Include="log_out_icon_236671.png" />
     <Resource Include="Qwhite.png" />

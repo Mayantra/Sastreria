@@ -53,24 +53,38 @@ namespace LoginSasteria
         //Conexion de Isaac
         public MySqlConnection establecerCN()
         {
-            // Crea una nueva instancia de conexión cada vez.
-
-            try
+            // Cierra y elimina la conexión existente si hay alguna
+            if (con != null)
             {
-
-                // 🛡️ Si está abierta, la cerramos primero
-                if (con.State == System.Data.ConnectionState.Open)
+                if (con.State == ConnectionState.Open)
                 {
                     con.Close();
                 }
+                con.Dispose();
+                con = null;
+            }
 
-                con.Open(); // Ahora sí la abrimos
-
+            try
+            {
+                // Crea una nueva conexión cada vez (patrón más seguro)
+                con = new MySqlConnection(conexion);
+                con.Open();
                 return con;
             }
-            catch (MySqlException)
+            catch (MySqlException ex)
             {
-                MessageBox.Show("Error, no se puede conectar. Revise su conexión a WIFI", "Error de conexión", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"Error de conexión MySQL: {ex.Message}\nRevise su conexión a internet.",
+                               "Error de conexión",
+                               MessageBoxButton.OK,
+                               MessageBoxImage.Error);
+                return null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error inesperado: {ex.Message}",
+                               "Error",
+                               MessageBoxButton.OK,
+                               MessageBoxImage.Error);
                 return null;
             }
         }

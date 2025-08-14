@@ -1271,3 +1271,5 @@ C:\Users\xaver\Desktop\Sastreria GIT\Sastreria\LoginSasteria\bin\Debug\DPFPShrNE
 C:\Users\xaver\Desktop\Sastreria GIT\Sastreria\LoginSasteria\bin\Debug\DPFPVerNET.dll
 C:\Users\xaver\Desktop\Sastreria GIT\Sastreria\LoginSasteria\obj\Debug\registroHuella.g.cs
 C:\Users\xaver\Desktop\Sastreria GIT\Sastreria\LoginSasteria\obj\Debug\registroHuella.baml
+C:\Users\isaac\source\repos\SistemaSastreria\Sastreria\LoginSasteria\obj\Debug\historialFacturas.g.cs
+C:\Users\isaac\source\repos\SistemaSastreria\Sastreria\LoginSasteria\obj\Debug\historialFacturas.baml

@@ -53,19 +53,30 @@ namespace LoginSasteria
 
         void primeraCon()
         {
-            string query = "SELECT idproducto AS 'Código', \r\nalmacen.nombre AS Sucursal, " +
-                "\r\nnombreProducto.Nombre AS Producto,\r\ncolor.nombre As Color,\r\nproducto.precio AS Precio, " +
-                "\r\ntipoProducto.nombreTipo AS 'Tipo Producto', " +
-                "\r\ntalla.nombreTalla As Talla\r\nFROM " + objConection.namedb() + ".inventario " +
-                "\r\nINNER JOIN " + objConection.namedb() + ".producto \r\nON inventario.producto_idproducto = producto.idproducto" +
-                "\r\nINNER JOIN " + objConection.namedb() + ".nombreProducto " +
-                "\r\nON producto.nombreProducto_idnombreProducto = nombreProducto.idnombreProducto " +
-                "\r\nINNER JOIN " + objConection.namedb() + ".almacen\r\nON inventario.almacen_idalmacen = almacen.idalmacen" +
-                "\r\nINNER JOIN " + objConection.namedb() + ".color\r\nON producto.color_idcolor = color.idcolor" +
-                "\r\nINNER JOIN " + objConection.namedb() + ".tipoTall\r\nON producto.talla_idtalla = tipoTall.idtalla" +
-                "\r\nINNER JOIN " + objConection.namedb() + ".tipoProducto" +
-                "\r\nON tipoTall.tipoProducto_idtipoProducto = tipoProducto.idtipoProducto" +
-                "\r\nINNER JOIN  " + objConection.namedb() + ".talla\r\nON tipoTall.talla_idtalla = talla.idtalla;";
+            string query = @"
+            SELECT 
+                p.idproducto AS 'Código',
+                a.nombre AS Sucursal,
+                np.nombre AS Producto,
+                c.nombre AS Color,
+                p.precio AS Precio,
+                tp.nombreTipo AS 'Tipo Producto',
+                t.nombreTalla AS Talla
+            FROM " + objConection.namedb() + @".inventario i
+            INNER JOIN " + objConection.namedb() + @".producto p 
+                ON i.producto_idproducto = p.idproducto
+            INNER JOIN " + objConection.namedb() + @".nombreProducto np 
+                ON p.nombreProducto_idnombreProducto = np.idnombreProducto
+            INNER JOIN " + objConection.namedb() + @".almacen a 
+                ON i.almacen_idalmacen = a.idalmacen
+            INNER JOIN " + objConection.namedb() + @".color c 
+                ON p.color_idcolor = c.idcolor
+            INNER JOIN " + objConection.namedb() + @".tipoTall tt 
+                ON p.talla_idtalla = tt.idtalla
+            INNER JOIN " + objConection.namedb() + @".tipoProducto tp 
+                ON tt.tipoProducto_idtipoProducto = tp.idtipoProducto
+            INNER JOIN " + objConection.namedb() + @".talla t 
+                ON tt.talla_idtalla = t.idtalla";
             try
             {
                 MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN());

@@ -137,14 +137,14 @@ BorderThickness="{TemplateBinding BorderThickness}">
 
             </Grid>
         </Button>
-        <Button x:Name="btnAbrirRegalo" HorizontalAlignment="Left" Height="260" Margin="382,90,0,0" VerticalAlignment="Top" Width="678" Background="#FFB8E6D5" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="AbrirProcesoRegalo">
-            <Grid Height="260" Width="454">
-                <Rectangle HorizontalAlignment="Left" Height="113" VerticalAlignment="Top" Width="115" Margin="112,121,0,0">
+        <Button x:Name="btnAbrirRegalo" HorizontalAlignment="Left" Height="260" Margin="382,90,0,0" VerticalAlignment="Top" Width="320" Background="#FFB8E6D5" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="AbrirProcesoRegalo">
+            <Grid Height="260" Width="310">
+                <Rectangle HorizontalAlignment="Left" Height="113" VerticalAlignment="Top" Width="115" Margin="0,137,0,0">
                     <Rectangle.Fill>
                         <ImageBrush ImageSource="/RegaloBlack.png" Stretch="Uniform"/>
                     </Rectangle.Fill>
                 </Rectangle>
-                <Label HorizontalAlignment="Left" Height="138" Margin="144,52,0,0" VerticalAlignment="Top" Width="300" Foreground="Black" Background="{x:Null}" FontFamily="MingLiU_HKSCS-ExtB" FontSize="45">
+                <Label HorizontalAlignment="Left" Height="138" Margin="58,33,0,0" VerticalAlignment="Top" Width="246" Foreground="Black" Background="{x:Null}" FontFamily="MingLiU_HKSCS-ExtB" FontSize="45">
                     <TextBlock HorizontalAlignment="Left" TextAlignment="Right" Height="124" TextWrapping="Wrap" Text="Proceso de Regalo" VerticalAlignment="Top" Width="225" FontSize="35"/>
                 </Label>
             </Grid>
@@ -158,6 +158,18 @@ BorderThickness="{TemplateBinding BorderThickness}">
                 </Rectangle>
                 <Label HorizontalAlignment="Left" Height="138" Margin="63,32,0,0" VerticalAlignment="Top" Width="300" Foreground="Black" Background="{x:Null}" FontFamily="MingLiU_HKSCS-ExtB" FontSize="45">
                     <TextBlock HorizontalAlignment="Center" TextAlignment="Right" Height="124" TextWrapping="Wrap" Text="Estado de cuenta" VerticalAlignment="Center" Width="225" FontSize="35"/>
+                </Label>
+            </Grid>
+        </Button>
+        <Button x:Name="btnFacturas" HorizontalAlignment="Left" Height="260" Margin="740,90,0,0" VerticalAlignment="Top" Width="320" Background="LightYellow" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="btnHistorialFactura">
+            <Grid Height="260" Width="320">
+                <Rectangle HorizontalAlignment="Left" Height="113" VerticalAlignment="Top" Width="110" Margin="18,130,0,0">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="/iconoFactura.png" Stretch="Uniform"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <Label HorizontalAlignment="Left" Height="138" Margin="63,32,0,0" VerticalAlignment="Top" Width="300" Foreground="Black" Background="{x:Null}" FontFamily="MingLiU_HKSCS-ExtB" FontSize="45">
+                    <TextBlock HorizontalAlignment="Center" TextAlignment="Right" Height="124" TextWrapping="Wrap" VerticalAlignment="Center" Width="225" FontSize="35"><Run Language="es-es" Text="Historial"/><LineBreak/><Run Language="es-es" Text="Facturas"/></TextBlock>
                 </Label>
             </Grid>
         </Button>

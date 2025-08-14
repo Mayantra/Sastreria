@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms.VisualStyles;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -46,7 +47,7 @@ namespace LoginSasteria
 
         private void btnSalir(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Application.Current.Shutdown();
         }
 
         private void Minimizar(object sender, RoutedEventArgs e)
@@ -135,6 +136,13 @@ namespace LoginSasteria
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             ConversionTraje abrir = new ConversionTraje();
+            abrir.Show();
+            this.Close();
+        }
+
+        private void btnHistorialFactura(object sender, RoutedEventArgs e)
+        {
+            historialFacturas abrir = new historialFacturas();
             abrir.Show();
             this.Close();
         }
