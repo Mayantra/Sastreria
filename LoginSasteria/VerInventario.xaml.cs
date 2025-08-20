@@ -42,37 +42,59 @@ namespace LoginSasteria
 
         void CargarInventario()
         {
-            string query = "SELECT p.idproducto AS codigo, p.precio, np.idnombreProducto, np.Nombre AS Producto, c.nombre AS Color, t.nombreTalla AS Talla,  " +
-                            "a.nombre AS Almacen, e.Nombre AS Empleado, pr.Nombre AS Proveedor " +
-                            "FROM " + objConection.namedb() + ".producto AS p " +
-                            "JOIN " + objConection.namedb() + ".nombreProducto AS np ON p.nombreProducto_idnombreProducto = np.idnombreProducto " +
-                            "JOIN " + objConection.namedb() + ".color AS c ON p.color_idcolor = c.idcolor " +
-                            "JOIN " + objConection.namedb() + ".talla AS t ON p.talla_idtalla = t.idtalla " +
-                            "JOIN " + objConection.namedb() + ".inventario AS i ON i.producto_idproducto = p.idproducto " +
-                            "JOIN " + objConection.namedb() + ".almacen AS a ON i.almacen_idalmacen = a.idalmacen " +
-                            "JOIN " + objConection.namedb() + ".Empleado AS e ON i.Empleado_idEmpleado = e.idEmpleado " +
-                            "JOIN " + objConection.namedb() + ".Proveedor AS pr ON i.Proveedor_idProveedor = pr.idProveedor";
+            string query = @"SELECT 
+                                p.idproducto AS codigo, 
+                                p.precio, 
+                                np.idnombreProducto, 
+                                np.Nombre AS Producto, 
+                                c.nombre AS Color, 
+                                t.nombreTalla AS Talla,  
+                                a.nombre AS Almacen, 
+                                e.Nombre AS Empleado, 
+                                pr.Nombre AS Proveedor,
+                                i.fechaIngreso
+                            FROM " + objConection.namedb() + @".inventario AS i 
+                            LEFT JOIN " + objConection.namedb() + @".producto AS p 
+                                ON i.producto_idproducto = p.idproducto 
+                            LEFT JOIN " + objConection.namedb() + @".nombreProducto AS np 
+                                ON p.nombreProducto_idnombreProducto = np.idnombreProducto 
+                            LEFT JOIN " + objConection.namedb() + @".color AS c 
+                                ON p.color_idcolor = c.idcolor 
+                            LEFT JOIN " + objConection.namedb() + @".tipoTall AS tt 
+                                ON p.talla_idtalla = tt.idtalla 
+                            LEFT JOIN " + objConection.namedb() + @".talla AS t 
+                                ON tt.talla_idtalla = t.idtalla 
+                            LEFT JOIN " + objConection.namedb() + @".almacen AS a 
+                                ON i.almacen_idalmacen = a.idalmacen 
+                            LEFT JOIN " + objConection.namedb() + @".Empleado AS e 
+                                ON i.Empleado_idEmpleado = e.idEmpleado 
+                            LEFT JOIN " + objConection.namedb() + @".Proveedor AS pr 
+                                ON i.Proveedor_idProveedor = pr.idProveedor
+                            ORDER BY i.fechaIngreso DESC";
 
-            MySqlConnection conexion = objConection.nuevaConexion();
-            if (conexion == null)
-                return;
-
-            try
+            using (MySqlConnection conexion = objConection.nuevaConexion())
             {
-                using (MySqlCommand comando = new MySqlCommand(query, conexion))
+                if (conexion == null)
+                    return;
+
+                try
                 {
-                    // Ejecuta la consulta principal
-                    MySqlDataAdapter dataAdapter = new MySqlDataAdapter(comando);
-                    DataTable dataTable = new DataTable();
-                    dataAdapter.Fill(dataTable);
+                    using (MySqlCommand comando = new MySqlCommand(query, conexion))
+                    {
+                        MySqlDataAdapter dataAdapter = new MySqlDataAdapter(comando);
+                        DataTable dataTable = new DataTable();
+                        dataAdapter.Fill(dataTable);
 
-                    // Asigna el DataTable como la fuente de datos del DataGrid
-                    dgEdiInventario.ItemsSource = dataTable.DefaultView;
+                        dgEdiInventario.ItemsSource = dataTable.DefaultView;
+
+                        // Opcional: Mostrar cuántos registros se cargaron
+                        //MessageBox.Show($"Se cargaron {dataTable.Rows.Count} registros del inventario.");
+                    }
                 }
-            }
-            finally
-            {
-                objConection.cerrarConexion(conexion);
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error al cargar inventario: {ex.Message}");
+                }
             }
         }
 

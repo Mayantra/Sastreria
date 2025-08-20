@@ -116,18 +116,28 @@ namespace LoginSasteria
 
                 // Consulta SQL
                 string query = $@"
-                        SELECT p.idproducto AS codigo, p.precio, np.Nombre AS Producto, 
-                               c.nombre AS Color, t.nombreTalla AS Talla, p.detalles, 
-                               p.fechaCodigo AS Fecha_Creacion
-                        FROM {objConection.namedb()}.producto p
-                        LEFT JOIN {objConection.namedb()}.nombreProducto np ON p.nombreProducto_idnombreProducto = np.idnombreProducto
-                        LEFT JOIN {objConection.namedb()}.color c ON p.color_idcolor = c.idcolor
-                        LEFT JOIN {objConection.namedb()}.talla t ON p.talla_idtalla = t.idtalla
-                        WHERE p.fechaCodigo BETWEEN @FechaInicio AND @FechaFin
-                        AND p.idproducto NOT LIKE 'ENC%'
-                        AND p.nombreProducto_idnombreProducto NOT LIKE 99    
-                        AND p.color_idcolor NOT LIKE 99          
-                        AND p.talla_idtalla NOT LIKE 99";
+                        SELECT 
+                                p.idproducto AS codigo, 
+                                p.precio, 
+                                np.Nombre AS Producto, 
+                                c.nombre AS Color, 
+                                t.nombreTalla AS Talla, 
+                                p.detalles, 
+                                p.fechaCodigo AS Fecha_Creacion 
+                            FROM {objConection.namedb()}.producto p 
+                            LEFT JOIN {objConection.namedb()}.nombreProducto np ON p.nombreProducto_idnombreProducto = np.idnombreProducto 
+                            LEFT JOIN {objConection.namedb()}.color c ON p.color_idcolor = c.idcolor 
+                            LEFT JOIN {objConection.namedb()}.tipoTall tt ON p.talla_idtalla = tt.idtalla 
+                            LEFT JOIN {objConection.namedb()}.talla t ON tt.talla_idtalla = t.idtalla 
+                            WHERE 
+                                p.fechaCodigo BETWEEN @FechaInicio AND @FechaFin
+                                AND p.idproducto NOT LIKE 'ENC%'
+                                AND NOT (
+                                    p.nombreProducto_idnombreProducto = 99 
+                                    AND p.color_idcolor = 99 
+                                    AND p.talla_idtalla = 99
+                                )
+                            ORDER BY Fecha_Creacion DESC";
 
                 // Ejecutar consulta
                 using (var conn = objConection.nuevaConexion())

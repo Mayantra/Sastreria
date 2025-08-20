@@ -102,21 +102,21 @@ BorderThickness="{TemplateBinding BorderThickness}">
            RowBackground="#FFF1F1F1" AlternatingRowBackground="White" Foreground="Black" FontFamily="Arial" 
            AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Código" Binding="{Binding codigo}" Width="200"/>
+                <DataGridTextColumn Header="Código" Binding="{Binding codigo}" MinWidth="200"/>
 
-                <DataGridTextColumn Header="Precio" Binding="{Binding precio}" Width="80"/>
+                <DataGridTextColumn Header="Precio" Binding="{Binding precio}" MinWidth="80"/>
 
-                <DataGridTextColumn Header="Producto" Binding="{Binding Producto}" Width="150"/>
+                <DataGridTextColumn Header="Producto" Binding="{Binding Producto}" MinWidth="150"/>
 
-                <DataGridTextColumn Header="Color" Binding="{Binding Color}" Width="70"/>
+                <DataGridTextColumn Header="Color" Binding="{Binding Color}" MinWidth="100"/>
 
-                <DataGridTextColumn Header="Talla" Binding="{Binding Talla}" Width="85"/>
+                <DataGridTextColumn Header="Talla" Binding="{Binding Talla}" MinWidth="85"/>
 
-                <DataGridTextColumn Header="Almacén" Binding="{Binding Almacen}" Width="150"/>
+                <DataGridTextColumn Header="Almacén" Binding="{Binding Almacen}" MinWidth="150"/>
 
-                <DataGridTextColumn Header="Empleado" Binding="{Binding Empleado}" Width="120"/>
+                <DataGridTextColumn Header="Empleado" Binding="{Binding Empleado}" MinWidth="120"/>
 
-                <DataGridTextColumn Header="Proveedor" Binding="{Binding Proveedor}" Width="115"/>
+                <DataGridTextColumn Header="Proveedor" Binding="{Binding Proveedor}" MinWidth="115"/>
 
             </DataGrid.Columns>
             <DataGrid.Resources>

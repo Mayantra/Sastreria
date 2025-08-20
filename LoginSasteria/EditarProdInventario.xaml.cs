@@ -85,7 +85,7 @@ namespace LoginSasteria
                 using (MySqlConnection conexion = objConection.nuevaConexion())
                 {
                     //Vamos a traer todo de la tabla tipoproducto
-                    string query = "SELECT * FROM " + objConection.namedb() + ".tipoProducto;";
+                    string query = "SELECT * FROM " + objConection.namedb() + ".tipoProducto WHERE nombreTipo <> 'Encargo' ORDER BY nombreTipo ASC;";
                     using (MySqlCommand comando = new MySqlCommand(query, conexion))
                     using (MySqlDataReader reader = comando.ExecuteReader())
                     {
@@ -124,161 +124,176 @@ namespace LoginSasteria
         {
             if (e.Key == Key.Enter)
             {
-                //Antes de llenar el DataGrid con los datos del codigo a buscar, se verifica que el codigo exista en el inventario
-                string codigo = txtLeerBarras.Text;
-
-                using (MySqlConnection conexion = objConection.nuevaConexion())
+                try
                 {
-                    if (conexion == null)
-                        return;
+                    string codigo = txtLeerBarras.Text.Trim().Replace("\r", "").Replace("\n", "");
 
-                    string queryCheck = $"SELECT COUNT(*) FROM {objConection.namedb()}.inventario WHERE producto_idproducto = @codigo";
-                    using (MySqlCommand comandoCheck = new MySqlCommand(queryCheck, conexion))
+                    if (string.IsNullOrEmpty(codigo))
                     {
-                        comandoCheck.Parameters.AddWithValue("@codigo", codigo);
-                        int count = Convert.ToInt32(comandoCheck.ExecuteScalar());
-
-                        if (count == 0)
-                        {
-                            MessageBox.Show("El código no existe en el inventario.");
-                            limpiar();
-                            txtLeerBarras.Clear();
-                            txtLeerBarras.Focus();
-                            return;
-                        }
+                        MessageBox.Show("Por favor, ingrese un código de barras.");
+                        return;
                     }
 
-                    // Si el código existe, ejecuta la consulta principal
-                    string query = "SELECT p.idproducto AS codigo, p.precio, np.idnombreProducto, np.Nombre AS Producto, c.nombre AS Color, t.nombreTalla AS Talla,  " +
-                            "a.nombre AS Almacen, e.Nombre AS Empleado, pr.Nombre AS Proveedor " +
-                            "FROM " + objConection.namedb() + ".producto AS p " +
-                            "JOIN " + objConection.namedb() + ".nombreProducto AS np ON p.nombreProducto_idnombreProducto = np.idnombreProducto " +
-                            "JOIN " + objConection.namedb() + ".color AS c ON p.color_idcolor = c.idcolor " +
-                            "JOIN " + objConection.namedb() + ".talla AS t ON p.talla_idtalla = t.idtalla " +
-                            "JOIN " + objConection.namedb() + ".inventario AS i ON i.producto_idproducto = p.idproducto " +
-                            "JOIN " + objConection.namedb() + ".almacen AS a ON i.almacen_idalmacen = a.idalmacen " +
-                            "JOIN " + objConection.namedb() + ".Empleado AS e ON i.Empleado_idEmpleado = e.idEmpleado " +
-                            "JOIN " + objConection.namedb() + ".Proveedor AS pr ON i.Proveedor_idProveedor = pr.idProveedor WHERE p.idproducto = @codigo";
-
-                    using (MySqlCommand comando = new MySqlCommand(query, conexion))
+                    using (MySqlConnection conexion = objConection.nuevaConexion())
                     {
-                        comando.Parameters.AddWithValue("@codigo", codigo);
-                        MySqlDataAdapter adapter = new MySqlDataAdapter(comando);
-                        DataTable dataTable = new DataTable();
-                        adapter.Fill(dataTable);
-                        dgEdiInventario.ItemsSource = dataTable.DefaultView;
-
-                        if (dataTable.Rows.Count > 0)
+                        if (conexion == null)
                         {
-                            txtNombreProducto.Text = dataTable.Rows[0]["Producto"].ToString();
-                            txtPrecio.Text = dataTable.Rows[0]["precio"].ToString();
-                            txtIdProducto.Text = dataTable.Rows[0]["idnombreProducto"].ToString();
-                            txtLeerBarras.IsReadOnly = true;
-                            activarTextBox();
-                            CargarDatos();
+                            MessageBox.Show("Error de conexión a la base de datos.");
+                            return;
+                        }
+
+                        // PRIMERO: Verificar si el código existe en INVENTARIO
+                        string queryCheckInventario = "SELECT COUNT(*) FROM " + objConection.namedb() + ".inventario WHERE producto_idproducto = @codigo";
+
+                        using (MySqlCommand comandoCheck = new MySqlCommand(queryCheckInventario, conexion))
+                        {
+                            comandoCheck.Parameters.AddWithValue("@codigo", codigo);
+                            int count = Convert.ToInt32(comandoCheck.ExecuteScalar());
+
+                            if (count == 0)
+                            {
+                                MessageBox.Show("El código no existe en el inventario. Solo se pueden editar productos inventariados.");
+                                limpiar();
+                                txtLeerBarras.Clear();
+                                txtLeerBarras.Focus();
+                                return;
+                            }
+                        }
+
+                        // SEGUNDO: Si existe en inventario, buscar los datos en PRODUCTO
+                        string queryProducto = @"SELECT 
+                                                    p.idproducto AS codigo, 
+                                                    p.precio, 
+                                                    np.idnombreProducto, 
+                                                    np.Nombre AS Producto, 
+                                                    c.nombre AS Color, 
+                                                    t.nombreTalla AS Talla,  
+                                                    a.nombre AS Almacen, 
+                                                    e.Nombre AS Empleado, 
+                                                    pr.Nombre AS Proveedor
+                                                FROM " + objConection.namedb() + @".producto AS p 
+                                                    LEFT JOIN " + objConection.namedb() + @".nombreProducto AS np 
+                                                        ON p.nombreProducto_idnombreProducto = np.idnombreProducto 
+                                                    LEFT JOIN " + objConection.namedb() + @".color AS c 
+                                                        ON p.color_idcolor = c.idcolor 
+                                                    LEFT JOIN " + objConection.namedb() + @".tipoTall AS tt 
+                                                        ON p.talla_idtalla = tt.idtalla 
+                                                    LEFT JOIN " + objConection.namedb() + @".talla AS t 
+                                                        ON tt.talla_idtalla = t.idtalla 
+                                                    LEFT JOIN " + objConection.namedb() + @".inventario AS i 
+                                                        ON i.producto_idproducto = p.idproducto 
+                                                    LEFT JOIN " + objConection.namedb() + @".almacen AS a 
+                                                        ON i.almacen_idalmacen = a.idalmacen 
+                                                    LEFT JOIN " + objConection.namedb() + @".Empleado AS e 
+                                                        ON i.Empleado_idEmpleado = e.idEmpleado 
+                                                    LEFT JOIN " + objConection.namedb() + @".Proveedor AS pr 
+                                                        ON i.Proveedor_idProveedor = pr.idProveedor 
+                                                WHERE p.idproducto = @codigo";
+
+                        using (MySqlCommand comandoProducto = new MySqlCommand(queryProducto, conexion))
+                        {
+                            comandoProducto.Parameters.AddWithValue("@codigo", codigo);
+
+                            using (MySqlDataAdapter adapter = new MySqlDataAdapter(comandoProducto))
+                            {
+                                DataTable dataTable = new DataTable();
+                                adapter.Fill(dataTable);
+
+                                // Mostrar en DataGrid
+                                dgEdiInventario.ItemsSource = dataTable.DefaultView;
+
+                                if (dataTable.Rows.Count > 0)
+                                {
+                                    // Llenar TextBoxes con datos del PRODUCTO
+                                    txtNombreProducto.Text = dataTable.Rows[0]["Producto"].ToString();
+                                    txtPrecio.Text = dataTable.Rows[0]["precio"].ToString();
+                                    txtIdProducto.Text = dataTable.Rows[0]["idnombreProducto"].ToString();
+
+                                    txtLeerBarras.IsReadOnly = true;
+                                    activarTextBox();
+                                    CargarDatos();
+
+                                    MessageBox.Show("Producto encontrado en inventario. Puede editar los datos.");
+                                }
+                                else
+                                {
+                                    // Este caso sería raro: existe en inventario pero no en producto
+                                    MessageBox.Show("Error: El código existe en inventario pero no se encuentra en la tabla de productos. Contacte al administrador.");
+                                    limpiar();
+                                    txtLeerBarras.Clear();
+                                    txtLeerBarras.Focus();
+                                }
+                            }
                         }
                     }
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error al buscar producto: {ex.Message}\n\nDetalle: {ex.StackTrace}");
+                }
             }
-
         }
 
         private void CargarDatosTalla(object sender, SelectionChangedEventArgs e)
         {
-            objConection.cerrarCN();
-
             cbTalla.Items.Clear();
-
-            int idTipoProducto = 0; // Inicializa con un valor por defecto
+            objConection.cerrarCN();
 
             if (cbTipoProducto.SelectedItem != null)
             {
-                // Asegúrate de que hay un ítem seleccionado antes de intentar acceder a su propiedad
-                idTipoProducto = ((ComboItem)cbTipoProducto.SelectedItem).Id;
+                int idTipoProducto = ((ComboItem)cbTipoProducto.SelectedItem).Id;
 
-                //Vamos a generar el Codigo de barras segun el TipoProducto
-                if (idTipoProducto == 1)
-                {
-                    //Vamos a traer las tallas pertenecientes a las camisas
-                    string query1 = "SELECT tt.idtalla, t.nombreTalla FROM " + objConection.namedb() + ".tipoTall AS tt " +
-                        "JOIN " + objConection.namedb() + ".talla AS t ON tt.talla_idtalla = t.idtalla WHERE tt.tipoProducto_idtipoProducto = '1'";
-                    MySqlCommand comando1 = new MySqlCommand(query1, objConection.establecerCN());
-                    MySqlDataReader myReader1 = comando1.ExecuteReader();
-                    while (myReader1.Read())
-                    {
-                        int id = myReader1.GetInt32("idTalla"); // Asumiendo que el campo se llama idTalla
-                        string nombre = myReader1.GetString("nombreTalla");
-                        ComboItem item = new ComboItem() { Id = id, Nombre = nombre };
-                        cbTalla.Items.Add(item);
-                    }
-                    objConection.cerrarCN();
-                }
-                else if (idTipoProducto == 2)
-                {
-                    //Vamos a traer las tallas pertenecientes a los pantalones
-                    string query2 = "SELECT tt.idtalla, t.nombreTalla FROM " + objConection.namedb() + ".tipoTall AS tt " +
-                        "JOIN " + objConection.namedb() + ".talla AS t ON tt.talla_idtalla = t.idtalla WHERE tt.tipoProducto_idtipoProducto = '2'";
-                    MySqlCommand comando2 = new MySqlCommand(query2, objConection.establecerCN());
-                    MySqlDataReader myReader2 = comando2.ExecuteReader();
-                    while (myReader2.Read())
-                    {
-                        int id = myReader2.GetInt32("idTalla"); // Asumiendo que el campo se llama idTalla
-                        string nombre = myReader2.GetString("nombreTalla");
-                        ComboItem item = new ComboItem() { Id = id, Nombre = nombre };
-                        cbTalla.Items.Add(item);
-                    }
-                    objConection.cerrarCN();
-                }
-                else if (idTipoProducto == 3)
-                {
-                    //Vamos a traer las tallas pertenecientes a los sacos
-                    string query3 = "SELECT tt.idtalla, t.nombreTalla FROM " + objConection.namedb() + ".tipoTall AS tt " +
-                         "JOIN " + objConection.namedb() + ".talla AS t ON tt.talla_idtalla = t.idtalla WHERE tt.tipoProducto_idtipoProducto = '3'";
-                    MySqlCommand comando3 = new MySqlCommand(query3, objConection.establecerCN());
-                    MySqlDataReader myReader3 = comando3.ExecuteReader();
-                    while (myReader3.Read())
-                    {
-                        int id = myReader3.GetInt32("idTalla"); // Asumiendo que el campo se llama idTalla
-                        string nombre = myReader3.GetString("nombreTalla");
-                        ComboItem item = new ComboItem() { Id = id, Nombre = nombre };
-                        cbTalla.Items.Add(item);
-                    }
-                    objConection.cerrarCN();
-                }
-                else if (idTipoProducto == 5)
-                {
-                    //Vamos a traer las tallas pertenecientes a los chalecos
-                    string query4 = "SELECT tt.idtalla, t.nombreTalla FROM " + objConection.namedb() + ".tipoTall AS tt " +
-                        "JOIN " + objConection.namedb() + ".talla AS t ON tt.talla_idtalla = t.idtalla WHERE tt.tipoProducto_idtipoProducto = '5'";
-                    MySqlCommand comando4 = new MySqlCommand(query4, objConection.establecerCN());
-                    MySqlDataReader myReader4 = comando4.ExecuteReader();
-                    while (myReader4.Read())
-                    {
-                        int id = myReader4.GetInt32("idTalla"); // Asumiendo que el campo se llama idTalla
-                        string nombre = myReader4.GetString("nombreTalla");
-                        ComboItem item = new ComboItem() { Id = id, Nombre = nombre };
-                        cbTalla.Items.Add(item);
-                    }
-                    objConection.cerrarCN();
-                }
-            }
-            else
-            {
+                // Consulta genérica para obtener las tallas según el tipo de producto
+                string query = "SELECT tt.idtalla, t.nombreTalla FROM " + objConection.namedb() + ".tipoTall AS tt " +
+                    "JOIN " + objConection.namedb() + ".talla AS t ON tt.talla_idtalla = t.idtalla " +
+                    "WHERE tt.tipoProducto_idtipoProducto = @idTipoProducto";
 
+                using (MySqlCommand comando = new MySqlCommand(query, objConection.establecerCN()))
+                {
+                    comando.Parameters.AddWithValue("@idTipoProducto", idTipoProducto);
+
+                    try
+                    {
+                        MySqlDataReader myReader = comando.ExecuteReader();
+                        while (myReader.Read())
+                        {
+                            int id = myReader.GetInt32("idtalla"); // Asumiendo que el campo se llama idTalla
+                            string nombre = myReader.GetString("nombreTalla");
+                            ComboItem item = new ComboItem() { Id = id, Nombre = nombre };
+                            cbTalla.Items.Add(item);
+                        }
+                        myReader.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error al cargar las tallas: " + ex.Message);
+                    }
+                    finally
+                    {
+                        objConection.cerrarCN();
+                    }
+                }
             }
         }
 
         private void btnActualizarDatos_Click(object sender, RoutedEventArgs e)
         {
-            // Validar que los campos de texto y los ComboBox no estén vacíos
+            // Validar que todos los campos necesarios estén llenos
             if (string.IsNullOrWhiteSpace(txtPrecio.Text) ||
-                cbAlmacen.SelectedItem == null ||
-                cbTalla.SelectedItem == null ||
-                cbTipoProducto.SelectedItem == null ||
-                string.IsNullOrWhiteSpace(txtNombreProducto.Text))
+                 cbAlmacen.SelectedItem == null ||
+                 cbTalla.SelectedItem == null ||
+                 cbTipoProducto.SelectedItem == null ||
+                 string.IsNullOrWhiteSpace(txtNombreProducto.Text))
             {
                 MessageBox.Show("Por favor, completa todos los campos antes de registrar.", "Campos incompletos", MessageBoxButton.OK, MessageBoxImage.Information);
                 return; // Salir del método para evitar ejecutar el resto del código
+            }
+
+            // Validar que el precio sea un número válido
+            if (!decimal.TryParse(txtPrecio.Text, out decimal precio))
+            {
+                MessageBox.Show("Por favor, ingrese un precio válido.");
+                return;
             }
 
             using (MySqlConnection conexion = objConection.nuevaConexion())

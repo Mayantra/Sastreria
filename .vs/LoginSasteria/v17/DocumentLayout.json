@@ -1,20 +1,7 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\isaac\\source\\repos\\SistemaSastreria\\Sastreria\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|c:\\users\\isaac\\source\\repos\\sistemasastreria\\sastreria\\loginsasteria\\facturaencargoproductos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\facturaencargoproductos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|C:\\Users\\isaac\\source\\repos\\SistemaSastreria\\Sastreria\\loginsasteria\\historialencargo.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\historialencargo.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|c:\\users\\isaac\\source\\repos\\sistemasastreria\\sastreria\\loginsasteria\\historialencargo.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\historialencargo.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    }
-  ],
+  "WorkspaceRootPath": "C:\\Users\\xaver\\Desktop\\Sastreria GIT\\Sastreria\\",
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -22,53 +9,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Bookmark",
               "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "FacturaEncargoProductos.cs",
-              "DocumentMoniker": "C:\\Users\\isaac\\source\\repos\\SistemaSastreria\\Sastreria\\LoginSasteria\\FacturaEncargoProductos.cs",
-              "RelativeDocumentMoniker": "LoginSasteria\\FacturaEncargoProductos.cs",
-              "ToolTip": "C:\\Users\\isaac\\source\\repos\\SistemaSastreria\\Sastreria\\LoginSasteria\\FacturaEncargoProductos.cs",
-              "RelativeToolTip": "LoginSasteria\\FacturaEncargoProductos.cs",
-              "ViewState": "AQIAALoAAAAAAAAAAAASwOAAAAAuAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-20T05:19:30.375Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "historialEncargo.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\isaac\\source\\repos\\SistemaSastreria\\Sastreria\\LoginSasteria\\historialEncargo.xaml.cs",
-              "RelativeDocumentMoniker": "LoginSasteria\\historialEncargo.xaml.cs",
-              "ToolTip": "C:\\Users\\isaac\\source\\repos\\SistemaSastreria\\Sastreria\\LoginSasteria\\historialEncargo.xaml.cs",
-              "RelativeToolTip": "LoginSasteria\\historialEncargo.xaml.cs",
-              "ViewState": "AQIAAPgAAAAAAAAAAAAiwAgBAABFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-20T02:07:07.49Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "historialEncargo.xaml",
-              "DocumentMoniker": "C:\\Users\\isaac\\source\\repos\\SistemaSastreria\\Sastreria\\LoginSasteria\\historialEncargo.xaml",
-              "RelativeDocumentMoniker": "LoginSasteria\\historialEncargo.xaml",
-              "ToolTip": "C:\\Users\\isaac\\source\\repos\\SistemaSastreria\\Sastreria\\LoginSasteria\\historialEncargo.xaml",
-              "RelativeToolTip": "LoginSasteria\\historialEncargo.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-08-20T02:06:17.66Z",
-              "EditorCaption": ""
             }
           ]
         }

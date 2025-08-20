@@ -187,7 +187,7 @@ Icon="/tshirt_120689.ico">
                   x:Name="dgFechas" HorizontalAlignment="Left" Height="318" Margin="234,67,0,0" VerticalAlignment="Top" 
                   Width="1014" FontSize="15" BorderBrush="{x:Null}" Background="White" AreRowDetailsFrozen="True" 
                   RowBackground="#FFF1F1F1" AlternatingRowBackground="White" Foreground="Black" FontFamily="Arial" 
-                  AutoGenerateColumns="False" CanUserSortColumns="True">
+                  AutoGenerateColumns="False" CanUserSortColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Código" Binding="{Binding codigo}" Width="200"/>
 
@@ -201,7 +201,7 @@ Icon="/tshirt_120689.ico">
 
                 <DataGridTextColumn Header="Detalles" Binding="{Binding detalles}" Width="110"/>
 
-                <DataGridTextColumn Header="Fecha Creación" Binding="{Binding Fecha_Creacion}" Width="200" SortDirection="Ascending"/>
+                <DataGridTextColumn Header="Fecha Creación" Binding="{Binding Fecha_Creacion}" Width="200" SortDirection="Descending"/>
 
             </DataGrid.Columns>
             <DataGrid.Resources>
