@@ -186,5 +186,12 @@ namespace LoginSasteria
             abrir.Show();
             this.Close();
         }
+
+        private void historialEncargo(object sender, RoutedEventArgs e)
+        {
+            historialEncargo abrir = new historialEncargo();
+            abrir.Show();
+            this.Close();
+        }
     }
 }

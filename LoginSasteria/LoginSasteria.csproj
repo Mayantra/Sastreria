@@ -291,6 +291,9 @@
     <Compile Include="FacturaEncargoProductos.cs" />
     <Compile Include="FingerprintHandler.cs" />
     <Compile Include="GenerarFactura.cs" />
+    <Compile Include="historialEncargo.xaml.cs">
+      <DependentUpon>historialEncargo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="historialFacturas.xaml.cs">
       <DependentUpon>historialFacturas.xaml</DependentUpon>
     </Compile>
@@ -389,6 +392,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="EstadoPorFechas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="historialEncargo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

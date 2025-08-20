@@ -224,6 +224,7 @@ namespace LoginSasteria
                     document.Add(tablaDuplicados);
                     document.Add(PaNocodigos);
                     document.Add(BarrasCodigos);
+                    
 
                     document.Close();
                     AbrirPDF(ms.ToArray());
