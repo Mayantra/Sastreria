@@ -1,7 +1,14 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\xaver\\Desktop\\Sastreria GIT\\Sastreria\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|LoginSasteria||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|c:\\users\\xaver\\desktop\\sastreria git\\sastreria\\loginsasteria\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|cc4014f5-b18d-439c-9352-f99d984cca85"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +16,23 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LoginSasteria",
+              "DocumentMoniker": "C:\\Users\\xaver\\Desktop\\Sastreria GIT\\Sastreria\\LoginSasteria\\LoginSasteria.csproj",
+              "RelativeDocumentMoniker": "LoginSasteria\\LoginSasteria.csproj",
+              "ToolTip": "C:\\Users\\xaver\\Desktop\\Sastreria GIT\\Sastreria\\LoginSasteria\\LoginSasteria.csproj",
+              "RelativeToolTip": "LoginSasteria\\LoginSasteria.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-08-20T16:07:37.095Z",
+              "EditorCaption": ""
             }
           ]
         }

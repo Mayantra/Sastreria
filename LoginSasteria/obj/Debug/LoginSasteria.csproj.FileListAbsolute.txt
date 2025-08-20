@@ -1279,3 +1279,7 @@ C:\Users\xaver\Desktop\Sastreria GIT\Sastreria\LoginSasteria\obj\Debug\historial
 C:\Users\xaver\Desktop\Sastreria GIT\Sastreria\LoginSasteria\obj\Debug\historialFacturas.g.cs
 C:\Users\xaver\Desktop\Sastreria GIT\Sastreria\LoginSasteria\obj\Debug\historialEncargo.baml
 C:\Users\xaver\Desktop\Sastreria GIT\Sastreria\LoginSasteria\obj\Debug\historialFacturas.baml
+C:\Users\xaver\Desktop\Sastreria GIT\Sastreria\LoginSasteria\bin\Debug\LoginSasteria.exe.manifest
+C:\Users\xaver\Desktop\Sastreria GIT\Sastreria\LoginSasteria\bin\Debug\LoginSasteria.application
+C:\Users\xaver\Desktop\Sastreria GIT\Sastreria\LoginSasteria\obj\Debug\LoginSasteria.exe.manifest
+C:\Users\xaver\Desktop\Sastreria GIT\Sastreria\LoginSasteria\obj\Debug\LoginSasteria.application

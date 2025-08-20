@@ -3,12 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\xaver\\Desktop\\Sastreria GIT\\Sastreria\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|c:\\users\\xaver\\desktop\\sastreria git\\sastreria\\loginsasteria\\imprimirbarras.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\imprimirbarras.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|LoginSasteria||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|c:\\users\\xaver\\desktop\\sastreria git\\sastreria\\loginsasteria\\imprimirbarras.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|solutionrelative:loginsasteria\\imprimirbarras.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{88F4B999-DF61-4B42-8CCE-C38A6932CE0F}|LoginSasteria\\LoginSasteria.csproj|c:\\users\\xaver\\desktop\\sastreria git\\sastreria\\loginsasteria\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|cc4014f5-b18d-439c-9352-f99d984cca85"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +16,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,27 +24,14 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ImprimirBarras.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\xaver\\Desktop\\Sastreria GIT\\Sastreria\\LoginSasteria\\ImprimirBarras.xaml.cs",
-              "RelativeDocumentMoniker": "LoginSasteria\\ImprimirBarras.xaml.cs",
-              "ToolTip": "C:\\Users\\xaver\\Desktop\\Sastreria GIT\\Sastreria\\LoginSasteria\\ImprimirBarras.xaml.cs",
-              "RelativeToolTip": "LoginSasteria\\ImprimirBarras.xaml.cs",
-              "ViewState": "AgIAAGMAAAAAAAAAAAAmwIsAAAAzAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-20T15:30:41.02Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ImprimirBarras.xaml",
-              "DocumentMoniker": "C:\\Users\\xaver\\Desktop\\Sastreria GIT\\Sastreria\\LoginSasteria\\ImprimirBarras.xaml",
-              "RelativeDocumentMoniker": "LoginSasteria\\ImprimirBarras.xaml",
-              "ToolTip": "C:\\Users\\xaver\\Desktop\\Sastreria GIT\\Sastreria\\LoginSasteria\\ImprimirBarras.xaml",
-              "RelativeToolTip": "LoginSasteria\\ImprimirBarras.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-08-20T15:30:37.429Z",
+              "Title": "LoginSasteria",
+              "DocumentMoniker": "C:\\Users\\xaver\\Desktop\\Sastreria GIT\\Sastreria\\LoginSasteria\\LoginSasteria.csproj",
+              "RelativeDocumentMoniker": "LoginSasteria\\LoginSasteria.csproj",
+              "ToolTip": "C:\\Users\\xaver\\Desktop\\Sastreria GIT\\Sastreria\\LoginSasteria\\LoginSasteria.csproj*",
+              "RelativeToolTip": "LoginSasteria\\LoginSasteria.csproj*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-08-20T16:07:37.095Z",
               "EditorCaption": ""
             }
           ]
