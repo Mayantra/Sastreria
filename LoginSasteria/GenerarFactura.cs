@@ -99,144 +99,170 @@ namespace LoginSasteria
 
         public void CrearFactura(string codigo, String DataEmpleado, String DataCliente, String DataDetalles, String Total, DataTable DataProductos, int Regalo)
         {
-            DateTime fechaHoy = DateTime.Now;
-            fechaHoy.ToString("g");
-            BitmapSource barcodeBitmap = GenerateBarcode(codigo);
-            using (MemoryStream ms = new MemoryStream())
+            try
             {
-                PdfWriter writer = new PdfWriter(ms);
-                PdfDocument pdf = new PdfDocument(writer);
-                Document document = new Document(pdf);
-                pdf.SetDefaultPageSize(iText.Kernel.Geom.PageSize.LETTER);
-                document.SetMargins(15, 15, 15, 15);
-
-                iText.Layout.Element.Table table = new iText.Layout.Element.Table(2).UseAllAvailableWidth();
-                table.SetWidth(UnitValue.CreatePercentValue(100));
-                table.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
-
-                Cell noContableCell = new Cell();
-                Cell detallesCell = new Cell();
-                Cell imagenCell = new Cell();
-                Cell codigos = new Cell();
-                Cell cellEmpleado = new Cell();
-                Cell cellCliente = new Cell();
-                detallesCell.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
-                imagenCell.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
-                codigos.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
-
-                iText.Layout.Element.Paragraph noContable = new iText.Layout.Element.Paragraph("ESTE DOCUMENTO NO CONSTITUYE A UN COMPROBANTE CONTABLE OFICIAL");
-                noContableCell.Add(noContable);
-                noContableCell.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
-                noContableCell.SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER);
-
-                iText.Layout.Element.Paragraph detalles = new iText.Layout.Element.Paragraph(DataDetalles);
-                detallesCell.Add(detalles);
-                iText.Layout.Element.Image img = new iText.Layout.Element.Image(ImageDataFactory.Create("../../LogoBlack.png"));
-                img.ScaleToFit(100f, 150f);
-                imagenCell.Add(img);
-                imagenCell.SetHorizontalAlignment(iText.Layout.Properties.HorizontalAlignment.CENTER);
-
-                var barcodeBytes = ConvertToByteArray(barcodeBitmap);
-                iText.Layout.Element.Image barcodeImage = new iText.Layout.Element.Image(ImageDataFactory.Create(barcodeBytes));
-                codigos.Add(barcodeImage);
-
-                detallesCell.SetHorizontalAlignment(iText.Layout.Properties.HorizontalAlignment.CENTER);
-                codigos.SetVerticalAlignment(iText.Layout.Properties.VerticalAlignment.MIDDLE);
-
-                iText.Layout.Element.Paragraph paCodigo = new iText.Layout.Element.Paragraph(codigo);
-                paCodigo.SetPaddingTop(-15);
-                codigos.SetPaddingTop(10);
-                codigos.SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER);
-                codigos.Add(paCodigo);
-
-                iText.Layout.Element.Table tableDetalles = new iText.Layout.Element.Table(1).UseAllAvailableWidth();
-                tableDetalles.AddCell(cellEmpleado);
-                tableDetalles.AddCell(codigos);
-                Cell celldaTableDetalles = new Cell();
-                celldaTableDetalles.Add(tableDetalles);
-                celldaTableDetalles.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
-                celldaTableDetalles.SetMaxWidth(75);
-                celldaTableDetalles.SetMinWidth(75);
-                table.AddCell(celldaTableDetalles);
-
-                iText.Layout.Element.Table EmpleadoCliente = new iText.Layout.Element.Table(3).UseAllAvailableWidth();
-                EmpleadoCliente.SetWidth(UnitValue.CreatePercentValue(100));
-
-                cellEmpleado.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
-                cellCliente.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
-
-                iText.Layout.Element.Paragraph pEmpleado = new iText.Layout.Element.Paragraph(DataEmpleado + "\n" + fechaHoy);
-                cellEmpleado.Add(pEmpleado).SetHorizontalAlignment(iText.Layout.Properties.HorizontalAlignment.LEFT);
-
-                iText.Layout.Element.Paragraph pCliente = new iText.Layout.Element.Paragraph(DataCliente);
-                cellCliente.Add(pCliente).SetTextAlignment(iText.Layout.Properties.TextAlignment.RIGHT);
-
-                detallesCell.SetMaxWidth(150);
-                EmpleadoCliente.AddCell(detallesCell);
-                EmpleadoCliente.AddCell(imagenCell);
-                EmpleadoCliente.AddCell(cellCliente);
-
-                // Crear tabla de productos
-                iText.Layout.Element.Table productos = new iText.Layout.Element.Table(DataProductos.Columns.Count).UseAllAvailableWidth();
-
-                // Agregar encabezados (ocultando precios si es regalo)
-                foreach (DataColumn column in DataProductos.Columns)
+                DateTime fechaHoy = DateTime.Now;
+                fechaHoy.ToString("g");
+                BitmapSource barcodeBitmap = GenerateBarcode(codigo);
+                using (MemoryStream ms = new MemoryStream())
                 {
-                    if (Regalo == 1 && (column.ColumnName.ToLower().Contains("precio") || column.ColumnName.ToLower().Contains("subtotal") || column.ColumnName.ToLower().Contains("total")))
-                        continue;
+                    PdfWriter writer = new PdfWriter(ms);
+                    PdfDocument pdf = new PdfDocument(writer);
+                    Document document = new Document(pdf);
+                    pdf.SetDefaultPageSize(iText.Kernel.Geom.PageSize.LETTER);
+                    document.SetMargins(15, 15, 15, 15);
 
-                    Cell headerCell = new Cell().Add(new iText.Layout.Element.Paragraph(column.ColumnName));
-                    headerCell.SetBackgroundColor(ColorConstants.LIGHT_GRAY);
-                    productos.AddHeaderCell(headerCell.SetBorder(iText.Layout.Borders.Border.NO_BORDER));
-                }
+                    iText.Layout.Element.Table table = new iText.Layout.Element.Table(2).UseAllAvailableWidth();
+                    table.SetWidth(UnitValue.CreatePercentValue(100));
+                    table.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
 
-                // Agregar datos
-                foreach (DataRow row in DataProductos.Rows)
-                {
-                    for (int i = 0; i < DataProductos.Columns.Count; i++)
+                    Cell noContableCell = new Cell();
+                    Cell detallesCell = new Cell();
+                    Cell imagenCell = new Cell();
+                    Cell codigos = new Cell();
+                    Cell cellEmpleado = new Cell();
+                    Cell cellCliente = new Cell();
+                    detallesCell.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
+                    imagenCell.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
+                    codigos.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
+
+                    iText.Layout.Element.Paragraph noContable = new iText.Layout.Element.Paragraph("ESTE DOCUMENTO NO CONSTITUYE A UN COMPROBANTE CONTABLE OFICIAL");
+                    noContableCell.Add(noContable);
+                    noContableCell.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
+                    noContableCell.SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER);
+
+                    iText.Layout.Element.Paragraph detalles = new iText.Layout.Element.Paragraph(DataDetalles);
+                    detallesCell.Add(detalles);
+
+                    // Imagen: buscar logo en la carpeta de salida del programa
+                    var logoPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "LogoBlack.png");
+
+
+
+                    // Validar que el archivo exista para evitar IOException
+                    if (File.Exists(logoPath))
                     {
-                        string columnName = DataProductos.Columns[i].ColumnName.ToLower();
+                        iText.Layout.Element.Image img = new iText.Layout.Element.Image(ImageDataFactory.Create(logoPath));
+                        img.ScaleToFit(100f, 150f);
+                        imagenCell.Add(img);
+                        imagenCell.SetHorizontalAlignment(iText.Layout.Properties.HorizontalAlignment.CENTER);
+                    }
+                    else
+                    {
+                        // En caso de que falte el archivo, mostrar texto en lugar del logo
+                        iText.Layout.Element.Paragraph noLogo = new iText.Layout.Element.Paragraph("LOGO NO DISPONIBLE");
+                        imagenCell.Add(noLogo);
+                    }
 
-                        if (Regalo == 1 && (columnName.Contains("precio") || columnName.Contains("subtotal") || columnName.Contains("total")))
+                    var barcodeBytes = ConvertToByteArray(barcodeBitmap);
+                    iText.Layout.Element.Image barcodeImage = new iText.Layout.Element.Image(ImageDataFactory.Create(barcodeBytes));
+                    codigos.Add(barcodeImage);
+
+                    detallesCell.SetHorizontalAlignment(iText.Layout.Properties.HorizontalAlignment.CENTER);
+                    codigos.SetVerticalAlignment(iText.Layout.Properties.VerticalAlignment.MIDDLE);
+
+                    iText.Layout.Element.Paragraph paCodigo = new iText.Layout.Element.Paragraph(codigo);
+                    paCodigo.SetPaddingTop(-15);
+                    codigos.SetPaddingTop(10);
+                    codigos.SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER);
+                    codigos.Add(paCodigo);
+
+                    iText.Layout.Element.Table tableDetalles = new iText.Layout.Element.Table(1).UseAllAvailableWidth();
+                    tableDetalles.AddCell(cellEmpleado);
+                    tableDetalles.AddCell(codigos);
+                    Cell celldaTableDetalles = new Cell();
+                    celldaTableDetalles.Add(tableDetalles);
+                    celldaTableDetalles.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
+                    celldaTableDetalles.SetMaxWidth(75);
+                    celldaTableDetalles.SetMinWidth(75);
+                    table.AddCell(celldaTableDetalles);
+
+                    iText.Layout.Element.Table EmpleadoCliente = new iText.Layout.Element.Table(3).UseAllAvailableWidth();
+                    EmpleadoCliente.SetWidth(UnitValue.CreatePercentValue(100));
+
+                    cellEmpleado.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
+                    cellCliente.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
+
+                    iText.Layout.Element.Paragraph pEmpleado = new iText.Layout.Element.Paragraph(DataEmpleado + "\n" + fechaHoy);
+                    cellEmpleado.Add(pEmpleado).SetHorizontalAlignment(iText.Layout.Properties.HorizontalAlignment.LEFT);
+
+                    iText.Layout.Element.Paragraph pCliente = new iText.Layout.Element.Paragraph(DataCliente);
+                    cellCliente.Add(pCliente).SetTextAlignment(iText.Layout.Properties.TextAlignment.RIGHT);
+
+                    detallesCell.SetMaxWidth(150);
+                    EmpleadoCliente.AddCell(detallesCell);
+                    EmpleadoCliente.AddCell(imagenCell);
+                    EmpleadoCliente.AddCell(cellCliente);
+
+                    // Crear tabla de productos
+                    iText.Layout.Element.Table productos = new iText.Layout.Element.Table(DataProductos.Columns.Count).UseAllAvailableWidth();
+
+                    // Agregar encabezados (ocultando precios si es regalo)
+                    foreach (DataColumn column in DataProductos.Columns)
+                    {
+                        if (Regalo == 1 && (column.ColumnName.ToLower().Contains("precio") || column.ColumnName.ToLower().Contains("subtotal") || column.ColumnName.ToLower().Contains("total")))
                             continue;
 
-                        object item = row[i];
-                        Cell cell = new Cell().Add(new iText.Layout.Element.Paragraph(item.ToString()));
-                        productos.AddCell(cell.SetBorder(iText.Layout.Borders.Border.NO_BORDER));
+                        Cell headerCell = new Cell().Add(new iText.Layout.Element.Paragraph(column.ColumnName));
+                        headerCell.SetBackgroundColor(ColorConstants.LIGHT_GRAY);
+                        productos.AddHeaderCell(headerCell.SetBorder(iText.Layout.Borders.Border.NO_BORDER));
                     }
+
+                    // Agregar datos
+                    foreach (DataRow row in DataProductos.Rows)
+                    {
+                        for (int i = 0; i < DataProductos.Columns.Count; i++)
+                        {
+                            string columnName = DataProductos.Columns[i].ColumnName.ToLower();
+
+                            if (Regalo == 1 && (columnName.Contains("precio") || columnName.Contains("subtotal") || columnName.Contains("total")))
+                                continue;
+
+                            object item = row[i];
+                            Cell cell = new Cell().Add(new iText.Layout.Element.Paragraph(item.ToString()));
+                            productos.AddCell(cell.SetBorder(iText.Layout.Borders.Border.NO_BORDER));
+                        }
+                    }
+
+                    productos.SetMaxWidth(400);
+                    productos.SetHorizontalAlignment(iText.Layout.Properties.HorizontalAlignment.RIGHT);
+
+                    document.SetFontSize(9);
+
+                    Cell celdaProductos = new Cell();
+                    celdaProductos.Add(productos);
+                    celdaProductos.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
+                    table.AddCell(celdaProductos);
+
+                    document.Add(noContableCell);
+                    document.Add(EmpleadoCliente);
+                    document.Add(table);
+
+                    // Solo mostrar total si no es regalo
+                    if (Regalo == 0)
+                    {
+                        iText.Layout.Element.Paragraph TotalP = new iText.Layout.Element.Paragraph(Total);
+                        TotalP.SetBackgroundColor(ColorConstants.LIGHT_GRAY);
+                        Cell celdaTotal = new Cell();
+                        celdaTotal.SetPaddingLeft(300);
+                        celdaTotal.Add(TotalP);
+                        celdaTotal.SetTextAlignment(iText.Layout.Properties.TextAlignment.RIGHT);
+                        TotalP.SetPaddingRight(15);
+                        celdaTotal.SetFontSize(12);
+                        document.Add(celdaTotal);
+                    }
+
+                    document.Close();
+                    AbrirPDF(ms.ToArray());
                 }
 
-                productos.SetMaxWidth(400);
-                productos.SetHorizontalAlignment(iText.Layout.Properties.HorizontalAlignment.RIGHT);
-
-                document.SetFontSize(9);
-
-                Cell celdaProductos = new Cell();
-                celdaProductos.Add(productos);
-                celdaProductos.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
-                table.AddCell(celdaProductos);
-
-                document.Add(noContableCell);
-                document.Add(EmpleadoCliente);
-                document.Add(table);
-
-                // Solo mostrar total si no es regalo
-                if (Regalo == 0)
-                {
-                    iText.Layout.Element.Paragraph TotalP = new iText.Layout.Element.Paragraph(Total);
-                    TotalP.SetBackgroundColor(ColorConstants.LIGHT_GRAY);
-                    Cell celdaTotal = new Cell();
-                    celdaTotal.SetPaddingLeft(300);
-                    celdaTotal.Add(TotalP);
-                    celdaTotal.SetTextAlignment(iText.Layout.Properties.TextAlignment.RIGHT);
-                    TotalP.SetPaddingRight(15);
-                    celdaTotal.SetFontSize(12);
-                    document.Add(celdaTotal);
-                }
-
-                document.Close();
-                AbrirPDF(ms.ToArray());
+             }
+            catch(Exception e) 
+            {
+                MessageBox.Show("Error al generar la factura: " + e.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+            
+            
         }
         public void AbrirPDF(byte[] pdfData)
         {

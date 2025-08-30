@@ -59,11 +59,22 @@ namespace LoginSasteria
                     iText.Layout.Element.Paragraph detalles = new iText.Layout.Element.Paragraph(DataDetalles);
                     detallesCell.Add(detalles);
                     //imagen
-                    iText.Layout.Element.Image img = new iText.Layout.Element.Image(ImageDataFactory.Create("../../LogoBlack.png"));
-                    img.ScaleToFit(100f, 150f); // Ajustar el tamaño de la imagen si es necesario
-                                                // Agregar la imagen a la celda izquierda
-                    imagenCell.Add(img);
-                    imagenCell.SetHorizontalAlignment(iText.Layout.Properties.HorizontalAlignment.CENTER);
+                    var logoPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "LogoBlack.png");
+
+                    // Validar que el archivo exista para evitar IOException
+                    if (File.Exists(logoPath))
+                    {
+                        iText.Layout.Element.Image img = new iText.Layout.Element.Image(ImageDataFactory.Create(logoPath));
+                        img.ScaleToFit(100f, 150f);
+                        imagenCell.Add(img);
+                        imagenCell.SetHorizontalAlignment(iText.Layout.Properties.HorizontalAlignment.CENTER);
+                    }
+                    else
+                    {
+                        // En caso de que falte el archivo, mostrar texto
+                        iText.Layout.Element.Paragraph noLogo = new iText.Layout.Element.Paragraph("LOGO NO DISPONIBLE");
+                        imagenCell.Add(noLogo);
+                    }
 
 
                     //crear el codigo de barras
